@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Compuproveedores</title>
 
+
 <link href="{% static 'site_media/compu/compuproveedores.css' %}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="{% static 'site_media/css/ui/all.css' %}" />
 <script type="text/javascript" src="{% static 'site_media/js/jquery.js' %}"></script>
@@ -109,12 +110,9 @@
                                                 <li style="height:30px; width:200px; line-height: 30px;"class="menu_nav_text" >
                                                     <a href="{{ url.url }}">
                                                         <!-- <div class="left"><img height="30" src="/upload/{{ url.marca.logo }}"/></div> -->
-                                                        <div class="left" style="vertical-align:middle;"> {{ url.marca }}</div>
-                                                       
-                                                        
-                                                       
-                                                        
-                                                    </a></li>
+                                                        <div class="left" style="vertical-align:middle;"> {{ url.marca }}</div>                                                        
+                                                    </a>
+                                                </li>
                                             {% endfor %}
                                         </ul>
                                         {% endif %}
@@ -140,14 +138,12 @@
                                     <a href="/site_media/compu/catalogo_soluciones.pdf" class="nav_categoria">CATÁLOGO DE SOLUCIONES</a>
                                 </div>
                             </li>
-                        </ul>
-                        
-                    
+                        </ul>                    
                     </li>
                     <li><a href="{% url "empresas" %}">EMPRESAS</a> </li>
                     <li><a href="{% url "distribuidores" %}">DISTRIBUIDORES</a></li>
                     <li><a href="{% url "directorio" %}">DIRECTORIO</a></li>
-                    <li><a href="{% url "en_construccion" %}"><img src="/site_media/compu/images/carrito.png" width="40"></a></li>
+                    <li><a href="{% url "en_construccion" %}"><img src="{% static 'site_media/compu/images/carrito.png' %}" width="40"></a></li>
 
                 </ul>
             </div><!--menu-->

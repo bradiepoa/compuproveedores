@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% comment %} {% load url from future %} {% endcomment %}
 {% block extra_head %}
 <script type="text/javascript"> 
@@ -22,7 +23,7 @@
    
     <div class="red_box">
         <div class="red_box_inner">
-            <img src="/site_media/compu/images/pic_certificaciones.png" class="pic" />
+            <img src="{% static 'site_media/compu/images/pic_certificaciones.png' %}" class="pic" />
             <div class="titulo_texto"> 
                 <div class="title titulo_red_box">CERTIFICACIONES</div>
                 <div class="text">
@@ -30,14 +31,14 @@
                 </div><!--text-->
             </div>
             <a href="{% url "certificaciones" %}">
-                <img src="/site_media/compu/images/boton_vermas.png" class="boton_vermas" />
+                <img src="{% static 'site_media/compu/images/boton_vermas.png' %}" class="boton_vermas" />
             </a>
         </div>
     </div>
 	
     <div class="red_box">
         <div class="red_box_inner">
-            <img src="/site_media/compu/images/pic_promociones.png" class="pic" />
+            <img src="{% static 'site_media/compu/images/pic_promociones.png' %}" class="pic" />
             <div class="titulo_texto"> 	
                 <div class="title titulo_red_box">PROMOCIONES</div>
                 <div class="text">
@@ -45,14 +46,14 @@
                 </div><!--text-->
             </div>
             <a href="{% url "promociones" %}">
-                <img src="/site_media/compu/images/boton_vermas.png" class="boton_vermas" />
+                <img src="{% static 'site_media/compu/images/boton_vermas.png' %}" class="boton_vermas" />
             </a>
         </div>
     </div>
    
     <div class="red_box">
         <div class="red_box_inner">
-	        <img src="/site_media/compu/images/pic_block.png" class="pic" />
+	        <img src="{% static 'site_media/compu/images/pic_block.png' %}" class="pic" />
 	        <div class="titulo_texto"> 
                 <div class="title titulo_red_box">EL MUNDO DE LA TECNOLOGÍA</div>
                 <div class="text">
@@ -60,14 +61,14 @@
                 </div><!--text-->
             </div>
             <a href="{% url "mundo_tecnologia" %}">
-                <img src="/site_media/compu/images/boton_vermas.png" class="boton_vermas" />
+                <img src="{% static 'site_media/compu/images/boton_vermas.png' %}" class="boton_vermas" />
             </a>
         </div>
     </div>
    
     <div class="red_box">
         <div class="red_box_inner">
-            <img src="/site_media/compu/images/pic_garantias.png" class="pic" />
+            <img src="{% static 'site_media/compu/images/pic_garantias.png' %}" class="pic" />
             <div class="titulo_texto"> 
                 <div class="title titulo_red_box">GARANTIAS Y SERVICIOS</div>
                 <div class="text">
@@ -75,7 +76,7 @@
                 </div><!--text-->
             </div>
             <a href="{% url "seleccionar" %}">
-            <img src="/site_media/compu/images/boton_vermas.png" class="boton_vermas" />
+            <img src="{% static 'site_media/compu/images/boton_vermas.png' %}" class="boton_vermas" />
             </a>
         </div>
     </div>

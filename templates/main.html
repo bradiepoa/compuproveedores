@@ -6,13 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Compuproveedores</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link href="/site_media/compu/compuproveedores_admin.css" rel="stylesheet" type="text/css" />
-    <link href="/site_media/datetimepicker/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="/site_media/css/ui/all.css" />
-    <link rel="stylesheet" href="/site_media/css/jquery.autocomplete.css" type="text/css" />
-    <link rel='stylesheet' type='text/css' href='/site_media/fullcalendar/fullcalendar.css' />
-    <link rel='stylesheet' type='text/css' href='/site_media/fullcalendar/fullcalendar.print.css' media='print' />
-    <link href="/site_media/css/custom.css" rel="stylesheet" type="text/css" />
+    <link href="{% static 'site_media/compu/compuproveedores_admin.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'site_media/datetimepicker/jquery-ui-timepicker-addon.css' %}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{% static 'site_media/css/ui/all.css' %}" />
+    <link rel="stylesheet" href="{% static 'site_media/css/jquery.autocomplete.css' %}" type="text/css" />
+    <link rel='stylesheet' type='text/css' href="{% static 'site_media/fullcalendar/fullcalendar.css' %}" />
+    <link rel='stylesheet' type='text/css' href="{% static 'site_media/fullcalendar/fullcalendar.print.css' %}" media='print' />
+    <link href="{% static 'site_media/css/custom.css' %}" rel="stylesheet" type="text/css" />
     {% block extra_head %}
     
     {% endblock %}
@@ -21,7 +21,7 @@
 <body>
     
     <div class="container">
-        <nav style="background: url('/site_media/img/icons/nav.jpg') center / cover no-repeat; height: 100px;" class="nav nav-pills nav-fill p-5">
+        <nav style="background: url('{% static 'site_media/img/icons/nav.jpg' %}') center / cover no-repeat; height: 100px;" class="nav nav-pills nav-fill p-5">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="col-auto">
                         <a href="{% url 'logout' %}" class="nav-link ml-auto">
-                            <img src="/site_media/img/icons/logout.png" width="20" alt="Logout Icon" />
+                            <img src="{% static 'site_media/img/icons/logout.png' %}" width="20" alt="Logout Icon" />
                             Cerrar sesión
                         </a>
                     </div>
@@ -41,7 +41,7 @@
             <a class="nav-link" href="{% url 'admin' %}">INICIO</a>
             <a class="nav-link" href="{% url 'clientes' %}">Clientes</a>
             <a class="nav-link" href="{% url 'usuarios' %}">Administrar Usuarios</a>
-          </nav>
+        </nav>
         <!-- my navbar -->
         
         <div class="section">
