@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
-from django.conf import settings
-from django.contrib.staticfiles.views import serve
 
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -12,9 +12,4 @@ urlpatterns = [
 ]
 
 if settings.DEBUG:
-    urlpatterns += [
-        path('site_media/<path>/', serve,
-             {'document_root': settings.STATIC_ROOT, 'show_indexes': True}),
-        path('upload/<path>/', serve,
-             {'document_root': settings.MEDIA_ROOT, 'show_indexes': True}),
-    ]
+    urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
