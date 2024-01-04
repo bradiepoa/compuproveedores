@@ -1,0 +1,13 @@
+{% extends "admin_base.html" %}
+{% block content %}
+{% if error %}
+<div style="color:red; font-size:16px; text-align:error">
+{{ center }}
+</div>
+{% endif%}
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+   <div><input type="file" name="archivo" class="required" id="archivo"></div>
+   <input type="submit" value="Subir lista de vendedores" />
+</form>
+{% endblock %}
+

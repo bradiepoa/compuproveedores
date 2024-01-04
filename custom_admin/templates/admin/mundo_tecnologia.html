@@ -1,0 +1,36 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<script>
+	$().ready(function(){
+    	
+        $(" #formset tr").formset({
+        	prefix:"{{ formset.prefix }}"
+        
+        });
+    
+    
+    });
+</script>
+
+<form action="." method="POST" enctype="multipart/form-data">{{ formset.management_form }}{% csrf_token %}
+<table>
+	<thead>
+    	<th>Imagen</th>
+	</thead>
+    
+    <tbody id="formset">
+    	{% for form in formset %}
+        <tr>
+    		<td>{{ form.id }} {{ form.imagen }}</td>
+            <td>{{ form.imagen.errors }}</td>
+            <td>{{ form.DELETE }}</td>
+    	</tr>
+        {% endfor %}
+    </tbody>
+    
+</table>
+<input type="submit" value="Guardar"/>
+</form>
+{% endblock %}
+

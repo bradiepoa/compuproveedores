@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+{% block content %}
+<script>
+var hovered;
+$().ready(function(){
+
+    //$("#contactanos_sucursal").hover(function(e){ alert(e.offsetX + "," + e.offsetY); }, function(e) { alert(e.offsetX + "," + e.offsetY); });
+
+});
+
+
+
+function get_sucursal(sucursal){
+    
+    {% for s in sucursales %}
+    $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_gris2.png");
+    
+    if(sucursal == '{{ s.nombre }}'){
+        var ciudad = '{{ s.ciudad }}'
+        var ciudad2 = '{{ s.ciudad2 }}'
+        var direccion = '{{ s.direccion }}'
+        var telefono = '{{ s.telefono }}'
+        var fax = '{{ s.fax }}'
+        var cob1 = '{{ s.cob1 }}'
+        var cob2 = '{{ s.cob2 }}'
+        var cob3 = '{{ s.cob3 }}'
+        var cob4 = '{{ s.cob4 }}'
+        var cob5 = '{{ s.cob5 }}'
+        var cob6 = '{{ s.cob6 }}'
+        var cob7 = '{{ s.cob7 }}'
+        var cob8 = '{{ s.cob8 }}'
+        $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_rojo2.png");
+    }
+    {% endfor %}
+    
+    $(".sucursales_ciudad").html(ciudad)
+    $(".ciudad2").html(ciudad2)
+    $("#direccion_suc").html(direccion)
+    $("#telefono_suc").html(telefono)
+    $("#fax_suc").html(fax)
+    $("#cob1_suc").html(cob1)
+    $("#cob2_suc").html(cob2)
+    $("#cob3_suc").html(cob3)
+    $("#cob4_suc").html(cob4)
+    $("#cob5_suc").html(cob5)
+    $("#cob6_suc").html(cob6)
+    $("#cob7_suc").html(cob7)
+    $("#cob8_suc").html(cob8)
+
+}
+</script>
+<div class="fondo_gris_contacto">
+    <div class="espacio20" style="width:300px;"></div>
+    <div class="cuadro_fondo_gris_titulo">SUCURSALES</div>
+    <div id="nuestras_suc">
+        Nuestras <span style="color:red;">sucursales</span>
+    </div>
+    <form action=".?serie={{ serie }}&folio={{ folio }}" method="post">{% csrf_token %}
+    
+    <div id="cuadro_sucursales">
+        <div id="contactanos_sucursales_titulo">
+            COMPUPROVEEDORES<br/>
+            <div class="sucursales_ciudad">HERMOSILLO</div>
+            
+        </div>
+        <div class="direccion_y_cobertura">
+            <div id="direccion_suc">San Luis Potosí N°21, Col. Centro.</div>
+            <div class="ciudad2">Hermosillo, Sonora.</div>
+            <div id="telefono_suc">Tel. (662) 214-2200</div>
+            <div id="fax_suc">Fax (662) 215-8750</div>
+            <div class="espacio10"></div>
+            <div class="cobertura">Cobertura:</div>
+            <div><span id="cob1_suc">Chihuahua,</span> <span id="cob2_suc">Sonora,</span></div>
+            <div><span id="cob3_suc">Coahuila,</span> <span id="cob4_suc">Tamaulipas y</span></div>
+            <div><span id="cob5_suc">Nuevo León</span> <span id="cob6_suc"></span></div>
+            <div><span id="cob7_suc"></span> <span id="cob8_suc"></span></div>
+        </div>
+        
+        <table>
+            <tr>
+                <td>{{ form.nombre.label_tag }}:</td>
+                <td>{{ form.nombre }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.empresa.label_tag }}:</td>
+                <td>{{ form.empresa }}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.telefono.label_tag }}:</td>
+                <td>{{ form.telefono }}</td>
+            </tr>
+
+            <tr><td>{{ form.comentarios.label_tag }}:</td></tr>
+            <tr>
+                <td colspan="2">{{ form.comentarios }}</td>
+            </tr>
+        </table>
+        <div class="contacto_boton right" style="width:100px;">
+            <input type="submit" value="Enviar" />
+        </div>
+
+    </div>
+    </form>
+    {% for s in sucursales %}    
+    <a href="javascript:get_sucursal('{{ s.nombre }}')" class="right" >
+
+        <img 
+            src="/site_media/compu/images/{% if s.nombre == 'hermosillo'%}logo_rojo2{% else %}logo_gris2{% endif %}.png" 
+            class="iluminado" 
+            id="logo_{{ s.nombre }}" 
+            style="top:{{s.logo_t}}px; right:{{s.logo_r}}px;" 
+        />
+    </a>
+    
+    {% endfor %}
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+
+
+<script>
+    
+    $("#id_comentarios").css('width', '200px');
+    $("#id_comentarios").css('height', '50px');
+    $("#id_nombre").css('width', '145px');
+    $("#id_empresa").css('width', '145px');
+    $("#id_telefono").css('width', '145px');
+    
+    {% if form.errors %}
+        alert('Es necesario capturar todos los campos correctamente');
+    {% endif  %}
+
+</script>
+{% endblock %}

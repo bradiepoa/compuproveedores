@@ -1,0 +1,37 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+{% load custom_tags %}
+<div>
+    <a href="{% url 'renta' 0 %}">
+    <img src="/site_media/fc/images/add.gif">Agregar Renta</a> 
+</div>
+<table class="list-table">
+    <tr>
+        <th>Folio</th>
+        <th>Cliente</th>
+        <th>Responsable</th>
+        <th>Ciudad</th>
+        <th>Condicion</th>
+        <th>Total</th>
+        <th>Status</th>
+    </tr>
+    {% for r in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'renta' r.id %}">{{ r.folio }}</a></td>
+            <td><a href="{% url 'renta' r.id %}">{{ r.cliente }}</a></td>
+            <td><a href="{% url 'renta' r.id %}">{{ r.responsable }}</a></td>
+            <td><a href="{% url 'renta' r.id %}">{{ r.ciudad }}</a></td>
+            <td><a href="{% url 'renta' r.id %}">{{ r.get_condicion_display }}</a></td>
+            <td class="righttext"><a href="{% url 'renta' r.id %}">${{ r.total|cur }}</a></td>
+            <td><a href="{% url 'renta' r.id %}">{{ r.status|status}}</a></td>
+            
+        </tr>
+    {% endfor %}
+</table>
+{% include 'paginado.html' %}
+
+{% endblock %}
+
+
+

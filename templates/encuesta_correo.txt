@@ -1,0 +1,7 @@
+Se ha contestado una encuesta:
+
+Para ver la  encuesta haga click aqui:
+    {{ url }}{% url ver_encuesta encuesta.id %}
+
+Para ver todas las encuestas haga click aqui:
+    {{ url }}{% url encuestas %}

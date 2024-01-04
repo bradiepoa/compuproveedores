@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="cuadro_fondo_gris">
+<div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo">BOLSA DE TRABAJO</div>
+    <div class="cuadro_fondo_blanco">
+    <div class="texto_bolsa_trabajo">
+        {% if success == "1" %}
+        Gracias por su interés en nuestra empresa, al cubrir el perfil
+        recibirá una llamada para entrevista
+        {% endif %}
+        {% if success == "2" %}
+        Gracias por su interés en nuestra empresa, 
+        su currículum quedará registrado, cuando se abra
+        alguna vacante recibirá una llamada para entrevista.
+        {% endif %}
+    </div>
+
+    </div>
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+
+{% endblock %}

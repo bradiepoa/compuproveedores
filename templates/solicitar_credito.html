@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+ $(function() {
+       // $('#id_form tbody tr').formset({
+       //     prefix: '{{ formset.prefix }}'
+       // })
+        
+        $('#id_form').submit(function(){ 
+            return confirm('¿Está seguro de enviar la información?');
+        });
+    })
+</script>
+<div class="gray rounded">
+<div class="espacio20"></div>
+    <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+    <table>       
+        <tr>
+            <td>Nombre o Razón Social:</td>
+            <td>{{ form.instance.dist.show_razon_social }}</td>
+        </tr>
+    </table>
+    
+    <h3>REFERENCIAS BANCARIAS PARA PAGOS</h3>
+    <table>
+        <tr>
+            <td>{{ form.banco_1.label_tag }}</td>
+            <td>{{ form.banco_1 }}</td>
+            <td>{{ form.banco_1.errors}}</td>
+
+            <td>{{ form.pagos_no_cuenta_1.label_tag }}</td>
+            <td>{{ form.pagos_no_cuenta_1 }}</td>
+            <td>{{ form.pagos_no_cuenta_1.errors}}</td>
+        </tr>
+        
+        <tr>
+            <td>{{ form.pagos_banco_2.label_tag }}</td>
+            <td>{{ form.pagos_banco_2 }}</td>
+            <td>{{ form.pagos_banco_2.errors}}</td>
+
+            <td>{{ form.pagos_no_cuenta_2.label_tag }}</td>
+            <td>{{ form.pagos_no_cuenta_2 }}</td>
+            <td>{{ form.pagos_no_cuenta_2.errors}}</td>
+        </tr>
+    </table>
+    
+    <h3>REFERENCIAS COMERCIALES</h3>
+    <table>
+        <tr>
+            <td>{{ form.rc_nombre_empresa_1.label_tag }}</td>
+            <td>{{ form.rc_nombre_empresa_1 }}</td>
+            <td>{{ form.rc_nombre_empresa_1.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_ciudad_estado_1.label_tag }}</td>
+            <td>{{ form.rc_ciudad_estado_1 }}</td>
+            <td>{{ form.rc_ciudad_estado_1.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_atencion_1.label_tag }}</td>
+            <td>{{ form.rc_atencion_1 }}</td>
+            <td>{{ form.rc_atencion_1.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_telefono_1.label_tag }}</td>
+            <td>{{ form.rc_telefono_1 }}</td>
+            <td>{{ form.rc_telefono_1.errors}}</td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td>{{ form.rc_nombre_empresa_2.label_tag }}</td>
+            <td>{{ form.rc_nombre_empresa_2 }}</td>
+            <td>{{ form.rc_nombre_empresa_2.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_ciudad_estado_2.label_tag }}</td>
+            <td>{{ form.rc_ciudad_estado_2 }}</td>
+            <td>{{ form.rc_ciudad_estado_2.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_atencion_2.label_tag }}</td>
+            <td>{{ form.rc_atencion_2 }}</td>
+            <td>{{ form.rc_atencion_2.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_telefono_2.label_tag }}</td>
+            <td>{{ form.rc_telefono_2 }}</td>
+            <td>{{ form.rc_telefono_2.errors}}</td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td>{{ form.rc_nombre_empresa_3.label_tag }}</td>
+            <td>{{ form.rc_nombre_empresa_3 }}</td>
+            <td>{{ form.rc_nombre_empresa_3.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_ciudad_estado_3.label_tag }}</td>
+            <td>{{ form.rc_ciudad_estado_3 }}</td>
+            <td>{{ form.rc_ciudad_estado_3.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_atencion_3.label_tag }}</td>
+            <td>{{ form.rc_atencion_3 }}</td>
+            <td>{{ form.rc_atencion_3.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.rc_telefono_3.label_tag }}</td>
+            <td>{{ form.rc_telefono_3 }}</td>
+            <td>{{ form.rc_telefono_3.errors}}</td>
+        </tr>
+        
+    </table>
+    <h3>DOCUMENTACION REQUERIDA</h3>
+    <div>Últimos tres estados de cuenta.</div>
+    <table>
+        <tr>
+            <td>{{ form.doc_req_1 }}</td>
+            <td>{{ form.doc_req_1.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.doc_req_2 }}</td>
+            <td>{{ form.doc_req_2.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.doc_req_3 }}</td>
+            <td>{{ form.doc_req_3.errors}}</td>
+        </tr>
+    </table>
+    
+    <input type="submit" value="Enviar Datos">  
+    </form>
+</div>
+<script>
+$("#id_razon_social").css('width', '25em');
+$("#id_rc_nombre_empresa_1").css('width', '25em');
+$("#id_rc_nombre_empresa_3").css('width', '25em');
+$("#id_rc_nombre_empresa_2").css('width', '25em');
+</script>
+
+
+{% endblock %}

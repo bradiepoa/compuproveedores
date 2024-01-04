@@ -1,0 +1,25 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+<form action="." method="get">{% csrf_token %}
+    <img src="/site_media/fc/images/search.png">
+    {{ form.q }}
+    <input type='submit' value="Buscar">
+</form>
+<table class="list-table">
+    <tr>
+        <th>Nombre</th>
+        <th>RFC</th>
+    </tr>
+    {% for u in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'solicitud_credito_distribuidor' u.id %}">{{ u.razon_social }}</a></td>
+            <td><a href="{% url 'solicitud_credito_distribuidor' u.id %}">{{ u.rfc }}</a></td>
+            
+        </tr>
+    {% endfor %}
+</table>
+
+{% include 'paginado.html' %}
+
+{% endblock %}

@@ -1,0 +1,192 @@
+/* 
+	CSS of live-demo for the article: "CSS3 for older browsers"
+	
+	Created by: Alberto Restifo
+	For: WebdesignTuts+
+	
+	Copyright WebdesignTuts+, Alberto Restifo 2011. All right reserved.
+*/
+
+/* CSS Style Reset
+---------------------------- */
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+/* Demo Style
+---------------------------- */
+
+body {
+	background: #003471;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", sans-serif;
+	font-size: 12px;
+	color: #ebebeb;
+}
+
+#wrapper {
+	width: 940px;
+	margin: 40px auto;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 40px;
+}
+
+h3 {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.example {
+	clear: both;
+	float: left;
+	margin-bottom: 40px;
+}
+
+	.box {
+		float: left;
+		height: 150px;
+		width: 220px;
+		margin-right: 50px;
+		background: #00aeef;
+	}
+	
+	.radius {
+		border-radius: 10px;
+		behavior: url(PIE.htc);
+	}
+	
+	.shadow {
+		box-shadow: 5px 5px 5px rgba(0, 0, 0, .75);
+	}
+	
+	.gradient {
+		background: -webkit-linear-gradient(top, #0072bc, #00bff3);
+		background: -moz-linear-gradient(top, #0072bc, #00bff3);
+		background: -o-linear-gradient(top, #0072bc, #00bff3);
+		background: -ms-linear-gradient(top, #0072bc, #00bff3);
+			-pie-background: linear-gradient(#0072bc, #00bff3);
+		behavior: url(PIE.htc);	
+	}
+	
+	.backgrounds {
+		background: url(img/flash.png) 20px 20px no-repeat, url(img/airplane.png) 90px 50px no-repeat, #00BFF3; /* Modern Browsers */
+		
+		-pie-background: url(img/flash.png) 20px 20px no-repeat, url(img/airplane.png) 90px 50px no-repeat, #00BFF3; /* IE6+ */
+		behavior: url(PIE.htc);
+	}
+	
+	.txt {
+		font-size: 18px;
+		font-weight: bold;
+		padding-top: 50px;
+		height: 100px;
+		padding-left: 20px;
+		width: 200px;
+		text-shadow: 2px 2px 2px black;
+	}
+	
+	.IEgradient {
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#444444', EndColorStr='#999999'); /* IE6ÐIE9 */
+	}
+	
+	.rotate {
+		margin-top: 40px;
+		-moz-transform:    rotate(10deg);
+	     -o-transform:      rotate(10deg);
+	     -webkit-transform: rotate(10deg);
+	     transform:         rotate(10deg);
+	}
+	
+table tr {
+	width: 100%;
+	background: #6dcff6;
+	height: 25px;
+}
+	table tr td {width: 220px;}	
+	
+	table tr:nth-child(2n+1) {
+		background: #ebebeb;
+	}
+	
+	table tr:first-child {
+		background: #252525;
+	}
+
+	
+	
+.description {
+	float: left;
+}	
+
+	.description p {
+		float: left;
+		font-size: 14px;
+		font-family: "Lucida Console", Monaco, monospace;	
+	}
+	
+pre {
+	clear: both;
+	float: left;
+	margin-top: 20px;
+	background: #a3d3f3;
+	width: 650px;
+	border-radius: 10px;
+	padding: 10px;
+	font-family: "Lucida Console", Monaco, monospace;	
+	font-size: 12px;
+	color: #363636;
+	line-height: 16px;
+	behavior: url(PIE.htc);
+	overflow: auto;
+}	

@@ -1,0 +1,5 @@
+La siguientes rentas vencen hoy 
+{% for r in rentas%}
+#{{ r.folio }} - {{ r.fecha_final }} de {{ r.cliente }}
+{{ r.url}}
+{% endfor %}

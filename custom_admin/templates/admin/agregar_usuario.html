@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+<table>
+    <tr>
+        <th>Marca</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+        <th>Modelo</th>
+    </tr>
+    {% for p in productos %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td>{{ p.marca }}</td>
+            <td>{{ p.tipo }}</td>
+            <td>{{ p.descripcion }}</td>
+            <td>{{ p.modelo }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<script>
+    
+    function post(){
+        window.location = '.?q=' + $("#q").val();
+    }
+    
+    $("#q").keydown(function(){ check_enter(event, post); });
+    $("#go").click(post);
+    $("#q").val('{{ q|safe }}');
+</script>
+
+{% endblock %}

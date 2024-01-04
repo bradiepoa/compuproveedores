@@ -1,0 +1,101 @@
+{% extends "main.html" %}
+{% block content %}
+{% load custom_tags %}
+<!-----------------------------------------------------------------------------
+<script>
+
+$().ready(function(){
+    
+    $("#id_fecha").change( function(){ $("form").submit() } );
+});    
+
+</script>
+
+<form action="." method="get">{% csrf_token %}
+{{ form.fecha }}
+</form>
+
+<div>
+    <a href="{% url 'actividad' 0 %}">
+    <img src="/site_media/fc/images/add.gif">Agregar actividad</a> 
+</div>
+<table class="list-table">
+    <tr>
+        <th>Fecha</th>
+        <th>Creado por</th>
+        <th>Asignado a</th>
+        <th>Fecha de inicio</th>
+        <th>Fecha de termino</th>
+        <th>Confirmado</th>
+
+    </tr>
+    {% for a in actividades.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'actividad' a.id %}">{{ a.creado }}</a></td>
+            <td><a href="{% url 'actividad' a.id %}">{{ a.usuario_creado }}</a></td>
+            <td><a href="{% url 'actividad' a.id %}">{{ a.usuario_asignado }}</a></td>
+            <td><a href="{% url 'actividad' a.id %}">{{ a.fecha_inicio }}</a></td>
+            <td><a href="{% url 'actividad' a.id %}">{{ a.fecha_termino }}</a></td>
+            <td><a href="{% url 'actividad' a.id %}">{{ a.confirmar|sino }}</a></td>           
+        </tr>
+    {% endfor %}
+</table>
+------------------------------------------------------------------------------->
+
+
+<script type='text/javascript'>
+
+	$(document).ready(function() {
+	
+		var calendar = $('#calendar').fullCalendar({
+			header: {
+				left: 'prev,next today',
+				center: 'title',
+				right: 'month,agendaWeek,agendaDay'
+			},
+			selectable: true,
+			selectHelper: true,
+			editable: false,
+			events: [
+				{% for a in actividades %}
+				{
+					title: '{{ a.titulo }} - {{ a.get_usuario_asignado }}',
+					start: new Date({{ a.fecha_inicio.year }}, ({{ a.fecha_inicio.month }}-1), {{ a.fecha_inicio.day }}, {{a.fecha_inicio.hour }}, {{a.fecha_inicio.minute }}), 
+					end: new Date({{ a.fecha_termino.year }}, ({{ a.fecha_termino.month }}-1), {{ a.fecha_termino.day }}, {{a.fecha_termino.hour }}, {{a.fecha_termino.minute }}),
+					url: "{% url 'actividad' a.id %}",
+					allDay:false,
+					backgroundColor: "#{{ a.usuario_asignado.perfil.color }}"
+					
+				} {% if not forloop.last %}, {% endif %}
+				{% endfor %}
+			]
+		});
+		
+	});
+
+</script>
+<style type='text/css'>
+
+	body {
+		margin-top: 40px;
+		text-align: center;
+		font-size: 14px;
+		font-family: "Lucida Grande",Helvetica,Arial,Verdana,sans-serif;
+		}
+
+	#calendar {
+		width: 900px;
+		margin: 0 auto;
+		}
+
+</style>
+
+<div>
+    <a href="{% url 'actividad' 0 %}">
+    <img src="/site_media/fc/images/add.gif">Agregar actividad</a> 
+</div>
+<div id='calendar'></div>
+
+
+{% endblock %}
+

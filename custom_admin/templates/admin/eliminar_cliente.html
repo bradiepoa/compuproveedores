@@ -1,0 +1,24 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+{% if mensaje %}
+{{ mensaje }}
+    {% for b in cliente.bitacoras.all %}
+        <div><a href="{{ b.url }}">Editar: {{ b.fecha }}</a></div>
+    {% endfor %}
+
+{% else %}
+<div>¿Está seguro que desea eliminar este Cliente?</div>
+<div>{{ cliente.rfc }}</div>
+<div>{{ cliente.distribudor.rfc }}</div>
+<div>{{ cliente.nombre }}</div>
+<div>{{ cliente.distribuidor.razon_social }}</div>
+<div>{{ cliente.mostrar_datos }}</div>
+<div>{{ cliente.distribuidor.mostrar_datos }}</div>
+<form acction="." method="post">{% csrf_token %}
+    <input type="submit" name="si" value="Si"> <input type="submit" name="no" value="No">
+</form>
+{% endif %}
+
+{% endblock %}
+

@@ -1,0 +1,158 @@
+
+{% extends "main.html" %}
+{% load custom_tags %}
+
+{% block content %}
+    {% if error %}<div id="error_message">{{ error }}</div>{% endif %}
+    <div style="text-align:center;">
+        <div class="titulo_index">SOPORTE TECNICO</div>
+        <div class="subtitulo_index">ADMINISTRADOR</div>
+        <div class="option">
+            <a href="{% url "usuarios" %}">Agregar Usuario</a>
+        </div>
+        {% espacio 10 %}
+        <div class="subtitulo_index">GARANTÍAS</div>
+        <div class="option">
+            <a href="{% url "agregar_bitacora_garantia" %}">Agregar Garantía</a>
+        </div>
+        <div class="option">
+            <a href="{% url "bitacoras_garantia" %}">Consulta de Garantías</a>
+        </div>
+        {% espacio 10 %}
+
+        <!-- <div class="subtitulo_index">RENTA Y PRESTAMOS</div>
+        <div class="option">
+            <a href="{% url "rentas" %}">Agregar Solicitud de Renta o Prestamo</a>
+        </div> -->
+        <!-- <div class="option">
+            <a href="{% url "equipo_renta" %}">Alta Equipo de Renta</a>
+        </div> -->
+
+        {% espacio 10 %}
+        <div class="subtitulo_index">SERVICIOS A CLIENTES</div>
+        <div class="option">
+            <a href="{% url "agregar_bitacora_servicio" %}">Agregar Servicio</a>
+        </div>
+        <div class="option">
+            <a href="{% url "bitacoras_servicio" %}">Consulta de Servicios</a>
+        </div>
+        <div class="option">
+            <a href="{% url "actividades" %}">Calendario de Actividades Programadas</a>
+        </div>
+        {% espacio 10 %}
+        <div class="subtitulo_index">SOLICITUDES INTERNAS</div>
+        <div class="option">
+            <a href="{% url "agregar_bitacora_interno" %}">Agregar Solicitud</a>
+        </div>
+        <div class="option">
+            <a href="{% url "bitacoras_interno" %}">Consulta de Solicitudes</a>
+        </div>
+        {% espacio 10 %}
+        <div class="subtitulo_index">PÓLIZAS DE SERVICIO TECNICO</div>
+        <div class="option">
+            <a href="{% url "agregar_bitacora_sertec" %}">Agregar póliza de servicio técnico</a>
+        </div>
+        <div class="option">
+            <a href="{% url "bitacoras_sertec" %}">Consulta de pólizas</a>
+        </div>
+        {% espacio 25 %}
+        <!-- <div class="titulo_index">CREDITO Y COBRANZA</div>
+        <div class="subtitulo_index">CLIENTES Y DISTRIBUIDORES</div>
+        <div class="option">
+            <a href="{% url "clientes" %}">Administración de Información</a>
+        </div>
+        <div class="option">
+            <a href="{% url "catalogo_vendedores" %}">Catálogo de Vendedores</a>
+        </div>
+        {% espacio 25 %}
+        <div class="titulo_index">MERCADOTECNIA</div>
+        <div class="subtitulo_index">CONTENIDOS</div>
+        <div class="option">
+            <a href="#">Cursos y Capacitaciones</a>
+        </div>
+        <div class="option">
+            <a href="{% url "administrar_directorio" %}">Directorio de Departamentos</a>
+        </div>
+        <div class="option">
+            <a href="{% url "direcciones_email" %}">Mailing</a>
+        </div>
+        <div class="option">
+            <a href="{% url "marca_categoria" %}">Productos y Servicios</a>
+        </div>
+        <div class="option">
+            <a href="{% url "admin-aviso_privacidad" %}">Avisos de privacidad</a>
+        </div>
+        {% espacio 10 %}
+        <div class="subtitulo_index">ENCUESTAS</div>
+        <div class="option">
+            <a href="{% url "encuestas" %}">Consultar Encuestas de Satisfacción</a>
+        </div>
+        {% espacio 10 %}
+        <div class="subtitulo_index">IMÁGENES</div>
+        <div class="option">
+            <a href="{% url "admin_mundo_tecnologia" %}">Mundo y Tecnología</a>
+        </div>
+        <div class="option">
+            <a href="{% url "admin-imagenes_inicio" %}">Pantalla de Inicio</a>
+        </div>
+        <div class="option">
+            <a href="{% url "administrar_imagenes" %}">Promociones</a>
+        </div>
+
+        {% espacio 25 %}
+        <div class="titulo_index">RECURSOS HUMANOS</div>
+        <div class="subtitulo_index">SOLICITUD DE PERSONAL</div>
+        <div class="option">
+            <a href="#">Agregar una Solicitud</a>
+        </div>
+        {% espacio 10 %}
+        <div class="subtitulo_index">SELECCIÓN DE PERSONAL</div>
+        <div class="option">
+            <a href="{% url "vacantes" %}">Publicacion de Vacantes</a>
+        </div>
+        <div class="option">
+            <a href="{% url "solicitudes_trabajo" %}">Recepción de Curriculum </a>
+        </div>
+        {% espacio 10 %}
+        <div class="subtitulo_index">RECLUTAMIENTO</div>
+        <div class="option">
+            <a href="#">Entrevista</a>
+        </div>
+        <div class="option">
+            <a href="#">Examenes</a>
+        </div>
+        {% espacio 10 %}
+        <div class="subtitulo_index">INDUCCIÓN</div>
+        <div class="option">
+            <a href="#">Solicitud a Soporte Cuentas y Claves</a>
+        </div> -->
+
+
+
+
+        <!--
+        <div class="option"><a href="{% url "admin-imagenes_inicio" %}">Imágenes Inicio</a></div>
+        <div class="option"><a href="{% url "administrar_directorio" %}">Directorio Empresa</a></div>    
+        <div class="option"><a href="{% url "clientes" %}">Clientes</a></div>
+        <div class="option"><a href="{% url "vacantes" %}">Vacantes</a></div>
+        <div class="option"><a href="{% url "solicitudes_trabajo" %}">Solicitudes de trabajo</a></div>
+        
+        <div class="option"><a href="{% url "agregar_bitacora_garantia" %}">Agregar Garantía</a></div>
+        <div class="option"><a href="{% url "agregar_bitacora_servicio" %}">Agregar Servicio</a></div>
+        <div class="option"><a href="{% url "agregar_bitacora_interno" %}">Agregar Reporte Interno</a></div>
+        
+        <div class="option"><a href="{% url "bitacoras_garantia" %}">Bitácoras de Garantía</a></div>
+        <div class="option"><a href="{% url "bitacoras_servicio" %}">Bitácoras de Servicio</a></div>
+        <div class="option"><a href="{% url "bitacoras_interno" %}">Bitácoras de Reporte Interno</a></div>
+        
+        <div class="option"><a href="{% url "usuarios" %}">Administrar Usuarios</a></div>
+        <div class="option"><a href="{% url "direcciones_email" %}">Direcciones Email </a></div>
+        <div class="option"><a href="{% url "marca_categoria" %}">Productos y Servicios (Marcas y Categorias)</a></div>
+        <div class="option"><a href="{% url "equipo_renta" %}">Equipo de renta</a></div>
+        <div class="option"><a href="{% url "rentas" %}">Rentas</a></div>
+        
+        <div class="option"><a href="{% url "actividades" %}">Actividades</a></div>
+        <div class="option"><a href="{% url "encuestas" %}">Encuestas</a></div>
+        <div class="option"><a href="{% url "admin_mundo_tecnologia" %}">Mundo y tecnología</a></div>-->
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>BITÁCORA DE SERVICIO TECNICO</title>
+    <link rel="stylesheet" type="text/css" href="{{ root_url }}/site_media/css/basic.css" />
+    
+<style>
+    {% include "bitacora_css.css"%}
+    p { 
+    text-align:justify; 
+    }
+
+    #table_costos{
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+
+    #table_costos tr:nth-child(1) td, #table_costos tr:nth-child(2) td{
+        border:1px solid #000;
+    }
+
+    
+</style>
+
+</head>
+<body>
+{% for atencion in atenciones %}
+    <div {% if not forloop.last %}style="page-break-after: always"{% endif %}>
+        <div style="margin:auto;">{% include "impresion_sertec.html" %}</div>
+    </div>
+{% endfor %}
+
+</body>
+</html>

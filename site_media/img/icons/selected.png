@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- saved from url=(0045)http://dmspitic.com/caracteristicas.html#tabs -->
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8">
+	<meta name="Designer" content="Jahaziel Noriega D.">
+		<meta name="description" content="Sistema de administración para empresas, Admintotal">
+	<title>AdminTotal | Características</title>
+	<link rel="stylesheet" type="text/css" href="./selected_files/base.css">
+	<link rel="stylesheet" type="text/css" href="./selected_files/lightbox.css">
+	<link rel="stylesheet" type="text/css" href="./selected_files/caracteristicas.css">
+	<link rel="stylesheet" href="http://dmspitic.com/css/responsive.css">
+	<link rel="icon" type="image/x-icon" href="http://dmspitic.com/favicon.ico">
+	<script type="text/javascript" src="./selected_files/jquery.js"></script>
+	<script src="./selected_files/jquery-ui.js"></script>
+	
+	<script type="text/javascript">	
+		$(document).ready(function(){
+			if (window.opera && window.opera.buildNumber) { 
+			    jQuery('.sticky-menu ul').css('width', '866px !important');
+			    jQuery('#ulicons_list').css('width', '723px !important');
+			}
+			$('.page_title').css('font-size','167px');
+			$('.page_title').css('opacity', 0);
+			$('img').attr('ondragstart','return false');
+			$('.page-wrap').fadeIn(1000);
+	  		$('.page_title').animate({
+				fontSize:'107px',
+				opacity: '1',
+			}, 800);
+			
+			var $links = $('#ulicons_list li');
+			$('#ulicons_list li:first-child').addClass('selected');
+
+		    $links.click(function () {
+		        $links.removeClass('selected').addClass('');
+		        $(this).removeClass('').addClass('selected');
+		        
+			});
+		}); 
+
+		 $(function() {
+		    $( "#tabs" ).tabs();
+		  });
+	</script>
+	
+<script type="text/javascript">
+	function lightbox(){
+	$('.backdrop, .box').animate({ 'opacity': '.60' }, 400, 'linear');
+    $('.box').animate({ 'opacity': '1.00' }, 300, 'linear');
+    $('.backdrop, .box').css('display', 'block');
+    $('.sticky-menu').css('z-index', 5);
+	}
+	function close_box()
+	{
+		$('.backdrop, .box').animate({'opacity':'0'}, 300, 'linear', function(){
+			$('.backdrop').css('display', 'none');
+			$('.box').css('display', 'none');
+			$('.sticky-menu').css('z-index', 1000);
+		});
+	}
+	$('.backdrop').click(function(){
+    	close_box();
+    });
+	$(document).keyup(function(e) {
+		  if (e.keyCode == 27) { 
+		  close_box(); 
+		  }   // esc
+	});
+</script>
+
+	 
+</head>
+<body style="">
+	<div class="header">
+		<div class="center">
+			<a href="http://dmspitic.com/index.html"><div class="logo"></div></a>
+			<h1 class="page_title" style="font-size: 107px; opacity: 1;">Características</h1>
+		</div>
+	</div><!-- Fin header-->
+	<div class="page-wrap" style="display: block;">
+	<div class="marca_agua"></div>
+		<div class="content">
+			<div class="center"><br>
+				<div class="bloc_info left_40"><p>Conectividad:  Administra tu empresa desde cualquier dispositivo con acceso a internet.</p></div>
+				<div class="iconos">
+					<img src="./selected_files/wifi.png" alt="" ondragstart="return false">
+					<img src="./selected_files/config_round.png" alt="" ondragstart="return false">
+				</div>
+				<div class="bloc_info"><p>Integración de todos los procesos que su empresa realiza, de forma práctica y sin necesidad de captura fuera del sistema.</p></div>
+				<div style="clear:both"></div>
+				<div class="bloc_info left_40"><p>Productividad: Reduce costos, detectando áreas vulnerables, eliminando procesos y costos fijos.</p></div>
+				<div class="iconos">
+					<img src="./selected_files/contabilidad_round.png" alt="" ondragstart="return false">
+					<img src="./selected_files/control_round.png" alt="" ondragstart="return false">
+				</div>
+				<div class="bloc_info"><p>Control: Maneje un control integral de toda su empresa, ventas, compras, pago a proveedores, cobranza, así como el control de empleados.</p></div>
+				<div style="clear:both"></div>
+
+				<div id="tabs" class="ui-tabs ui-widget ui-widget-content ui-corner-all">
+				<ul id="ulicons_list" class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all" role="tablist">
+					<li onclick="window.location.href=&quot;#tabs&quot;" class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="5" aria-labelledby="ui-id-1" aria-selected="false"><a href="http://dmspitic.com/caracteristicas.html#5" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-1"><img src="./selected_files/ventas_b.png" alt="Ventas" ondragstart="return false"></a></li>
+					<li onclick="window.location.href=&quot;#tabs&quot;" class="ui-state-default ui-corner-top ui-tabs-active ui-state-active selected" role="tab" tabindex="0" aria-controls="1" aria-labelledby="ui-id-2" aria-selected="true"><a href="http://dmspitic.com/caracteristicas.html#1" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-2"><img src="./selected_files/inventario_b.png" alt="Inventarios" ondragstart="return false"></a></li>
+					<li onclick="window.location.href=&quot;#tabs&quot;" class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="6" aria-labelledby="ui-id-3" aria-selected="false"><a href="http://dmspitic.com/caracteristicas.html#6" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-3"><img src="./selected_files/cxc_b.png" alt="Cuentas por cobrar" ondragstart="return false"></a></li>
+					<li onclick="window.location.href=&quot;#tabs&quot;" class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="2" aria-labelledby="ui-id-4" aria-selected="false"><a href="http://dmspitic.com/caracteristicas.html#2" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-4"><img src="./selected_files/cxp_b.png" alt="Cuentas por pagar" ondragstart="return false"></a></li>
+					<li onclick="window.location.href=&quot;#tabs&quot;" class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="4" aria-labelledby="ui-id-5" aria-selected="false"><a href="http://dmspitic.com/caracteristicas.html#4" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-5"><img src="./selected_files/bancos_b.png" alt="Bancos" ondragstart="return false"></a></li>
+					<li onclick="window.location.href=&quot;#tabs&quot;" class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="3" aria-labelledby="ui-id-6" aria-selected="false"><a href="http://dmspitic.com/caracteristicas.html#3" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-6"><img src="./selected_files/nomina_b.png" alt="Nómina" ondragstart="return false"></a></li>
+					<li onclick="window.location.href=&quot;#tabs&quot;" class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="7" aria-labelledby="ui-id-7" aria-selected="false"><a href="http://dmspitic.com/caracteristicas.html#7" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-7"><img src="./selected_files/contabilidad_b.png" alt="Contabilidad" ondragstart="return false"></a></li>
+					<li onclick="window.location.href=&quot;#tabs&quot;" class="ui-state-default ui-corner-top" role="tab" tabindex="-1" aria-controls="8" aria-labelledby="ui-id-8" aria-selected="false"><a href="http://dmspitic.com/caracteristicas.html#8" class="ui-tabs-anchor" role="presentation" tabindex="-1" id="ui-id-8"><img src="./selected_files/prospectacion_b.png" alt="Prospectación" ondragstart="return false"></a></li>
+				</ul>
+				<section id="1" aria-labelledby="ui-id-2" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="true" aria-hidden="false" style="display: block;">
+					<h1>Inventario</h1>
+					<span>
+						<ul class="lista_descripcion">
+							<li>Maneja catálogo de productos y catálogo de proveedores.</li>
+							<li>Modulo <strong style="font-style:italic">Mejor Compra</strong> (comparación Automática de cotizaciones de sus proveedores).</li>
+							<li>Módulo <strong style="font-style:italic">compra correcta</strong> (Siempre compara la mercancía solicitada, con la entregada por el proveedor).</li>
+							<li>Modulo <strong style="font-style:italic">Captura Fast</strong>, genera la entrada de mercancía en segundos con capturafast, genera la entrada en el almacén de manera instantánea, solo con la factura del proveedor (XML)</li>
+							<li>Importación de productos, costos, precios de venta y más</li>
+							<p style="text-align:center;padding:15px 10px 10px 10px;"><span onclick="lightbox()" class="ver_mas_lb">Ver más</span></p>
+						</ul>
+					</span>
+				</section>
+				<section id="2" aria-labelledby="ui-id-4" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+					<h1>Cuentas por pagar</h1>
+					<span>
+						<ul class="lista_descripcion">
+							<li>Maneja catálogo de Proveedores, Descuentos por línea o productos, Descuentos por pronto pago, antigüedad de saldos.</li>
+							<li>Programaciones de pagos a 30, 60 o 90 días.</li>
+							<li>Recordatorios de Fechas de vencimiento y descuentos de pronto pago, ¡Directamente a tu e-mail!</li>
+							<li>Revisa tus notas de crédito, maneja devoluciones, anticipación y fletes.</li>
+							<li>Gestiona Compras, gastos de administración y ventas, Gastos de servicio, acreedores y reposiciones.</li>
+							
+						</ul>
+					</span>
+				</section>
+				<section id="3" aria-labelledby="ui-id-6" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+					<h1>Nómina</h1>
+					<span>
+						<ul class="lista_descripcion">
+							<li>Gestiona empleados con sueldo fijo y socios.</li>
+							<li>Captura, administra nóminas y prestaciones.</li>
+							<li>Genera reportes.</li>
+							<li>Genera auxiliar por empleado así como reporte de movimientos por vendedores.</li>
+						</ul>
+					</span>
+				</section>
+				<section id="4" aria-labelledby="ui-id-5" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+					<h1>Bancos</h1>
+					<span>
+						<ul class="lista_descripcion">
+							<li>Gestión de cuentas bancarias.</li>
+							<li>Emite pagos, genera automáticamente la póliza de cheque o transferencia, así como la póliza contable.</li>
+							<li>Realiza las conciliaciones de forma práctica y rápida.</li>
+							<li>Visualice siempre tu saldo disponible antes de realizar un pago ó girar un cheque, ya que la relación de bancos hace de manera automática en cada una de las cuentas.</li>
+							<li>Genera automáticamente el libro de bancos con cada movimiento.</li>
+						</ul>
+					</span>
+				</section>
+				<section id="5" aria-labelledby="ui-id-1" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+					<h1>Ventas</h1>
+					<span>
+						<ul class="lista_descripcion">
+							<li>Genera Cotizaciones de una manera fácil y rápida.</li>
+							<li>Realiza Facturas, notas de ventas, pedidos y entregas, ¡Desde cualquier dispositivo!</li>
+							<li>Módulo de caja y/o Punto de venta.</li>
+							<li>El sistema ideal para la fuerza de ventas.</li>
+							<li>Genera Reportes, cortes de caja, Facturación de las notas de venta de mes, facturación global diaria automática (opcional).</li>
+							<li>Factura cliente</li>
+							<li>Factura por mostrador</li>
+							<li>Caja</li>
+						</ul>
+					</span>
+				</section>
+				<section id="6" aria-labelledby="ui-id-3" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+					<h1>Cuentas por cobrar</h1>
+					<span>
+						<ul class="lista_descripcion">
+							<li>Maneja clientes, condiciones de crédito, registra contactos dentro de la empresa, sucursales y direcciones de entrega de mercancía.</li>
+							<li>Gestiona antigüedad de Saldos a 30, 60 y 90 días, así como pronóstico de cobranza.</li>
+							<li>Genera Reportes, depósitos, descuentos por pronto pago y notas de crédito.</li>
+							<li>Identifique sus mejores clientes, así como los productos que más consumen.</li>
+						</ul>
+					</span>
+				</section>
+				<section id="7" aria-labelledby="ui-id-7" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+					<h1>Contabilidad</h1>
+					<span>
+						<ul class="lista_descripcion">
+							<li>Genera Pólizas, Cuentas y Reportes.</li>
+							<li>Estado de Resultados, Balance General, Balanza de Comprobación, Libros de Diario y Mayor.</li>
+							<li>Auxiliar de movimientos globales o por cuenta contable.</li>
+							<li>Reprocesa saldos de cuentas.</li>
+							<li>Acceda sus activos fijos.</li>
+							<li>Realiza Pólizas Periódicas.</li>
+							<li>Cierres de ejercicios.</li>
+							<li>Generación de Reporte de DIOT y IETU.</li>
+						</ul>
+					</span>
+				</section>
+				<section id="8" aria-labelledby="ui-id-8" class="ui-tabs-panel ui-widget-content ui-corner-bottom" role="tabpanel" aria-expanded="false" aria-hidden="true" style="display: none;">
+					<h1>Prospectación</h1>
+					<span>
+						<ul class="lista_descripcion">
+							<li>La herramienta ideal para la fuerza de venta.</li>
+							<li>Maneja el listado de prospectos, acciones realizadas.</li>
+							<li>Informe de seguimientos.</li>
+							<li>Clasificación de prospectos.</li>
+							<li>Bitácora diaria del vendedor y acciones.</li>
+							<li>Reporte global de prospectación o reporte por vendedor.</li>
+						</ul>
+					</span>
+				</section>
+				</div><!--Fin tabs-->
+			</div><!-- Fin center-->
+		</div><!-- Fin content-->
+	</div><!-- Fin Pagewrap-->
+
+<div class="sticky-menu" style="z-index: 5;">
+			<ul class="main_menu">
+				<li><a href="http://dmspitic.com/index.html">Inicio</a></li>
+				<li class="active"><a href="http://dmspitic.com/caracteristicas.html">Caracteristicas</a></li>
+				<li><a href="http://dmspitic.com/productos.html">Nuestros Productos</a></li>
+				<li><a href="http://dmspitic.com/nosotros.html">Nosotros</a></li>
+				<li><a href="http://dmspitic.com/contacto.php">Contacto</a></li>
+			</ul>
+			<div style="clear:both"></div>
+			<p>AdminTotal® por DMS Pitic. Todos los Derechos Reservados 2013. Hermosillo, Sonora.     Tel.(662)216 74 62    </p>
+	</div>
+	<div class="lightbox">
+		<div class="backdrop" style="opacity: 0.6; display: block;"></div>
+		<div class="box" style="opacity: 1; display: block;">
+			<div class="close" title="Cerrar ventana" onclick="close_box()">
+			</div>
+		</div>
+	</div>
+
+</body></html>

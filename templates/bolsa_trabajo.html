@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+{% block content %}
+
+<script type="text/javascript">
+    function submit_aceptar(){
+        if( ($("#id_nombre").val() > '') && ($("#id_telefono").val() > '' ) &&  ($("#id_email").val() > '' ) && ($("#id_curriculum").val() > '') ){
+            $("#id_aceptar").val("aceptar");
+            $("#form_vacante").submit();
+        
+        } else {
+            alert("Es necesario llenar los campos")
+        }
+        
+        
+
+    }
+
+</script>
+
+
+<div class="fondo_gris_bolsa_trabajo">
+    <div class="espacio20" style="width:300px;"></div>
+    <div class="cuadro_fondo_gris_titulo">BOLSA DE TRABAJO</div>
+        {% espacio 10 %}
+
+        <div class="right" style="width:320px;">  
+            <div class="left" style="width:200px;">
+                <div style="font-weight:bold; font-size:19px; color:#223bae;">Compuproveedores</div>
+                {% espacio 5%}
+                <div style="text-align:justify;  font-size:11px;">
+                    te ofrece una oportunidad
+                    de pertenecer a su equipo de trabajo.<br/>
+                    Somos una empresa líder en venta de equipos,
+                    impresión y consumibles de cómputo en el centro y
+                    noroeste del país y ofrecemos soluciones tecnológicas
+                    a la medida.
+                </div>
+            </div>
+            
+        </div>
+
+        <div id="buscar_vacante">
+            <div id="buscar_vacante_titulo">OFERTAS DE EMPLEO</div>
+            <div class="espacio10"></div>
+            <form action="." id="form_buscar" method="post" enctype="multipart/form-data">{% csrf_token %}
+               <div class="center">Buscar por palabra clave</div>
+               <div class="center">{{ buscar_form.q }}</div>
+               <div class="right">
+                   <div>Ciudad/Estado: {{ buscar_form.ciudad }}</div>
+                   <div class="contacto_boton right">
+                    <input type="submit" name="buscar" value="Buscar" class="clickeable">
+                        {#<img src="/site_media/compu/images/boton_buscar.png" /></button>#}
+                </div>
+               </div>
+            </form>
+        </div>   
+
+
+        <div class="espacio10"></div>
+        <div id="no_vacantes">
+            <div id="no_vacantes_titulo">
+                <div>SI NO ENCUENTRAS OFERTAS DE</div>
+                <div>EMPLEO DEJA TU CURRICULUM</div>
+            </div>
+            <form action="." id="form_vacante" method="post" enctype="multipart/form-data">{% csrf_token %}
+                {% espacio 5 %}   
+                <div class="center">Subir Curriculum*</div>
+                <div class="right" style="margin-right:20px;">
+                    <div style="padding-left:2px;" >{{ form.curriculum.label_tag }}{{ form.curriculum }}</div>
+                </div>
+                {% espacio 6 "true" %}
+                <div style="margin-left:15px;">
+                    <div>{{ form.nombre.label_tag }}*: {{ form.nombre }}</div> 
+                    {% espacio 6 %}    
+                    <div>{{ form.telefono.label_tag }}*: {{ form.telefono }}</div>  
+                    {% espacio 6 %}  
+                    <div>{{ form.email.label_tag }}*: {{ form.email}}</div>   
+                    {% espacio 6 %}  
+                    <div>{{ form.puesto.label_tag }} (opcional): {{ form.puesto }}</div>
+                    {% espacio 6 %}  
+                    <div>{{ form.aspiracion.label_tag }} (opcional): {{ form.aspiracion }}</div>
+                </div>
+                {% espacio 10 %}
+                <div class="contacto_boton" style="text-align:center;">
+                    <input type="button" onclick="submit_aceptar();", name="aceptar" value="Aceptar" id="id_aceptar" class="clickeable" />
+                        {#<img src="/site_media/compu/images/boton_aceptar.png" /></button>#}
+                </div>
+            </form>
+        </div>
+       
+      {% if success_mensaje %}
+        <div id="dialog-success">
+                <div id="text_dialog_success">
+                    Gracias por su interés en nuestra empresa, cuando se abra
+                   una vacante nos comunicaremos con usted.
+                </div>
+        </div>      
+        <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+    {% endif %}
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+<script>
+
+    $("#form_buscar").validate();
+    $("#id_nombre").css('width', '220px');
+    $("#id_telefono").css('width', '182px');
+    $("#id_puesto").css('width', '175px');
+    $("#id_email").css('width', '160px');
+    $("#id_aspiracion").css('width', '175px');
+    $("#id_curriculum").css('width', '240px');
+
+
+    {% if form.errors %}
+        var errores = ""
+        {% if form.curriculum.errors %} errores += "Curriculum: {{ form.curriculum.errors.0 }} \n"{% endif %}
+        {% if form.nombre.errors %} errores += "Nombre: {{ form.nombre.errors.0 }} \n"{% endif %}
+        {% if form.telefono.errors %} errores += "Teléfono: {{ form.telefono.errors.0 }} \n"{% endif %}
+        {% if form.email.errors %} errores += "Correo Electrónico: {{ form.email.errors.0 }} \n"{% endif %}
+        {% if form.puesto.errors %} errores += "Puesto: {{ form.puesto.errors.0 }} \n"{% endif %}
+        {% if form.aspiracion.errors %} errores += "Sueldo: {{ form.aspiracion.errors.0 }} \n"{% endif %}
+        setTimeout(function(){alert("Se encontraron los siguientes errores:\n" + errores );}, 500);
+    {% endif %}
+
+
+</script>    
+{% endblock %}
+

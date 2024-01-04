@@ -1,0 +1,394 @@
+/* v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body { 
+    color: #000; font:normal 12px Arial, Verdana, Helvetica, Sans-serif; 
+    margin-bottom:20px; background-attachment: fixed; 
+    background-image: url(images/bk-amarillo.jpg); 
+    background-repeat: repeat-x; width: auto;
+}    
+img {  border-style: none; }
+a { color:#000; text-decoration:none; border-style: none; }
+#info-container { 
+    position:absolute; bottom:9px; right:10px; width: 56px; height: 22px;
+}
+
+#infobar { list-style:none; }
+#infobar li { float:left; margin-right:10px; }
+#infobar li a, infobar li a:visited { 
+    color:#fff; text-decoration:none; 
+    font-size:12px; margin-left:4px;
+}
+#infobar li a:hover { color:#a6d6f4; }
+.infoline { padding-left:20px }
+#info_help { background:url(images/ayuda.png) no-repeat }
+#info_logout { background:url(images/logout.png) no-repeat }
+#wrap { width: 980px; margin: 0 auto;}
+#wrap_login { width: 640px; margin: 0 auto;}
+
+#header { width:978px; position:relative; height:143px;
+          background:url(images/rotate.jpg) no-repeat top right; 
+          background-color:#FFFFFF; 
+}
+#contenidos { 
+    min-height:1px; 
+    background:#FFFFFF url(images/bk-content-gradient.jpg) repeat-x top; 
+}
+
+#content { margin:auto; width:960px;  }
+#content_login { margin:auto; width:560px;  }
+
+#banner {margin-top:20px; text-align:center; }
+.clear { clear: both; }
+.logo { float:left; text-align:center; padding: 4px 0 4px 4px; }
+.qtrans_flag_es { background:url(images/ayuda.png) no-repeat }
+
+/* .tbutton { background:url(images/ayuda.png) no-repeat } */
+
+.tbutton { padding:6px 3px 6px; 3px; }
+.selected { background:url(../img/icons/tick_16.png) no-repeat; background-color:#FF8888; }
+
+.plecaesp a, .plecaeng a { 
+    font:normal 11px/29px Verdana, Arial, Helvetica, sans-serif; 
+    color:#333333; 
+}
+/* MENU  */
+ul#nav { height:auto;  width:978px; margin:0 auto; height:32px; background:url(images/bk_menu.png) repeat-x; font:normal 12px/32px "Lucida Grande", sans-serif, Times, serif; list-style-type:none; position:absolute; bottom:0; left:0;  }
+ul#nav li {float:left;}
+ul#nav li a { color:#fff; padding:0 10px; text-decoration:none; display:block; background:; }
+ul#nav li a:hover, ul#nav li:hover,  ul#nav li.sfhover { background-color:#033a70; }
+ul#nav li ul { position: absolute; width: 195px; left: -999em; text-align:left; list-style-type:none; background:#e3e8ee;  }
+ul#nav li li { margin:0; padding:0; float:left;  }
+ul#nav li li  a { padding:7px; border-right:none; width:181px; display:block; font-weight:normal;  color:#555555;
+font:normal 12px Arial, Helvetica; text-decoration:none; border-bottom:1px solid #d8e0ea; background-image:none; }
+ul#nav li li a:hover {  color:#333333; background:#cfd9e5; text-decoration:none; }
+#nav li:hover ul, #nav li li:hover ul, #nav li.sfhover ul, #nav li li.sfhover ul { left: auto; }
+
+ul#mainoptions { width:600px; margin:20px auto 10px auto; list-style:none;}
+#mainoptions li {float:left;}
+#mainoptions li a {display: block; height: 122px;}
+
+#bottomround { 
+    background:url(images/round-bottom-content.gif);
+    width:980px; height:45px; margin:0 auto;
+} 
+
+#bottomround_login { 
+    background:url(images/round-bottom-content.gif);
+    width:640px; height:45px; margin:0 auto;
+} 
+                             
+#footer { 
+    width:980px; margin:0 auto; clear:both; text-align:center; clear:both; 
+    font:normal 11px/17px Verdana, Arial, Helvetica, sans-serif; 
+    padding:20px 0 15px 0; color:#333; 
+    
+}
+
+#footer_login { 
+    width:368px; margin:0 auto; clear:both; clear:both; 
+    font:normal 1.2em Helvetica, sans-serif; 
+    padding:12px 0 15px 0; color:#222;
+    margin:auto
+}
+#footer_login_text { 
+    padding-top:12px; 
+}
+/* mo --> Main Option */         
+#main-container { width:600px; }
+.mo { 
+    background-color:#999; color:white; width:120px; float:left; 
+    font-family:Arial, Helvetica, sans-serif; font-size:14px; text-align:center;
+    height:110px;
+}
+.mo a { color:white; }
+.mo:hover { background-color:#666; }
+.mo-img { margin:15px auto 3px auto;}
+.mo-text { margin:3px auto 5px auto;}
+
+/*  */
+.clickeable { cursor:pointer; cursor:hand;}
+.spacer { float:left; width:50px; }
+.hspacer { float:left; width:50px; height:1px; }
+.mov-first-col { float:left; width:80px; }
+
+/* ashell styles */
+.query-textarea { font-family:"Courier New";
+	              color:#666; font-size:18px; vertical-align:middle; }
+                  
+.small-text { font-size:smaller; }
+.date-text { font-size:smaller; }
+.comentarios { width:600px; height:50px; }
+.report-option { font-size:smaller; }
+.ejecutivo_left { float:left; width:400px; margin-right:40px; }
+.ejecutivo_right { float:left; width:400px; margin-left:40px; }
+
+/*Admintotal */
+#div_cheque { 
+    position:absolute;
+    background-image:url(cheque.png);
+    background-repeat:no-repeat;
+    width:800px;
+    height:330px;
+}
+#cheque_fecha {  position:absolute; top:40px; left:515px; font-weight:600;}
+
+.cheque_logo1 {  position:absolute; top:2px; left:450px; font-weight:600;}
+.cheque_logo2 {  position:absolute; top:2px; left:10px; font-weight:600;}
+
+#cheque_numero {  position:absolute; top:260px; left:490px; font-weight:600;}
+#cheque_transferencia {  position:absolute; top:290px; left:490px; font-weight:600; }
+
+#cheque_cuenta {  position:absolute; top:165px; left:35px; font-weight:600;}
+#cheque_numero_cuenta {  position:absolute; top:270px; left:300px; font-weight:600;}
+#cheque_beneficiario {  position:absolute; top:94px; left:25px; font-weight:600;}
+#cheque_cantidad_letra {  position:absolute; top:134px; left:25px; font-weight:600;}
+#cheque_total {  position:absolute; top:110px; left:600px; font-weight:600;}
+#cheque_cancelado {  position:absolute; font-size:50px; top:170px; left:180px; font-weight:800;}
+.p_cotizacion_fecha_left { float:left; width:158px; }
+.table-column { width:100px; height:100%; float:left; border-right:solid; 
+                border-right-width:medium; background-color:#999 }
+
+table.list-table a { color:#000; }
+table.list-table { border-width: 1px; border-spacing: 0px; border-style: outset;
+                   border-color: gray; border-collapse: separate;  }
+    
+table.list-table th { border-width: 1px; padding: 1px; border-style: inset;
+                      border-color: gray; -moz-border-radius: 0px; }
+    
+table.list-table td { border-width: 1px; padding: 1px; border-style: inset;
+                      border-color: gray; -moz-border-radius: 0px; 
+                      min-height:50px; }
+
+table.list-table tr td { height:20px; }
+
+#direccion_extra_fields { font-size:smaller;}
+
+.um-field { width: 50px; }
+.costos_table tr td input { width: 20px; }
+.percent-field { width: 42px; text-align:right }
+.monto-field { width: 80px; text-align:right }
+
+.producto_descripcion-field { width: 400px; }
+.factor_um-field { width: 30px; }
+.precio_unitario-field { width: 60px; }
+.importe-field { width: 70px; }
+.cantidad-field { width: 50px; }
+.importe-column { margin-left: 10px; font-weight:bold; }
+.red { color:red; }
+.red td a { color:red; }
+.nombre-empresa {text-align:center; font-weight:bold; font-size:22px; color:#0000AA;}
+.poliza_lc { width:120px; font-weight:800px; float:left; }
+.poliza_rc { width:300px; float:left; }
+.third_color { background-color:#55FF55; }
+.fourth_color { background-color:#FF5555; }
+.no-background { background:none; }
+#login_square { margin:auto; width:430px; }
+.login_left_field {
+    text-align:right;
+    float:right;
+    font:normal 1.4em Helvetica;
+    color:#555;
+}
+.login_right_field {
+    width:162px;
+    float:right;
+    margin-right:2px;
+}
+.login_right_field input { width:150px; }
+#login_button { float:right; margin-right:10px; margin-top:14px;}
+
+#reset_password { float:right; margin-right:10px; margin-top:14px; font-style:bold; font-size:1.4em; font-family:Helvetica; }
+#reset_password a { color:#000099; }
+/* MISC */
+#loading
+{
+	position:absolute;
+	top:0px;
+	right:0px;
+	background:#ff0000;
+	color:#fff;
+	font-size:14px;
+	font-family:Arial;
+	padding:2px;
+	display:none;
+}
+#id_dialog_descripcion_adicional { width:369px; height:32px;}
+.small_input {width: 50px;}
+.num_input {width: 35px;}
+.clear {clear:both;}
+.item { height:20px; padding-left:20px; }
+.item-selected { font-weight:bold; background:url(../img/selected.gif) no-repeat left top; padding-left:20px;}
+.llamativo {font-weight:bold; font-size:13px; color:#000000; padding-left:10px; padding-top:5px; }
+.righttext { text-align:right; }
+.clear {clear:both !important}
+.bold {font-weight:bold !important}
+.normal {font-weight:normal !important}
+.block {display:block !important}
+.center {text-align:center;}
+.step-links {text-align:center; font-size:16px;}
+.link-style {color:#FF0000;text-decoration: none}
+.link-style:hover {text-decoration: underline}
+.maintitle { font-size:20px; vertical-align:middle; }
+#title { font-size:15px; font-weight: bolder; color:#333; padding-left: 10px; padding-top: 10px;}
+.pa_left { float:left; width:500px; }
+.pa_left_left { float:left; width:150px; margin:2px; }
+.pa_left_right { float:left;  margin:2px; }
+.pa_right_left { float:left; width:110px; margin:2px; }
+.pa_right_right { float:left; margin:2px; text-align:right; width:82px; }
+.pa_right_right input { width:70px; }
+.pa_right_right_2 { float:left; margin:2px; text-align:right; width:68px;}
+.pa_right_right_2 input { width:49px; }
+.pa_right_right_right { float:left; margin:2px; }
+.vspacer { height:20px; }
+.hrb ul li { float:left; }
+.hrb ul { list-style-type: none; float:left;}
+.hrb { float:left;}
+.error { color:red; }
+.patron_gasto { 
+    background-image:url(images/patron_gasto.png); 
+    float:left; 
+    width:16px; 
+    height:16px;
+}
+.option-link { float:left; font-weight:900; margin-right:20px; font-size:larger; vertical-align: middle; }
+.small_input { text-align:right; width:100px; }
+.entrega_title { float:left; width:100px; font-weight:900; }
+input.btn { padding-top: 15px; }
+.Abono_Detalle { text-align:right;  width: 800px; }
+.MoveRight { padding-left: 50px; }
+.Abono_Titulo { text-align:center;  width: 800px; }
+.centertext { text-align:center; }
+.txtasunto { padding-bottom: 10px; }
+.chkmail { padding-bottom: 10px; }
+.tacomen { padding-bottom: 10px; }
+.rdoption { padding-bottom: 10px; }
+.btnmail { padding-left: 60px; }
+#success_msg {background-color:#88FF00; height:30px; text-align:center; font-weight:800; } 
+#error_msg {background-color:#FFFFFF; height:30px; text-align:center; font-weight:800; font-size:1.3em; color:#FF0000;} 
+.codigos {text-align: right;}
+.poslabel { position:absolute; top:150px; left:272px; }
+.posxml { position:absolute; top:165px; left:910px; }
+
+.add-row {
+    padding-left:18px;
+    background:url(/site_media/img/add.png) no-repeat left center;
+}
+.delete-row {
+    float:right;
+    display:block;
+    margin:5px 0 0 5px;
+    text-indent:-6000px;
+    background:url(/site_media/img/delete.png) no-repeat left center;
+    width:16px;
+    height:16px;
+}
+.form-renglon { height:35px; }
+/*============ NUEVO ===================*/
+.slim_button{
+    moz-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #ffffff;
+    box-shadow: inset 0px 1px 0px 0px #ffffff, 0px 1px 0px 0px #ffffff;
+    background: -webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6) );
+    background: -moz-linear-gradient( center top, #ffffff 5%, #f6f6f6 100% );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6');
+    background-color: #ffffff;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    border-radius: 14px;
+    border: 1px solid #797979;
+    display: inline-block;
+    color: black;
+    font-family: arial;
+    font-style: italic;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 2px 5px 2px 28px;
+    text-decoration: none;
+    position: relative;
+    line-height: 16px;
+}
+.slim_button img{
+    position: absolute;
+    left: 10px;
+}
+.input_txt{
+    border-radius: 2px;
+    border: 1px solid #CDCDCD;
+    padding: 2px;
+    color: #0E61B4;
+    margin: 3px;
+    box-shadow: 0 1px 1px white;
+}
+.submit_inside .blue_submit {
+        border-radius: 40px;
+        color: #FFFFFF;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.62);
+        font-weight: bold;
+        font-size: 11pt;
+        background: rgb(59,103,158);
+        background: -moz-linear-gradient(top, rgba(59,103,158,1) 0%, rgba(43,136,217,1) 50%, rgba(32,124,202,1) 51%, rgba(80,164,229,1) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(59,103,158,1)), color-stop(50%,rgba(43,136,217,1)), color-stop(51%,rgba(32,124,202,1)), color-stop(100%,rgba(80,164,229,1)));
+        background: -webkit-linear-gradient(top, rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(80,164,229,1) 100%);
+        background: -o-linear-gradient(top, rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(80,164,229,1) 100%);
+        background: -ms-linear-gradient(top, rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(80,164,229,1) 100%);
+        background: linear-gradient(to bottom, rgba(59,103,158,1) 0%,rgba(43,136,217,1) 50%,rgba(32,124,202,1) 51%,rgba(80,164,229,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b679e', endColorstr='#50a4e5',GradientType=0 );
+        padding: 5px 26px 5px 26px;
+        border: 1px solid #1145A3;
+        box-shadow: none;
+
+}.submit_inside .blue_submit:active {
+    position:relative;
+    top:1px;
+}

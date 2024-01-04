@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Facturación de nota de venta</title>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<link rel="stylesheet" href="css/base.css">
+	<!-- include the core styles -->
+	<link rel="stylesheet" href="css/alertify.core.css" />
+	<!-- include a theme, can be included into the core instead of 2 separate files -->
+	<link rel="stylesheet" href="css/alertify.default.css" />
+	
+	<script type="text/javascript">
+		$(document).ready(function centrar(){
+
+			$('input[name=rfc]').focus();
+			alertify.set({ labels: {
+			    ok     : "Registrar",
+			    cancel : "Cancelar"
+			} });
+		});
+		function verificar_rfc(){
+			// confirm dialog
+			alertify.confirm("El RFC del cliente no se encuentra registrado. ¿Desea registrarlo para continuar?", function (e) {
+			    if (e) {
+			       window.location.href = 'registro.html';
+			    } else {
+			        // user clicked "cancel"
+			    }
+			});
+		}
+		function toggle_info(id){
+			$('#hide_div_'+id).slideToggle('fast');
+			($('#label_'+id).html() == 'Ver más') ? $('#label_'+id).html('Ocultar') : $('#label_'+id).html('Ver más');		
+		}
+		function set_sucursal(sucursal){
+			$('#sucursal').text(sucursal);
+		}
+	</script>
+</head>
+<body>
+	<div class="header">
+		<div class="logo_empresa">
+			<a href="index.html"><img style="height:100px" src="img/sblogo.png" alt="Tu empresa"></a>
+		</div>
+		<div class="swf_container">
+			<h1 align="center" style="line-height:94px;color:#585858">Publicidad Admintotal</h1>
+		</div>
+		<div class="at_logo">
+			<a href="http://www.admintotal.com">
+				<img src="img/at_logo.png" alt="Admintotal Logo">
+			</a>
+		</div>
+		<div class="clear"></div>
+	</div><!-- FIN HEADER-->
+	<div class="nav_buttons">
+		<ul>
+			<li><a href="direcciones.html" style="text-decoration:none"><img style="position:absolute" src="img/direcciones.png" title="Direcciones" alt="Direcciones"><span style="line-height:45px;color:#FFF;margin-left:45px;">Direcciones</span></a></li>
+			<li><a href="contactos.html" style="text-decoration:none"><img style="position:absolute" src="img/contactos.png" alt="Contáctos" title="Contáctos"><span style="line-height:45px;color:#FFF;margin-left:45px;">Contáctos</span></a></li>
+		</ul>
+	</div><!-- FIN NAV_BUTTONS-->
+	<div class="center">
+		<h2 align="center" class="main_title">Facturación de nota de venta</h2>
+			<div class="ticket_container"><br>
+				<h2 style="margin-left:25px;">Nota de Venta</h2>
+				<p id="nombre de la empresa" style="text-align:center">San Benito</p>
+				<p id="sucursal" style="text-align:center;font-size:10pt;line-height:10px;">Sucursal: Matriz</p>
+				<span>
+					<strong>RFC:</strong>
+					<input autocomplete="off" onchange="verificar_rfc()" tabindex="1" type="text" name="rfc" class="input_ticket">
+				</span>
+				<span>
+					<strong>N° de ticket:</strong>
+					<input tabindex="2" type="text" style="width:70px;" name="num_ticket" class="input_ticket">
+				</span>
+				<span>
+					<strong>N° de referencia:</strong>
+					<input tabindex="3" type="text" style="width:70px;" name="num_ticket" class="input_ticket">
+				</span><br>
+				<span class="total" style="float:right">
+					<strong>Total:</strong>
+					<p style="display:inline" id="total">$0.00</p>
+				</span>
+			</div>
+			<div class="info_right" id="info_right">
+				<h2 align="center" style="line-height:28px;border-bottom:1px solid rgba(255,255,255,.20)">Información del cliente</h2><br>
+				<h3 style="text-align:center;color:#fff;" onclick="set_sucursal($(this).text())"><a class="sucursal" title="Seleccionar sucursal">Matriz</a></h3>
+				<p>RCSG6345452</p>
+				<p>Articulo 123 #93A, # int. </p>
+				<p>83100</p>
+				<p>Mision del Sol</p>
+				<p>Hermosillo, Sonora</p><br>
+				<h3 class="sucursal_title" onclick="set_sucursal($(this).text())"><a class="sucursal" title="Seleccionar sucursal">Nogales</a></h3><span class="ver_info" id="label_1" onclick="javascript:toggle_info(1)">Ver más</span><br>
+				<div class="toggle_info" id="hide_div_1">
+				<p>Periferico Norte S/N, # int. </p>
+				<p>83190</p>
+				<p>San Benito</p>
+				<p>Hermosillo, Sonora</p><br>
+				</div>
+				<div class="clear"></div>
+				<h3 class="sucursal_title" onclick="set_sucursal($(this).text())"><a class="sucursal" title="Seleccionar sucursal">Obregon</a></h3><span class="ver_info" id="label_2" onclick="javascript:toggle_info(2)">Ver más</span><br>
+				<div class="toggle_info" id="hide_div_2">
+				<p>Periferico Norte S/N, # int. </p>
+				<p>83190</p>
+				<p>San Benito</p>
+				<p>Hermosillo, Sonora</p><br>
+				</div>
+				<div class="clear"></div>
+				<h3 class="sucursal_title" onclick="set_sucursal($(this).text())"><a class="sucursal" title="Seleccionar sucursal">Guaymas</a></h3><span class="ver_info" id="label_3" onclick="javascript:toggle_info(3)">Ver más</span><br>
+				<div class="toggle_info" id="hide_div_3">
+				<p>Periferico Norte S/N, # int. </p>
+				<p>83190</p>
+				<p>San Benito</p>
+				<p>Hermosillo, Sonora</p><br>
+			</div>
+			</div>
+			<div class="clear"></div>
+			<h3 align="center" style="color: #464646;text-shadow: 0 1px 0px rgba(255, 255, 255, 0.5);">Promociones en San Benito</h3>
+			<div class="carousel">
+				
+			</div>
+		</div>
+	<script src="js/alertify.min.js"></script>
+</body>
+</html>

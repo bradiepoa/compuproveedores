@@ -1,0 +1,433 @@
+{% load custom_tags %}
+<!--<div class="folio_r1">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="folio_r2">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="clear espacio50"></div>
+--> 
+<div><img src="{{ STATIC_URL }}/compu/images/distribuidor_arriba.png" /></div>
+
+<div id="logo" class="left">    
+    <img src="{{ STATIC_URL }}/compu/images/logo.png" width="110" alt="Logo">
+</div>
+
+<div style="font-size:24px; width:63%; padding:35px 0 10px 45px;" class="left">
+    <b>PÓLIZA DE SERVICIO TÉCNICO</b> 
+    <span style="float:right; font-size:16px;">
+        Folio: {{ bitacora.folio }}
+    </span>
+</div>
+
+<div class="right">    
+    <img src="{{ STATIC_URL }}/compu/images/compu_escuadron.png" width="170" alt="Logo">
+</div>
+
+<div class="clear"></div>
+<!--
+<div style="width:170px;  padding:10px 0 0 20px; float:left;  font-size:15px;" class="left">  
+    <div class="center folio_fecha_titulo">
+            <b>Folio</b>
+    </div> 
+    <div style="border:solid 1px #000; height:90px; line-height:30px; "  >
+            <div class="center" style="font-size:22px; padding-top:30px;">{{ bitacora.folio }}</div>
+    </div>
+
+</div>
+-->
+<div class="clear">&nbsp; &nbsp;</div>
+    
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+            <th colspan="2" style="padding-bottom:2px; padding-top:0;">DATOS DEL CLIENTE</th>
+    </thead>
+
+    <tbody style="font-size:13px; line-height:14px;">
+        <tr style="border-bottom:solid 1px #000;">
+            <td style="width:630px;">CLIENTE: &nbsp;&nbsp; {{ bitacora.cliente.nombre }}</td>
+            <td>NO. DE CLIENTE:&nbsp;&nbsp;{{ bitacora.cliente.distribuidor.no_clientes_interno|default:"MOST" }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>DIRECCIÓN:&nbsp;&nbsp;{{ bitacora.cliente.direccion }}</td>
+            <td>RFC:&nbsp;&nbsp;{{ bitacora.cliente.rfc }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>POBLACIÓN:&nbsp;&nbsp;{{ bitacora.cliente.ciudad }}</td>
+            <td>VENDEDOR: &nbsp;&nbsp;{{ bitacora.cliente.distribuidor.vendedor_interno.folio }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>CONTACTAR A:&nbsp;&nbsp;{{ bitacora.cliente.contacto }}</td>
+            <td>CORREO: &nbsp;&nbsp;{{ bitacora.cliente.email }}</td>
+        </tr>
+        <tr>
+            <td>
+                TELÉFONO: {{ bitacora.cliente.telefono }} &nbsp;
+                EXT.: {{ bitacora.cliente.ext|default:"" }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                CELULAR: {{ bitacora.cliente.celular }}
+            </td>
+               
+            <td>
+                TELÉFONO ADICIONAL: {{ bitacora.cliente.telefono_extra }} &nbsp;
+
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div style="text-align:center;margin-top:6px;margin-bottom:6px;">&nbsp;<B>TIPO DE PÓLIZA DE SERVICIO:</B> {{ bitacora.mostrar_tipo_sertec }} {{ bitacora.mostrar_years_sertec }}</div>
+
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+            <th colspan="2" style="padding-bottom:2px; padding-top:0;">DATOS DEL EQUIPO</th>
+    </thead>
+
+    <tbody style="font-size:15px; line-height:14px;">
+        <tr>
+            <td >
+                <div class="left" style="width:630px;">VIGENCIA:  {{ bitacora.fecha|date:"d/m/Y" }} </div>
+                 <div class="left">HASTA: {{ bitacora.fecha_vencimiento|date:"d/m/Y" }}</div>  
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <div class="left" style="width:630px;">DESCRIPCIÓN: {{ bitacora.falla }}</div>
+                <div class="left">MODELO: {{ bitacora.modelo }}</div>  
+            </td>
+        </tr>
+        <tr>
+            <td >
+                <div class="left" style="width:630px;">NUM. SERIE:&nbsp;&nbsp;{{ bitacora.no_serie }}</div>
+                <div class="left">MARCA: {{ bitacora.marca }}</div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div>&nbsp;</div>
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+            <th colspan="2" style="padding-bottom:2px; padding-top:0;">PROTEJA SU COMPUTADORA CON LOS SIGUIENTES SERVICIOS:</th>
+    </thead>
+
+    <tbody style="font-size:13px; line-height:14px;">
+            <tr>
+                <td><br>
+                    <b>1.-DIAGNOSTICO Y REPARACIÓN:</b>
+                        <ul>
+                            <li> Buscar problemas de operación en PC, Desktop, Laptop, AllinOne o dispositivo. </li>
+
+                            <li> Probar el arranque del sistema operativo para asegurar un correcto funcionamiento. </li>
+
+                            <li> Reparar problemas del sistema operativo (Encendido, pantallas azules, etc.)
+
+                            <li> Realizar optimización de computadora (desfragmentación de disco duro, limpieza de archivos temporales). </li>
+
+                            <li> Quitar virus y spyware de la computadora o dispositivo.</li> 
+
+                            <li> Aplicar y ajustar todas las actualizaciones del sistema operativo. </li>
+
+                            <li> Proporcionar al cliente un costo estimado de la refacción del hardware y/o diagnostico al momento de ingresar el equipo, en caso de que no aplique garantía con fabricante. </li>
+                        </ul>
+
+                        <b>2.- INSTALACIONES DE HARDWARE:</b>
+                        <ul>
+                            <li> Limpieza interna y externa de la computadora. </li>
+
+                            <li> Instalar cualquier software incluido que sea necesario para la funcionalidad de la computadora (Controladores y aplicaciones). </li>
+
+                            <li>Configuración del dispositivo de hardware para las necesidades del cliente.</li> 
+
+                            <li> Probar el dispositivo de hardware para un correcto funcionamiento.</li> 
+
+                            <li> Configuración del dispositivo de hardware para las necesidades del cliente.</li> 
+
+                            <li> Instalar hasta 2 tarjetas de memoria RAM proporcionadas por cliente, en caso de que pueda escalarse. </li>
+
+                            <li>NOTA: El cliente debe de proporcionar el hardware y software original que desea instalarse. </li>
+                        </ul>
+
+                        <b>3.- INSTALACIÓN Y CONFIGURACIÓN DEL SISTEMA OPERATIVO:</b>
+                        <ul>
+                            <li> Instalación de sistema operativo en computadora. </li>
+
+                            <li> Instalación de controladores requeridos para un funcionamiento apropiado de los componentes internos de la computadora. </li>
+
+                            <li> Incluye instalación del software originalmente proporcionado por el fabricante.</li>
+
+                            <li> Instalación de actualizaciones críticas y ajustes.</li>
+
+                            <li>NOTA: El cliente debe de proporcionar disco(s) de Restauración, Sistema Operativo y Controladores (originales).</li>
+                        </ul>
+
+                        <b>4.- INSTALACIÓN DE SOFTWARE:</b>
+                        <ul>
+                            <li> Verificar compatibilidad y/o versiones de aplicaciones. </li>
+
+                            <li> Reparación, actualización y configuración de una aplicación.</li> 
+
+                            <li> Instalación de programas y agregar acceso a programas que solicite el cliente.</li>
+
+                            <li>NOTA: El cliente debe de proporcionar el disco de software o instaladores (originales). </li>
+                        </ul>
+                        <b>5.- MICROSOFT SECURITY ESSENTIAL (Windows 7) o WINDOWS DEFENDER (Windows 8, 8.1)</b>
+                        <ul>
+                            <li> Protección en tiempo real contra spyware, virus y otro software malintencionado. </li>
+
+                            <li> Análisis y limpieza del sistema en línea.</li>
+
+                            <li> Protección mejorada contra rootkits y bootkits.</li>
+                        </ul>
+
+                        <div style="float:right;">
+                            <table id="table_costos">
+
+                                <tr>
+                                    <td>
+                                        &nbsp; EQUIPO ADQUIRIDO EN COMPUPROVEEDORES &nbsp;
+                                    </td>
+                                    <td style="text-aling:right; font-weight:bold;"> &nbsp; 1 año ({% if bitacora.tipo_sertec == 1 and bitacora.no_years == 1 %} X{% else %} &nbsp; {% endif %}) $499.00 &nbsp;</td>
+                                    <td style="text-aling:right; font-weight:bold;"> &nbsp; 2 año ({% if bitacora.tipo_sertec == 1 and bitacora.no_years == 2 %} X{% else %} &nbsp; {% endif %}) $799.00 &nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        &nbsp; EQUIPO NO ADQUIRIDO EN COMPUPROVEEDORES &nbsp;
+                                    </td>
+                                    <td style="text-aling:right; font-weight:bold;"> &nbsp; 1 año ({% if bitacora.tipo_sertec == 2 and bitacora.no_years == 1 %} X{% else %} &nbsp; {% endif %}) $640.00 &nbsp;</td>
+                                    <td style="text-aling:right; font-weight:bold;"> &nbsp; 2 año ({% if bitacora.tipo_sertec == 2 and bitacora.no_years == 2 %} X{% else %} &nbsp; {% endif %}) $990.00 &nbsp;</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" align="right">
+                                        *Precios más IVA por equipo.
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                </td>
+            </tr>
+    </tbody>
+</table>
+<div style="text-align:center; font-size:smaller; margin:5px 0 5px 0;">NOTA: El cliente puede solicitar 2 veces por año los servicios completos descritos según su póliza adquirida.
+<div>
+    Considerar 20 % de descuento al adquirir más de 5 pólizas de servicio técnico.
+</div>
+</div>
+
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+            <th colspan="2" style="padding-bottom:2px; padding-top:0;">FAVOR DE LEER Y FIRMAR</th>
+    </thead>
+
+    <tbody style="font-size:9px; line-height:14px;">
+            <tr>
+                <td>
+                    <div style="text-align:center; font-size:15px;">
+                         <br>
+                        ACEPTO LOS TÉRMINOS Y CONDICIONES DESCRITOS AL FRENTE Y REVERSO DE ESTE DOCUMENTO.
+                    </div>
+
+                    <div style=" margin-top:80px;"></div>
+                    <div style="width:30%; float:left; text-align:center;">
+                        ______________________________<br>
+                        Firma Cliente 
+                    </div>
+                    <div style="width:30%; float:right; text-align:center;">
+                        ______________________________<br>
+                        Fecha
+                    </div>
+                    <div class="clear espacio10"></div>
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+<div class="clear espacio6"></div>
+<div class="center" style="font-size:9px;">
+    {{ atencion }}
+</div>
+<div style="page-break-after: always;"></div>
+<div style="margin-top:100px;">
+    <table class="tablas" class="with_border" border="1" >
+        <thead>
+                <th colspan="2" style="padding-bottom:2px; padding-top:0;">TÉRMINOS Y CONDICIONES</th>
+        </thead>
+
+        <tbody style="font-size:12px; line-height:14px;">
+                <tr>
+                    <td style="padding:0px 30px 20px 30px;">
+                        <p>
+                           <b> APROBACIÓN DE LOS TÉRMINOS Y CONDICIONES DE SERVICIO:</b><br>
+
+                            Se proporcionan a usted, el <b>Cliente</b>, en relación con <B>la Poliza de Servicio Técnico de COMPUESCUADRON,</b> en lo sucesivo denominado
+                            como el <b>“Servicio”</b>, los presentes <b>Términos y Condiciones </b>en lo sucesivo denominados <b>“Términos y Condiciones de Servicio”</b>, adquirido
+                            por el Cliente, que abarca el contrato entre el <b>Cliente y COMPUPROVEEDORES, S.A. de C.V.</b> representado por el <B>COMPUESCUADRON.</b> <BR>
+                        </p> <br>
+                        <p>
+                            <b>DESCRIPCIÓN DEL SERVICIO:</b><br>
+
+                            La contratación de la presente Póliza otorga a el <b>Cliente</b> el derecho a recibir los siguientes servicios en la tienda:<br>
+                            <ul>
+                                <li> Instalación de programas informáticos (Software, el cual no esta incluido, debe comprarse por separado).</li>
+
+                                <li> Asesoría respecto al Software y remoción de virus y programas dañinos. El antivirus esta incluido dentro de la contratación del servicio,
+
+                                se descargará por internet Microsoft Security Essential o Windows Defender según la versión del Sistema Operativo.</li>
+
+                                <li> Instalación de cierto tipo de equipo (Hardware). Acuda con el equipo de <b>COMPUESCUADRON</b> en <b>COMPUPROVEEDORES</b> para 
+
+                                conocer que instalación de Hardware deberá instalarse, el Hardware no esta incluido, debe comprarse por separado.</li>
+
+                                <li> Instalación de Sistema Operativo. El <b>Cliente</b> debe de proporcionar los discos de restauración.</li>
+                            </ul>
+                        </p> <br>
+
+                        <p>
+                            <b>RESTRICCIONES DEL SERVICIO:</b><br>
+
+                                <b>COMPUESCUADRON</b> y/o sus proveedores terceros se reservan el derecho a negarse a proporcionar los <b>Servicios</b> solicitados y en su lugar 
+
+                                reembolsar el pago del <b>Cliente</b>, en todo o en parte de que no se cumplan los requerimientos mínimos del sistema o las necesidades técnicas 
+
+                                (incluyendo cableado o la existencia de barreras físicas o técnicas) u otros requerimientos del <b>Cliente</b> que sean poco comunes o extensivos y 
+
+                                vayan más allá del ámbito de estos Términos de <b>Servicio</b> según determine el <b>COMPUESCUADRON</b>.
+                        </p><br>
+
+                        <p>
+                            <b>PAGO:</b><br>
+
+                            En caso de que el <b>Cliente</b> quisiera continuar con el <b>Servicio</b> después de terminado la vigencia de la Póliza, acuerda pagar las cuotas de 
+
+                            renovación de Póliza (incluyendo los impuestos correspondientes) de acuerdo a las tarifas vigentes al momento de adquirir dicha extensión.
+                        </p><br>
+
+
+                        <p>
+                            <b>RESPALDO DE LA INFORMACIÓN, RESPONSABILIDAD DEL CLIENTE:</b><br>
+
+                            El <b>Cliente</b> conviene y acuerda que antes de que el <b>COMPUESCUADRON</b> realice <b>Servicio</b> alguno a cualquier equipo de el <b>Cliente</b>, deberá: (1) 
+
+                            respaldar la información, los programas (Software), la información u otros archivos almacenados en la unidades de disco, periféricos, y/o en  
+
+                            cualquier otro dispositivo de almacenamiento electrónico de la computadora del <b>Cliente</b>; <!--  &nbsp; &nbsp; --> y (2) extraer todos los videos, discos compactos, DVD’s, 
+
+                            películas y otros medios del producto del <b>Cliente</b>. El <b>Cliente</b> acuerda que solicitará o no los <b>Servicios</b> de respaldo al <b>COMPUESCUADRON</b> y/o 
+
+                            sus proveedores de <b>Servicios</b>, ni el <b>COMPUESCUADRON</b> ni el proveedor de <b>Servicios</b> serán responsables en modo alguno por pérdida, 
+
+                            divulgación, alteración, eliminación o modificación de datos, sofware, información, archivos, discos compactos, DVD’s, películas u otros medios.
+                        </p><br>
+
+
+                        <p>
+                            <b>MODIFICACIONES A LOS TÉRMINOS Y CONDICIONES DE SERVICIO CONTENIDOS EN LA PÓLIZA</b><br>
+
+                            Se podrán realizar modificaciones a los <b>Términos y Condiciones</b> de <b>Servicio</b> en cualquier momento, en caso de algún cambio, el 
+
+                            <b>COMPUESCUADRON</b>, le notificará publicando dichos cambios en el sitio donde adquirió el <b>Servicio</b>. Nos reservamos el derecho de modificar o 
+
+                            descontinuar el <b>Servicio</b>, notificando o no a el <b>Cliente</b>. <b>COMPUESCUADRON</b> no tendrá responsabilidad alguna ante el <b>Cliente</b> o ningún tercero,
+
+                            en caso de que ejerza su derecho a modificar o descontinuar el <b>Servicio</b>. El uso continúo del <b>Servicio</b> por parte de el <b>Cliente</b>, constituye un 
+
+                            acuerdo afirmativo de el <b>Cliente</b> de sujetarse a esos Términos de <b>Servicio</b> y sus modificaciones.
+                        </p><br>
+
+
+                        <p>
+                            <b>AVISO DE PRIVACIDAD:</b><br>
+
+                            Los datos personales de el <b>Cliente</b> serán utilizados para realizar las funciones operativas relacionadas con nuestro negocio, así como todas 
+
+                            aquellas actividades y procesos que deriven de la relación comercial que tenemos con usted. Para las finalidades antes mencionadas, requerimos 
+
+                            obtener los siguientes datos personales, entre otros: nombre, dirección, población, contacto, teléfono, celular, correo electrónico y Registro Federal 
+
+                            de Contribuyente. El <b>Cliente</b> tiene derecho de limitar su uso o divulgación de sus datos personales, así como de oponerse al tratamiento de los 
+
+                            mismos o revocar el consentimiento que para tal fin nos haya otorgado, mediante solicitud escrita dirigida al siguiente domicilio: <b>San Luis Potosí 
+
+                            No. 21, Col. Centro, C.P. 83000, Hermosillo, Sonora , México, de 8:00 AM a 1:00 PM y de 2:00 PM a 5:00 PM, de lunes a viernes </b>con 
+
+                            atención al <b>Departamento de Crédito y Cobranza</b>, o mediante solicitud formulada a nuestros teléfonos del Sistema de Atención a Clientes (662) 214 2200 o al 
+
+                            correo electrónico cobranza@compuproveedores.com. Asimismo, le informamos que sus datos personales únicamente podrán ser 
+
+                            transferidos a terceros en los casos permitidos por ley, por ejemplo, cuando sean compartidos en empresas de nuestro mismo grupo. El <b>Cliente</b> 
+
+                            otorga su consentimiento para que sus datos personales sean tratados conforme a los <b>Términos y Condiciones</b> del presente Aviso de 
+
+                            Privacidad. Cuando sean compartidos con empresas de nuestro mismo grupo. El <b>Cliente</b> da su consentimiento para que sus datos personales 
+
+                            sean tratados conforme a los Términos y Condiciones del presente <b>Aviso de Privacidad</b>. Es política de el <b>COMPUESCUADRON y COMPUPROVEEDORES</b> respetar la 
+
+                            privacidad de el <b>Cliente</b>. Para mayor información consultar nuestro <b>Aviso de Privacidad</b> en http://www.compuproveedores.com/aviso_privacidad.
+                        </p><br>
+
+
+                        <p>
+                           <b> INDEMNIZACIÓN:</b> <br>
+
+                            El <b>Cliente</b> acuerda indemnizar, defender y mantener a el <b>COMPUESCUADRON</b> en paz y a salvo (y sus filiales y funcionarios, directores,
+
+                            empleados y técnicos correspondientes) en contra de cualquier pérdida, costos, obligaciones, responsabilidades, daños, acciones, demandas, 
+
+                            causas de acción, reclamaciones, solicitudes, gravámenes, afectaciones, garantías, finiquitos, sentencias y otros gastos, incluyendo cualquier 
+
+                            persona o personas que se objeten, incurran o impongan a el <b>COMPUESCUADRON</b> derivadas de: (a) la violación de este contrato por parte de el 
+
+                            <b>Cliente</b>; (b) la infracción real o supuesta de alguna patente, derecho de autor, marca registrada, secreto comercial u otro derecho por contrato, o 
+
+                            propiedad por parte de el <b>Cliente</b> o propiedad por parte del <b>Cliente</b> de cualquier otra persona; (c) la incapacidad real o supuesta de el <b>Cliente</b> a 
+
+                            pagar oportunamente las cantidades adecuadas a el <b>COMPUESCUADRON</b> o terceras partes; (d) la incapacidad de el <b>Cliente</b> para cumplir con 
+
+                            leyes, reglamento u ordenes vigentes; o (el ) los actos u omisiones de el <b>Cliente</b> (o sus funcionarios, directores, empleados o agentes).
+                        </p>
+<br>
+
+                        <p>
+                            <b>DESISTIMIENTO:</b><br>
+
+                            El <b>Cliente</b> acuerda expresamente que el uso de este <b>Servicio</b> es a su entero riesgo. El <b>Servicio</b> se proporciona en la base del estado actual y 
+
+                            según la disponibilidad. El <b>COMPUESCUADRON</b> expresamente se desiste de cualquier garantía, táctica o implícita, incluyendo entre otras a las 
+
+                            garantías de comercialización, adecuación para un propósito en particular y de no infracción. El <b>COMPUESCUADRON y COMPUPROVEEDORES </b> no garantiza que el 
+
+                            <b>Servicio</b> cumpla con los requerimientos de el <b>Cliente</b> en caso de que el <b>Servicio</b> no sea interrumpido, oportuno, seguro o sin errores. Del mismo 
+
+                            modo el <b>COMPUESCUADRON</b> no garantiza los resultados que pudieran obtenerse del uso del <b>Servicio</b> o respecto a la precisión o fiabilidad de 
+
+                            cualquier información obtenida a través del <b>Servicio</b>. El <b>Cliente</b> acuerda que cualquier material y/o datos descargados o de alguna otra manera 
+
+                            obtenidos por medio del uso del <b>Servicio</b> se hace a entera discreción y riesgo del <b>Cliente</b> y que el <b>Cliente</b> será el único responsable por daños a 
+
+                            la computadora o sistema del <b>Cliente</b> o pérdidas de datos que pudiera resultar de la descarga de dicho material y/o datos. Ninguna asesoría o 
+
+                            información de el <b>COMPUESCUADRON</b> ya sea oral o escrita obtenida por el <b>Cliente</b> a lo largo del <b>Servicio</b> creará garantía alguna que no se 
+
+                            mencione expresamente en este documento.
+
+                        </p>
+ <br>
+                       
+                        <div style="text-align:center; width:100%;" >
+                            
+                                Ha sido un placer atenderle.
+                            <br>
+                            
+                                © 2015 COMPUESCUADRON
+                                <br> www.compuescuadron.com
+                        </div>
+                    </td>
+                </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,33 @@
+.add-row {
+    padding-left:18px;
+    background:url(/site_media/img/add.png) no-repeat left center;
+    width:60px;
+    height:16px;
+}
+.delete-row {
+    display:block;
+    margin:0px 0 20px 0;
+    text-indent:20px;
+    background:url(/site_media/img/delete.png) no-repeat left center;
+    height:16px;
+}
+
+
+.add-row-est {
+    padding-left:18px;
+    background:url(/site_media/img/add.png) no-repeat left center;
+}
+.delete-row-esst {
+    margin:5px 0 0 5px;
+    text-indent:20px;
+    background:url(/site_media/img/delete.png) no-repeat left center;
+    height:16px;
+
+}
+.delete-row-est {
+    padding-left:20px;
+    background:url(/site_media/img/delete.png) no-repeat left center;
+}
+.text_top{ vertical-align:top;}
+
+.menu_consulta{ padding-left:3em; }

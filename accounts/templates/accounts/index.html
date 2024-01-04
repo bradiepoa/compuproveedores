@@ -1,0 +1,14 @@
+{% extends 'construccion/base.html' %}
+{% block title %} Control de obra {% endblock %}
+{% block contenido %}
+<ul>
+    <li><a href="{% url construccion-obras %}">Obras</li>
+    <li><a href="{% url construccion-viviendas %}">Viviendas</li>
+    <li><a href="{% url construccion-contratos %}">Contratos</li>
+    <li><a href="{% url construccion-unidades %}">Unidades</li>
+    <li><a href="{% url construccion-manzanalotes %}">Manazana Lotes</li>
+    <li><a href="{% url construccion-importar-catalogo %}">Importar Cat&aacute;logo</li>
+    <li><a href="{% url construccion-nominas %}">N&oacute;mina</li>
+</ul>
+{% endblock %}
+

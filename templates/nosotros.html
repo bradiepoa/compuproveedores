@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load url from future %}
+{% block content %}
+<div class="cuadro_fondo_gris">
+    <div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo" >NOSOTROS</div>
+    <div id="nosotros_texto">
+    
+        <div id="nosotros_h1">MISIÓN</div>
+        <div class="clear"></div>
+        <div class="texto">
+            Satisfacer las necesidades de nuestros clientes, ofreciendo soluciones 
+            de impresión y de cómputo, con el fin  de optimizar sus procesos, 
+            reducir costos y mejorar utilidades.
+        </div>
+        
+        <div id="nosotros_h1">VISIÓN</div>
+        <div class="clear"></div>
+        <div class="texto">
+            Ser la empresa líder en la venta de soluciones de impresión y 
+            cómputo en el noroeste del país, contribuyendo al crecimiento 
+            de nuestra gente, nuestros clientes y proveedores.
+        </div>
+        
+        <div id="nosotros_h1">VALORES Y PRINCIPIOS<br/>DE OPERACIÓN</div>
+        <div class="clear"></div>
+        <div class="texto">
+            <ul>
+                <li>Innovación</li>
+                <li>Visión</li>
+                <li>Trabajo en equipo</li>
+                <li>
+                    Responsabilidad
+                    <input type="button" onclick="window.location='{% url "nuestra_historia" %}'" value="Ver más">
+ 
+                </li>
+                <li> Integridad </li>
+            </ul>
+        </div>
+    </div>
+    <div id="imagen_nosotros"><img src="/site_media/compu/images/imagen-nosotros.png"></div>
+    <div class="espacio10"></div>
+</div>
+
+{% endblock %}

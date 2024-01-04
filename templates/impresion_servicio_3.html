@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>REPORTE TÉCNICO DE SERVICIO</title>
+	<link rel="stylesheet" type="text/css" href="{{ root_url }}/site_media/css/basic.css" />
+
+<style>
+
+{% include "bitacora_css.css"%}
+
+body { font-size:0.8em; }
+table { font-size:0.8em; }
+
+</style>
+
+</head>
+
+<body>
+
+{% for atencion in atenciones %}
+
+    <div {% if not forloop.last %}style="page-break-after: always"{% endif %}>
+
+        {% include "impresion_servicio.html" %}</div>
+<!---   
+     <div {% if not forloop.last %} style="page-break-after: always" {% endif %}>
+        {% include "politicas.html" %}</div>
+     <div class="clear"></div>
+--->
+{% endfor %}
+    
+
+</body>
+</html>

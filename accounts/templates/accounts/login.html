@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-ES"> 
+<head> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+<title>Login</title>
+<link rel="stylesheet" href="/site_media/css/tuencuesta.css" type="text/css" />
+<link rel="stylesheet" href="/site_media/css/compuproveedores_admin.css" />
+</head> 
+
+<body>
+<div id="wrap_login">
+    <div style="height:100px;"></div>  
+    <div id="contenidos">
+        <div id="login_content" ><br />
+        <div><a href="/"><img src="/site_media/compu/images/LogoFinal.png" 
+                 alt="Logo"  border="0" />
+             </a>
+        </div>
+        <div id="login_square">
+         
+            <form action=".?next={{next}}" id="id_login_form" method="post">{% csrf_token %}
+                <div style="margin-left:400px;">
+                    <div class="login_right_field">
+                        <label for="username" id="username"></label>Usuario<br/><input type="text" name="username">
+                    </div>
+                    <div class="login_right_field">
+                        <label for="password">Contrase&ntilde;a</label><br/><input type="password" id="password" name="password">
+                    </div>
+      
+                    <div id="login_button"><input type="submit" value="Entrar"></div>
+                </div>
+
+            </form>
+            </div>
+        <div class="clear"></div>     
+    </div>
+</div>
+<div id="bottomround_login"></div>
+<div id="footer_login">
+
+</div>
+</body> 
+</html>

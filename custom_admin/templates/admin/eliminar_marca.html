@@ -1,0 +1,15 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+{% if mensaje %}
+{{ mensaje }}
+{% else %}
+<div>¿Está seguro que desea eliminar esta marca?</div>
+<form acction="." method="post">{% csrf_token %}
+    <input type="submit" name="si" value="Si"> <input type="submit" name="no" value="No">
+</form>
+{% endif %}
+
+
+{% endblock %}
+

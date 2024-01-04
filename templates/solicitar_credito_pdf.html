@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+ 
+	<meta charset="utf-8" />
+	<title></title>
+	
+<style>
+body{font-size:13px;}
+.left{float:left;}
+.right{float:right;}
+#logo {float:left;}
+#solicitud_de_credito{ 
+    font-size:26px; 
+    color:#646060; 
+    padding-top:70px; 
+    padding-left:50px;
+    float:left; 
+    width:355px; 
+    height:90px; 
+    text-align:center;
+}
+
+.righttext{text-align:right;}
+.center{text-align:center;}
+.lefttext{text-align:left;}
+
+#fecha_firma{ float:right; width:280px; font-size:12px;}
+#fecha_firma_aut{ text-align:right; padding-top:15px; float:right; width:240px; font-size:9px;}
+#fecha_aut{ padding-top:3px;}
+.fechas{
+    width:190px;
+    padding-top:3px;
+    border: 1px solid #000;
+    margin-left: 16px;
+}
+.fechas .gris{
+    border-bottom: 1px solid #000;
+}
+.fechas table tr td, thead th{
+    border-right: 1px solid #000;
+
+}
+
+.fechas table{
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+
+#fecha{
+    margin-left:20px;
+    
+} 
+.gris{ background-color:#eee;}
+
+#fecha_titulo{ 
+    border-style:solid;
+    border-width:1px;
+    background-color:#eee;
+    width:160px;
+    float:right;
+} 
+#fecha_fecha{  
+    border-style:solid;
+    border-width:1px;
+    width:160px;
+    float:right;
+} 
+
+.uso_interno { float:right; margin-top:15px; font-size:14px; border-collapse: collapse;}
+.uso_interno  td, .uso_interno th{ border: 2px solid black; padding: 2px; }
+.uso_interno  td { font-size:11px; font-weight: bold;}
+
+.clear {clear:both;}
+.clear {clear:both !important}
+
+.titulo_tablas {border-style:solid; border-width:1px;text-align:center; background-color:#eee; font-weight: bold;  width:877px;}
+.tablas{font-size:12px; border-collapse: collapse;}
+.tablas  .td{ padding-left:5px; border: 1px solid black; }
+.todo { width:873px; height:46px;}
+.muy_grande { width:520px; height:32px;}
+.grande { width:433px; height:32px;}
+.mediano { width:346px; height:32px;}
+.chico { width:286px; height:32px;}
+.muy_chico { width:213px; height:32px;}
+.muy_chico_b { width:213px; height:55px;}
+.muy_muy_chico { width:110px; height:32px;}
+
+.sucursal {width:210px; font-size: 14px; padding-left: 65px;}
+#mensaje { text-align:center; font-size: 14px; padding-top:55px;}
+#acepto { text-align:center;  font-size: 15px;padding-top:30px;}
+.nom_firma { width:280px; font-size:10px; padding-top:60px; }
+</style>	
+	
+</head>
+<body>
+      
+    <div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+
+    <div id="logo">    
+        <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+    </div>
+    
+    <div id="solicitud_de_credito">
+        <b>SOLICITUD DE CRÉDITO {% if credito.distribuidor %}DISTRIBUIDOR{% else %}CLIENTE{% endif %}</b>
+    </div>
+    
+    <div id="fecha_firma">
+        <div class="center fechas right">
+                <div class="gris" style="">
+                    FECHA DE ALTA</div>
+                <table style="width:100%;">
+                    <thead>
+                        <th>Día</th>
+                        <th>Mes</th>
+                        <th>Año</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{ credito.created.day }}</td>
+                            <td>{{ credito.created.month }}</td>
+                            <td>{{ credito.created.year }}</td>
+                        <tr>
+                    </tbody>    
+                </table>
+            </div>
+   
+
+        <table class="uso_interno">
+        
+            <tr>
+                <th colspan="2" class="righttext">USO INTERNO</th>
+            </tr>
+            
+            <tr><td>NO. DE CLIENTE</td><td style="width:140px;">{{ credito.dist.no_clientes_interno|default:"" }}</td></tr>
+            <tr><td>CLASIFICACIÓN</td><td  style="width:140px;">{{ credito.dist.clasificacion_interno|default:"" }}</td></tr>
+            <tr><td>VENDEDOR</td><td  style="width:100px;">{{ credito.dist.vendedor_interno.folio|default:"" }}</td></tr>
+            <tr><td>DÍAS DE CRÉDITO</td><td  style="width:140px;">{{ credito.dist.dias_credito_interno|default:"" }}</td></tr>
+            <tr><td>LÍMITE DE CRÉDITO</td><td  style="width:140px;">{{ credito.dist.limite_credito_interno|default:"" }}</td></tr>
+            
+        </table>
+        
+        <div id="fecha_firma_aut">
+            <div class="center fechas">
+                <div class="gris" style="">
+                    FECHA DE AUTORIZACIÓN</div>
+                <table style="width:100%;">
+                    <thead>
+                        <th>Día</th>
+                        <th>Mes</th>
+                        <th>Año</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        <tr>
+                    </tbody>    
+                </table>
+            </div>
+            <div id="fecha_aut" class="center">
+                <div>________________________________</div>
+                FIRMA DE AUTORIZADO<br/>
+                <span class="gris">&nbsp;</span>
+            </div>
+        </div>
+      
+    </div>
+<div class="clear" style="padding-top:10px;"></div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">DATOS GENERALES DE FACTURACIÓN</div>
+
+    <div class="tr">
+        <div class="td todo left">NOMBRE O RAZÓN SOCIAL(COMO APARECE EN EL FORMATO DE ALTA DE HACIENDA) <br/>{{ credito.razon_social}}</div>
+    </div>
+    
+</div>
+ 
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">REFERENCIAS BANCARIAS PARA PAGOS</div>
+
+    <div class="tr">
+        <div class="td muy_chico_b left">BANCO 1)<br/>{{ credito.banco_1 }}</div>
+        <div class="td muy_chico_b left">NO. CUENTA<br/>{{ credito.pagos_no_cuenta_1 }}</div>
+        <div class="td muy_chico_b left">BANCO 2)<br/>{{ credito.pagos_banco_2 }}</div>
+        <div class="td muy_chico_b left">NO. CUENTA<br/>{{ credito.pagos_no_cuenta_2 }}</div>
+    </div>
+    
+    
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">REFERENCIAS COMERCIALES</div>
+    
+    <div class="tr">
+        <div class="td mediano left">1) NOMBRE DE LA EMPRESA<br/>{{ credito.rc_nombre_empresa_1 }}</div>
+        <div class="td muy_muy_chico left">CIUDAD/ESTADO<br/>{{ credito.rc_ciudad_estado_1}}</div>
+        <div class="td chico left">ATENCION<br/>{{ credito.rc_atencion_1 }}</div>
+        <div class="td muy_muy_chico left">TELEFONO<br/>{{ credito.rc_telefono_1}}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td muy_chico left gris">ANTIGÜEDAD<br/>{{ credito.rc_antiguedad_1 }}</div>
+        <div class="td muy_chico left gris">DÍAS DE CRÉDITO<br/>{{ credito.rc_dias_credito_1 }}</div>
+        <div class="td muy_chico left gris">CRÉDITO<br/>{{ credito.monto_credito_1}}</div>
+        <div class="td muy_chico left gris">FORMA DE PAGO<br/>{{ credito.forma_pago_1 }}</div>
+    </div>
+    
+    <div class="clear"></div>
+
+    <div class="tr">
+        <div class="td mediano left">2) NOMBRE DE LA EMPRESA<br/>{{ credito.rc_nombre_empresa_2 }}</div>
+        <div class="td muy_muy_chico left">CIUDAD/ESTADO<br/>{{ credito.rc_ciudad_estado_2}} </div>
+        <div class="td chico left">ATENCION<br/>{{ credito.rc_atencion_2 }}</div>
+        <div class="td muy_muy_chico left">TELEFONO<br/>{{ credito.rc_telefono_2}}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td muy_chico left gris">ANTIGÜEDAD<br/>{{ credito.rc_antiguedad_2 }}</div>
+        <div class="td muy_chico left gris">DÍAS DE CRÉDITO<br/>{{ credito.rc_dias_credito_2 }}</div>
+        <div class="td muy_chico left gris">CRÉDITO<br/>{{ credito.monto_credito_2}}</div>
+        <div class="td muy_chico left gris">FORMA DE PAGO<br/>{{ credito.forma_pago_2 }}</div>
+    </div>
+    
+    <div class="clear"></div>
+
+    <div class="tr">
+        <div class="td mediano left">3) NOMBRE DE LA EMPRESA<br/>{{ credito.rc_nombre_empresa_3 }}</div>
+        <div class="td muy_muy_chico left">CIUDAD/ESTADO<br/>{{ credito.rc_ciudad_estado_3}}</div>
+        <div class="td chico left">ATENCION<br/>{{ credito.rc_atencion_3 }}</div>
+        <div class="td muy_muy_chico left">TELEFONO<br/>{{ credito.rc_telefono_3}}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td muy_chico left gris">ANTIGÜEDAD<br/>{{ credito.rc_antiguedad_3 }}</div>
+        <div class="td muy_chico left gris">DÍAS DE CRÉDITO<br/>{{ credito.rc_dias_credito_3 }}</div>
+        <div class="td muy_chico left gris">CRÉDITO<br/>{{ credito.monto_credito_3}}</div>
+        <div class="td muy_chico left gris">FORMA DE PAGO<br/>{{ credito.forma_pago_3 }}</div>
+    </div>
+    
+    <div class="clear"></div>
+</div>
+
+
+<div id="mensaje">
+    "Al llenar y firmar el formato anterior, que consta de 1 hoja, declaro y 
+    compruebo que toda la información proporcionada es verídica y actualizada, 
+    y que autorizo a Compuproveedores, S.A. de C.V.para que investigue los datos
+    proporcionados, como requisitod de esta solicitud."
+</div>
+<div id="acepto"><b>ACEPTO Y RATIFICO EL PRESENTE DOCUMENTO</b></div>
+
+<div class="nom_firma left">
+    <div>___________________________________________</div>
+    <div class="center">NOMBRE Y FIRMA DEL REPRESENTANTE LEGAL(CLIENTE)</div>
+</div>
+
+<div class="nom_firma right">
+    <div>___________________________________________</div>
+    <div class="center">NOMBRE Y FIRMA DEL GERENTE(CLIENTE)</div>
+</div>
+<div class="clear" style="padding-top:150px;"></div>
+
+
+<div class="center"><b>MATRIZ HERMOSILLO</b></div>
+<div class="center">San Luís Potosí No. 21 entre Matamoros y Guerrero. Colonia Centro. C.P. 83000 Tel.(662) 214-22-00 Fax:(662) 215-87-50</div>
+
+<div class="clear" style="padding-top:20px;"></div>
+
+<div class="sucursal left">
+    <div class="center">TIJUANA</div>
+    <div>Vía Rápida Ote. No. 15455 int.4 Tel.(664) 645-1814</div>
+</div>
+<div class="sucursal left">
+    <div class="center">AGUASCALIENTES</div>
+    <div>Córdoba 218 Tel.(449) 913-4418</div>
+</div>
+<div class="sucursal left">
+    <div class="center">CULIACÁN</div>
+    <div>Álvaro obregón Tel.(667) 715-8533</div>
+</div>
+<div class="clear"></div>
+<div class="right">PÁGINA 1 DE 1</div>
+
+
+</body>
+</html>

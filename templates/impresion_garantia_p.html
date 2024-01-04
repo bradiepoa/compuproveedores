@@ -1,0 +1,317 @@
+<!--<div class="folio_r1">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="folio_r2">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="clear espacio50"></div>
+--> 
+<div><img src="/site_media/compu/images/distribuidor_arriba.png" /></div>
+<div id="logo">    
+    <img src="/site_media/compu/images/logo.png" width="120" alt="Logo">
+</div>
+
+<div class="titulo_">
+    <b>SOLICITUD DE GARANTÍA</b>
+</div>
+
+<div class="folio_fecha">
+        <div class="center folio_fecha_titulo">
+            <b>FOLIO</b>
+        </div>
+           
+        <div class="center folio_fecha_cont">
+            <span >No. {{ bitacora.folio }}</span>
+        </div>
+
+</div>
+<div class="espacio10;"></div>
+<div class="folio_fecha">
+        <div class="center folio_fecha_titulo">
+            <b>FECHA</b>
+        </div>
+           
+        <div class="center folio_fecha_cont">
+            <span>{{ bitacora.fecha }}</span>
+        </div>
+
+</div>
+
+
+<div class="clear"></div>
+
+<table class="left small">
+    <tr>
+        <td class="bold">Cliente:</td>
+        <td>{{ bitacora.cliente.nombre }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Dirección:</td>
+        <td>{{ bitacora.cliente.direccion }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Población:</td>
+        <td>{{ bitacora.cliente.ciudad }} {{ bitacora.cliente.estado }}</td>
+    </tr>
+    <tr>
+        <td class="bold">RFC:</td>
+        <td>{{ bitacora.cliente.rfc }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Teléfono:</td>
+        <td>{{ bitacora.cliente.telefono }}</td>
+    </tr>
+
+</table>
+
+<table class="right small">
+    <tr>
+        <td class="bold">No. Cliente:</td>
+        <td>{{ bitacora.cliente.no_clientes_interno|default:"" }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Vendedor:</td>
+        <td>{{ bitacora.cliente.vendedor }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Contactar a:</td>
+        <td>{{ bitacora.cliente.contacto }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Condición:</td>
+        <td class="bold">Garantía</td>
+    </tr>
+</table>
+
+<table class="right small">
+    <tr>
+        <td class="bold">COPIA:</td>
+        <td>{{ atencion }}</td>
+    </tr>
+    <tr>
+        <td class="bold">GUIA:</td>
+        <td>{{ bitacora.guia }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Folio:</td>
+        <td>{{ bitacora.folio }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Fecha:</td>
+        <td class="bold"> {{ bitacora.fecha_factura|date:"d/m/Y" }}</td>
+    </tr>
+</table>
+
+    
+
+<div class="clear"></div>
+
+<p class="small">DESCRIPCIÓN DEL PRODUCTO EN PROCESO DE GARANTÍA</p>
+<table class="small">
+    <tr>
+        <td class="bold">Sucursal</td>
+        <td>{{ bitacora.get_sucursal_display }}</td>
+        <td style="width:30px;"></td>
+        <td class="bold">Recepción</td>
+        <td>{{ bitacora.fecha }}</td>
+        
+    </tr>
+    <tr>
+        <td class="bold">Tipo de garantía</td>
+        <td>{{ bitacora.get_tipo_garantia_display }}</td>
+        <td></td>
+        <td class="bold">Vigencia</td>
+        <td>{{ bitacora.fecha_vencimiento|default:"" }}</td>
+        
+    </tr>
+    <tr>
+        <td class="bold">No. Factura</td>
+        <td>{{ bitacora.num_factura }}</td>
+        <td></td>
+        <td class="bold">Fecha de recepción:</td>
+        <td>{{ bitacora.fecha_recepcion }}</td>
+        
+    </tr>
+    <tr>
+        <td class="bold">Clave</td>
+        <td>{{ bitacora.clave }}</td>
+        <td></td>
+        <td class="bold">Fecha Factura:</td>
+        <td>{{ bitacora.fecha_factura }}</td>
+        
+    </tr>
+    <tr>
+        <td class="bold">Descripción</td>
+        <td>{{ bitacora.descripcion }}</td>
+        <td></td>
+        <td class="bold">No. de serie:</td>
+        <td>{{ bitacora.no_serie }}</td>
+    </tr>
+    <tr>
+        <td class="bold">Accesorios</td>
+        <td >{{ bitacora.accesorios }}</td>
+    </tr>
+
+    
+</table>
+
+<div class="small" style="text-align: justify;">
+<p>PROCEDIMIENTO PARA EFECTUAR GARANTÍA</p>
+
+<p>Para hacer válida una garantía deberá enviar el producto a nuestras oficinas, 
+antes de un lapso de 30 díás después de la fecha de la factura,
+anexando lo siguiente:</p>
+
+<p>1.- Copia del comprobante de compra o factura así como manuales, 
+cables y accesorios que incluya el producto original, en empaque original,
+con código de la empresa, en caso de no incluir lo anterior, no podrá llevarse
+a cabao la garantía por producto incompleto, en caso de no incluir copia del 
+comprobante de la compra o factura no procederá la garantía.</p>
+
+<p>2.- Carta explicando el problema del producto enviado a garantía,
+no se procederá su revisión si no se incluye dicho documento.</p>
+
+<p>3.- El tiempo de respuesta una vez recibido el producto en nuestras
+oficinas será de 5 a 30 días hábiles. Si el fabricante requiere de mayor
+plazo, Compuproveedores, S.A. de C.V. se lo dará a conocer al cliente.</p>
+
+
+<p>
+<b>TIEMPO DE GARANTÍA: </b>
+El tiempo de garantía de un producto dependerá de que el proveedor o 
+fabricante del producto determine, y este se especifica en la cotización
+de cada uno de los artículos, en la mayoría de ellos el período de garantía
+es de un año. El periodo de garantía entra a partir de la fecha de compra
+que se detalla en la factura, no pudiendo ser ampliado en ningún caso,
+aun cuando se realice la sustitución por otro componente en una reparación o cambio.
+Los artículos enviados a garantía que no sean reclamados por el cliente en un 
+lapso mayor a 30 días, se perderán.</p>
+
+<p>
+<b>LA GARANTÍA DE EQUIPOS NO CUBRE LO SIGUIENTE: </b>
+Quedan excluidos de toda garantía los defectos y deterioros producidos por 
+hechos externos, como principalmente accidentes elécticos, por desgaste
+y por utilización no conforme a las instrucciones. Incorrecta instalación
+y/o operación por parte del cliente, de un equipo o componente. Incorrecta 
+instalación o avería en un equipo provocada por un componente no suministrado por 
+Compuproveedores, S.A. de C.V. e incorporado por el cliente.</p>
+
+
+<p>
+<b>GARANTÍAS EN CONSUMIBLES: </b>
+No hay garantía en consumibles de cómputo, excepto el tiempo de entrega que 
+será de 3 a 4 meses, en los casos en los que el fabricante evalue primero
+que procede, bajo las mismas políticas de garantía mencionadas.
+En caso de que un signo alguno de estos artículos sea aceptado por 
+Compuproveedores, S.A. de C.V. para evaluación del fabricante, queda bajo el 
+riesgo del cliente dejarlo, lo cual no obliga en ningún momento a 
+Compuproveedores, S.A. de C.V. llevar a cabo la garantía, reponerlo o reembolsarlo.
+Quedará solo en caso de que el fabricante la valide, se procederá a hacerla mediante 
+cambio físico exclusivamente. Lo anterior obliga al cliente a pagar a Compuproveedores,
+S.A. de C.V. cualquier factura que se derive de la compra de un artículo, aun 
+cuando no se haga garantía en este trámite.<p>
+
+
+<p>
+<b>ANULACIÓN DE GARANTÍA: </b>
+Sólo se harán válidas las garantías por defectos del fabricante, 
+no por daño físico (nos referimos a daño físico si el producto presenta 
+cualquier alteración notoria como productos quebrados, rayados, quemados, 
+con circuitos quemados, pines doblados, sellos de garantía violados o con 
+piezas sueltas). Aquellos productos que presenten daño físico, 
+automáticamente pierden su garantía. En el caso de que el cliente envíe un 
+producto a garantía y a la paquetería por la que lo haya mandado presente
+averiado su paquete, no lo recibiremos y nos comunicaremos de forma inmediata con el
+cliente para que lo verifique con la compañía transportista. Si el empaque que 
+utilizó para enviar el producto no fue el indicado y el prodcuto llega
+físicamente dañado, no procederá la garantía sin excepción alguna.
+Es recomendable mandar los paquetes muy bien corregidos para evitar estos casos.
+</p>
+
+
+<p>
+<b>PRODUCTOS ENVIADOS A GARANTÍA EN BUEN ESTADO: </b>
+En caso que el producto presentado a garantía mostrara un buen funcionamiento
+se cobrará un cargo de $200.00 pesos. El cliente cubrirá los costos de envío de 
+regreso, si el producto fallara después del primer mes el cliente deberá de 
+cubrir todos los costos de los envíos</p>
+
+
+<p>
+<b>¿RECIBISTE UN PRODUCTO NO SOLICITADO? </b>
+En caso de haber recibido un producto que no corresponda con el solicitado, 
+nosotros haremos el respectivo cambio de inmediato cubriendo por completo los
+gastos de paquetería, solo deberás enviarnos por fax o escaneado el recibo de 
+cobro de la paquetería por la que lo hayas mandado y nosotros haremos el 
+reembolso por medio de un depósito bancario.</p>
+
+
+<p>
+<b>PRODUCTOS DAÑADOS POR LA PAQUETERÍA: </b>
+En caso de que su pedido llegue con daños físicos por parte de la paquetería,
+y/o con algún faltante, solamente se hará válido el cambio si el cliente lo 
+reporta dentro de las próximas 36 hrs de haberlo recibido, ya que las paqueterías
+exigen que se reporte de inmediato, cuando se dan estos casos lo más aconsejable 
+es reportalo de inmediato con la paquetería de su localidad. Si el paquete 
+presenta daños aun cuando no haya sido abierto, evite recibirlo para que nos 
+sea regresado.</p>
+
+
+<p>
+<b>PRODUCTOS DESCONTINUADOS:</b>En caso de que el producto ya haya sido descontinuado por el fabricante o 
+se encuentre agotado, se entregará uno de las mismas características o similares
+como reemplazo. Dichos reemplazos continúan con la misma garantía del producto
+original.</p>
+
+
+<p>
+<b>REEMBOLSO Y DEPRECIACIÓN DE MERCANCÍA: </b>
+En caso de no contar con un productosimilar se hará un reembolso por medio
+de un depósito aplicando los siguientes porcentajes de depreciación de acuerdo 
+al tiempo transcurrido. Es necesario aplicar siempre este porcentaje de depreciación
+devido a que es el mismo que nos aplican nuestros proveedores.</p>
+</div>
+
+<div style="width:600px;">
+    <table class="small right" styel="text-align:center;">
+        <tr>
+            <th>TIEMPO</th>
+            <th>% DE DEPRECIACIÓN</th>
+        </tr>
+        <tr>
+            <td>De 1 a 30 días</td>
+            <td>0%</td>
+        </tr>
+        <tr>
+            <td>De 31 a 90 días</td>
+            <td>20%</td>
+        </tr>
+        <tr>
+            <td>De 91 a 180 días</td>
+            <td>35%</td>
+        </tr>
+        <tr>
+            <td>De 181 a 360 días</td>
+            <td>50%</td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="clear espacio10"></div>
+
+<div class="firmas left">
+    <div>____________________________________</div>
+    <div class="center">Nombre y firma de quien ingresa el equipo</div>
+</div>    
+    
+<div class="firmas right">
+    <div>____________________________________</div>
+    <div class="center">Nombre y firma del tecnico que recibe el equipo</div>
+</div>  
+
+<div class="clear"></div>

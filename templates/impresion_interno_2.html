@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>REPORTE TÉCNICO INTERNO</title>
+	<link rel="stylesheet" type="text/css" href="{{ root_url }}/site_media/css/basic.css" />
+
+<style>
+
+{% include "bitacora_css.css"%}
+</style>
+	
+	
+</head>
+<body>
+
+{% for atencion in atenciones %}
+
+    <div {% if not forloop.last %}style="page-break-after: always"{% endif %}>
+        {% include "impresion_interno.html" %}</div>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cfdi:Comprobante total="1.16" xmlns:cfdi="http://www.sat.gob.mx/cfd/3" TipoCambio="1.0000" fecha="2012-06-18T21:18:41" sello="WKnrOORr6bhYIz1p+5yrSNW40A6p2wKYhqeMitE4fTAYYPGidlqcWQ/3wD7SdFvXuxVtktcVj3aWtHzBGI07mZZyVXr3AXMFdG+pzvwhOC4eb+oy9Hcb/cO1xOuG6Mxsr5YTvQipVFaccwMGqxOn1TPpLnk6KBuq13fpB2I6Bxk=" Moneda="USD" metodoDePago="efectivo" noCertificado="20001000000100001695" xsi:schemaLocation="http://www.sat.gob.mx/cfd/3 http://www.sat.gob.mx/sitio_internet/cfd/3/cfdv3.xsd http://www.sat.gob.mx/TimbreFiscalDigital http://www.sat.gob.mx/sitio_internet/TimbreFiscalDigital/TimbreFiscalDigital.xsd" certificado="MIIFEjCCA/qgAwIBAgIUMjAwMDEwMDAwMDAxMDAwMDE2OTUwDQYJKoZIhvcNAQEFBQAwggFvMRgwFgYDVQQDDA9BLkMuIGRlIHBydWViYXMxLzAtBgNVBAoMJlNlcnZpY2lvIGRlIEFkbWluaXN0cmFjacOzbiBUcmlidXRhcmlhMTgwNgYDVQQLDC9BZG1pbmlzdHJhY2nDs24gZGUgU2VndXJpZGFkIGRlIGxhIEluZm9ybWFjacOzbjEpMCcGCSqGSIb3DQEJARYaYXNpc25ldEBwcnVlYmFzLnNhdC5nb2IubXgxJjAkBgNVBAkMHUF2LiBIaWRhbGdvIDc3LCBDb2wuIEd1ZXJyZXJvMQ4wDAYDVQQRDAUwNjMwMDELMAkGA1UEBhMCTVgxGTAXBgNVBAgMEERpc3RyaXRvIEZlZGVyYWwxEjAQBgNVBAcMCUNveW9hY8OhbjEVMBMGA1UELRMMU0FUOTcwNzAxTk4zMTIwMAYJKoZIhvcNAQkCDCNSZXNwb25zYWJsZTogSMOpY3RvciBPcm5lbGFzIEFyY2lnYTAeFw0xMDExMTkxODQ0NTlaFw0xMjExMTgxODQ0NTlaMIGrMR4wHAYDVQQDExVNQVJUSU4gQVJCQUlaQSBRVUlST1oxHjAcBgNVBCkTFU1BUlRJTiBBUkJBSVpBIFFVSVJPWjEeMBwGA1UEChMVTUFSVElOIEFSQkFJWkEgUVVJUk9aMRYwFAYDVQQtEw1BQVFNNjEwOTE3UUpBMRswGQYDVQQFExJBQVFNNjEwOTE3TURGTlNSMDgxFDASBgNVBAsTC1N1Y3Vyc2FsQVZMMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCcphXGAbrbUnaumkSTsbGrFIfkaajOpvP1RFcVcbpWe7JBNXAwShKIH79QGLYEc9ATBmlxtjAma0B4ZRBTjmQ4vQrp9LwT3bCNX+9J9lUOHGsCysyau3VxGNoCbhBxMYQP835LjAcy1d4AScOjGx8hxTZ6AUXtMmyEe+0NNQsJnQIDAQABo4HqMIHnMAwGA1UdEwEB/wQCMAAwCwYDVR0PBAQDAgbAMB0GA1UdDgQWBBQu1+baB5RWdTu3kJCg4IjlF32tHDAuBgNVHR8EJzAlMCOgIaAfhh1odHRwOi8vcGtpLnNhdC5nb2IubXgvc2F0LmNybDAzBggrBgEFBQcBAQQnMCUwIwYIKwYBBQUHMAGGF2h0dHA6Ly9vY3NwLnNhdC5nb2IubXgvMB8GA1UdIwQYMBaAFOtZfQQimlONnnEaoFiWKfU54KDFMBAGA1UdIAQJMAcwBQYDKgMEMBMGA1UdJQQMMAoGCCsGAQUFBwMCMA0GCSqGSIb3DQEBBQUAA4IBAQCrGSNzknMaltAwGL31KygIpD333C7HGJ2CbD6y1rTS6VdJQzHJb8fXcuzjcsZkkICHfyAu8BD6+kr7OhKPs1s+WjeUOUXTp3sdWepbR+b+QK4PK9ropyURnwVK1q28UMo4EalILJXDV/sdL6MW2SKk1y+BLi+o+HNJe49h72gsZaUyqpZ4RYtBZqo5495S3yCSwYaEN3gV5XCLuwddFKqfTrzIB3eytr07i195saBuVx2ihorO77+GiLb9AwWxuJKof6toM5yTLdpyMhiNBgOR4hJ5S5s/K+sSeYrjsUPlI4JktVrqpAywvmIZ+ix1w4FvLyFkueam57FqqRLp3vzv" version="3.0" folio="0" subTotal="1.00" tipoDeComprobante="ingreso" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" formaDePago="Pago en una sola exhibición" xmlns:tfd="http://www.sat.gob.mx/TimbreFiscalDigital">
+<cfdi:Emisor nombre="EMPRESA DEMOSTRACIÓN CFDI" rfc="AAQM610917QJA">
+<cfdi:DomicilioFiscal codigoPostal="83180" localidad="Hermosillo" noExterior="123" estado="Sonora" pais="MEXICO" noInterior="432" municipio="Hermosillo" colonia="COlonia de prueba" calle="Domicilio ficticio"/>
+</cfdi:Emisor>
+<cfdi:Receptor nombre="JUAN EFREN CASTILLO ENCINAS" rfc="CAEJ860809JQ0">
+<cfdi:Domicilio codigoPostal="83180" localidad="Hermosillo" noExterior="234" estado="Sonora" pais="MEXICO" noInterior="23" municipio="Hermosillo" colonia="Olivares" calle="Gustavo Muñoz 83"/>
+</cfdi:Receptor>
+<cfdi:Conceptos>
+<cfdi:Concepto importe="1.00" valorUnitario="1.00" cantidad="1" descripcion="prueba" unidad="PIEZA" noIdentificacion="1"/>
+</cfdi:Conceptos>
+<cfdi:Impuestos totalImpuestosTrasladados="0.1600" totalImpuestosRetenidos="0.00">
+<cfdi:Traslados>
+<cfdi:Traslado importe="0.1600" tasa="16.00" impuesto="IVA"/>
+</cfdi:Traslados>
+</cfdi:Impuestos>
+<cfdi:Complemento>
+<tfd:TimbreFiscalDigital version="1.0" UUID="204BC00A-A212-4C26-BAE1-DF26FA8299B6" FechaTimbrado="2012-06-18T23:18:43" selloCFD="WKnrOORr6bhYIz1p+5yrSNW40A6p2wKYhqeMitE4fTAYYPGidlqcWQ/3wD7SdFvXuxVtktcVj3aWtHzBGI07mZZyVXr3AXMFdG+pzvwhOC4eb+oy9Hcb/cO1xOuG6Mxsr5YTvQipVFaccwMGqxOn1TPpLnk6KBuq13fpB2I6Bxk=" noCertificadoSAT="30001000000100000801" selloSAT="A1OysLlbIdJGf1FTHxLJxPd+0pkrdCce1SwIqA6IYyfFkig1BEOnTZZGeEXvHx811oEotFlsh501o5dLneGJ9/g8kOHvHYNUaptVm7U0zm6eGUYwZtGlYDuWN3a0Esn1Q/zM4/WugOuU0WznxekAs8wEaESOB5SGHTIqI6XuRVg="/>
+</cfdi:Complemento>
+</cfdi:Comprobante>

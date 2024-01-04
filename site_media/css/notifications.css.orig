@@ -1,0 +1,120 @@
+.notifications{
+	width: 450px;
+	max-height: 600px;
+	padding: 10px 10px 0 10px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	position: absolute;
+	top:228px;
+	right:5px;
+	z-index: 9999;
+	border-radius: 4px;
+	background-color: rgba(190,190,190,.3);
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+#span_msg{
+	cursor:pointer;
+	padding: 15px 10px 4px 10px;
+	border-radius:4px 4px 0 0;
+}
+.backg{
+	background-color: rgba(190,190,190,.3);
+}
+.fecha{
+	color: #383838;
+	line-height: 19px;
+	background-color: rgba(255,255,255,.2);
+	padding: 0 4px;
+	border-radius: 10px;
+	font-style: italic;
+	font-size: 11px;
+	text-shadow:0 1px 0 rgba(255,255,255,.3);
+	margin-left: 10px;
+}
+.success{
+	width: 100%;
+	position: relative;
+	min-height: 40px;
+	padding-top: 5px;
+	background-color: rgba(112,158,87,1);
+	border: 1px solid #3f7d1c;
+	box-shadow: inset 0 1px 0 #a4c294;
+	border-radius: 2px;
+	position: relative;
+	margin-bottom: 10px;
+}
+.error{
+	width: 100%;
+	min-height: 40px;
+	padding-top: 5px;
+	background-color: #c35353;
+	border: 1px solid #961b1b;
+	box-shadow: inset 0 1px 0 #d79292;
+	border-radius: 2px;
+	position: relative;
+	margin-bottom: 10px;
+}
+.warning{
+	width: 100%;
+	min-height: 40px;
+	padding-top: 5px;
+	background-color: #ffc34f;
+	border: 1px solid #b97f0f;
+	box-shadow: inset 0 1px 0 #fad58f;
+	border-radius: 2px;
+	position: relative;
+	margin-bottom: 10px;
+}
+.info{
+	width: 100%;
+	min-height: 40px;
+	padding-top: 5px;
+	background-color: #69a2d0;
+	border: 1px solid #46779f;
+	box-shadow: inset 0 1px 0 #a1c3df;
+	border-radius: 2px;
+	position: relative;
+	margin-bottom: 10px;
+}
+.icon_left{
+	width: 28px;
+	height: 28px;
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	margin-top: -14px;
+	padding-right: 4px;
+	border-right: 1px solid rgba(0,0,0,.2);
+	box-shadow: 1px 0 rgba(255,255,255,.4);
+}
+.close{
+	width: 21px;
+	height: 21px;
+	position: absolute;
+	opacity: .5;
+	right: 1px;
+	top: 1px;
+	cursor: pointer;
+}
+.content_message{
+	margin-left: 59px;
+}
+.titulo{
+	font-size: 12pt;
+	line-height: 19px;
+	vertical-align: middle;
+	display: inline;
+	font-family: Arial, sans-serif;
+	color: #fff;
+	letter-spacing: 1px;
+	text-shadow: 0 1px 2px rgba(0,0,0,.3);
+	font-weight: bold;
+}
+.descripcion{
+	font-family: arial, sans-serif;
+	text-align: justify;
+	font-size: 10pt;
+	margin: 0 6px 6px 0;
+	text-shadow: 0 1px 0px rgba(0,0,0,.3);
+	color: #fff;
+}

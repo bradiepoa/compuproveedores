@@ -1,0 +1,205 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load custom_tags %}
+{% comment %} {% load url from future %} {% endcomment %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Compuproveedores</title>
+
+<link href="/site_media/compu/compuproveedores.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/site_media/css/ui/all.css" />
+<script type="text/javascript" src="/site_media/js/jquery.js"></script>
+<script type="text/javascript" src="/site_media/js/global_functions.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.cycle.min.js"></script> 
+<script type="text/javascript" src="/site_media/js/jquery-ui.js"></script>
+<script>
+    jQuery.browser={};(function(){jQuery.browser.msie=false;
+    jQuery.browser.version=0;if(navigator.userAgent.match(/MSIE ([0-9]+)\./)){
+    jQuery.browser.msie=true;jQuery.browser.version=RegExp.$1;}})();
+</script>
+<script type="text/javascript"> 
+
+    $(document).ready(function(){
+       
+        $('.rotate').cycle({ 
+            fx: 'fade', 
+            speed: '700', 
+            timeout: 3200
+        }); 
+     
+        
+        $(" .telefono_lada ").change(function(){
+            tel = $(this).val();
+            tel = tel.replace("(", "").replace(")", "");
+            telefono = "(";
+            for(var i=0; i<tel.length; i++){
+                if(i==3){
+                    telefono += ")";
+                }
+                telefono += tel[i];
+            }
+            $(this).val(telefono)
+        
+        })
+        
+        $("#nav ul li").hover(function(){
+            //--    add highlight class
+            menu = $(this);
+            menu.children("a").addClass("highlight");
+      
+            //--    show dropdown menu
+            menu.children("ul").stop(false, true).slideDown("fast");
+
+        },function(){
+            //--    remove highlight class
+            menu = $(this);
+            menu.children("a").removeClass("highlight");
+         
+            //--    hide dropdown menu
+            menu.children("ul").slideUp("fast");
+        });
+
+        $(" .li_titulo_nav ").hover(function(){
+            $(this).addClass("titulo_menu_nav");
+        },function(){
+            $(this).removeClass("titulo_menu_nav");
+        });
+        
+     
+        $("#cerrar_dialog_success").click(function(){
+            $(" #dialog-success ").hide();
+            $(this).hide()
+        });
+      
+    });
+</script>   
+
+{% block extra_head %}
+  
+{% endblock %}
+  
+</head>
+<body>
+<div class="white-shadow">
+	<div class="wrapper">
+        <div class="header">
+            <div class="inicia_sesion">
+
+            </div><!--inicia sesion-->
+            <div id="nav" class="menu">
+                <ul >
+                    <li><a href="/">INICIO</a></li>
+                    <li class="li_titulo_nav">
+                        <a href="#" class="doble ">PRODUCTOS<br />Y SERVICIOS</a> 
+                        
+                        <ul class="menu_nav">
+                            {% for c_menu in categorias_menu %}
+                            <li {% if forloop.last %}style="height:35px;"{% else %} class="menu_nav_text" {% endif %}>
+                                 <div ><a href="#" class="nav_categoria">{{ c_menu.nombre }}</a></div>
+                                 {% if c_menu.subcategorias.all %}
+                                 <ul class="menu_nav">
+                                    {% for sc_menu in c_menu.subcategorias.all %}
+                                    <li {% if forloop.last %}style="height:35px;"{% endif %} class="nav_subcategoria menu_nav_text" >
+                                        <a href="{% get_marca_sc_url c_menu.id sc_menu.id %}">{{ sc_menu.nombre  }}</a>
+                                        {% if sc_menu.subcategorias.all %}
+                                        <ul class="menu_nav">
+                                            {% for url in sc_menu.subcategorias.all %}
+                                                <li style="height:30px; width:200px; line-height: 30px;"class="menu_nav_text" >
+                                                    <a href="{{ url.url }}">
+                                                        <!-- <div class="left"><img height="30" src="/upload/{{ url.marca.logo }}"/></div> -->
+                                                        <div class="left" style="vertical-align:middle;"> {{ url.marca }}</div>
+                                                       
+                                                        
+                                                       
+                                                        
+                                                    </a></li>
+                                            {% endfor %}
+                                        </ul>
+                                        {% endif %}
+                                        
+                                    </li>
+                                    {% endfor %}
+                                 </ul>
+                                 {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                    <li class="li_titulo_nav" >
+                        <a href="#"  >SOLUCIONES</a>
+                        <ul class="menu_nav">
+                            {% for s in soluciones_tecnologicas %}
+                            <li style="width:350px;" class="menu_nav_text">
+                                  <div ><a href="/soluciones_tecnologicas/{{ s.0 }}/" class="nav_categoria">{{ s.1 }}</a></div>
+                            </li>
+                            {% endfor %}
+                            <li style="width:350px; height:35px;" >
+                                 <div>
+                                    <a href="/site_media/compu/catalogo_soluciones.pdf" class="nav_categoria">CATÁLOGO DE SOLUCIONES</a>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                    
+                    </li>
+                    <li><a href="{% url "empresas" %}">EMPRESAS</a> </li>
+                    <li><a href="{% url "distribuidores" %}">DISTRIBUIDORES</a></li>
+                    <li><a href="{% url "directorio" %}">DIRECTORIO</a></li>
+                    <li><a href="{% url "en_construccion" %}"><img src="/site_media/compu/images/carrito.png" width="40"></a></li>
+
+                </ul>
+            </div><!--menu-->
+        </div><!--header-->
+        <div class="left_col">
+            <div class="left_col_inner">
+                <span class="buscar">{% espacio 20 %}</span>
+                <div class="rotate">
+                    {% for imagen in imagenes %}
+                        {% if imagen.imagen_chica %}
+                            <a href="{% url "promociones" %}">
+                                <img src="{{ imagen.imagen_chica.url }}" 
+                                     class="banner" width="178" 
+                                     height="565" alt="Promoción" />
+                            </a> 
+                        {% endif %}
+                    {% endfor %}
+                </div> 
+            </div><!--left-col-inner-->
+        </div><!--left_col-->
+        <div class="right_col">
+            <div class="container">
+                {% block content %}
+
+                {% endblock %}
+            </div>
+
+            <div class="footer"> 
+                
+                <div class="botones"> 
+                    
+                    <a href="https://www.facebook.com/CompuproveedoresHMO"><img src="/site_media/compu/images/face.png" width="25px" /></a> &nbsp;
+                    <a href="https://twitter.com/Compuproveedore"><img src="/site_media/compu/images/twitter.png" width="25px"/></a>
+                </div>
+                <div class="right" style="font-size:14px; margin-right:13px;">
+                    (662) 214 22 00 
+                    <div style="font-size:13px; text-align:center" > Hermosillo </div>
+                </div>
+                <div class="menu_footer">
+                    <div class="espacio10"></div>
+                    </span><a href="{% url "nosotros" %}" class="{{ nosotros_current }}">Nosotros</a><span class="sep">|
+                    </span><a href="{% url "bolsa_trabajo" %}" class="{{bolsa_trabajo_current}}">Bolsa de Trabajo</a><span class="sep">|
+                    </span><a href="{% url "contactanos" %}" class="{{contacto_current}}">Contáctanos</a><span class="sep">|
+                </span><a href="{% url "aviso_privacidad" %}" class="{{aviso_current}}">Aviso de Privacidad</a><span class="sep">|
+                    </span>	
+                    <a href="{% url "login" %}">Iniciar Sesión</a>	
+                </div>
+            </div><!--footer-->    
+        </div><!--right_col-->
+        
+        <div class="clear"></div>
+    </div><!--wrapper-->
+
+</div>
+</body>
+</html>

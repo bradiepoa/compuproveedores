@@ -1,0 +1,40 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+<script>
+function search(){
+    window.location = '{% url 'ver_distribuidores' %}?q=' + $("#id_search").val();
+}
+</script>
+<img src="/site_media/fc/images/search.png">
+<input type="text" value="{{ q }}" id="id_search" onkeypress="check_enter(event, search)">
+<input type='button' value="Buscar" onclick="search()">
+
+<table class="list-table">
+    <tr>
+        <th>Nombre</th>
+        <th>RFC</th>
+    </tr>
+    {% for u in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'ver_distribuidor' u.id %}">{{ u.razon_social }}</a></td>
+            <td><a href="{% url 'ver_distribuidor' u.id %}">{{ u.rfc }}</a></td>
+            
+        </tr>
+    {% endfor %}
+</table>
+
+{% include 'paginado.html' %}
+
+<script>
+    
+    function post(){
+        window.location = '.?q=' + $("#q").val();
+    }
+    
+    $("#q").keydown(function(){ check_enter(event, post); });
+    $("#go").click(post);
+    $("#q").val('{{ q|safe }}');
+</script>
+
+{% endblock %}

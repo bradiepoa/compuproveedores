@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+	<head>
+		<title>COMPUPROVEEDORES</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<link rel="stylesheet" href="/site_media/css/compuproveedores.css" />
+		<script type="text/javascript" src="/site_media/js/jquery.js"></script>
+		<script type="text/javascript" src="/site_media/js/global_functions.js"></script>
+		<script type="text/javascript" src="/site_media/js/jquery.validate.min.js"></script>
+		
+		{% block extra_head %}{% endblock %}
+		
+		<script type="text/javascript">
+		    $().ready(function(){
+		        $("form").validate();
+		    });
+/**
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-24560212-1']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+**/
+var cal_options = {
+    changeMonth: true,
+    changeYear: true,
+    dateFormat: 'yy-mm-dd',
+    showOn: 'button',
+    buttonImage: '/site_media/img/calendar.gif',
+    buttonImageOnly: true,
+    
+    
+};
+        </script>
+        
+	</head>
+	<body>
+	<div id="conteneur">
+		  <div id="header">COMPUPROVEEDORES</div>
+		  
+		  <div id="haut">
+			<ul class="menuhaut">
+			    <li><a href="/">Inicio</a></li>
+				<li><a href="{% url 'productos' %}">Productos</a></li>
+				<li><a href="{% url 'directorio' %}">Directorio</a></li>
+				<li><a href="{% url 'bolsa_trabajo' %}">Bolsa de trabajo</a></li>
+				
+				<li><a href="{% url 'distribuidores' %}">Distribuidores</a></li>
+				
+				<li><a href="{% url 'contacto' %}">Contacto</a></li>
+				
+				<!-- <li><a href="{% url 'soluciones_empresas' %}">Soluciones para empresas</a></li> -->
+			</ul>
+		  </div>
+
+		  <div id="centre">
+		    {% block content %}
+			{% endblock %}
+			</div>
+		  <div id="pied">
+		    <!-- <a href="http://ejemplo......">Ejemplo</a> -->
+		  </div>
+	</div>	
+	<script type="text/javascript">
+		    $().ready(function(){
+		        $("form").validate();
+		    });
+    </script>
+	</body>
+</html>
+
+

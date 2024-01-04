@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% comment %} {% load url from future %} {% endcomment %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Compuproveedores</title>
+
+    <link href="/site_media/compu/compuproveedores_admin.css" rel="stylesheet" type="text/css" />
+    <link href="/site_media/datetimepicker/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/site_media/css/ui/all.css" />
+    <link rel="stylesheet" href="/site_media/css/jquery.autocomplete.css" type="text/css" />
+    <link rel='stylesheet' type='text/css' href='/site_media/fullcalendar/fullcalendar.css' />
+    <link rel='stylesheet' type='text/css' href='/site_media/fullcalendar/fullcalendar.print.css' media='print' />
+    <link href="/site_media/css/custom.css" rel="stylesheet" type="text/css" />
+    {% block extra_head %}
+    
+    {% endblock %}
+</head>
+
+<body>
+<div class="white-shadow">
+    <div class="wrapper">
+        <div class="header">
+            <div class="inicia_sesion ">
+                <a href="{% url 'logout' %}"><img src="/site_media/img/icons/logout.png" width="20";/>Cerrar sesión</a>
+            </div><!--inicia sesion-->
+            
+            <div class="menu">
+                <a href="{% url 'admin' %}">INICIO</a>   
+                <!-- <a href="{% url 'administrar_productos' %}">Productos</a>  -->
+                <a href="{% url 'administrar_imagenes' %}" class="doble">Imágenes<br /> de Promociones</a> 
+                <a href="{% url 'administrar_directorio' %}" class="doble">Directorio<br /> Empresa</a> 
+                <a href="{% url 'solicitudes_trabajo' %}" class="doble">Solicitudes <br />de trabajo</a> 
+                <a href="{% url 'clientes' %}">Clientes</a>
+                <a href="{% url 'usuarios' %}" class="doble">Administrar<br /> Usuarios</a>
+                <!-- <a href="{% url 'equipo_renta' %}" class="doble">Equipo<br /> de renta</a> -->
+            </div>
+        </div><!--header-->
+
+
+        <div class="right_col">
+            <div class="container">
+                {% block content %}
+
+                {% endblock %}
+            </div><!--container-->
+
+            <!-- <div class="footer"> 
+                <div class="menu_footer">
+                    <div class="espacio10"></div>
+                    <a href="{% url "bitacoras_garantia" %}">Bitácora de Garantía</a><span class="sep">|</span>
+                    <a href="{% url "bitacoras_servicio" %}">Bitácora de Servicio</a><span class="sep">|</span>
+                    <a href="{% url "bitacoras_interno" %}">Bitácora de Reporte Interno</a><span class="sep">|</span>
+                    <a href="{% url "direcciones_email" %}">Direcciones Email</a><span class="sep">|</span>
+                    <a href="{% url "marca_categoria" %}">Marcas y Categorias</a>
+                </div>
+            </div> -->
+            <!--footer-->   
+        
+        </div><!--right_col-->
+        
+        <div class="clear"></div>
+    </div><!--wrapper-->
+</div>
+<script type="text/javascript" src="/site_media/datetimepicker/localization/jquery-ui-timepicker-es.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/site_media/js/date.js"></script> 
+<script type="text/javascript" src="/site_media/js/global_functions.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.formset.min.js"></script>
+<script type="text/javascript" src="/site_media/datetimepicker/jquery-ui-timepicker-addon.js"></script>
+<script type='text/javascript' src='/site_media/fullcalendar/jquery-ui-1.8.11.custom.min.js'></script>
+<script type='text/javascript' src='/site_media/fullcalendar/fullcalendar.min.js'></script>
+<script>
+    jQuery.browser={};(function(){jQuery.browser.msie=false;
+    jQuery.browser.version=0;if(navigator.userAgent.match(/MSIE ([0-9]+)\./)){
+    jQuery.browser.msie=true;jQuery.browser.version=RegExp.$1;}})();
+</script>
+<script>
+
+    var cal_options = {
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd/mm/y',
+        showOn: 'button',
+        buttonImage: '/site_media/img/calendar.gif',
+        buttonImageOnly: true,        
+    };
+    
+    var cal_options_h = {
+        hourMin: "0",
+        hourMax: "23",
+        dateFormat: 'dd/mm/y',
+    };
+
+    $(document).ready(function(){
+            $(".has_datepicker").datepicker(cal_options);
+            $(".has_datetimepicker").datetimepicker(cal_options_h);
+
+        });
+</script>
+</body>
+</html>
+

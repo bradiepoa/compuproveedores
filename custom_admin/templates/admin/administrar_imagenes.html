@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="right">La imagen debe de ser 178 x 565</div>
+<div clasS="clear"></div>
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %} {{ formset.management_form }}
+    
+    <table>
+        <tr>
+            <th style="font-size:0.8em;">Activo</th>
+            <th>Imagen pequeña</th>
+            <th>Imagen grande</th>
+            <th>Vencimiento</th>
+            <th>Preliminar</th>
+            <th>X</th>
+        </tr>
+        
+    {% for f in formset %} 
+        <tr>
+            <td>{{ f.activo }}</td>
+            <td>{{ f.id }}{{ f.imagen_chica }}{{ f.imagen_chica.errors }}</td>
+            <td>{{ f.id }}{{ f.imagen_grande }}{{ f.imagen_grande.errors }}</td>
+            <td>{{ f.fecha_vencimiento }}{{ f.fecha_vencimiento.errors }}</td>
+            
+            {% if f.instance.imagen_chica %}            
+                <td><img src="{{ f.instance.imagen_chica.url }}" style="height:80px; width:80px;"></td>
+                <td>{{ f.DELETE }}<label for="id_form-{{ forloop.counter0 }}-DELETE"><img src="/site_media/img/delete.png"></td>
+            {% endif %}
+        </tr>
+       
+    {% endfor %}
+    </table>
+    <input type="submit" value="Guardar" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% load custom_tags %}
+<div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+<div id="logo">    
+    <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+</div>
+<div class="clear"> </div>
+<h2 class="center">PAGARÉ</h2>
+<div class="center">Hoja 1/1</div>
+
+<div class="right">Bueno por: ${{ renta.total|cur }}</div>
+<div class="clear"> </div>
+<div class="right">Hermosillo, Sonora a {{ renta.fecha_inicio|date:"d/m/y" }}</div>
+<div class="clear"> </div>
+
+<p class="justify">Debo y pagare incondicionalmente mediante este Pagaré a la orden de COMPUPROVEEDORES S.A DE C.V.
+ubicado en la Calle San Luis Potosí # 21, entre Calles Matamoros y Guerrero, Col. Centro, C.P. 83000, en Hermosillo, Sonora, el día {{renta.fecha_final|date:"d/m/y"}} sin protesto; la cantidad de ${{ renta.total|cur }} ( {{ renta.total|cantidad_letra }} ) ya que ampara el costo total del equipo que he recibido en calidad de Equipo de cómputo a mi (nuestra) entera y completa satisfacción. Este pagaré forma parte de una serie numerada del 1(UNO) al 1(UNO) y todos están sujetos a la condición de que, al no pagarse cualquiera de ellos a su vencimiento, serán exigibles todos los que sigan en número, además de los ya vencidos y que se encuentren insolutos, desde la fecha de vencimiento de este documento hasta el día de su liquidación; causando interés moratorio a razón del 5% (cinco por ciento) mensual, durante todo el tiempo que permanezca total o parcialmente insoluto el valor del presente pagaré, siendo pagaderos los interese en esta Ciudad, juntamente con el principal, más los gastos que por ello originen.</p>
+
+
+<div id="datos_deudor">
+    <div><b>NOMBRE Y DATOS DEL DEUDOR </b></div>
+    <div>&nbsp;</div>
+    <div>Nombre: {{ renta.responsable }}</div>
+    <div>Domicilio: {{ renta.direccion }}</div>
+    <div>Telefono: {{ renta.telefono }}</div>
+</div>
+
+<div id="acepto_debo">
+    <div><b>Acepto(amos), Debo(emos) y Pagaré(mos) </b></div>
+    <div>&nbsp;</div>
+    <div>Firma: ___________________</div>
+    <div>&nbsp;</div>
+    <div>Nombre: {{ renta.responsable }}</div>
+
+</div>
+
+<div style="height:70px;" class="clear"></div>
+*Favor de anexar Credencial de Elector.

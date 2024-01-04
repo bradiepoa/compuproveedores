@@ -1,0 +1,52 @@
+{% extends "main.html" %}
+{% block content %}
+
+<script>
+
+function eliminar(id){
+
+    var c = confirm("¿Esta seguro que desea eliminar esta lista?")
+    if(c){
+        window.location = "/admin/eliminar_lista/"+id+"/"
+    }
+}
+
+</script>
+
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+   <div>{{ form.archivo }} {{ form.archivo.errors }}</div>
+   <div> Fecha de vencimiento: {{ form.fecha_vencimiento }}  {{ form.fecha_vencimiento.errors }} </div>
+   <input type="submit" value="Actualizar lista de Productos" />
+   
+   {% if incompletos %}
+        <div>Se encontraron productos incompletos en las líneas 
+            {% for linea in incompletos %}{{ linea }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}.
+            Se procedió a agregarse al catálogo de cualquier manera.
+        </div>
+   {% endif %}
+   
+</form>
+
+<h4>Listas anteriores</h4>
+
+<table class="list-table">
+    <tr>
+        <th>Actualización</th>
+        <th>Vencimiento</th>
+        <th>Descargar</th>
+        <th></th>
+    </tr>
+    {% for l in listas %}
+        <tr>
+            <td>{{ l.created|date:"d/m/Y H:i" }}</td>
+            <td>{{ l.fecha_vencimiento|default:"No especificada" }}</td>
+            <td><a href="{{ l.archivo.url }}">Descargar</a></td>
+            <td><a href="javascript:eliminar({{ l.id }});"><img src="/site_media/img/icons/delete_16.png" /></a></td>
+        </tr>
+    {% endfor %}
+    
+</table>
+
+{% endblock %}
+

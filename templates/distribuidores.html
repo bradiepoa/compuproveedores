@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="fondo_gris_distribuidores">
+    <div class="espacio20" style="width:300px;"></div>
+    <div class="cuadro_fondo_gris_titulo">BENEFICIOS</div>
+    <div id="texto_distribuidores">
+        <p>Si es Distribuidor Independiente de productos de cómputo y 
+        oficina, dese de alta con nosotros.</p>
+
+        <p>Somos un proveedor con las mejores existencias, precios, 
+        asesoría, respaldo y seguridad; trabajamos con usted para 
+        ayudarlo a alcanzar sus metas de negocios.</p> 
+
+        <p>Ofrecemos a Distribuidores el mejor servicio y una amplia gama 
+        de productos de las mejores marcas (revise módulo de productos 
+        y servicios). </p>
+
+        <p>Tenemos promociones especiales y traspasamos todos los 
+        beneficios de los Fabricantes, además de contar con un equipo 
+        confiable de técnicos profesionales que actúan como soporte de 
+        sus compras y ofrecen soluciones inmediatas de cualquier duda 
+        y/o problema que pudiera surgir. Le ofrecemos asesoria en 
+        calidad de productos y proyectos especiales. </p>
+    
+        <p>De esta forma cubrimos el 100% de sus necesidades, teniendo 
+        como objetivo principal, satisfacer la compra de consumibles,
+        equipos de  impresión y accesorios.</p>
+      
+        <p>Así, nos ponemos a sus órdenes. con una gran variedad de 
+        productos y servicios, garantizándole cumplir con sus 
+        necesidades.</p>
+    
+    </div>
+    <form action="." method="POST">{% csrf_token %}
+    <div style="margin: 0 0 0 55px;">
+        <input type="submit" value="Alta de distribuidores" name="alta_distribuidor" />
+        <input type="submit" value="Solicitud de crédito" name="solicitud_credito" />
+        
+    </div>
+    <div style="margin:0 0 0 120px;">
+        <input type="submit" value="Actualización de datos" name="actualizacion" />
+    </div>
+    </form>
+<div class="espacio10"></div>
+</div>    
+{% endblock %}

@@ -1,0 +1,166 @@
+body {
+	background-color: #bdbebf;
+	background-image: url(images/BG.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+	margin:0;
+	font-family:Arial, Helvetica, sans-serif;
+}
+a{text-decoration:none;}
+.white-shadow{
+	width:998px;
+	margin:0 auto;
+	background-image:url(images/white-shadow.png);
+}
+.wrapper{
+	width:931px;
+	margin:0 auto;
+}
+.header{
+	width:931px;
+	height:212px;
+	background-image:url(images/header.png);
+	background-repeat:no-repeat;
+	background-position:center top;
+}
+
+.inicia_sesion{
+	height:27px;
+	width:190px;
+	margin:127px 23px 0 0;	
+	float:right;
+	line-height:27px;
+	color:#fff;
+	font-size:13px;
+}
+.menu{
+	height:42px;
+	line-height:42px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#626469;
+	font-weight:bold;
+	font-size:14px;
+	float:right;
+	margin:12px 0 0 0;
+}
+.menu .doble{line-height:15px; margin-top:7px}
+.menu a{
+	color:#626469;
+	display:block;
+	float:left;
+	margin:0 22px;
+	text-align:center;
+}
+
+.left_col{
+	background-color:#d81f2a;
+	width:191px;
+
+	float:left;
+	
+}
+.left_col_inner{
+	width:178px;
+	margin:7px auto 7px auto;
+}
+.buscar{
+	font-family:Arial, Helvetica, sans-serif;
+	color:#fff;
+	font-style: italic;
+	font-weight: bold;	
+	font-size:13px;
+}
+.input_busqueda{
+	background-image:url(images/input_busqueda.png);
+	border:0;
+	width:122px;
+	height:21px;
+	background-color:transparent;
+	background-repeat:no-repeat;
+}
+.left_col .banner{
+	margin:8px 0 0 0;
+	border:none;
+}
+.right_col{
+	width:740px;
+	float:left;
+}
+.container{
+	width:714px;
+	margin:13px auto 0 auto;	
+}
+.banner_ppal{
+	border:none;	
+}
+
+.red_box{
+	width:178px;
+	height:246px;
+	background-image:url(images/red_box.png);	
+	float:left;
+	margin:0 0 5px 0;
+}
+.red_box_inner{
+	width:139px;
+	margin:0 auto;	
+	position:relative;
+	top:27px;
+	
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:10px;
+	color:#fff;
+}
+.red_box_inner .pic{
+	margin:0 auto;
+	width:126px;
+	border:#cdcdcd 1px solid;
+	display:block;
+	height:71px;
+}
+
+.red_box_inner .title{
+	margin:10px 0 5px 1px;
+}
+.red_box .text{
+	margin:0 4px !important;
+	height:65px;
+}
+.boton_vermas{
+	margin:	10px 0 0 12px;
+}
+.footer{
+	height:58px;
+	background-image:url(images/bg_footer.gif);
+	width:100%;	
+	font-size:13px;
+	line-height:30px;
+	color:#767a7d;
+}
+.footer a, footer a:visited{color:#767a7d; margin:0 10px}
+.footer a.first{margin-left:20px;}
+.footer .botones{
+	float:right;
+	margin:0 25px 0 0;	
+	position:relative;
+	top:12px;
+}
+.footer .botones a{margin:0;}
+.footer img{border:0}
+
+
+.float_right{float:right}
+.clear{clear:both}
+
+
+.border30{
+	border-radius: 30px;
+	-webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+	behavior: url(http://www.motitta.com/compu/PIE.htc);
+}
+
+.gray{
+	background-color:#dcdada !important;
+}

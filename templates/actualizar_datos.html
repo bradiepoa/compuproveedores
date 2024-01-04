@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+
+{% if es_distribuidor %}
+<div id="fondo_gris_distribuidores">
+{% else %}
+<div id="fondo_gris_empresas">
+{% endif %}
+    <div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo" >
+        {% if es_distribuidor %}
+        DISTRIBUIDORES
+        {% else %}
+        EMPRESAS
+        {% endif %}
+    </div>
+    <div id="actualizar_datos_cuadro">
+            <div id="actualizar_datos_titulo">
+                <div>ACTUALIZAR DATOS</div>
+            </div>
+
+            <div id="texto_act_datos">
+                <form action="." method="POST">{% csrf_token %}
+                    <div id="act_datos_no_distribuidor">No. {{ palabra_cliente_distribuidor }}</div>
+                    <div style="height:10px;"></div>
+                    <div>{{ form.no_distribuidor }}</div>
+                    <div style="color:red; font-size:12px;">{{ form.no_distribuidor.errors.0 }}</div>
+
+                    <div style="height:50px;"></div>
+                    
+                    <div>RFC</div>
+                    <div style="height:10px;"></div>
+                    <div>{{ form.rfc }}</div>
+                    <div style="color:red; font-size:12px;">{{ form.rfc.errors.0 }}</div>
+                    <div style="height:15px;"></div>
+                    <div style="color:red; font-size:12px;">{{ form.errors.non_field_error.0 }}</div>
+                  
+                    <div style="margin: 50px 50px 0 0;">
+                        <input type="submit" value="Enviar"/>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+
+        {% if success_mensaje %}
+            <div id="dialog-success">
+                    <div id="text_dialog_success">{{ success_mensaje }}</div>
+            </div>      
+            <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+        {% endif %}
+
+
+</div>
+
+
+{% endblock %}

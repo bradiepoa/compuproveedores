@@ -1,0 +1,62 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+
+<div class="left">
+    <a href="{% url 'edit_marca' 0 %}"><img src="/site_media/img/add.png">Agregar marca</a>
+    <table >
+        
+        <tr>
+        <h2>Marcas</h2>
+        </tr>
+
+        {% for m in marca %}
+        <tr>
+            <td><a href="{% url 'edit_marca' m.id %}">{{m.nombre}}</a></td>
+            {% if m.logo %}<td id="imagen_marca"><img src="{{m.logo.url}}" width="20em;"></td>{% endif %}
+        {% endfor %}
+
+    </table>
+</div>
+
+<div class="left margin-t"> 
+    <a href="{% url 'edit_categoria' 0 %}"><img src="/site_media/img/add.png">Agregar categoria</a>
+    <table>
+       
+        <tr><h2>Categorias</h2></tr>
+
+        {% for c in categoria %}
+        <tr>
+            <td><a href="{% url 'edit_categoria' c.id %}">{{c.nombre}}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    </div>
+
+<div class="left margin-t"> 
+    <a href="{% url 'edit_subcategoria' 0 %}"><img src="/site_media/img/add.png">Agregar subcategoria</a>
+
+</div>
+
+<div class="clear"></div>
+<div>&nbsp;</div>
+<div>
+    <a href="{% url 'edit_url' 0 %}"><img src="/site_media/img/add.png">Agregar Url</a>
+    <table>
+
+        <tr><h2>URLS</h2></tr>
+
+        {% for u in urls %}
+        <tr>
+            <td><a href="{% url 'edit_url' u.id %}">{{u.marca_categoria}}</a></td>
+            <td><a href="{% url 'edit_url' u.id %}">{{u.url}}</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+<div style="clear:both;"></div>
+
+{% endblock %}
+

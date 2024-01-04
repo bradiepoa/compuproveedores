@@ -1,0 +1,44 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<script>
+
+function eliminar_solicitud(id){
+
+    c = confirm("¿Está seguro que desa eliminar esta solicitud de trabajo?")
+    if(c){
+        window.location = "/admin/eliminar_solicitud_trabajo/"+id;
+    }
+    
+
+}
+</script>
+
+<h3>Solucitudes de trabajo</h3>
+<table class="list-table">
+    <tr>
+        <th>Fecha</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Aspiracion</th>
+        <th>Puesto</th>
+        <th>Curriculum</th>
+        <th>X</th>
+    </tr>
+    {% for s in solicitudes %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td>{{ s.created }}</a></td>
+            <td>{{ s.nombre }}</a></td>
+            <td>{{ s.apellido }}</a></td>
+            <td>{{ s.email }}</a></td>
+            <td>{{ s.aspiracion }}</a></td>
+            <td>{{ s.puesto }}</a></td>
+            <td><a href="{{ s.curriculum.url }}">C</a></td>
+            <td><a href="javascript:eliminar_solicitud({{ s.id }})"><img src="/site_media/img/icons/delete_16.png" /></a></td>
+            
+        </tr>
+    {% endfor %}
+</table>
+  
+{% endblock %}
+

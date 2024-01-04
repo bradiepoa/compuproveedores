@@ -1,0 +1,185 @@
+{% extends "admin_base.html" %}
+{% load custom_tags %}
+{% block content %}
+
+<form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+    <table>
+        <tr><td>Nombre:</td><td>{{ solicitud.dist.show_razon_social }}</td></tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'banco_1' }}</td>
+            <td>{{ solicitud.banco_1 }}</td>
+
+            <td>{{ solicitud|label_tag:'pagos_no_cuenta_1' }}</td>
+            <td>{{ solicitud.pagos_no_cuenta_1 }}</td>
+
+        </tr>
+        
+        <tr>
+            <td>{{ solicitud|label_tag:'pagos_banco_2' }}</td>
+            <td>{{ solicitud.pagos_banco_2 }}</td>
+
+            <td>{{ solicitud|label_tag:'pagos_no_cuenta_2' }}</td>
+            <td>{{ solicitud.pagos_no_cuenta_2 }}</td>
+
+        </tr>
+    </table>
+    
+    <h3>Referencias comerciales</h3>
+    <table>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_nombre_empresa_1' }}</td>
+            <td>{{ solicitud.rc_nombre_empresa_1 }}</td>
+            
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_ciudad_estado_1' }}</td>
+            <td>{{ solicitud.rc_ciudad_estado_1 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_atencion_1' }}</td>
+            <td>{{ solicitud.rc_atencion_1 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_telefono_1' }}</td>
+            <td>{{ solicitud.rc_telefono_1 }}</td>
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_antiguedad_1' }}</td>
+            <td>{{ form.rc_antiguedad_1 }}</td>
+            <td>{{ form.rc_antiguedad_1.errors }}</td>
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_dias_credito_1' }}</td>
+            <td>{{ form.rc_dias_credito_1 }}</td>
+            <td>{{ form.rc_dias_credito_1.errors }}</td>
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'monto_credito_1' }}</td>
+            <td>{{ form.monto_credito_1 }}</td>
+            <td>{{ form.monto_credito_1.errors }}</td>
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'forma_pago_1' }}</td>
+            <td>{{ form.forma_pago_1 }}</td>
+            <td>{{ form.forma_pago_1.errors }}</td>
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_nombre_empresa_2' }}</td>
+            <td>{{ solicitud.rc_nombre_empresa_2 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_ciudad_estado_2' }}</td>
+            <td>{{ solicitud.rc_ciudad_estado_2 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_atencion_2' }}</td>
+            <td>{{ solicitud.rc_atencion_2 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_telefono_2' }}</td>
+            <td>{{ solicitud.rc_telefono_2 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_antiguedad_2' }}</td>
+            <td>{{ form.rc_antiguedad_2 }}</td>
+            <td>{{ form.rc_antiguedad_2.errors }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_dias_credito_2' }}</td>
+            <td>{{ form.rc_dias_credito_2 }}</td>
+             <td>{{ form.rc_dias_credito_2.errors }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'monto_credito_2' }}</td>
+            <td>{{ form.monto_credito_2 }}</td>
+            <td>{{ form.monto_credito_2.errors }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'forma_pago_2' }}</td>
+            <td>{{ form.forma_pago_2 }}</td>
+            <td>{{ form.forma_pago_2.errors }}</td>
+
+        </tr>
+        <tr><td>&nbsp;</td></tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_nombre_empresa_3' }}</td>
+            <td>{{ solicitud.rc_nombre_empresa_3 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_ciudad_estado_3' }}</td>
+            <td>{{ solicitud.rc_ciudad_estado_3 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_atencion_3' }}</td>
+            <td>{{ solicitud.rc_atencion_3 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_telefono_3' }}</td>
+            <td>{{ solicitud.rc_telefono_3 }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_antiguedad_3' }}</td>
+            <td>{{ form.rc_antiguedad_3 }}</td>
+             <td>{{ form.rc_antiguedad_3.errors }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'rc_dias_credito_3' }}</td>
+            <td>{{ form.rc_dias_credito_3 }}</td>
+            <td>{{ form.rc_dias_credito_3.errors }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'monto_credito_3' }}</td>
+            <td>{{ form.monto_credito_3 }}</td>
+            <td>{{ form.monto_credito_3.errors }}</td>
+
+        </tr>
+        <tr>
+            <td>{{ solicitud|label_tag:'forma_pago_3' }}</td>
+            <td>{{ form.forma_pago_3 }}</td>
+             <td>{{ form.forma_pago_3.errors }}</td>
+
+        </tr>
+    </table>
+
+    <h3>DOCUMENTACION REQUERIDA</h3>
+    <div>Últimos tres estados de cuenta.</div>
+    <table>
+        <tr>
+            <td>{{ form.doc_req_1 }}</td>
+            <td>{{ form.doc_req_1.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.doc_req_2 }}</td>
+            <td>{{ form.doc_req_2.errors}}</td>
+        </tr>
+        <tr>
+            <td>{{ form.doc_req_3 }}</td>
+            <td>{{ form.doc_req_3.errors}}</td>
+        </tr>
+    </table>
+
+    <input type="submit" value="Guardar" />
+</form>
+<a href="{% url 'solicitar_credito_dis_pdf' form.instance.id %}">
+    <img src="/site_media/img/icons/pdf.png">
+</a>
+
+{% endblock %}
+

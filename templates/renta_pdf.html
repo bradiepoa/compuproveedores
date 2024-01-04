@@ -1,0 +1,183 @@
+{% load custom_tags %}
+<div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+<div id="logo">    
+    <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+</div>
+
+<div class="titulo_">
+    <b>VALE DE SALIDA</b>
+</div>
+
+<!--<div class="left">
+    
+    <span id="direccion">
+        <div class="espacio40"> </div>
+        <p>
+            SAN LUIS POTOSI # 21 ENTRE MATAMOROS Y GUERRERO<br>
+            COLONIA CENTRO TEL. 2-14-22-00 FAX. 2-15-85-50<br>
+            HERMOSILLO SONORA
+
+        </p>
+    </span>
+</div>-->
+
+<div class="right">
+
+    <div id="n_folio">
+        <div id="prestamo_renta">
+            PRESTAMO / RENTA DE EQUIPO
+        </div>
+        <h2 class="center" id="folio"><span style="color:red;">N°  {{ renta.folio_4_d }}</span></h2>
+    </div>
+    
+    <div id="fecha">
+        <div class="center">
+            <div id="prestamo_renta">
+            FECHA
+            </div>
+        </div>
+        <div class="center">
+            <span>{{ renta.fecha_inicio}}</span>
+        </div>
+
+    </div>
+
+</div>
+<div class="clear espacio40"></div>
+
+
+<table id="items" >
+    <tr>
+        <td>
+        <div class="gris">
+            <span>Cliente:</span>
+            <span class="right" style="padding-right:100px;">Número:</span>
+        </div>
+        <div class="espacio10"></div>
+        <span>{{ renta.cliente }}</span>
+        <span class="right" style="padding-right:100px;">{{ renta.numero_cliente }}</span>
+    </td>
+    </tr>
+    <tr>
+        <td>
+        <div class="gris">
+            <span>Responsable:</span>
+            <span class="right" style="padding-right:100px;">Departamento:</span>
+        </div>
+        <div class="espacio10"></div>
+        <span>{{ renta.responsable|default:"" }}</span>
+        <span class="right" style="padding-right:100px;">{{ renta.departamento }}</span>
+    </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="gris">
+                <span>Dirección:</span>
+                <span class="right" style="padding-right:100px;">Ciudad:</span>
+            </div>
+            <div class="espacio10"></div>
+            <span>{{ renta.direccion }}</span>
+            <span class="right" style="padding-right:100px;">{{ renta.ciudad }}</span>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="gris">
+                <span>Teléfono:</span>
+                <span class="right" style="padding-right:100px;">Condición:</span>
+            </div>
+            <div class="espacio10"></div>
+            <span>{{ renta.telefono }}</span>
+            <span class="right" style="padding-right:100px;">{{ renta.get_condicion_display }}</span>
+        </td>
+    </tr>
+
+    
+</table>
+
+
+
+<div>&nbsp;</div>
+
+<table id="items" class="with_border" border="1">
+    <thead>
+        <tr>
+        	<th>CANTIDAD</th>
+	        <th>DESCRIPCIÓN</th>
+	        <th>No. DE SERIE</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for object in renta.detalles.all %}
+        <tr>
+            <td class="center">1</td>
+	        <td>{{ object.equipo.descripcion }}</td>
+	        <td class="center">{{ object.equipo.no_serie }}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% espacio "25" %}
+<table id="items" class="with_border" border="1">
+    <thead>
+        	<th>OBSERVACIONES</th>
+    </thead>
+
+    <tbody>
+        <tr id="observaciones">
+            <td class="center justify">{{ renta.observaciones|default:"" }}</td>
+        </tr>
+    </tbody>
+</table>
+{% espacio 15 %}
+
+<div id="autorizo">
+    <div class="center">
+        <b>
+        <div>Autorizó salida</div>
+        <div>Compuproveedores, S.A. de CV</div>
+        </b>
+        <p>___________________________</p>
+        <div>Nombre y firma</div>
+        <div>Depto. Soporte Técnico</div>
+    </div>
+</div>
+
+<div id="recibio">
+    <div class="center">
+        <b>
+        <div>Recibió</div>
+        <div>Para Entregar al Cliente</div>
+        </b>
+        <p>___________________________</p>
+        <div>Nombre y firma</div>
+        <div>Ejecutivo de Cuenta</div>
+        
+    </div>
+</div>
+<div class="clear"></div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div class="center">
+        <b>Recibí Equipo</b>
+        <p>___________________________</p>
+        <div>Nombre y firma</div>
+        <div>De conformidad del Cliente</div>
+</div>
+
+{% espacio 58 %}
+<div class="atencion center" style="font-size:15px; font-weight:bold;">
+    <div>
+        Matriz: San Luis Potosí No. 21 entre Matamoros y Guerrero. Col. 
+        Centro. C.P. 83000. Tel.(662) 214 22 00 Fax:(662) 215 87 50
+    </div> 
+    <div>
+        Sucursales: Tijuana – Culiacán – Aguascalientes
+    </div> 
+    {% espacio 5 %}
+
+    {{ atencion }} – {% if forloop.first %} Original {% else %} Copia {% endif %}
+</div>
+

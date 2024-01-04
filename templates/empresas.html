@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="fondo_gris_empresas">
+    <div class="espacio20" style="width:300px;"></div>
+    <div class="cuadro_fondo_gris_titulo">EMPRESAS</div>
+    <div id="texto_empresas">
+        
+        <p>En Compuproveedores, nos dedicamos a la venta de tecnología, somos una empresa 100% Mexicana, con sede en Hermosillo, Sonora y presencia principalmente en Tijuana, Aguascalientes, Culiacán y cobertura en todo el Noroeste del país, ofrecemos una manera diferente de comercialización y negocios para nuestros Clientes y Socios; siendo una de las mayores empresas de Venta de Tecnología de la Información en Sonora, que opera en casi todo el país.</p>
+        
+        <p>Nos especializamos en el diseño, desarrollo y comercialización de proyectos tecnológicos, así como de las principales líneas y marcas de productos que incluyen los dispositivos de computación personal, empresas y servidores estándar de la industria, dispositivos relacionados con almacenamiento, productos de red, software y una amplia gama de impresoras y productos de diagnóstico por imágenes, siempre a la vanguardia.</p>
+        
+        <p>Comercializamos con Pequeñas y Medianas Empresas, Corporativos y Gobierno, directamente y a través de Distribuidores Independientes; con el respaldo de los mejores fabricantes y principales proveedores de tecnología que existen.</p>
+        
+        
+        <p>En Compuproveedores ofrecemos servicios de consultoría de negocios, somos una compañía sólida alrededor de nuestros productos.</p>
+        
+        <p>Visite nuestra sección de Soluciones o llámenos para visitarlo.</p>
+
+    </div>
+    <form action="." method="POST">{% csrf_token %}
+    <div style="margin: 0 0 0 74px;">
+        <input type="submit" value="Alta de clientes" name="alta_empresa" />
+        <input type="submit" value="Solicitud de crédito" name="solicitud_credito" />
+
+    </div>
+
+    <div style="margin:0 0 0 120px;">
+        <input type="submit" value="Actualización de datos" name="actualizacion" />
+    </div>
+        
+
+    </form>
+<div class="espacio10"></div>
+</div>
+{% endblock %}

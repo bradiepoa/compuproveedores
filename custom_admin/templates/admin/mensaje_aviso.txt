@@ -1,0 +1,6 @@
+
+La siguientes bitacoras estan por vencer:
+{% for bitacora in bitacoras %}
+#{{ bitacora.folio }} - Vence: {{ bitacora.fecha_vencimiento }} de {{ bitacora.obtener_cliente }}
+{{ bitacora.url }}
+{% endfor %}

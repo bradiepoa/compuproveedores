@@ -1,0 +1,42 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+   <div>{{ form.archivo }} <span style="color:red;">{{ form.archivo.errors.0 }}</span></div>
+   <div>Sucursal: {{ form.sucursal }} <span style="color:red;">{{ form.sucursal.errors.0 }}</span></div>
+   <input type="submit" value="Subir lista de clientes" />
+   
+   {% if repetidos %}
+        <div>Se encontraron las siguientes claves de cliente repetidas
+            <table class="list-table">
+                <tr>
+                    <th colspan="3">Lista</th>
+                    <th colspan="3">Original</th>
+                </tr>
+                <tr>
+                    <th>Clave</th>
+                    <th>Cliente</th>
+                    <th>RFC</th>
+                    
+                    <th>Clave</th>
+                    <th>Cliente</th>
+                    <th>RFC</th>
+                </tr>
+                
+            {% for cliente in repetidos %}
+                <tr>
+                    <td>{{ cliente.original.numero }}</td>
+                    <td>{{ cliente.original.nombre }}</td>
+                    <td>{{ cliente.original.rfc }}</td>
+                    
+                    <td>{{ cliente.lista.numero }}</td>
+                    <td>{{ cliente.lista.nombre }}</td>
+                    <td>{{ cliente.lista.rfc }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+        </div>
+   {% endif %}
+   
+</form>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+{% load custom_tags %}
+{% block content %}
+
+<form acction="." method="post">{% csrf_token %}
+<table>
+    <tr>
+        <td>{{ form.nombre.label_tag }}</td>
+        <td>{{ form.nombre }}</td>
+        <td>{{ form.nombre.errors }}</td>
+    </tr>         
+</table>
+    <input type="submit" value="Guardar">
+    {% if id > '0' %}
+        <a href="{% url 'eliminar_categoria' id %}"><img src="/site_media/img/icons/delete_32.png"/>Eliminar</a>
+    {% endif %}
+</form>
+{% espacio 15 %}
+{% if form.instance.id %}
+    <table>
+        <thead>
+            <th>Subcategorias</th>
+        </thead>
+        {% for sub in form.instance.subcategorias.all %}   
+                <tr>
+                    <td><a href="{% url 'edit_subcategoria' sub.id %}">{{ sub.nombre }}</a></td>
+                </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+{% endblock %}
+

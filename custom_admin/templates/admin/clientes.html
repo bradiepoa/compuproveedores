@@ -1,0 +1,76 @@
+{% extends "main.html" %}
+{% block content %}
+
+<form action="." method="GET">
+    <img src="/site_media/fc/images/search.png">
+    {{ form.q }}
+    {{ form.tipo }}
+
+    Sucursal:<select name="sucursal" id="id_sucursal">
+        <option value="">------------</option>
+        {% for s in sucursales %}
+            <option value="{{ s.0 }}">{{ s.1 }}</option>
+        {% endfor %}
+    </select>
+    <input type='submit' value="Buscar">
+<form>
+
+
+<div id="div_add">
+    <a href="{% url 'cliente' 0 %}">
+    <img src="/site_media/fc/images/add.gif"> Agregar Cliente</a>
+    
+    <a href="{% url 'subir_clientes' %}">
+    <img src="/site_media/fc/images/add.gif"> Subir una lista de clientes</a>
+    
+</div>
+
+<table class="list-table table">
+    <tr>
+        <th>No.</th>
+        <th>RFC</th>
+        <th>Razón Social</th>
+        <th>Sucursal</th>
+        <th>Datos Soporte</th>
+        <!-- <th>Datos Administrativos</th> -->
+        <th>Crédito</th>
+        <th>C</th>
+        <th>Eliminar</th>
+        
+    </tr>
+    {% for u in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td>{{ u.get_numero|default:"" }}</td>
+            <td>{{ u.rfc }}</td>
+            <td>{{ u.nombre }}</td>
+            <td>{{ u.get_sucursal_display }}</td>
+            <td><a href="{% url 'cliente' u.id %}">Editar: {{ u.mostrar_datos }}</a></td>
+            <!-- <td><a href="{% url 'ver_distribuidor' u.distribuidor.id %}">Editar: {{ u.distribuidor.mostrar_datos }}</a></td> -->
+            <td><a href="{% url 'solicitud_credito_distribuidor' u.distribuidor.id %}">Editar: {{ u.solicitarcredito.mostrar_datos }}</a></td>
+            <td>{{ u.distribuidor.mostrar_clasificacion }}</td>
+            <td><a href="{% url 'eliminar_cliente' u.id %}">Eliminar</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% include 'paginado.html' %}
+
+<script>
+    
+    function post(){
+        window.location = '.?q=' + $("#q").val();
+    }
+    
+    $("#q").keydown(function(){ check_enter(event, post); });
+    $("#go").click(post);
+    $("#q").val('{{ q|safe }}');
+    {% if tipo %}
+        $("#id_tipo").val("{{ tipo }}")
+    {% endif %}
+    {% if sucursal %}
+        $("#id_sucursal").val("{{ sucursal }}")
+    {% endif %}
+    
+</script>
+
+{% endblock %}

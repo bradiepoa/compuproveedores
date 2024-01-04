@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="cuadro_fondo_gris">
+    <div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo" >NUESTRA HISTORIA</div>
+    <div id="nuestra_historia_text">
+        <p>
+            
+            <b>Compuproveedores</b>, es una empresa líder en la venta de soluciones de 
+            impresión, cómputo y consumibles. Fundada por el Sr. Enrique Coeto 
+            el 2 de junio de 1989 en Culiacán Sinaloa, posicionándose rápidamente 
+            en el mercado y después trasladándose a la ciudad de Hermosillo, Sonora, 
+            donde se visionó una oportunidad de comercialización y cuya ciudad se 
+            convertiría en la matriz de la empresa.
+            
+        </p>
+        <p>
+            Por más de 20 años hemos ofrecido una gran variedad de productos y 
+            servicios de las mejores marcas.
+        </p>
+        
+        <p>
+            En los últimos años hemos cubierto al 100% las necesidades de nuestros 
+            clientes, ofreciendo no sólo productos y servicios de la mejor calidad, 
+            sino que también, soluciones tecnológicas que mejoran los negocios.
+        </p>
+        <p> 
+            En el año 2007 iniciamos el crecimiento gracias a nuestros clientes, 
+            equipo de trabajo y proveedores, cuando se inaugura la sucursal de 
+            Tijuana con gran éxito.
+        </p>
+        <p> 
+            Más tarde, en el año 2009 <b>Compuproveedores</b> abre nuevamente sus 
+            puertas en la ciudad de Culiacán con una nueva sucursal, para el año 
+            2010 ya cuenta con una sucursal en Aguascalientes, cubriendo así las 
+            necesidades de los clientes en todo el noroeste y centro del país.
+        </p>
+        
+        <div id="nuestra_historia_abajo">
+            <div id="nuestra_historia_abajo_text">
+                <b>Compuproveedores</b> se ha convertido en el Distribuidor y 
+                Desarrollador de las Soluciones Tecnológicas, más importantes de Sonora 
+                y uno de los más representativos en Tijuana, Culiacán y Aguascalientes, 
+                siempre en busca de la mejor tecnología y con un estatus invaluable de 
+                conocimiento del mercado.
+            </div>
+        </div>
+        <div  style="margin-top:5px;">
+            <input class="right"  style="padding-right:10px;" type="button" onclick="window.location='{% url 'nosotros' %}'" value="Volver atrás">
+
+        </div>
+    </div>
+    
+    <div class="right" style="margin-top:111px;"><img src="/site_media/compu/images/imagen_nuestra_historia.png"></div>
+    <div class="espacio10"></div>
+</div>
+
+{% endblock %}

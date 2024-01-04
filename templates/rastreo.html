@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+{% block content %}
+<div class="cuadro_fondo_gris">
+    <div class="espacio20"></div>
+    {% if bitacora.tipo ==  0 %}
+        <div class="cuadro_fondo_gris_titulo">GARANTÍA</div>
+        <div class="cuadro_fondo_blanco_seleccionar">
+            {% espacio 10 %}
+            <div class="scroll_rastreo">
+                <table id="tabla_rastreo" >
+                    <tr><td class="rastreo_thead radius_top_left">Fecha:<td class="tr_gris rastreo_thead_derecha radius_top_right">{{ bitacora.fecha|date:"d/m/Y" }}</td><tr>
+                    <tr><td class="rastreo_thead">Hora:<td class="tr_gris rastreo_thead_derecha ">{{ bitacora.fecha|date:"H:i:s" }}</td><tr>
+                    <tr><td colspan="2" class="estado_bitacora">GRANTÍA {{ bitacora.estado_mayuscula }} </td><tr>
+                    <tbody id="rastreo_body">
+                        <tr class="tr_gris"><td>Cliente</td><td>{{ bitacora.cliente }}</td></tr>
+                        <tr class="tr_azul"><td>Folio</td><td>{{ bitacora.folio }}</td></tr>
+                        <tr class="tr_gris"><td>Fecha</td><td>{{ bitacora.fecha }}</td></tr>
+                        <tr class="tr_azul"><td>Vencimiento</td><td>{{ bitacora.fecha_vencimiento }}</td></tr>
+                        <tr class="tr_gris"><td>Clave</td><td>{{ bitacora.clave }}</td></tr>
+                        <tr class="tr_azul"><td>Descripción</td><td>{{ bitacora.descripcion }}</td></tr>
+                        <tr class="tr_gris"><td>Accesorios</td><td>{{ bitacora.accesorios }}</td></tr>
+                        <tr class="tr_azul"><td>No. Factura</td><td>{{ bitacora.num_factura }}</td></tr>
+                        <tr class="tr_gris"><td>Fecha Factura</td><td>{{ bitacora.fecha_factura }}</td></tr>
+                        <tr class="tr_azul"><td>Falla</td><td>{{ bitacora.falla }}</td></tr>
+                        <!-- <tr class="tr_gris"><td>Acciones correctivas</td><td>{{ bitacora.acciones_correctivas }}</td></tr> -->
+                        <tr class="tr_azul"><td>Refacciones</td><td>{{ bitacora.refacciones }}</td></tr>
+                        <tr class="tr_gris "><td>Observaciones</td><td>{{ bitacora.observaciones }}</td></tr>
+                        
+                        {% for s in bitacora.status.all %}
+                            <tr class="{% cycle "tr_azul" "tr_gris" %}">    
+                                {% if forloop.last %}
+                                <td class="radius_buttom_left">Avance {{ s.creado }}</td><td class="radius_buttom_right">{{ s.status }}</td>
+                                {% else %}
+                                <td>Avance {{ s.creado }}</td><td>{{ s.status }}</td>
+                                {% endif %}
+                            </tr>
+                            
+                        {% endfor %}
+                    </tbody>
+                    
+                </table>
+            </div>
+        </div>
+    {% endif %}
+    {% if bitacora.tipo == 1 %}
+        <div class="cuadro_fondo_gris_titulo">SERVICIO TECNICO</div>
+        <div class="cuadro_fondo_blanco_seleccionar">
+            {% espacio 10 %}
+            <div class="scroll_rastreo">
+                <table id="tabla_rastreo" >
+                    <tr><td class="rastreo_thead radius_top_left">Fecha:<td class="tr_gris rastreo_thead_derecha radius_top_right">{{ bitacora.fecha|date:"d/m/Y" }}</td><tr>
+                    <tr><td class="rastreo_thead">Hora:<td class="tr_gris rastreo_thead_derecha ">{{ bitacora.fecha|date:"H:i:s" }}</td><tr>
+                    <tr><td colspan="2" class="estado_bitacora">{{ bitacora.estado_mayuscula }} </td><tr>
+                    <tbody id="rastreo_body">
+                        <tr class="tr_gris"><td>Cliente</td><td>{{ bitacora.cliente }}</td></tr>
+                        <tr class="tr_azul"><td>Folio</td><td>{{ bitacora.folio }}</td></tr>
+                        <tr class="tr_gris"><td>Fecha</td><td>{{ bitacora.fecha }}</td></tr>
+                        <tr class="tr_azul"><td>Vencimiento</td><td>{{ bitacora.fecha_vencimiento }}</td></tr>
+                        <tr class="tr_gris"><td>Equipo</td><td>{{ bitacora.equipo }}</td></tr>
+                        <tr class="tr_azul"><td>Marca</td><td>{{ bitacora.marca }}</td></tr>
+                        <tr class="tr_gris"><td>Modelo</td><td>{{ bitacora.modelo }}</td></tr>
+                        <tr class="tr_azul"><td>No. serie</td><td>{{ bitacora.no_serie }}</td></tr>
+                        <tr class="tr_gris "><td class="radius_buttom_left">Observaciones</td><td class="radius_buttom_right">{{ bitacora.observaciones }}</td></tr>
+                        
+                        {% for s in bitacora.status.all %}
+                            <tr class="{% cycle "tr_azul" "tr_gris" %}">    
+                                {% if forloop.last %}
+                                <td class="radius_buttom_left">Avance {{ s.creado }}</td><td class="radius_buttom_right">{{ s.status }}</td>
+                                {% else %}
+                                <td>Avance {{ s.creado }}</td><td>{{ s.status }}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+    
+    <div class="clear"></div>
+</div>
+{% endblock %}

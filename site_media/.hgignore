@@ -1,0 +1,10 @@
+syntax: glob
+*.pyc
+*.orig
+*~
+upload
+documentos
+manuales_admintotal
+qrcodes
+documents
+fc/facturas

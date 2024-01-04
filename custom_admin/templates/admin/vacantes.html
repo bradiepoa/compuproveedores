@@ -1,0 +1,53 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+<script>
+function search(){
+    window.location = '{% url 'vacantes' %}?q=' + $("#id_search").val();
+}
+
+</script>
+<img src="/site_media/fc/images/search.png">
+<input type="text" value="{{ q }}" id="id_search" onkeypress="check_enter(event, search)">
+<input type='button' value="Buscar" onclick="search()">
+
+<div id="div_add">
+    <a href="{% url 'vacante' 0 %}">
+    <img src="/site_media/fc/images/add.gif"> Agregar Vacante</a>
+    
+</div>
+
+<table class="list-table">
+    <tr>
+        <th>Nombre</th>
+        <th>Ciudad</th>
+        <th>Funciones del puesto</th>
+        <th>Oferte laboral</th>
+
+    </tr>
+    {% for u in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            
+            <td><a href="{% url 'vacante' u.id %}">{{ u.nombre }}</a></td>
+            <td><a href="{% url 'vacante' u.id %}">{{ u.get_ciudad_display }}</a></td>
+            <td><a href="{% url 'vacante' u.id %}">{{ u.descripcion }}</a></td>
+            <td><a href="{% url 'vacante' u.id %}">{{ u.sueldo }}</a></td>
+
+        </tr>
+    {% endfor %}
+</table>
+
+{% include 'paginado.html' %}
+
+<script>
+    
+    function post(){
+        window.location = '.?q=' + $("#q").val();
+    }
+    
+    $("#q").keydown(function(){ check_enter(event, post); });
+    $("#go").click(post);
+    $("#q").val('{{ q|safe }}');
+</script>
+
+{% endblock %}

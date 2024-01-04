@@ -1,0 +1,10 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div>¿Está seguro que desea cancelar esta Biracora?</div>
+<form acction="." method="post">{% csrf_token %}
+    <input type="submit" name="si" value="Si"> <input type="submit" name="no" value="No">
+</form>
+
+{% endblock %}
+

@@ -1,0 +1,19 @@
+<div class="pagination">
+     <span class="step-links">
+    	<a href="?pag=1&sucursal={{ sucursal }}&tipo={{ tipo }}&q={{ q }}&o={{ o }}&c={{ c }}&a={{ a }}&t={{ t }}&year={{ year|default:"" }}&month={{ month|default:"" }}">&lt;&lt;</a>
+        {% if pagina.has_previous %}
+            <a href="?pag={{ pagina.previous_page_number }}&sucursal={{ sucursal }}&tipo={{ tipo }}&q={{ q }}&o={{ o }}&c={{ c }}&a={{ a }}&t={{ t }}&year={{ year|default:"" }}&month={{ month|default:"" }}">&lt;--</a>
+         {% endif %}
+        	
+         {% for page in pagina.paginator.page_range %}
+         <a href="?pag={{ page }}&sucursal={{ sucursal }}&tipo={{ tipo }}&q={{ q }}&o={{ o }}&c={{ c }}&a={{ a }}&t={{ t }}&year={{ year|default:"" }}&month={{ month|default:"" }}" {% if page == pagina.number %}class="page_selected"{% endif %}>{{ page }}</a>&nbsp;
+        {% endfor %}
+     
+			
+        {% if pagina.has_next %}
+            <a href="?pag={{ pagina.next_page_number }}&sucursal={{ sucursal }}&tipo={{ tipo }}&q={{ q }}&o={{ o }}&c={{ c }}&a={{ a }}&t={{ t }}&year={{ year|default:"" }}&month={{ month|default:"" }}">--&gt;</a>
+        {% endif %}
+		<a href="?pag={{ pagina.paginator.num_pages }}&sucursal={{ sucursal }}&tipo={{ tipo }}&q={{ q }}&o={{ o }}&c={{ c }}&a={{ a }}&t={{ t }}&year={{ year|default:"" }}&month={{ month|default:"" }}">&gt;&gt;</a>
+     </span>
+</div>
+

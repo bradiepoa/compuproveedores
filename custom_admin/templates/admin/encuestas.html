@@ -1,0 +1,21 @@
+{% extends "admin_base.html" %}
+{% block content %}
+{% load custom_tags %}
+
+<table class="list-table">
+    <tr>
+        <th>Razon social</th>
+        <th>Puesto</th>
+        <th>Fecha</th>
+
+    </tr>
+    {% for e in encuestas.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'ver_encuesta' e.id %}">{{ e.razon_social }}</a></td>
+            <td><a href="{% url 'ver_encuesta' e.id %}">{{ e.puesto }}</a></td>
+            <td><a href="{% url 'ver_encuesta' e.id %}">{{ e.creado }}</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

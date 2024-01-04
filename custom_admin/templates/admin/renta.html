@@ -1,0 +1,61 @@
+{% extends "admin_base.html" %}
+{% load custom_tags %}
+{% block content %}
+<script type="text/javascript">
+$().ready(function() {
+	$("#editForm").validate();
+    
+    $('#formset_rf tr').formset({
+        prefix: '{{ formset.prefix }}'
+    })
+    $(".delete-row:first").hide();
+    $(".delete-row:first").click(delete_formset);
+    $("#id_observaciones").css("width", "280px");
+    $("#id_observaciones").css("height", "75px");
+});
+
+function delete_formset(){
+    $("#id_form-0-DELETE").val("");
+}
+    
+</script>
+<form action="." method="post" id="editForm">{% csrf_token %}{{ formset.management_form }}
+    <table>
+        <tr><td>{{ form.numero_cliente.label_tag }}:</td><td>{{ form.numero_cliente }}</td><td>{{ form.numero_cliente.errors }}</td></tr>
+        <tr><td>{{ form.cliente.label_tag }}:</td><td>{{ form.cliente }}</td><td>{{ form.cliente.errors }}</td></tr>
+        <tr><td>{{ form.responsable.label_tag }}:</td><td>{{ form.responsable }}</td><td>{{ form.responsable.errors }}</td></tr>
+        <tr><td>{{ form.departamento.label_tag }}:</td><td>{{ form.departamento }}</td><td>{{ form.departamento.errors }}</td></tr>
+        <tr><td>{{ form.direccion.label_tag }}:</td><td>{{ form.direccion }}</td><td>{{ form.direccion.errors }}</td></tr>
+        <tr><td>{{ form.ciudad.label_tag }}:</td><td>{{ form.ciudad }}</td><td>{{ form.ciudad.errors }}</td></tr>
+        <tr><td>{{ form.telefono.label_tag }}:</td><td>{{ form.telefono }}</td><td>{{ form.telefono.errors }}</td></tr>
+        <tr><td>{{ form.condicion.label_tag }}:</td><td>{{ form.condicion }}</td><td>{{ form.condicion.errors }}</td></tr>
+        <tr><td>{{ form.fecha_inicio.label_tag }}:</td><td>{{ form.fecha_inicio }}</td><td>{{ form.fecha_inicio.errors }}</td></tr>
+        <tr><td>{{ form.fecha_final.label_tag }}:</td><td>{{ form.fecha_final }}</td><td>{{ form.fecha_final.errors }}</td></tr>
+        <tr><td>{{ form.status.label_tag }}:</td><td>{{ form.status }}</td><td>{{ form.status.errors }}</td></tr>
+        <tr><td colspan="2">{{ form.observaciones.label_tag }}:<br/>{{ form.observaciones }}</td><td>{{ form.observaciones.errors }}</td></tr>
+    </table>
+    <span class="red">{{ formset.non_form_errors}}</span>
+    <table>
+        <tr>
+            <th>Equipo</th>
+        </tr>    
+        <tbody id="formset_rf">
+        {% for f in formset.forms %}
+        <tr>
+           <td>{{ f.id }}{{ f.equipo }}<span class="red">{{ f.equipo.errors }}</span>{% if not forloop.first %}{{ f.DELETE }}{% endif %}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+<div>Total ${{ form.instance.total|cur }}</div>   
+<div class="contacto_boton"><input type="submit" value="Guardar y enviar" /></div>
+{% if form.instance.id %}
+<a href="{% url 'renta_pdf' id %}"><img src="/site_media/img/icons/pdf.png"></a>
+{%endif %}
+</form>
+
+
+
+{% endblock %}
+

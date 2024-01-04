@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+{% block content %}
+<script>
+var hovered;
+$().ready(function(){
+
+    //$("#contactanos_sucursal").hover(function(e){ alert(e.offsetX + "," + e.offsetY); }, function(e) { alert(e.offsetX + "," + e.offsetY); });
+
+});
+
+function validate_serie_folio(tipo){
+    var serie = $(" #id_serie ").val();
+    var folio = $(" #id_folio ").val();
+    
+    $.ajax({
+        url:"/validate_contactanos/?folio="+folio+"&serie="+serie,
+        dateType:"data",
+        success:function(validate){
+
+            if(validate=="False"){
+
+                out = '<div id="dialog-success">';
+                out += '      <div id="text_dialog_success">';
+                out += '            Los datos son incorrectos,';
+                out += '            favor de introducir la serie y folio correctos. ';
+                out += '      </div>';
+                out += '</div>';      
+                out += '<a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success" ></a>';
+
+                $(" #datos_incorrectos ").html(out);
+                $("#cerrar_dialog_success").click(function(){
+                    $(" #dialog-success ").hide();
+                    $(this).hide()
+                });
+                
+            }else{
+                $(" #id_"+tipo ).val("True");
+                $(" #id_editform ").submit();
+            }
+
+        }
+
+    });
+    
+}
+
+
+
+function get_sucursal(sucursal){
+    
+    {% for s in sucursales %}
+    $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_gris2.png");
+    
+    if(sucursal == '{{ s.nombre }}'){
+        var ciudad = '{{ s.ciudad }}'
+        var ciudad2 = '{{ s.ciudad2 }}'
+        var direccion = '{{ s.direccion }}'
+        var telefono = '{{ s.telefono }}'
+        var fax = '{{ s.fax }}'
+        var cob1 = '{{ s.cob1 }}'
+        var cob2 = '{{ s.cob2 }}'
+        var cob3 = '{{ s.cob3 }}'
+        var cob4 = '{{ s.cob4 }}'
+        var cob5 = '{{ s.cob5 }}'
+        var cob6 = '{{ s.cob6 }}'
+        var cob7 = '{{ s.cob7 }}'
+        var cob8 = '{{ s.cob8 }}'
+        $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_rojo2.png");
+    }
+    {% endfor %}
+    
+    $(".sucursales_ciudad").html(ciudad)
+    $(".ciudad2").html(ciudad2)
+    $("#direccion_suc").html(direccion)
+    $("#telefono_suc").html(telefono)
+    $("#fax_suc").html(fax)
+    $("#cob1_suc").html(cob1)
+    $("#cob2_suc").html(cob2)
+    $("#cob3_suc").html(cob3)
+    $("#cob4_suc").html(cob4)
+    $("#cob5_suc").html(cob5)
+    $("#cob6_suc").html(cob6)
+    $("#cob7_suc").html(cob7)
+    $("#cob8_suc").html(cob8)
+
+}
+</script>
+<div class="fondo_gris_contacto">
+    <div class="espacio20" style="width:300px;"></div>
+    <div class="cuadro_fondo_gris_titulo">CONTACTO</div>
+    <div id="nuestras_suc">
+        Nuestras <span style="color:red;">sucursales</span>
+    </div>
+    
+    <div id="contactanos_sucursal">
+        <div id="contactanos_sucursal_titulo">
+            COMPUPROVEEDORES<br/>
+            <div class="sucursales_ciudad">HERMOSILLO</div>
+        </div>
+        <div class="direccion_y_cobertura">
+            <div id="direccion_suc">San Luis Potosí N°21, Col. Centro.</div>
+            <div class="ciudad2">Hermosillo, Sonora.</div>
+            <div id="telefono_suc">Tel. (662) 214-2200</div>
+            <div id="fax_suc">Fax (662) 215-8750</div>
+            <div class="espacio10"></div>
+            <div class="cobertura">Cobertura:</div>
+            <div><span id="cob1_suc">Chihuahua,</span> <span id="cob2_suc">Sonora,</span></div>
+            <div><span id="cob3_suc">Coahuila,</span> <span id="cob4_suc">Tamaulipas y</span></div>
+            <div><span id="cob5_suc">Nuevo León</span> <span id="cob6_suc"></span></div>
+            <div><span id="cob7_suc"></span> <span id="cob8_suc"></span></div>
+        </div>
+    </div>
+    <form action="." method="post" id="id_editform">{% csrf_token %}
+    <div id="serie_folio">
+        <div id="serie_folio_titulo">ESPACIO PARA NUESTROS CLIENTES</div>
+        {% espacio 8 %}
+        <div id="cod_seg">CÓDIGO DE SEGURIDAD</div>
+        <span class="bold">Serie: {{ form.serie }}</span> <span class="bold">Folio: {{ form.folio }}</span>    
+        <div class=" center bold" style="font-size:11px;">(Factura)</div>
+        <div class="espacio20"></div>
+        <div class="center" style="font-size:11px;">Por favor ayúdenos llenando esta encuesta <br/> para proporcionarle un mejor servicio</div>
+        <div class="center">
+            <input type="button"  value="Encuesta de Satisfacción" onclick="validate_serie_folio('encuesta');">     
+            <input type="hidden"  name="encuesta" id="id_encuesta">     
+        </div>
+        <div class="center">
+            <input type="button"  value="Comentarios"  onclick="validate_serie_folio('comentarios');" />
+            <input type="hidden" name="comentarios"  id="id_comentarios" />
+        </div>
+    </div>
+    </form>
+    
+    {% for s in sucursales %}    
+    <a href="javascript:get_sucursal('{{ s.nombre }}')" class="right" >
+
+        <img 
+            src="/site_media/compu/images/{% if s.nombre == 'hermosillo'%}logo_rojo2{% else %}logo_gris2{% endif %}.png" 
+            class="iluminado" 
+            id="logo_{{ s.nombre }}" 
+            style="top:{{s.logo_t}}px; right:{{s.logo_r}}px;" 
+        />
+    </a>
+    
+    {% endfor %}
+    {% if success_datos_incorrectos %}
+        <div id="dialog-success">
+                <div id="text_dialog_success">
+                    Los datos son incorrectos,   
+                    favor de introducir la serie y folio correctos. 
+                </div>
+        </div>      
+        <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+    {% endif %}
+    <div id="datos_incorrectos"></div> 
+    {% if success_comentarios %}
+        <div id="dialog-success">
+                <div id="text_dialog_success">
+                    Gracias por su comentario,   
+                    trabajamos para ofrecerle un mejor servicio. 
+                </div>
+        </div>      
+        <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+    {% endif %}
+    
+    {% if success_encuesta %}
+        <div id="dialog-success">
+                <div id="text_dialog_success">
+                    Gracias por sus respuestas,   
+                    las tomaremos en cuenta para ofrecerle un mejor servicio.
+                </div>
+        </div>      
+        <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+    {% endif %}
+    
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+
+
+
+{% endblock %}

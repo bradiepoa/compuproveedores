@@ -1,0 +1,12 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+<form action="." method="POST">{% csrf_token %}
+    <table>
+        <tr><td>Nombre</td><td>{{ form.nombre }}</td><td>{{ form.nombre.errors }}</td></tr>
+        <tr><td>Folio</td><td>{{ form.folio }}</td><td>{{ form.folio.errors }}</td></tr>
+    </table>
+    <input type="submit" value="Guardar" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+{% block content %}
+<div class="cuadro_fondo_gris">
+<div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo">GARANTÍAS Y SERVICIOS </div>
+    <form action="." method="post">{% csrf_token %}
+    <div class="cuadro_fondo_blanco_seleccionar">
+        <div style="margin-left:120px; padding-top:20px; font-size:20px; color:#565656;">
+            Conoce el estatus de tu garantía o servicio. 
+        </div>
+        <div style="width:100%; height:50px;"></div>
+        <div style="color:#565656; padding-left:170px;">
+            Ingrese el número de código y haz clic en "Obtener"
+        </div>
+        {% espacio 30 %}
+        <div id="cuadro_blanco_servicio_garantia">
+            {% espacio 40 %}
+            
+            <table>
+                <tr>
+                    <td class="fields_guias">Garantía<br/>Código(7 dígitos)</td>
+                    <td> {{ form.guia_garantia }}</td>
+                    <td>            
+                        <input type="submit" name="garantia" value="Obtener" id="id_garantia" />
+                    </td>
+                </tr>
+                <tr><td></td><td class="center error_guia">{{ form.guia_garantia.errors.0 }}</td></tr>
+            
+                <tr><td>{% espacio 20 %}</td><tr>
+                <tr>
+                    <td class="fields_guias">Servicio técnico <br/>Código(7 dígitos)</td>
+                    <td>{{ form.guia_servicio }}</td>
+                    <td>            
+                        <input type="submit" name="servicio" value="Obtener" id="id_servicio" />
+ 
+                    </td>
+                </tr>
+                <tr><td></td><td class="center error_guia">{{ form.guia_servicio.errors.0 }}</td></tr>
+
+            </table>
+            
+
+
+        </div>
+        <div class="clear"></div>
+        
+        <div style="padding-left:350px; padding-top:30px; "> 
+            <input type="submit" value="Términos y Condiciones de Garantías" name="terminos">
+        </div>
+        </form>
+        
+    </div>
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+<form acction="." method="post" enctype="multipart/form-data">{% csrf_token %}
+<table>
+
+    <tr>
+        <td>{{ form.nombre.label_tag }}</td>
+        <td>{{ form.nombre }}</td>
+        <td>{{ form.nombre.errors }}</td>
+    </tr>
+    
+    <tr>
+        <td>{{ form.logo.label_tag }}</td>
+        <td>{{ form.logo }}</td>
+        <td>{{ form.logo.errors }}</td>
+    </tr>
+
+</table>
+    <input type="submit" value="Guardar">
+    {% if id > '0' %}
+        <a href="{% url 'eliminar_marca' id %}"><img src="/site_media/img/icons/delete_32.png"/>Eliminar</a>
+    {% endif %}
+</form>
+{% endblock %}

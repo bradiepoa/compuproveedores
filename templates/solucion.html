@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+<style>
+
+#imagen_marca { padding-right: 15em; float:right; }
+
+</style>
+<div class="gray rounded">
+<div class="espacio20"></div>
+    <h1 >Soluciones {{ marca.nombre }}</h1>
+    {% if marca.logo %}<div id="imagen_marca"><img src="{{marca.logo.url}}" width="100em;"></div>{% endif %}
+
+    <table>
+        {% for mc in marca.marcas.all %}
+        <tr> 
+            <td></td>                 
+            <td><a href="{{ mc.url }}">{{ mc.marca_categoria }}</a></td>  
+        </tr> 
+        {% endfor %}       
+    </table>
+    
+<div class="espacio10"></div>
+</div>      
+{% endblock %}

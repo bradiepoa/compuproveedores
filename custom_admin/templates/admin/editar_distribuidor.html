@@ -1,0 +1,614 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<script>
+ $(function() {
+       // $('#id_form tbody tr').formset({
+       //     prefix: '{{ formset.prefix }}'
+       // })
+        
+        $('#id_form').submit(function(){ 
+            return confirm('¿Está seguro de enviar la información?');
+        });
+    })
+</script>
+<div class="gray rounded">
+<div class="espacio20"></div>
+{% if success %}
+
+    <div>{{ success }}</div>
+
+{% else %}
+
+    <form action="." method="post" enctype="multipart/form-data">{% csrf_token %}
+        <h3>DATOS GENERALES (PARA FACTURACIÓN)</h3>
+        <table>       
+            <tr>
+                <td>{{ form.razon_social.label_tag }}</td>
+                <td>{{ form.razon_social }}</td>
+                <td>{{ form.razon_social.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.nombre_comercial.label_tag }}</td>
+                <td>{{ form.nombre_comercial }}</td>
+                <td>{{ form.nombre_comercial.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.domicilio.label_tag }}</td>
+                <td>{{ form.domicilio }}</td>
+                <td>{{ form.domicilio.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.colonia.label_tag }}</td>
+                <td>{{ form.colonia }}</td>
+                <td>{{ form.colonia.errors}}</td>                
+            </tr>
+             <tr>
+                <td>{{ form.ciudad.label_tag }}</td>
+                <td>{{ form.ciudad }}</td>
+                <td>{{ form.ciudad.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.estado.label_tag }}</td>
+                <td>{{ form.estado }}</td>
+                <td>{{ form.estado.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.rfc.label_tag }}</td>
+                <td>{{ form.rfc }}</td>
+                <td>{{ form.rfc.errors}}</td>
+            </tr>   
+            <tr>
+                <td>{{ form.curp.label_tag }}</td>
+                <td>{{ form.curp }}</td>
+                <td>{{ form.curp.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.telefono.label_tag }}</td>
+                <td>{{ form.telefono }}</td>
+                <td>{{ form.telefono.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.fax.label_tag }}</td>
+                <td>{{ form.fax }}</td>
+                <td>{{ form.fax.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.cp.label_tag }}</td>
+                <td>{{ form.cp }}</td>
+                <td>{{ form.cp.errors}}</td>
+            </tr>
+             <tr>
+                <td>{{ form.pagina_web.label_tag }}</td>
+                <td>{{ form.pagina_web }}</td>
+                <td>{{ form.pagina_web.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.sucursal.label_tag }}</td>
+                <td>{{ form.sucursal }}</td>
+                <td>{{ form.sucursal.errors}}</td>
+            </tr>
+            
+            
+        </table>
+            
+        <hr><h3>DATOS PARTICULARES DEL REPRESENTANTE LEGAL</h3>
+            
+        <table>
+            
+            <tr>
+                <td>{{ form.representante_apellido_paterno.label_tag }}</td>
+                <td>{{ form.representante_apellido_paterno }}</td>
+                <td>{{ form.representante_apellido_paterno.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.representante_apellido_materno.label_tag }}</td>
+                <td>{{ form.representante_apellido_materno }}</td>
+                <td>{{ form.representante_apellido_materno.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.representante_nombre.label_tag }}</td>
+                <td>{{ form.representante_nombre }}</td>
+                <td>{{ form.representante_nombre.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.representante_domicilio.label_tag }}</td>
+                <td>{{ form.representante_domicilio }}</td>
+                <td>{{ form.representante_domicilio.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.representante_colonia.label_tag }}</td>
+                <td>{{ form.representante_colonia }}</td>
+                <td>{{ form.representante_colonia.errors}}</td>
+            </tr>
+              <tr>
+                <td>{{ form.representante_ciudad.label_tag }}</td>
+                <td>{{ form.representante_ciudad }}</td>
+                <td>{{ form.representante_ciudad.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.representante_estado.label_tag }}</td>
+                <td>{{ form.representante_estado }}</td>
+                <td>{{ form.representante_estado.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.representante_telefono.label_tag }}</td>
+                <td>{{ form.representante_telefono }}</td>
+                <td>{{ form.representante_telefono.errors}}</td>
+            </tr>
+         
+            <tr>
+                <td>{{ form.representante_email.label_tag }}</td>
+                <td>{{ form.representante_email }}</td>
+                <td>{{ form.representante_email.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.representante_identificacion.label_tag }}</td>
+                <td>{{ form.representante_identificacion }}</td>
+                <td>{{ form.representante_identificacion.errors}}</td>
+            </tr>
+
+        </table>
+        
+        <hr><h3>REFERENCIAS BANCARIAS PARA PAGOS</h3>
+        <table>
+            <tr>
+                <td>{{ form.pagos_banco_1.label_tag }}</td>
+                <td>{{ form.pagos_banco_1 }}</td>
+                <td>{{ form.pagos_banco_1.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.pagos_no_cuenta_1.label_tag }}</td>
+                <td>{{ form.pagos_no_cuenta_1 }}</td>
+                <td>{{ form.pagos_no_cuenta_1.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.pagos_banco_2.label_tag }}</td>
+                <td>{{ form.pagos_banco_2 }}</td>
+                <td>{{ form.pagos_banco_2.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.pagos_no_cuenta_2.label_tag }}</td>
+                <td>{{ form.pagos_no_cuenta_2 }}</td>
+                <td>{{ form.pagos_no_cuenta_2.errors}}</td>
+            </tr>
+        </table>
+        
+        <hr><h3>DATOS DE CRÉDITO Y COBRANZA</h3>
+        
+        <table>
+        <tr><td><h4>Revisión<h4></tr><td>
+            <tr>
+                <td>{{ form.contacto_revision_facturas.label_tag }}</td>
+                <td>{{ form.contacto_revision_facturas }}</td>
+                <td>{{ form.contacto_revision_facturas.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.dias_revision.label_tag }}</td>
+                <td>{{ form.dias_revision }}</td>
+                <td>{{ form.dias_revision.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.horario_revision.label_tag }}</td>
+                <td>{{ form.horario_revision }}</td>
+                <td>{{ form.horario_revision.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.telefono_revision.label_tag }}</td>
+                <td>{{ form.telefono_revision }}</td>
+                <td>{{ form.telefono_revision.errors}}</td>
+            </tr>
+
+             <tr>
+                <td>{{ form.doc_revision.label_tag }}</td>
+                <td>{{ form.doc_revision }}</td>
+                <td>{{ form.doc_revision.errors}}</td>
+            </tr>
+            
+            <tr><td><h4>Pagos<h4></tr><td>
+            <tr>
+                <td>{{ form.encargado_departamento_pago.label_tag }}</td>
+                <td>{{ form.encargado_departamento_pago }}</td>
+                <td>{{ form.encargado_departamento_pago.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.encargado_entregas_pago.label_tag }}</td>
+                <td>{{ form.encargado_entregas_pago }}</td>
+                <td>{{ form.encargado_entregas_pago.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.email_pago.label_tag }}</td>
+                <td>{{ form.email_pago }}</td>
+                <td>{{ form.email_pago.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.telefono_pago.label_tag }}</td>
+                <td>{{ form.telefono_pago }}</td>
+                <td>{{ form.telefono_pago.errors}}</td>
+            </tr>
+            
+             <tr>
+                <td>{{ form.dias_pago.label_tag }}</td>
+                <td>{{ form.dias_pago }}</td>
+                <td>{{ form.dias_pago.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.horario_pago.label_tag }}</td>
+                <td>{{ form.horario_pago }}</td>
+                <td>{{ form.horario_pago.errors}}</td>
+            </tr>
+            
+            <tr><td><br></td></tr>
+            
+
+            <tr>
+                <td>Correo o Página Web p/envío de <br/>Facturas Electrónicas*</td>
+                <td>{{ form.correo_envio_facturas }}</td>
+                <td>{{ form.correo_envio_facturas.errors}}</td>
+            </tr>
+
+             <tr>
+                <td>{{ form.documento_revision_pago.label_tag }}</td>
+                <td>{{ form.documento_revision_pago }}</td>
+                <td>{{ form.documento_revision_pago.errors}}</td>
+            </tr>
+
+        </table>
+         
+         <hr><h3>DATOS DE ALMACÉN</h3>
+        <table>
+            <tr>
+                <td>{{ form.almacen_domicilio.label_tag }}</td>
+                <td>{{ form.almacen_domicilio }}</td>
+                <td>{{ form.almacen_domicilio.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.almacen_colonia.label_tag }}</td>
+                <td>{{ form.almacen_colonia }}</td>
+                <td>{{ form.almacen_colonia.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.almacen_telefono.label_tag }}</td>
+                <td>{{ form.almacen_telefono }}</td>
+                <td>{{ form.almacen_telefono.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.almacen_dias.label_tag }}</td>
+                <td>{{ form.almacen_dias }}</td>
+                <td>{{ form.almacen_dias.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.almacen_horario.label_tag }}</td>
+                <td>{{ form.almacen_horario }}</td>
+                <td>{{ form.almacen_horario.errors}}</td>
+            </tr>
+            
+            <tr>
+                <td>{{ form.almacen_atencion_a.label_tag }}</td>
+                <td>{{ form.almacen_atencion_a }}</td>
+                <td>{{ form.almacen_atencion_a.errors}}</td>
+            </tr>
+        </table>
+        
+        <hr><h3>DATOS DE COMPRA</h3>
+        <table>
+            <tr>
+                <td>{{ form.datos_compra_contacto.label_tag }}</td>
+                <td>{{ form.datos_compra_contacto }}</td>
+                <td>{{ form.datos_compra_contacto.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.datos_compra_correo.label_tag }}</td>
+                <td>{{ form.datos_compra_correo }}</td>
+                <td>{{ form.datos_compra_correo.errors}}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.datos_compra_telefono.label_tag }}</td>
+                <td>{{ form.datos_compra_telefono }}</td>
+                <td>{{ form.datos_compra_telefono.errors}}</td>
+            </tr>
+        </table>
+        
+        <hr><h3>INFORMACIÓN SOBRE LA EMPRESA</h3>
+        
+        <table>
+            <tr>
+                <td>{{ form.lugar.label_tag }}</td>
+                <td>{{ form.lugar }}</td>
+                <td>{{ form.lugar.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.tiempo_residir.label_tag }}</td>
+                <td>{{ form.tiempo_residir }}</td>
+                <td>{{ form.tiempo_residir.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.giro_principal.label_tag }}</td>
+                <td>{{ form.giro_principal }}</td>
+                <td>{{ form.giro_principal.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.no_empleados.label_tag }}</td>
+                <td>{{ form.no_empleados }}</td>
+                <td>{{ form.no_empleados.errors}}</td>
+            </tr>
+        </table>
+        
+        
+         <!--<hr><h3>Referencia Bancaria</h3>
+        
+        <table>
+            <tr>
+                <td>{{ form.titular_cuenta.label_tag }}</td>
+                <td>{{ form.titular_cuenta }}</td>
+                <td>{{ form.titular_cuenta.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.banco.label_tag }}</td>
+                <td>{{ form.banco }}</td>
+                <td>{{ form.banco.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.no_cuenta.label_tag }}</td>
+                <td>{{ form.no_cuenta }}</td>
+                <td>{{ form.no_cuenta.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.sucursal.label_tag }}</td>
+                <td>{{ form.sucursal }}</td>
+                <td>{{ form.sucursal.errors}}</td>
+            </tr>
+            
+            <tr>
+                <td>{{ form.ejecutivo.label_tag }}</td>
+                <td>{{ form.ejecutivo }}</td>
+                <td>{{ form.ejecutivo.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.telefono_bancarias.label_tag }}</td>
+                <td>{{ form.telefono_bancarias }}</td>
+                <td>{{ form.telefono_bancarias.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.promedio_mensual.label_tag }}</td>
+                <td>{{ form.promedio_mensual }}</td>
+                <td>{{ form.promedio_mensual.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.antiguedad_bancarias.label_tag }}</td>
+                <td>{{ form.antiguedad_bancarias }}</td>
+                <td>{{ form.antiguedad_bancarias.errors}}</td>
+            </tr>
+        </table>-->
+                
+         <hr><h3>REFERENCIAS COMERCIALES</h3>
+        
+        <table>
+            <tr>
+                <td>{{ form.nombre_empresa.label_tag }}</td>
+                <td>{{ form.nombre_empresa }}</td>
+                <td>{{ form.nombre_empresa.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.ciudad_comerciales.label_tag }}</td>
+                <td>{{ form.ciudad_comerciales }}</td>
+                <td>{{ form.ciudad_comerciales.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.estado_comerciales.label_tag }}</td>
+                <td>{{ form.estado_comerciales }}</td>
+                <td>{{ form.estado_comerciales.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.atencion_comerciales.label_tag }}</td>
+                <td>{{ form.atencion_comerciales }}</td>
+                <td>{{ form.atencion_comerciales.errors}}</td>
+            </tr>
+            
+            <tr>
+                <td>{{ form.telefono_comerciales.label_tag }}</td>
+                <td>{{ form.telefono_comerciales }}</td>
+                <td>{{ form.telefono_comerciales.errors}}</td>
+            </tr>
+            
+            <tr><td><br></td></tr>
+            
+            <tr>
+                <td>{{ form.nombre_empresa_2.label_tag }}</td>
+                <td>{{ form.nombre_empresa_2 }}</td>
+                <td>{{ form.nombre_empresa_2.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.ciudad_comerciales_2.label_tag }}</td>
+                <td>{{ form.ciudad_comerciales_2 }}</td>
+                <td>{{ form.ciudad_comerciales_2.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.estado_comerciales_2.label_tag }}</td>
+                <td>{{ form.estado_comerciales_2 }}</td>
+                <td>{{ form.estado_comerciales_2.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.atencion_comerciales_2.label_tag }}</td>
+                <td>{{ form.atencion_comerciales_2 }}</td>
+                <td>{{ form.atencion_comerciales_2.errors}}</td>
+            </tr>
+            
+            <tr>
+                <td>{{ form.telefono_comerciales_2.label_tag }}</td>
+                <td>{{ form.telefono_comerciales_2 }}</td>
+                <td>{{ form.telefono_comerciales_2.errors}}</td>
+            </tr>
+
+            <tr><td><br></td></tr>
+            
+            <tr>
+                <td>{{ form.nombre_empresa_3.label_tag }}</td>
+                <td>{{ form.nombre_empresa_3 }}</td>
+                <td>{{ form.nombre_empresa_3.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.ciudad_comerciales_3.label_tag }}</td>
+                <td>{{ form.ciudad_comerciales_3 }}</td>
+                <td>{{ form.ciudad_comerciales_3.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.estado_comerciales_3.label_tag }}</td>
+                <td>{{ form.estado_comerciales_3 }}</td>
+                <td>{{ form.estado_comerciales_3.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.atencion_comerciales_3.label_tag }}</td>
+                <td>{{ form.atencion_comerciales_3 }}</td>
+                <td>{{ form.atencion_comerciales_3.errors}}</td>
+            </tr>
+            
+            <tr>
+                <td>{{ form.telefono_comerciales_3.label_tag }}</td>
+                <td>{{ form.telefono_comerciales_3 }}</td>
+                <td>{{ form.telefono_comerciales_3.errors}}</td>
+            </tr>
+      
+        </table>
+           
+        <hr><h3>COPIAS DE DOCUMENTOS DE LA EMPRESA</h3>
+        
+        <table>
+            <tr>
+                <td>{{ form.copia_rfc.label_tag }}</td>
+                <td>{{ form.copia_rfc }}</td>
+                <td>{{ form.copia_rfc.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.copia_alta.label_tag }}</td>
+                <td>{{ form.copia_alta }}</td>
+                <td>{{ form.copia_alta.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.copia_identificacion.label_tag }}</td>
+                <td>{{ form.copia_identificacion }}</td>
+                <td>{{ form.copia_identificacion.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.copia_comprobante_domicilio.label_tag }}</td>
+                <td>{{ form.copia_comprobante_domicilio }}</td>
+                <td>{{ form.copia_comprobante_domicilio.errors}}</td>
+            </tr>
+
+        </table>
+
+        {% if formset %}
+        <hr>
+        <h3 style="text-align:center;">PERSONAS AUTORIZADAS</h3>
+        <p>AUTORIZO EXCLUSIVAMENTE A LAS SIGUIENTES PERSONAS QUIENES A MI NOMBRE Y REPRESENTACIÓN PUEDAN RECIBIR LA MERCANCÍA QUE
+    PREVIAMENTE HE SOLICITADO, Y FIRMEN LA DOCUMENTACIÓN NECESARIA QUE AMPARE LA ENTREGA DE DICHA MERCANCÍA POR PARTE DE
+    COMPUPROVEEDORES, S.A. DE C.V., BAJO MI MÁS ESTRICTA RESPONSABILIDAD POR LO CUAL RECONOZCO LOS DATOS Y FIRMAS QUE A
+    CONTINUACIÓN SE ESPECIFICAN Y QUE SON EMPLEADOS DEL SUSCRITO.</p>
+        
+    {% for f in formset.forms %}
+            <div style="text-align:center;"><h3 >PERSONA AUTORIZADA {{forloop.counter}}</h3></div>
+               
+        <table border="0" cellpadding="0" cellspacing="0"  id="formset_table">
+            <thead>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Nombre(s)</th>
+               
+            </thead>
+             <!--<th>Puesto</th>
+             <th>Número de credencial IFE</th>
+                                 <td>{{ f.puesto }}{{ f.puesto.errors }}</td>
+                    <td>{{ f.numero_ife }}{{ f.numero_ife.errors }}</td> -->
+            <tbody>
+                
+         
+                <tr id="{{ forloop.counter0 }}">
+                    <td>{{ f.id }}{{ f.apellido_paterno }}{{ f.apellido_paterno.errors }}</td>
+                    <td>{{ f.apellido_materno }}{{ f.apellido_materno.errors }}</td>
+                    <td>{{ f.nombre }}{{ f.nombre.errors }}</td>
+
+               </tr>
+          
+           </tbody>
+       </table>
+       
+       <table  border="0" cellpadding="0" cellspacing="0"  id="formset_table">
+       <thead>
+                <th>Puesto</th>
+                <th>Número de credencial IFE</th>
+               
+            </thead>
+            <tbody>
+                <tr id="{{ forloop.counter0 }}">
+                    <td>{{ f.puesto }}{{ f.puesto.errors }}</td>
+                    <td>{{ f.numero_ife }}{{ f.numero_ife.errors }}</td>
+               </tr>
+           </tbody>
+       </table>
+        <script>
+            $("#id_form-{{ forloop.counter0}}-apellido_paterno").css("width","17em");
+            $("#id_form-{{ forloop.counter0}}-apellido_materno").css("width","17em");
+            $("#id_form-{{ forloop.counter0}}-nombre").css("width","17em");
+            $("#id_form-{{ forloop.counter0}}-puesto").css("width","24em");
+            $("#id_form-{{ forloop.counter0}}-numero_ife").css("width","24em");
+        </script>
+    <div>&nbsp;</div>
+    {% endfor %}
+       {{ formset.management_form }}
+    {% endif %}
+    <input type="submit" value="Enviar Datos">    
+    </form>   
+<div class="espacio10"></div>
+</div>    
+{% endif %}
+<script>
+
+$("#id_razon_social").css('width', '25em');
+$("#id_nombre_comercial").css('width', '25em');
+
+$("#id_domicilio").css('width', '18em');
+$("#id_cp").css('width', '4em');
+$("#id_pagina_web").css('width', '17em');
+
+$("#id_representante_domicilio").css('width', '18em');
+$("#id_representante_email").css('width', '18em');
+
+$("#id_encargado_departamento_pago").css('width', '21em');
+$("#id_encargado_entregas_pago").css('width', '21em');
+$("#id_email_pago").css('width', '18em');
+$("#id_pagina_web_pago").css('width', '17em');
+$("#id_correo_envio_facturas").css('width', '18em');
+
+
+$("#id_nombre_empresa").css('width', '25em');
+$("#id_nombre_empresa_2").css('width', '25em');
+$("#id_nombre_empresa_3").css('width', '25em');
+$("#id_pagina_web_pago").css('width', '18em');
+
+$("#id_ciudad_comerciales").css('width', '23em');
+$("#id_ciudad_comerciales_2").css('width', '23em');
+$("#id_ciudad_comerciales_3").css('width', '23em');
+
+$("#id_atencion_comerciales").css('width', '7em');
+$("#id_atencion_comerciales_2").css('width', '7em');
+$("#id_atencion_comerciales_3").css('width', '7em');
+
+</script>
+
+
+{% endblock %}

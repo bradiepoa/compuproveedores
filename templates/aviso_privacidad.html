@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="cuadro_fondo_gris">
+    <div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo">AVISO DE PRIVACIDAD</div>
+    <div class="cuadro_fondo_blanco">
+        <div class="espacio10" ></div>
+        <div style="overflow:auto; height:390px;">
+            <div style="text-align:center; font-weight:900;">{{ aviso.titulo }}</div>
+            <div style="width: 580px; margin: 15px 0 0 15px; text-align:justify;">
+                {{ aviso.texto|safe|linebreaks }}
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="espacio10"></div>
+</div>
+
+{% endblock %}

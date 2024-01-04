@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="es-ES"> 
+{# load custom_tags #}
+<head> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+<title>Admintotal</title>
+
+<link rel="stylesheet" href="/site_media/fc/style.css" type="text/css" />
+<link rel="stylesheet" href="/site_media/css/sort.css" type="text/css" media="print, projection, screen" />
+<link rel="shortcut icon" href="http://www.dmspitic.com/site_media/site/favicon.ico" />
+
+<style type="text/css">
+    tr.odd td {background-color: #{{ general.odd_color }}; }
+    tr.even td {background-color: #{{ general.even_color }}; }
+</style>
+{% block extra_head %}{% endblock %}
+</head> 
+
+<body>
+<div id="wrap_login">
+    <div style="height:100px;"></div>  
+    <div id="contenidos">
+            {% block contenido %}{% endblock %}</div>
+        <div class="clear"></div>     
+    </div>
+</div>
+<div id="bottomround_login"></div>
+<div id="footer_login">
+    <div>
+        <div class="left"><img src="/site_media/css/images/dmswb.png" /></div>
+        <div class="right" id="footer_login_text">
+            <div class="bold">&copy; DMS Pitic 2011</div>
+            <div>Todos los derechos reservados.</div>
+        </div>
+    </div>
+</div>
+<script>
+    try {
+        $('.form_datepciker').datepicker(cal_options);
+    }
+</script>
+</body> 
+</html>

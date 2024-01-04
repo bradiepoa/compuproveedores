@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="cuadro_fondo_gris">
+<div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo">DIRECTORIO</div>
+    <div class="cuadro_fondo_blanco">
+        <div class="espacio10" ></div>
+        <div class="scroll_directorio">
+            <div id="contactos">
+                {% for c in contactos %}
+
+                {% cycle '<div class="contacto_fondo"><div class="izquierda_contacto_fondo"></div><div class="directorio_contactos">' '' %}
+                    <a href="mailto:{{ c.email}}">
+                    <div class="{% cycle 'contacto_1' 'contacto_2' %}">
+                        <div class="nombre_contacto">{{ c.nombre }}</div>
+                        <div>{{ c.email }}</div>
+                    </div>
+                    </a>
+
+                {% cycle '' '</div><div class="derecha_contacto_fondo"></div></div><div class="espacio20 clear"></div>'%}
+                {% if forloop.last and ultimo %}
+                        </div><div class="derecha_contacto_fondo"></div></div><div class="espacio20 clear"></div>
+                {% endif %}
+                {% endfor %}
+            </div>   
+        </div>
+    </div>
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+
+{% endblock %}

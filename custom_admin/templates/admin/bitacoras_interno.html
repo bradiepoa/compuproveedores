@@ -1,0 +1,59 @@
+{% extends "main.html" %}
+{% block content %}
+
+<script>
+function search(){
+    window.location = '{% url 'bitacoras_interno' %}?q=' + $("#id_search").val();
+}
+</script>
+
+<h3>Bitácora de solicitud interna</h3>
+<div id="div_add">
+
+<form action="." method="get">{% csrf_token %}
+    <table id="tabla_filtros">
+        <tr>
+            <td></td>
+            <td>Estado:</td>
+            <td>Sucursal:</td>
+            <td>Tipo de Servicio:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><img src="/site_media/fc/images/search.png">{{ form.q }}</td>
+            <td>{{ form.estado }} </td>
+            <td>{{ form.sucursal }} </td>
+            <td>{{ form.tipo }}</td>
+            <td><input type='submit' value="Buscar" /></td>
+        </tr>
+    </table>
+</form>
+
+</div>
+
+<table class="list-table">
+    <tr>
+        <th>Folio</th>
+        <th>Usuario</th>
+        <th>Sucursal</th> 
+        <th>Tipo solicitud</th>
+        <th>Modificado por</th>
+        <th>Fecha modificación</th>
+        <th>Fecha vencimiento</th>
+        <th>Estado</th>
+    </tr>
+    {% for b in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'bitacora_interno' b.id %}">{{ b.folio }}</a></td>
+            <td><a href="{% url 'bitacora_interno' b.id %}">{{ b.usuario.first_name }}</a></td>
+            <td><a href="{% url 'bitacora_interno' b.id %}">{{ b.usuario.perfil.get_sucursal_display }}</a></td>
+            <td><a href="{% url 'bitacora_interno' b.id %}">{{ b.show_tipo_solicitud }}</a></td>
+            <td><a href="{% url 'bitacora_interno' b.id %}">{{ b.usuario_modificado.first_name }}</a></td>
+            <td style="width:80px;"><a href="{% url 'bitacora_interno' b.id %}">{{ b.fecha_modificado|date:"d/m/y H:i:s" }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.fecha_vencimiento|date:"d/m/y" }}</a></td>
+            <td><a href="{% url 'bitacora_interno' b.id %}">{{ b.get_estado_display }}</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% include 'paginado.html' %}
+{% endblock %}

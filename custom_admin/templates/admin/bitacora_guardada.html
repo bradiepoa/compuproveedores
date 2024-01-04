@@ -1,0 +1,16 @@
+{% extends "main.html" %}
+{% block content %}
+<div>
+    La bitacora se ha guardado correctamente.
+    {% if bitacora.tipo == 1 %}
+    <a href="{% url 'imprimir_bitacora_servicio' bitacora.id %}">
+    {% endif %}
+    {% if bitacora.tipo == 2 %}
+    <a href="{% url 'imprimir_bitacora_interno' bitacora.id %}">
+    {% endif %}
+    {% if bitacora.tipo == 0 %}
+    <a href="{% url 'imprimir_bitacora_garantia' bitacora.id %}">
+    {% endif %}
+    <img src="/site_media/img/icons/pdf.png">Imprimir</a>
+</div>
+{% endblock %}

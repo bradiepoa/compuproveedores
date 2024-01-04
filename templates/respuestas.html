@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+    {% for respuesta in respuestas %}
+        <div>{{ respuesta.creado }}</div>
+        <div>{{ respuesta.pregunta }}</div>
+        <div>{{ respuesta.opcion }}</div>
+        <div>{{ respuesta.ip }}</div>
+        <div>{{ respuesta.user_agent }}</div>
+    {% endfor %}
+{% endblock %}

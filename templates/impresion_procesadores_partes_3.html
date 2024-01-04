@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>BITÁCORA DE GARANTÍA</title>
+	<link rel="stylesheet" type="text/css" href="{{ root_url }}/site_media/css/basic.css" />
+	
+<style>
+    {% include "bitacora_css.css"%}
+    #titulo_prosesadores_partes{
+        font-size:25px;
+        text-align:center;
+        
+    }
+    .texto_pyp{
+        text-align:justify;
+    }
+    .lista_letra{ list-style-type: lower-alpha; }
+    
+    ul li {
+        padding-top:11px;
+    }
+    
+</style>
+
+</head>
+<body>
+{% for atencion in atenciones %}
+    <div style="page-break-after: always">
+        {% include "impresion_garantia.html" %}</div>
+    <div {% if not forloop.last %}style="page-break-after: always"{% endif %}>
+        {% include "procesadores_partes.html" %}</div>
+{% endfor %}
+
+</body>
+</html>

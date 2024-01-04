@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% block content %}
+<script>
+	function search(){
+		window.location= '{% url 'direcciones_email' %}?q='+ $('#id_q').val()
+		+ '&activos='+$('#id_activos').val()
+	}
+	
+</script>
+<div>
+<form acction="." method="post">{% csrf_token %}
+    {{ form.q }}{{ form.activos }}
+    <input type='button' value="Buscar" onclick="search()">
+</form>
+
+<a href="{% url 'generar_remitente' %}">Generar remitente</a>
+</div>
+<table class="list-table">
+
+   {% for d in pagina.object_list %}
+        
+        <tr class="{% cycle 'odd' 'even' %}">
+          <td>{{ d.nombre }}</a></td>
+          <td>{{ d.email }}</a></td>
+          <td>{{ d.tipo_object }}</a></td>
+          {% if not d.desactivar_email %}
+          <td><a href="{% url 'desactivar_email' d.id  d.tipo  %}">Desactivar</a></td>
+          {% else %}
+          <td><a href="{% url 'activar_email' d.id  d.tipo  %}">Activar</a></td>
+          {% endif %}
+        </tr>
+        
+    {% endfor %}
+</table>
+  
+{% endblock %}

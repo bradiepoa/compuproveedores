@@ -1,0 +1,45 @@
+{% extends "admin_base.html" %}
+{% load custom_tags %}
+{% block content %}
+
+<div>
+    <form action="." method="get">
+        Sucursal: {{ form.sucursal }}
+        {{ form.disponible }}
+        {{ form.q }}{% submit "Buscar "%}
+    </form>
+    <a href="{% url 'edit_equipo_renta' 0 %}">
+    <img src="/site_media/fc/images/add.gif"> Agregar Equipo de renta</a> 
+</div>
+
+
+<table class="list-table">
+    <tr>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Descripcion</th>
+        <th>Categoria</th>
+        <th>Valor</th>
+        <th>Sucursal</th>
+        <th>Disponible</th>
+    </tr>
+    {% for e in equipo %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'edit_equipo_renta' e.id %}">{{ e.marca }}</a></td>
+            <td><a href="{% url 'edit_equipo_renta' e.id %}">{{ e.modelo }}</a></td>
+            <td><a href="{% url 'edit_equipo_renta' e.id %}">{{ e.descripcion }}</a></td>
+            <td><a href="{% url 'edit_equipo_renta' e.id %}">{{ e.categoria }}</a></td>
+            <td class="righttext"><a href="{% url 'edit_equipo_renta' e.id %}">${{ e.valor }}</a></td>
+            <td><a href="{% url 'edit_equipo_renta' e.id %}">{{ e.get_sucursal_display|default:"" }}</a></td>
+            <td>
+                <a href="{% if not e.disponible %} {{ e.url_renta }} {% else %}{% url 'edit_equipo_renta' e.id %}{% endif%}">
+                    {{ e.esta_disponible }}
+                </a>
+            </td>
+            
+        </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
+

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>Registrar Cliente</title>
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<link rel="stylesheet" href="css/base.css">
+	<script type="text/javascript" src="js/parsley.js"></script>
+	<!-- include the core styles -->
+	<link rel="stylesheet" href="css/alertify.core.css" />
+	<!-- include a theme, can be included into the core instead of 2 separate files -->
+	<link rel="stylesheet" href="css/alertify.default.css" />
+</head>
+<body>
+	<div class="header">
+		<div class="logo_empresa">
+			<a href="index.html"><img style="height:100px" src="img/sblogo.png" alt="Tu empresa"></a>
+		</div>
+		<div class="swf_container">
+			
+		</div>
+		<div class="at_logo">
+			<a href="http://www.admintotal.com">
+				<img src="img/at_logo.png" alt="Admintotal Logo">
+			</a>
+		</div>
+		<div class="clear"></div>
+	</div><!-- FIN HEADER-->
+	<div class="nav_buttons">
+		<ul>
+			<li><a href="direcciones.html" style="text-decoration:none"><img style="position:absolute" src="img/direcciones.png" title="Direcciones" alt="Direcciones"><span style="line-height:45px;color:#FFF;margin-left:45px;">Direcciones</span></a></li>
+			<li><a href="contactos.html" style="text-decoration:none"><img style="position:absolute" src="img/contactos.png" alt="Contáctos" title="Contáctos"><span style="line-height:45px;color:#FFF;margin-left:45px;">Contáctos</span></a></li>
+		</ul>
+	</div><!-- FIN NAV_BUTTONS-->
+	<div class="center">
+			<div class="container">
+				<h2 align="center" class="title">Registro</h2>
+				<form action="" data-validate="parsley">
+					<table align="center" class="tabla_regisgtro">
+						<tr>
+							<td class="label">RFC:</td>
+							<td><input type="text" name="rfc" data-required="true"></td>
+						</tr>
+						<tr>
+							<td class="label">Razón Social:</td>
+							<td><input type="text" name="razon_social" data-required="true"></td>
+						</tr>
+						<tr>
+							<td class="label">Código (opcional):</td>
+							<td><input type="text" name="codigo"></td>
+						</tr>
+						<tr>
+							<td class="label">Calle:</td>
+							<td><input type="text" name="calle" data-required="true"><span class="label">Nº ext: </span><input type="text" name="no_ext" style="width:40px"><span class="label">Nº int: </span><input type="text" name="no_int" style="width:40px"></td>
+						</tr>
+						<tr>
+							<td class="label">C.P:</td>
+							<td><input type="text" name="c_postal" style="width:80px" data-required="true"></td>
+						</tr>
+						<tr>
+							<td class="label">Colonia:</td>
+							<td><input type="text" name="colonia" data-required="true"></td>
+						</tr>
+						<tr>
+							<td class="label">Localidad:</td>
+							<td><input type="text" name="localidad" data-required="true"> <span class="label">Municipio: </span><input type="text" name="municipio"></td>
+						</tr>
+						<tr>
+							<td class="label">Estado:</td>
+							<td><input type="text" name="estado" data-required="true"></td>
+						</tr>
+						<tr>
+							<td class="label">Telefono:</td>
+							<td><input type="text" name="telefono"></td>
+						</tr>
+						<tr>
+							<td class="label">Email:</td>
+							<td><input type="text" name="email" data-required="true" data-type="email"></td>
+						</tr>
+						<tr>
+							<td colspan="2" style="text-align:center"><br>
+							<button onclick="window.location.href='index.html'" class="atras">Atrás</button>
+							<input class="submit" type="submit" value="Registrar"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+	</div>
+<script src="js/alertify.min.js"></script>
+</body>
+</html>

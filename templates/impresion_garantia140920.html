@@ -1,0 +1,384 @@
+{% load custom_tags %}
+<!--<div class="folio_r1">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="folio_r2">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="clear espacio50"></div>
+--> 
+<div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+
+<div id="logo" class="left">    
+    <img src="{{root_url}}/site_media/compu/images/logo.png" width="110" alt="Logo">
+</div>
+
+<div class="titulo_g">
+    <b>SOLICITUD DE <br/> GARANTÍA</b>
+</div>
+
+
+<div class="fechas">
+    <div >
+            <div class="center folio_fecha_titulo">
+                <div><b>FECHA</b></div>
+            </div>
+            <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Día</div>
+                    {{ bitacora.fecha.day }}
+                </div>
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Mes</div>
+                    {{ bitacora.fecha.month }}
+                </div>
+                <div class="left center" style="width:66px;">
+                    <div>Año</div>
+                    {{ bitacora.fecha.year }}
+                </div>
+            </div>
+
+    </div>
+    <div style="height:10px;"></div>
+    <div>
+            <div class="center folio_fecha_titulo">
+                <div><b>VIGENCIA</b></div>
+            </div>
+
+           <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Día</div>
+                    {{ bitacora.fecha_vencimiento.day }}
+                </div>
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Mes</div>
+                    {{ bitacora.fecha_vencimiento.month }}
+                </div>
+                <div class="left center" style="width:66px;">
+                    <div>Año</div>
+                    {{ bitacora.fecha_vencimiento.year }}
+                </div>
+            </div>
+    </div>
+</div>
+<div class="left" style="width:20px;">&nbsp;</div>
+<div class="fechas">
+    <div >
+            <div class="center folio_fecha_titulo" >
+                <div><b>FOLIO</b></div>
+            </div>
+               
+            <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="center" style="margin-top:10px;">
+                    {{ bitacora.folio }}
+                </div>
+            </div>
+
+    </div>
+    <div style="height:2px;"></div>
+    <div>
+            <div class="center folio_fecha_titulo">
+                <div><b>CÓDIGO DE GARANTÍA</b></div>
+            </div>
+
+           <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="center" style="margin-top:10px;">
+                    {{ bitacora.guia }}
+                </div>
+            </div>
+            
+    </div>
+</div>
+<!--
+<div style="width:170px;  padding:10px 0 0 20px; float:left;  font-size:15px;" class="left">  
+    <div class="center folio_fecha_titulo">
+            <b>Folio</b>
+    </div> 
+    <div style="border:solid 1px #000; height:90px; line-height:30px; "  >
+            <div class="center" style="font-size:22px; padding-top:30px;">{{ bitacora.folio }}</div>
+    </div>
+
+</div>
+-->
+<div class="clear"></div>
+    
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+        	<th colspan="2" style="padding-bottom:2px; padding-top:0;">DATOS DEL CLIENTE</th>
+    </thead>
+
+    <tbody style="font-size:9px; line-height:14px;">
+        <tr style="border-bottom:solid 1px #000;">
+            <td>CLIENTE: &nbsp;&nbsp; {{ bitacora.cliente.nombre }}</td>
+            <td>NO. DE CLIENTE:&nbsp;&nbsp;{{ bitacora.cliente.distribuidor.no_clientes_interno|default:"MOST" }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>DIRECCIÓN:&nbsp;&nbsp;{{ bitacora.cliente.direccion }}</td>
+            <td>RFC:&nbsp;&nbsp;{{ bitacora.cliente.rfc }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>POBLACIÓN:&nbsp;&nbsp;{{ bitacora.cliente.ciudad }}</td>
+            <td>VENDEDOR: &nbsp;&nbsp;{{ bitacora.cliente.distribuidor.vendedor_interno.folio }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>CONTACTAR A:&nbsp;&nbsp;{{ bitacora.cliente.contacto }}</td>
+            <td>CORREO: &nbsp;&nbsp;{{ bitacora.cliente.email }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="left" style="width:200px;">TELÉFONO:&nbsp;&nbsp;{{ bitacora.cliente.telefono }}</div>
+                
+                <div class="left" style="width:200px;">EXT.:&nbsp;&nbsp; {{ bitacora.cliente.ext|default:"" }}</div>
+               
+                <div class="left" style="width:200px;">TELÉFONO ADICIONAL:&nbsp;&nbsp; {{ bitacora.cliente.telefono_extra }}</div>
+                
+                <div class="left" style="width:200px;">CELULAR &nbsp;&nbsp; {{ bitacora.cliente.celular }}</div>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+        	<th colspan="2" style="padding-bottom:4px; padding-top:0;">DESCRIPCIÓN DEL PRODUCTO EN PROCESO DE GARANTÍA</th>
+    </thead>
+
+    <tbody style="font-size:9px; line-height:14px;">
+        <tr style="border-bottom:solid 1px #000;">
+            <td>SUCURSAL: &nbsp;&nbsp; {{ bitacora.get_sucursal_display }}</td>
+            <td>TIPO DE GARANTÍA:&nbsp;&nbsp;{{ bitacora.get_tipo_garantia_display|default:"" }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>FECHA DE COMPRA:&nbsp;&nbsp;{{ bitacora.fecha_factura }}</td>
+            <td>NO. DE FACTURA:&nbsp;&nbsp;{{ bitacora.num_factura }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>CLAVE:&nbsp;&nbsp;{{ bitacora.clave }}</td>
+            <td>DESCRIPCIÓN: &nbsp;&nbsp;{{ bitacora.descripcion }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>NO. DE SERIE:&nbsp;&nbsp;{{ bitacora.no_serie }}</td>
+            <td>ACCESORIOS: &nbsp;&nbsp;{{ bitacora.accesorios }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div>FALLA: {{ bitacora.falla }}</div>
+                  
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2"> {{ bitacora.garantia_costo_reporte }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="clear espacio10"></div>
+
+
+<div style="width:48%;" class="left small" style="text-align:justify; font-size:6px;">
+
+    <div style="font-weight:bold; font-size:12px; text-align:center;">PROCEDIMIENTO PARA EFECTUAR GARANTÍA</div>
+
+    <p>Es importante para <b>COMPUPROVEEDORES</b> mencionar que todas las <b>POLÍTICAS DE GARANTÍAS</b> se rigen
+
+dependiendo de los términos y condiciones del  <b>FABRICANTE</b> del producto adquirido y su proceso; nuestra 
+
+participación es como <b>INTERMEDIARIO</b>entre ellos y el usuario final.  </p> 
+
+<p>Antes de proceder con cualquier reclamación, recomendamos al  <b>CLIENTE</b> validar la póliza de  <b>GARANTÍA</b>, 
+
+que se encuentra en la caja de todos y cada uno de los productos que comercializamos.  En ese documento, el 
+
+<b>FABRICANTE</b> le indicará como proceder. </p>
+
+<p>El tiempo de <b>GARANTÍA</b> varía entre proveedores y <b>FABRICANTES</b>, la mayoría de ellos da un período de un 
+
+año y entra en vigor a partir de la fecha de compra, información que se detalla en la factura. El tiempo no se 
+
+amplía bajo ninguna circunstancia, a menos que se adquiera una garantía extendida que señalara la vigencia de 
+
+la misma.</p>
+
+<p><b>NO ENCONTRÓ LA PÓLIZA DE GARANTÍA O PREFIERE QUE LE APOYEMOS CON EL TRÁMITE.</b> Debe 
+
+enviar un correo electrónico a  garantias@compuproveedores.com, que especifique la falla detallada que 
+
+presenta el equipo o dispositivo, donde anexará una copia legible del comprobante de compra que indique: &nbsp;&nbsp;&nbsp;&nbsp; *Producto adquirido. &nbsp;&nbsp;&nbsp;&nbsp; *fecha de compra y número de serie.</p>
+
+<p>Nosotros nos acercaremos al <b>FABRICANTE</b> para apoyar con el trámite de  GARANTÍA</b>. Si el producto no 
+
+se compró en <b>COMPUPROVEEDORES, S.A. DE C.V.</b> hay un cargo de $150.00 más IVA por el servicio y 
+
+el <b>CLIENTE</b>  deberá pagar los gastos de envío y regreso del producto, por la paquetería de su preferencia. 
+
+En caso de ser  CLIENTE</b> registrado o contar con crédito pre autorizado no hay cargo adicional para los 
+
+productos comprados con nosotros y nosotros pagaremos los gastos generados por traslado de la mercancía (le 
+
+indicaremos la paquetería que puede utilizar).</p>
+    		
+    		
+<div style="font-weight:bold; font-size:12px; text-align:center;">
+	PROCEDIMIENTO
+</div>
+
+<p><b>*COMPUPROVEEDORES</b> tiene 05 días hábiles para analizar la información enviada por <b>EL CLIENTE</b>, y darle
+
+respuesta a través de correo electrónico. </p>
+
+<p>*Algunas marcas tienen  <b>CENTROS DE ATENCIÓN AUTORIZADA</b>  localizados en diferentes ciudades de 
+
+la República.  <b>EL CLIENTE</b> puede comunicarse de manera directa, o darnos la instrucción para mediar el 
+
+procedimiento de <b>GARANTÍA.</b> </p>
+
+<p><b>*COMPUPROVEEDORES</b> jamás se niega a dar el servicio de <b>GARANTÍA</b>,  pero es importante recalcar que 
+
+estamos sujetos al proceso y términos de <b>GARANTÍAS</b> del <b>FABRICANTE.</b> </p>
+
+<p><b>*EL FABRICANTE</b> solo aceptará el producto, siempre y cuando haya un defecto de fabricación; no cubre mal 
+
+uso del producto o modificación del equipo por personal no autorizado por el  <b>FABRICANTE</b>, o por cualquier 
+
+otro Centro de Servicio no autorizado.
+
+	    	
+<div style="font-weight:bold; font-size:12px; text-align:center;">ENVÍO Y RECEPCIÓN DE GARANTÍAS</div>
+
+<p>*En todo momento, <b> COMPUPROVEEDORES</b> debe autorizar a través de correo electrónico, el envío de la 
+
+mercancía, en caso de proceder sin autorización, será riesgo del <b>CLIENTE</b> si lo envía; además, se remitirá a su 
+destino con flete por cobrar.</p>
+
+<p>*Si la  GARANTÍA</b> se acepta (por correo electrónico), el servicio de envío y regreso será cubierto por 
+
+<b>COMPUPROVEEDORES</b> para cualquier  <b>CLIENTE</b> de la República Mexicana, nosotros le indicamos las 
+
+paqueterías autorizadas, siempre y cuando se haya comprado con nosotros, de lo contrario el <b>CLIENTE</b> deberá 
+
+cubrir los servicios de envío y regreso. La dirección para recibir y facturar el servicio es:</p>
+
+
+<p style="text-align:center;"><b>Compuproveedores, S.A. de C.V.</b><br>
+San Luis Potosí No.21<br>
+Hermosillo, Sonora, México, CP 83000 Col. Centro<BR>
+RFC: COM890602EE8 &nbsp; &nbsp; Tel. (01662) 214 22 00 ext.251<br>
+</p>
+
+</div>
+    
+
+<div style="width:48%;" class="right small" style="text-align: justify; font-size:6px;">
+    <div style="font-weight:bold; font-size:12px; text-align:center;">PAQUETERÍAS</div>
+
+<p>*Deberá hacer uso del servicio de las paqueterías autorizadas por <b>COMPUPROVEEDORES</b>. No aceptamos flete 
+
+*En caso de que el paquete que nos envíe, presente averías, no lo recibiremos y nos comunicaremos 
+
+inmediatamente para que <b>EL CLIENTE</b> haga el reclamo directamente a la paquetería.
+
+*No acepte paquetería dañada y repórtela inmediatamente a garantias@compuproveedores.com
+
+*De preferencia deberá utilizar el empaque original para hacer una garantía, o si no cuenta con él, deberá de 
+
+protegerlo perfectamente para enviarlo (siempre debe estar cubierto con empaque de burbuja o similar, en caja 
+
+de cartón de tamaño adecuado sin movilidad y emplayado). Si utilizó un empaque distinto al que se le indicó y 
+
+el producto viene dañado, la <b>GARANTÍA NO PROCEDE.</b>
+
+<b>*COMPUPROVEEDORES</b> no se hace responsable en caso de extravío en la línea de transportes, el reclamo se 
+
+*Los artículos no reclamados en un lapso mayor a 30 días, se perderán. </p>
+
+
+<div style="font-weight:bold; font-size:12px; text-align:center;">TIEMPO DE RESPUESTA</div>
+
+<p>-El tiempo de respuesta varía según el tipo de producto y su falla. Según lo señalado por el <b>FABRICANTE</b> hasta 
+
+30 días hábiles. Si el fabricante requiere más tiempo se le hará a conocer al <b>CLIENTE.</b>
+
+<b>-SI SU GARANTÍA VENCIÓ</b>  ponemos a su disposición nuestro taller de Soporte Técnico, en la matriz de 
+
+Hermosillo, Sonora, México; haremos un diagnóstico y cotización por el servicio. Comuníquese al 01662 214 22 </p>
+
+
+<div style="font-weight:bold; font-size:12px; text-align:center;">ANULACIÓN DE GARANTÍAS</div>
+
+<p>*No hay <b>GARANTÍA</b> en consumibles de cómputo y papelería. En caso de que el <b>FABRICANTE</b> lo acepte, el 
+
+proceso de intermediación con el proveedor, puede llegar a tomar entre 3 y 4 meses  y es forzoso incluir prueba 
+
+*Toda GARANTÍA debe contar con manuales, cables y accesorios con los que cuenta el producto original. 
+
+*El trámite de <b>GARANTÍA</b> no procede por incompatibilidad del sistema operativo.</p>
+
+<p><b>*EL CLIENTE</b>  debe respaldar toda su información,  <b>COMPUPROVEEDORES</b>  no se responsabiliza por la 
+
+información contenida en los distintos medios de almacenamiento. </p>
+
+
+<p>*En caso de enviar un equipo en buen funcionamiento que no requiera de garantía, se realizará un cargo al 
+
+<b>CLIENTE</b> por $200.00 +IVA pagaderos antes de la entrega del producto, además  <b>EL CLIENTE</b> debe cubrir los gastos de envío de la paquetería</p>
+
+<p>
+*En caso de que el producto esté descontinuado, se entregará uno  con las mismas características o similares 
+como remplazo; si la mercancía es de características superiores, porque el producto sujeto a <b>GARANTÍA</b> esta 
+descontinuado, el <b>CLIENTE</b> tiene la opción de pagar la diferencia en precio.</p>
+
+
+
+<div style="font-weight:bold; font-size:12px; text-align:center;">DEPRECIACIÓN DE MERCANCÍA</div>
+<p>En caso de no contar con un producto similar para su reposición, se hará un reembolso por medio de depósito
+aplicando los siguientes porcentajes de depreciación de acuerdo al tiempo transcurrido de compra del producto: </p>
+
+            <div style="width:200px;" class="left">
+				<table class="right">
+					<!-- <tr class="center"><td>TIEMPO</td></tr>   -->
+					<tr class="center"><td>De 1 a 30 días</td></tr>
+					<tr class="center"><td>De 31 a 90 días</td></tr>
+					<tr class="center"><td>De 91 a 180 días</td></tr>
+					<tr class="center"><td>De 181 a 360 días</td></tr>
+				</table>
+			</div>
+
+			<div style="width:200px;" class="left">
+				<table class="left">
+					<!-- <tr class="center" ><td style="margin-top 1px; margin-bottom 1px;">% DE DEPRECIACIÓN</td></tr>  -->
+					<tr class="center" ><td style="margin-top 1px; margin-bottom 1px;">0%</td></tr>
+					<tr class="center" ><td style="margin-top 1px; margin-bottom 1px;">20%</td></tr>
+					<tr class="center" ><td style="margin-top 1px; margin-bottom 1px;">35%</td></tr>
+					<tr class="center" ><td style="margin-top 1px; margin-bottom 1px;">50%</td></tr>
+				</table>
+			</div>
+			<div style="width:200px;" class="clear"></div>
+
+<p>Aplica solamente bajo los precios de facturación, por ningún motivo habrá devolución en efectivo. 
+*Las presentes <b>POLÍTICAS</b> son sujetas a cambio o actualizaciones sin previo aviso y es responsabilidad del 
+<b>CLIENTE</b> validarlas antes de efectuar cualquier compra, a través de este documento queda acordada la 
+aceptación por parte del <b>CLIENTE</b>, de los términos expuesto y sus modificaciones cada vez que se haga uso de 
+algunos de estos servicios.</p>
+
+</div>
+
+<div class="clear" style="height:10px;"></div>
+
+<div class="firmas left" style="font-size:10px;">
+    <div>_____________________________________________</div>
+    <div style="text-align:center;">&nbsp;&nbsp;&nbsp;NOMBRE Y FIRMA DEL CLIENTE</div>
+</div>    
+    
+<div class="firmas right" style="font-size:10px;">
+    <div>_____________________________________________</div>
+    <div style="text-align:center;">&nbsp;&nbsp;&nbsp;NOMBRE Y FIRMA DE TÉCNICO QUE RECIBE</div>
+</div>    
+
+<div class="clear" style="height:6px;"></div>
+<div style="text-align:center; font-size:9px;"> {{ atencion }} </div>

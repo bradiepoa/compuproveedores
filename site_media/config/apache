@@ -1,0 +1,7 @@
+<VirtualHost *:8080>
+   ServerName www.admintotal-1.com
+   ServerAlias admintotal-1.com
+   WSGIDaemonProcess central
+   WSGIScriptAlias / /etc/at/config/central.wsgi process-group=central application-group=%{GLOBAL}
+   ErrorLog /srv/www/logs/at/central_error.log
+</VirtualHost>

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+
+<style>
+    
+    body {
+        font-family:"Trebuchet MS";
+        
+    }
+    .demo{
+        font-style:italic;
+        font-weight:900;
+    }
+    .beneficios { font-weight:bold;}
+     p {margin-top:3px;margin-bottom:2px;}
+     ul {margin-top:3px;margin-bottom:0px;}
+     
+.container {
+     margin-left:20px;
+     text-align:justify;
+     background-image:url(/site_media/compu/images/fondo_soluciones.png);     
+     background-repeat:no-repeat;
+     font-size:11px;
+      
+}
+    .container ul li
+    {
+        margin-left: -25px;
+    }
+
+
+    #boton_div {
+      margin-right:45px; margin-top:100px;
+    }
+
+    .columna_l {
+        float:left;
+        width:{% block l_width %}{% endblock %}px; 
+    }
+    .columna_r {
+        float:left;
+        width:250px;
+        padding-left:10px;
+
+    }
+    
+    #texto {
+        margin-left:14px;
+        padding-top:12px;
+    }
+    
+    .beneficios {
+    
+        font-size:larger;
+    }
+    
+</style>
+
+{% endblock %}
+
+{% block content %}
+<div class="cuadro_fondo_gris">
+    
+    <div class="titulo_2" >{% block soluciones_title %}{% endblock %}</div>
+    
+    <div class="container">
+        <div id="texto">
+        {% block soluciones_text %}{% endblock %}
+        </div>
+        
+        <div style="position:relative;">
+            <div style="position: absolute; bottom: -429px; left:370px;"> 
+                <input type="button" onclick="window.location='{% url "concretar_cita" id %}'" value="¿Le interesaría concretar una cita?">
+            </div>
+        </div>
+              
+    </div>
+    <div class="clear"></div>
+</div>
+
+{% endblock %}

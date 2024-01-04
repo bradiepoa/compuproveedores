@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+{% if not success %}
+<style> 
+    .encuesta_lista ul li{ list-style: none; margin: 0 5px 0 0; padding: 0; float:left; }  
+    ul{ list-style: none; }  
+    #id_comentarios{ width:500px; height:50px;}
+</style>
+
+<script>
+$().ready(function(){
+
+    {% if success %}
+    
+    
+    var dlg =  $("#dialog-enviada").dialog({
+        autoOpen: false,
+        height: 220,
+	    width: 310,
+	    modal: true,
+	    
+        buttons: {
+            "Cerrar": function() {  
+                 $("#dialog-enviada").dialog( "close" );  
+            }
+        }
+    });
+
+    $("#dialog-enviada").dialog( "open" );  
+   
+    
+    
+    {% endif %}
+
+});
+
+function validar(){
+    
+    var mensaje = "";
+    var pregunta_6 = false;
+    var pregunta_7 = false
+    
+
+    if(!$('input[name=pregunta_1]:checked').val()){
+        mensaje += "pregunta 1 \n";
+    }
+    
+    if(!$('input[name=pregunta_2]:checked').val()){
+        mensaje += "pregunta 2 \n";
+    }
+    
+    if(!$('input[name=pregunta_3]:checked').val()){
+        mensaje += "pregunta 3 \n"
+    }
+    
+    if(!$('input[name=pregunta_4]:checked').val()){
+        mensaje += "pregunta 4 \n";
+    }
+    
+    if(!$('input[name=pregunta_5]:checked').val()){
+        mensaje += "pregunta 5 \n";
+    }
+    
+    if(!$('input[name=pregunta_6_1]:checked').val()){
+        pregunta_6 = true
+    }
+    if(!$('input[name=pregunta_6_2]:checked').val()){
+        pregunta_6 = true
+    }
+    if(!$('input[name=pregunta_6_3]:checked').val()){
+        pregunta_6 = true
+    }
+    if(!$('input[name=pregunta_6_4]:checked').val()){
+        pregunta_6 = true
+    }
+    if(!$('input[name=pregunta_6_5]:checked').val()){
+        pregunta_6 = true
+    }
+    if(!$('input[name=pregunta_6_6]:checked').val()){
+        pregunta_6 = true
+    }
+    if(!$('input[name=pregunta_6_7]:checked').val()){
+        pregunta_6 = true
+    }
+    
+    if(pregunta_6){
+        mensaje += "pregunta 6\n"
+    }
+    
+    
+    if(!$('input[name=pregunta_7_1]:checked').val()){
+        pregunta_7 = true
+    }
+    if(!$('input[name=pregunta_7_2]:checked').val()){
+        pregunta_7 = true
+    }
+    if(!$('input[name=pregunta_7_3]:checked').val()){
+        pregunta_7 = true
+    }
+    if(!$('input[name=pregunta_7_4]:checked').val()){
+        pregunta_7 = true
+    }
+    if(!$('input[name=pregunta_7_5]:checked').val()){
+        pregunta_7 = true
+    }
+
+    if(pregunta_7){
+        mensaje += "pregunta 7\n"
+    }
+    
+    if(!$('input[name=pregunta_8]:checked').val()){
+        mensaje += "pregunta 8 \n";
+    }
+    if(!$('input[name=pregunta_9]:checked').val()){
+        mensaje += "pregunta 9 \n";
+    }
+    
+    if(!$('#id_comentarios').val()){
+        mensaje += "pregunta 10 \n";
+    }
+    
+    if(mensaje){
+        alert("Aún no ha contestado las siguientes preguntas:\n" + mensaje);
+    }else{
+        $('form').submit();
+    }
+}
+
+
+</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+{% if success %}
+    <div class="cuadro_fondo_gris">
+<div class="espacio20"></div>
+
+
+    <div class="cuadro_fondo_gris_titulo">BOLSA DE TRABAJO</div>
+    <div class="cuadro_fondo_blanco">
+    <div class="texto_mensaje">
+        <div>Gracias por sus respuestas</div>
+    </div>
+
+    </div>
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+
+{% else %}
+
+<form action="." method="post">{% csrf_token %}
+    <b>{{ form.pregunta_1.label_tag }}</b>
+    <div>{{form.pregunta_1 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_2.label_tag }}</b>
+    <div>{{form.pregunta_2 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_3.label_tag }}</b>
+    <div>{{form.pregunta_3 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_4.label_tag }}</b>
+    <div>{{form.pregunta_4 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_5.label_tag }}</b>
+    <div>{{form.pregunta_5 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_6.label_tag }}</b>
+    
+    <div id="encuesta">
+        <table>
+            <tr>
+                <td><b>{{ form.pregunta_6_1.label_tag }}</b></td>
+                <td class="encuesta_lista">{{form.pregunta_6_1 }}</td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_6_2.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_6_2 }}</span></td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_6_3.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_6_3 }}</span></td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_6_4.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_6_4 }}</span></td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_6_5.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_6_5 }}</span></td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_6_6.label_tag }}</b>
+                <td><span class="encuesta_lista">{{form.pregunta_6_6 }}</span>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_6_7.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_6_7 }}</span> </td>    
+            </tr>   
+        </table>
+        
+        <div class="clear espacio20"></div>
+        
+        <b>{{ form.pregunta_7.label_tag }}</b>
+        
+        <table>
+            <tr>
+                <td><b>{{ form.pregunta_7_1.label_tag }}</b></td>
+                <td class="encuesta_lista">{{form.pregunta_7_1 }}</td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_7_2.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_7_2 }}</span></td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_7_3.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_7_3 }}</span></td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_7_4.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_7_4 }}</span></td>
+            </tr>
+            
+            <tr class="clear">
+                <td><b>{{ form.pregunta_7_5.label_tag }}</b></td>
+                <td><span class="encuesta_lista">{{form.pregunta_7_5 }}</span></td>
+            </tr>
+            
+        </table>
+        <div class="espacio20"></div>
+        <div class="clear"></div>
+        <b>{{ form.pregunta_8.label_tag }}</b>
+        <div>{{form.pregunta_8 }}</div>
+        <div><ul><li>¿Por qué?{{form.pregunta_8_porque }}</li></ul></div>
+        <div class="espacio20"></div>
+        <b>{{ form.pregunta_9.label_tag }}</b>
+        <div>{{form.pregunta_9 }}</div>
+        <div class="espacio20"></div>
+        
+        <b>{{ form.comentarios.label_tag }}</b>
+        <div>{{form.comentarios }}</div>
+    </div>
+    <div class="espacio20"></div>
+    <b style="font-size:13px;">Sus datos</b>
+    <div class="espacio20"></div>
+    
+    <table>
+        <tr>
+            <td>Razón social:</td><td>{{ form.razon_social }}</td><td>{{ form.razon_social.errors }}</td></div>
+        <tr>
+        <tr>
+            <td>Puesto:</td><td>{{ form.puesto }}</td><td>{{ form.puesto.errors }}</td></div>
+        </tr>    
+    </table>
+         
+    <div><input type="button" value="Enviar encuesta" onclick="validar()"></div>
+</form>
+    
+{% endif %}
+<script>
+$().ready(function(){
+    $("#id_razon_social").css('width', '20em');
+    $("#id_puesto").css('width', '20em');
+});
+
+</script>
+{% endblock %}
+

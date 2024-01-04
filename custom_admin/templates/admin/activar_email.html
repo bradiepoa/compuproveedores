@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+{% block content %}
+
+{% if not desactivar %}
+
+<div>¿Está seguro que desea Activar este email?</div>
+<form acction="." method="post">{% csrf_token %}
+    <input type="submit" name="si" value="Si"> <input type="submit" name="no" value="No">
+</form>
+
+{% endif %}
+
+{% endblock %}

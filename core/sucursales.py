@@ -1,0 +1,85 @@
+# -*- coding: utf-8 -*-
+sucursales = [
+    {'nombre': "tijuana",
+               'llamativo_t': -330,
+               'llamativo_r': 300,
+               'logo_t': -380,
+               'logo_r': 330,
+               'ciudad': "TIJUANA",
+               'ciudad2': 'Tijuana, Baja California Norte.',
+               'direccion': "",
+               'telefono': "Tel.(664) 645-1814",
+               'fax': "Fax (664) 645-1788",
+               'cob1': "Baja California Norte y ",
+               'cob2': "",
+               'cob3': "Baja California Sur",
+               'cob4': "",
+               'cob5': "",
+               'cob6': "",
+               'cob7': "",
+     },
+    {'nombre': "hermosillo",
+               'llamativo_t': -275,
+               'llamativo_r': 145,
+               'logo_t': -310,
+               'logo_r': 218,
+               'ciudad': "HERMOSILLO",
+               'ciudad2': 'Hermosillo, Sonora.',
+               'direccion': u"San Luis Potosí N°21, Col. Centro.",
+               'telefono': "Tel. (662) 214-2200",
+               'fax': "Fax (662) 215-8750",
+               'cob1': "Chihuahua, ",
+               'cob2': "Sonora, ",
+               'cob3': 'Coahuila, ',
+               'cob4': 'Tamaulipas y ',
+               'cob5': 'Nuevo León',
+               'cob6': "",
+               'cob7': "",
+     },
+    {'nombre': "culiacan",
+               'llamativo_t': -215,
+               'llamativo_r': 23,
+               'logo_t': -239,
+               'logo_r': 135,
+               'ciudad': "CULIACÁN",
+               'ciudad2': u'Culiacán, Sinaloa.',
+               'direccion': "",
+               'telefono': "Tel.(667) 715-85-33",
+               'fax': "Fax (667) 715-85-33",
+               'cob1': "Sinaloa, ",
+               'cob2': "Durango y ",
+               'cob3': "Nayarit",
+               'cob4': "",
+               'cob5': "",
+               'cob6': "",
+               'cob7': ""
+     },
+    {'nombre': "aguascalientes",
+               'llamativo_t': -159,
+               'llamativo_r': -140,
+               'logo_t': -169,
+               'logo_r': 20,
+               'ciudad': "AGUASCALIENTES",
+               'ciudad2': 'Aguascalientes, Aguascalientes.',
+               'direccion': "",
+               'telefono': "Tel.(449) 913-4418",
+               'fax': "Fax (449) 978-2082",
+               'cob1': "Zacatecas, ",
+               'cob2': "San Luis Potosí, ",
+               'cob3': "Querétaro, ",
+               'cob4': "Jalisco, ",
+               'cob5': "Guanajuato, ",
+               'cob6': "Michoacán y ",
+               'cob7': "Colima"
+     }
+
+]
+
+sucursales2 = []
+for s in sucursales:
+    sucursales2.append(dict(s))
+
+sucursales2[0]['logo_t'] = -365
+sucursales2[1]['logo_t'] = -295
+sucursales2[2]['logo_t'] = -224
+sucursales2[3]['logo_t'] = -154

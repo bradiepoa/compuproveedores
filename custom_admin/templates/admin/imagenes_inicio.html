@@ -1,0 +1,43 @@
+{% extends "admin_base.html" %}
+{% load custom_tags %}
+
+{% block content %}
+<script type="text/javascript">
+    $().ready(function(){
+        $(" #formset tr ").formset({
+            prefix:"{{ formset.prefix }}"
+        
+        });
+    
+    });
+</script>
+
+<form action="." method="POST" enctype="multipart/form-data">{{ formset.management_form }}{% csrf_token %}
+<table>
+
+    <tr>
+        <th>Activa</th>
+        <th>Imagen (713 X 285 )</th>
+        <th>URL</th>
+        <th>Vencimiento</th>
+        <th>Eliminar</th>
+    </tr>
+        
+    <tbody id="formset">
+        {% for form in formset %}
+        <tr>
+            <td>{{ form.id }}{{ form.activo }}</td>
+            <td>{% form_error form.imagen "true" %}{{ form.imagen }}</td>
+            <td>{% form_error form.url "true" %}{{ form.url }}</td>
+            <td>{% form_error form.fecha_vencimiento "true" %}{{ form.fecha_vencimiento }}</td>
+            <td>{{ form.DELETE }}</td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+    <tr><td>{% submit %}</td></tr>
+
+</table>
+</form>
+
+{% endblock %}

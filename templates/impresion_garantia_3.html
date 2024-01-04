@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>BITÁCORA DE GARANTÍA</title>
+	<link rel="stylesheet" type="text/css" href="{{ root_url }}/site_media/css/basic.css" />
+	
+<style>
+    {% include "bitacora_css.css"%}
+    p { 
+    text-align:justify; 
+    }
+    
+</style>
+
+</head>
+<body>
+{% for atencion in atenciones %}
+    <div {% if not forloop.last %}style="page-break-after: always"{% endif %}>
+        <div style="margin:auto;">{% include "impresion_garantia.html" %}</div>
+    </div>
+{% endfor %}
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+{% block extra_head %}
+    <style>p { text-align:justify; }</style>    
+{% endblock %}
+
+{% block content %}
+<div class="cuadro_fondo_gris">
+<div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo" style="padding-left:0; margin-left:10px;">
+    	TERMINOS Y CONDICIONES <br> DE GARANTÍA
+    </div>
+    <div class="cuadro_fondo_blanco_terminos">
+    	<div id="terminos_texto" class="scroll">    		
+            {% include "texto_terminos_condiciones.html" %}
+			<div class="clear"></div>
+		</div>
+	</div>
+<div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+{% endblock %}

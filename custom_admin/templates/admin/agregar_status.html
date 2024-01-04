@@ -1,0 +1,36 @@
+{% extends "main.html" %}
+{% block content %}
+
+<div class="left">
+    <form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <h3>Avance:</h3>
+        {{ form.status }}
+        <div><input type="submit" value="Guardar" /></div>
+    </form>
+</div>
+
+<div style="width:500px;" class="right">
+    {% if bitacora.tipo == 2 %}
+    <div>Usuario: {{ user.first_name }}</div>
+    {% else %} 
+    <div>Cliente: {{ bitacora.cliente }}</div>
+    {% endif %}
+    
+    {% for s in bitacora.status.all %}
+            {% if forloop.first %}
+                <h4>Avance Actual:</h4>
+            {% endif %}
+            
+            {% if forloop.counter0 == 1 %}
+                <div>&nbsp;</div>
+                <h4>Avances Anteriores:</h4>
+            {% endif %}
+            
+            <div  {% if forloop.first %} class="status_actual" {% endif%}>
+                {{ s.creado }} - {{ s.status }}
+            </div>
+        {% endfor%}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,198 @@
+@charset "utf-8";
+body {
+	background-color: #7696e5;
+	background-image: url(images/bg.jpg);
+	background-repeat: repeat-x;
+	margin:0;
+	
+	font-family:Arial, Helvetica, sans-serif;
+}
+a{
+	text-decoration:none;	
+}
+h1{
+	font-family:"Century Gothic";
+	color:#e4ac25;
+	font-size:30px;	
+	margin:0 0 10px 0;
+}
+h2{
+	font-family:"Century Gothic";
+	color:#83a2e8;
+	font-size:20px;	
+	margin:0 0 10px 0;
+	text-align:center;
+}
+.wrapper{
+	width:1000px;
+	background:#fff;	
+	margin:0 auto;
+	
+	-moz-box-shadow:10px 0 20px 0 #3d5ccf, -10px 0 20px 0 #3d5ccf;
+	-webkit-box-shadow:10px 0 20px 0 #3d5ccf, -10px 0 20px 0 #3d5ccf;
+	box-shadow: 10px 0 20px 0 #3d5ccf, -10px 0 20px 0 #3d5ccf;
+		
+}
+
+.logo{
+	width:272px;
+	height:168px;	
+	background: url(images/logo.png);
+	position:absolute;
+	z-index:10;
+	top:60px;
+	margin:0 0 0 20px;
+}
+
+.menu{
+	height:60px;
+	width:1000px;
+	background:	url(images/bg_menu.jpg);
+	font-family:"Century Gothic";
+	text-align:center;
+	line-height:60px;
+	font-weight:bold;
+	font-size:16px;
+}
+.menu a{
+	color:#373737;
+	text-transform:uppercase;
+	margin:0 10px;
+}
+.menu a:hover{
+	color:#e22024;	
+}
+.container{
+	background:url(images/bg_container.jpg) repeat-x top;	
+}
+
+.content_left{
+	float:left;
+	margin:25px;	
+	width:530px;
+	line-height:30px;
+}
+.content{
+	float:left;
+	margin:25px;	
+	line-height:30px;
+    width:950px;
+}
+.sidebar{
+	margin:25px 0 0 0;
+	width:420px;
+	float:left;	
+}
+.sidebar img a{
+	borcer:0;	
+}
+.footer{
+	font-size:13px;
+	margin:20px 0 0 0;
+	padding:25px 0;
+	background:#e9e9e9;
+	text-align:center;	
+	color:#373737;
+}
+.footer a{
+	color:#373737;
+	margin:0 10px;
+}
+.footer a:hover{
+	text-decoration:underline;	
+}
+.clear{clear:both;}
+.big_txt{
+	font-size:18px;
+	line-height:40px;
+}
+.imagen{
+	float:left;	
+	border:#83a2e8 2px solid;
+	margin: 0 10px 10px 0;
+}
+.imagen_receta{
+	border:#83a2e8 2px solid;
+	margin: 0 auto;
+	display:block;
+}
+.receta .imagen{
+	margin:5px;	
+	width:130px;
+}
+.receta{
+	display:block;
+	float:left;
+	width:145px;
+	line-height:15px;	
+	text-align:center;
+	font-weight:bold;
+	padding:0 0 5px 0;
+}
+.receta:hover{
+	background:#dadada;	
+}
+.nombre_r{
+	margin:0 0 10px 0;
+	color:#333;	
+}
+/***************************** slider grande arriba*/
+#contenedor_slideshow {
+    height: 253px;
+    width: 529px;
+
+}
+
+.slideshow {
+    height: 286px;
+    width: 1000px;
+    margin-right: auto;
+    margin-left: auto;
+	position:relative;
+	z-index:1;
+}
+.slideshow img {
+
+    border: 0;
+}
+#nav_slideshow{
+    position:relative;
+    top:-6px;
+    text-align:right;
+    z-index:999;
+    height: 15px;}
+
+#nav_slideshow a {
+    color: #fff;
+    text-decoration: none;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-image: url(images/nav_blanco.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+	margin:0 10px 0 0;
+}
+#nav_slideshow a:hover{
+    background-image: url(images/nav_rojo.png);
+    color:#e22024;
+}
+
+#nav_slideshow a.activeSlide {
+ background-image: url(images/nav_rojo.png);
+ color:#e22024;
+}
+/*termina slider arriba*/
+
+
+th{
+	font-weight:normal;
+}
+
+.input_contacto{
+	width:300px;	
+}
+
+.errorlist{color:red; font-size:15px;}

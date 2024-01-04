@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+{% block content %}
+{% if imagenes %}
+<script>
+var imagen = 0;
+var total_imagenes = {{ imagenes.count }};
+$(document).ready(function(){
+    $('#slideshow').cycle({     
+        fx: 'scrollRight',   
+        timeout: 0,
+        next:   '#next',
+        prev:   '#prev',
+
+
+        
+        
+    });
+    
+    var dlg =  $("#dialog-form").dialog({
+        autoOpen: false,
+        height: 160,
+	    width: 320,
+	    modal: true,
+	    draggable:false,
+	    resizable:false,
+        buttons: {
+            "Enviar": function() {  
+
+                $("#imagen_enviar").val($("#imagen_grande_"+imagen).attr('src'));
+                $("#id_form").submit();
+            },
+            "Cancelar": function() {
+                $(this).dialog("close");
+            }
+        }
+    });
+    dlg.parent().appendTo($("#id_form"));
+    $("#id_boton_enviar").click(function() { 
+        
+        $("#id_nombre").addClass("required");
+        $("#id_destinatario").addClass("required");
+        $("#id_destinatario").addClass("email");
+        $("#id_form").validate();
+        
+
+
+        $(" #id_nombre ").click(function(){
+            $(this).val("");
+            $(this).removeAttr("style");
+            $(this).off('click');
+        });
+        $(" #id_destinatario ").click(function(){
+            $(this).val("");
+            $(this).removeAttr("style");
+            $(this).off('click');
+        })
+        
+        $(" #id_nombre ").keydown(function(){
+            $(this).val("");
+            $(this).removeAttr("style");
+            $(this).off('keydown');
+        });
+        $(" #id_destinatario ").keydown(function(){
+            $(this).val("");
+            $(this).removeAttr("style");
+            $(this).off('keydown');
+        })
+        
+        
+        $("#dialog-form").dialog( "open" );  
+        $(" #id_nombre ").blur();
+    });
+    {% if enviada %}
+    
+    
+    var dlg =  $("#dialog-enviada").dialog({
+        autoOpen: false,
+        height: 220,
+	    width: 310,
+	    modal: true,
+	    
+        buttons: {
+            "Cerrar": function() {  
+                 $("#dialog-enviada").dialog( "close" );  
+            }
+        }
+    });
+
+    $("#dialog-enviada").dialog( "open" );  
+   
+    {% endif %}
+
+    $("#prev").click(function(){
+        imagen -= 1;
+        if(imagen < 0){
+            imagen = total_imagenes - 1;
+        }
+    });
+    $("#next").click(function(){
+        imagen += 1;
+        if(imagen >= total_imagenes ){
+            imagen = 0;
+        }
+    });
+});
+
+ 
+function onAfter(curr, next, opts) {
+    var index = opts.currSlide;
+    $('#prev')[index == 0 ? 'hide' : 'show']();
+    $('#next')[index == opts.slideCount - 1 ? 'hide' : 'show']();
+
+}
+   
+
+{% endif %}
+ 
+ 
+</script>
+
+<div class="cuadro_fondo_gris">
+<div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo">PROMOCIONES</div>
+    <div id="cuadro_blanco_promociones">
+        <div  class="left botones_imagen_izquierda"><a id="prev" href="#"><img src="/site_media/compu/images/flecha_izquierda.png" /></a></div>
+            <div class="right botones_imagen_derecha"><a id="next" href="#"><img src="/site_media/compu/images/flecha_derecha.png" /></a></div> 
+        <div style="margin: 20px; 0 0 25px;">
+        <div style="width:100%; height:20px;">&nbsp;</div>
+        {% if imagenes %}
+        <div class="imagenes_promociones">
+            <div style="width:35px;" class="left">&nbsp;</div>            
+            <div id="slideshow" >             
+                {% for imagen in imagenes %}
+                    {% if imagen.imagen_grande %}
+                        <img src="{{ imagen.imagen_grande.url }}"  id="imagen_grande_{{ forloop.counter0 }}" width="500" height="340" alt="Promoción" />
+                    {% endif %}
+                {% endfor %}
+            </div> 
+        </div>
+                <div class="right" style="margin:20px 40px 0 0;">
+                <input type="submit" value="Enviar a un amigo" name="enviar_promocion" id="id_boton_enviar">
+ 
+            </div>
+        {% endif %}
+
+        </div>
+    </div>
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+
+<form id="id_form" action="." method="post" enctype="multipart/form-data">{% csrf_token %}    
+    <input type="hidden" name="vacante_seleccionada" value="False" id="vacante_seleccionada">
+   
+    <div id="dialog-form" title="Enviar Promoción">
+            <div>{{ form.nombre.errors}}</div>
+            <div> De: {{ form.nombre }}</div>
+            <div>{{ form.destinatario.errors }}</div>
+            <div> Para: {{ form.destinatario }} </div>
+            <input type="hidden" id="imagen_enviar" name="imagen_enviar" />
+            <input type="text" name="city" value="" class="city"/>
+    </div>
+
+</form>
+    {% if enviada %}
+        <div id="dialog-enviada" title="Aviso">
+            <div>La promoción ha sido enviada!</div>
+        </div>
+    {% endif %}
+{% endblock %}

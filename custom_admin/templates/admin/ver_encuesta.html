@@ -1,0 +1,124 @@
+{% extends "admin_base.html" %}
+{% block extra_head %}
+<style> 
+    .encuesta_lista ul li{ list-style: none; margin: 0 5px 0 0; padding: 0; float:left; } 
+    ul{ list-style: none;} 
+
+    #id_comentarios{ width:500px; height:50px;}
+</style>
+{% endblock %}
+
+{% block content %}
+{% load custom_tags %}
+
+    <b>{{ form.pregunta_1.label_tag }}</b>
+    <div>{{form.pregunta_1 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_2.label_tag }}</b>
+    <div>{{form.pregunta_2 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_3.label_tag }}</b>
+    <div>{{form.pregunta_3 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_4.label_tag }}</b>
+    <div>{{form.pregunta_4 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_5.label_tag }}</b>
+    <div>{{form.pregunta_5 }}</div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_6.label_tag }}</b>
+    
+    <table>
+        <tr>
+            <td><b>{{ form.pregunta_6_1.label_tag }}</b></td>
+            <td class="encuesta_lista">{{form.pregunta_6_1 }}</td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_6_2.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_6_2 }}</span></td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_6_3.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_6_3 }}</span></td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_6_4.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_6_4 }}</span></td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_6_5.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_6_5 }}</span></td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_6_6.label_tag }}</b>
+            <td><span class="encuesta_lista">{{form.pregunta_6_6 }}</span>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_6_7.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_6_7 }}</span> </td>    
+        </tr>   
+    </table>
+    
+    <div class="clear espacio20"></div>
+    
+    <b>{{ form.pregunta_7.label_tag }}</b>
+    
+    <table>
+        <tr>
+            <td><b>{{ form.pregunta_7_1.label_tag }}</b></td>
+            <td class="encuesta_lista">{{form.pregunta_7_1 }}</td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_7_2.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_7_2 }}</span></td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_7_3.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_7_3 }}</span></td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_7_4.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_7_4 }}</span></td>
+        </tr>
+        
+        <tr class="clear">
+            <td><b>{{ form.pregunta_7_5.label_tag }}</b></td>
+            <td><span class="encuesta_lista">{{form.pregunta_7_5 }}</span></td>
+        </tr>
+        
+    </table>
+    <div class="espacio20"></div>
+    <div class="clear"></div>
+    <b>{{ form.pregunta_8.label_tag }}</b>
+    <div>{{form.pregunta_8 }}</div>
+    <div><ul><li>¿Por qué?{{form.pregunta_8_porque }}</li></ul></div>
+    <div class="espacio20"></div>
+    <b>{{ form.pregunta_9.label_tag }}</b>
+    <div>{{form.pregunta_9 }}</div>
+    <div class="espacio20"></div>
+    
+    <b>{{ form.comentarios.label_tag }}</b>
+    <div>{{form.comentarios }}</div>
+    <div class="espacio20"></div>
+    <b style="font-size:13px;">Sus datos</b>
+    <div class="espacio20"></div>
+    
+    <table>
+        <tr>
+            <td>Razon social:</td><td>{{ form.razon_social }}</td><td>{{ form.razon_social.errors }}</td></div>
+        <tr>
+        <tr>
+            <td>Puesto:</td><td>{{ form.puesto }}</td><td>{{ form.puesto.errors }}</td></div>
+        </tr>    
+    </table>
+
+{% endblock %}

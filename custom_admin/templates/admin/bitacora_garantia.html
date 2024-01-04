@@ -1,0 +1,481 @@
+{% extends "main.html" %}
+{% load custom_tags %}
+{% block content %}
+
+<script>
+var no_serie = ""
+var accesorios = ""
+var numero_cliente = "";
+$().ready(function(){
+    $("#tr_num").hide();
+
+    {% if sucursal %}
+        $("#id_sucursal").val("{{ sucursal }}");
+    {% endif %}
+    set_cliente_ac();
+   
+   {% if form_c.instance.distribuidor.vendedor_interno %}
+        $("#vendedor_td").show();
+        $("#vendedor_td_form").hide()
+   {% else %}
+        $("#vendedor_td").hide();
+        $("#vendedor_td_form").show()
+   {% endif %}
+    $("#id_cliente").css('width', '250px')
+    $("#id_folio").css('width', '40px');
+    $("#id_tipo_garantia").change(tipo_garantia_change);
+    $("#id_no_serie").change(function(){ if ($("#id_tipo_garantia").val() != "2"){ no_serie = $(this).val()} });
+    $("#id_accesorios").change(function(){ if ($("#id_tipo_garantia").val() != "2"){ accesorios = $(this).val()} });
+    $("#id_sucursal").change(set_cliente_ac);
+    $("#id_fecha").change(set_fecha_vencimiento);
+
+    
+});
+
+{% if not form.instance.id %}
+function set_clientes(tipo){
+
+    var cliente_id = $("#id_cliente_id").val();
+
+    if(cliente_id){
+
+        if(tipo == 1){
+            var cliente = $("#id_cliente").val();
+            $("#id_cliente-nombre").val(cliente);
+        }else{
+             var cliente = $("#id_cliente-nombre").val();
+             if(numero_cliente){
+                $("#id_cliente").val(numero_cliente + " - " + cliente);
+             }else{
+                $("#id_cliente").val(cliente);
+             }
+            
+
+        }
+
+
+    }
+
+}
+{% endif %}
+function set_cliente_ac(){
+    sucursal = $("#id_sucursal").val()
+
+    if(sucursal){
+        $("#id_cliente").autocomplete({
+            source:'{% url 'cliente_contains' %}?sucursal='+sucursal,
+            minLength:1,
+            select: function(even, ui){
+                {% if not form.instance.id %}
+                numero_cliente = ui.item.numero;
+                if(ui.item.numero){
+                    $("#tr_num").show();
+                    $("#numero").html(ui.item.numero);    
+                }else{
+
+                    $("#tr_num").hide();
+                }
+                $("#id_cliente-numero").val(ui.item.numero);
+                $("#id_cliente-rfc").val(ui.item.rfc);
+                $("#id_cliente-nombre").val(ui.item.nombre);
+                $("#id_cliente-sucursal").val(ui.item.sucursal);
+                $("#id_cliente-direccion").val(ui.item.direccion);
+                $("#id_cliente-ciudad").val(ui.item.ciudad);
+                $("#id_cliente-estado").val(ui.item.estado);
+                $("#id_cliente-celular").val(ui.item.celular);
+                $("#id_cliente-telefono").val(ui.item.telefono);
+                $("#id_cliente-telefono_extra").val(ui.item.telefono_extra);
+                $("#id_cliente-email").val(ui.item.email);
+                $("#id_cliente-vendedor").val(ui.item.vendedor);
+                $("#id_cliente-contacto").val(ui.item.contacto);
+                $("#id_cliente-ext").val(ui.item.ext);
+                $("#id_cliente_id").val(ui.item.id);
+                $("#id_cliente_hidden").val(ui.item.id);
+                $("#id_cliente").keyup(function(){set_clientes(1)});
+                $("#id_cliente-nombre").keyup(function(){set_clientes(2)});
+                $("#id_cliente-sucursal").change(function(){
+
+                    $("#id_sucursal").val($(this).val());
+                })
+                $("#id_sucursal").change(function(){
+                    $("#id_cliente-sucursal").val($(this).val());
+                })
+                {% endif %}
+
+                if(ui.item.vendedor){
+                    $("#vendedor_td").show().html(ui.item.vendedor_nombre);
+                    $("#vendedor_td_form").hide();
+                }else{
+                     $("#vendedor_td_form").show();
+                     $("#vendedor_td").hide().html("");
+                }
+            }
+            
+        });   
+    }else{
+    
+    }
+}
+
+function tipo_garantia_change(){
+    
+    var tg = $("#id_tipo_garantia").val();
+
+    if (tg == "2"){
+        $("#id_no_serie").val("No aplica");
+        $("#id_accesorios").val("No aplica");
+    }else{
+        $("#id_no_serie").val(no_serie);
+        $("#id_accesorios").val(accesorios);
+    }
+    
+}
+
+function submit_form(){
+    
+    {% if form.instance.id %}
+    {% if form.instance.estado == 0 or form.instance.estado == 1%}
+    
+    $("form").submit();
+
+    {% else %}
+    
+    alert("No puedes editar esta bitacora porque esta Cancelada o Cerrada");
+    return false;
+    {% endif %}
+    {% else %}
+    $("form").submit();
+    {% endif %}
+    
+}
+
+function set_fecha_vencimiento(){
+    
+    fecha = $('#id_fecha').val(); 
+
+
+    fecha = Date.parseExact(fecha,'dd/MM/yy')
+    if(fecha){
+        fecha.addDays(30);
+        $('#fecha_vencimiento_div').html(fecha.toString('dd/MM/yy'));
+    }
+ 
+}
+
+
+{% if form.instance.id and form.instance.estado == 1 %}
+function cerrar_garantia(){
+    cerrar = true;
+    {% if form.instance.garantia_costo %}
+    fcg = "{{ form.instance.factura_costo_garantia }}";
+    if(!fcg){
+        cerrar = false;
+        alert("Es nesesario llenar el campo factura costo garantía")
+    }
+    {% endif %}
+
+    if(cerrar){
+        window.location = "/admin/cerrar_bitacora_garantia/{{ id }}/"
+    }
+}
+{% endif %}
+
+
+</script>
+
+{% if id > '0' %}
+{% if form.instance.estado == 2 %}<div class="right red">CERRADA</div>{% endif %}
+{% if form.instance.estado == 3 %}<div class="right red">CANCELADA</div>{% endif %}
+<div>Creado por: {{ form.instance.usuario.first_name }}, el {{ form.instance.fecha|date:"d/m/Y, H:i:s" }}</div>
+<div>Última modificación: {{ form.instance.usuario_modificado.first_name }}, el {{ form.instance.fecha_modificado|date:"d/m/Y, H:i:s" }}</div>
+{% if form.instance.id %}
+    <tr>
+        <td>Guia:</td>
+        <td>{{ form.instance.guia }}</td>
+    </tr>
+{% endif %}
+
+<div class="bitacora_status">
+    <a class=right href="{% url 'agregar_status' form.instance.id %}"><img src="/site_media/img/add.png" />Agregar avance</a>
+    <div class="clear"></div>
+    
+    {% for s in form.instance.status.all %}
+        {% if forloop.first %}
+            <h4>Avance Actual:</h4>
+        {% endif %}
+        
+        {% if forloop.counter0 == 1 %}
+            <div>&nbsp;</div>
+            <h4>Avances Anteriores:</h4>
+        {% endif %}
+        
+        <div  {% if forloop.first %} class="status_actual" {% endif%}>
+            {{ s.creado }} - {{ s.status }}
+        </div>
+    {% endfor%}
+   
+</div>    
+    
+{% endif %}
+
+
+<h3>{% if not form.instance.id %}SOLICITUD DE {% endif %}GARANTÍA</h3>
+{{ form.non_field_errors }}
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %} {{ formset.management_form }}
+<input type="hidden" id="id_cliente_id" name="cliente_id" value="{{ form_c.instance.id|default:"" }}" >
+{{ form.cliente }}
+<div class="left">
+    <table>
+        <tr>
+            <td>Folio:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.folio }}</td>
+            {% else %}
+            <td>{{ folio }}</td>
+            {% endif %}
+        </tr>
+        
+        <tr>
+            <td>Fecha de solicitud:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.fecha }}</td>
+            {% else %}
+            <td>{{ fecha }}</td>
+            {% endif %} 
+        </tr>
+        {% if form.instance.id %}
+        <tr>
+            <td>Fecha de inicio:</td>
+            <td>
+                {{ form.fecha_recepcion }}
+                <br/>{% form_error form.fecha_recepcion  %}
+            </td>
+
+        </tr>
+        {% endif %}
+        <tr>
+            <td>Fecha de vencimiento:</td>
+            <td>
+                {% if form.instance.id %}
+                    <span id="fecha_vencimiento_div">{{ form.instance.fecha_vencimiento|default:"" }}</span>
+                {% else %}
+                    <span id="fecha_vencimiento_div">{{ fecha_vencimiento|date:"d/m/y" }}</span>
+                {% endif %}
+            </td>
+        </tr>
+    
+        <tr>
+            <td>Sucursal:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.get_sucursal_display }}</td>
+            {% else %}
+            <td>{{ form.sucursal }} <br/>{% form_error form.sucursal  %}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Cliente:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.cliente.nombre }}</td>
+            {% else %}
+            <td>{{ form.cliente_txt }} </span>
+            <br/>{% form_error form.cliente  %}</td>
+            {% endif %}
+
+        </tr>
+        
+        <tr>
+            <td>Tipo de garantía:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.get_tipo_garantia_display }}</td>
+            {% else %}
+            <td>{{ form.tipo_garantia }}<br/>{% form_error form.tipo_garantia  %} </td>
+            {% endif %}
+        </tr>
+        
+        <tr>
+            <td>Número factura:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.num_factura }}</td>
+            {% else %}
+            <td>{{ form.num_factura }} <br/>{% form_error form.num_factura  %}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Fecha Factura:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.fecha_factura }}</td>
+            {% else %}
+            <td>{{ form.fecha_factura }} <br/>{% form_error form.fecha_factura  %} </td>
+            {% endif %}
+        </tr>
+        
+        <tr>
+            <td>Clave de producto:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.clave }}</td>
+            {% else %}
+            <td>{{ form.clave }} <br/>{% form_error form.clave  %}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Descripción del producto:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.descripcion }}</td>
+            {% else %}
+            <td>{{ form.descripcion }} <br/>{% form_error form.descripcion  %}</td>
+            {% endif %}
+        </tr>
+        <tr class="combustible">
+            <td>No. de Serie:</td>
+            <td>{{ form.no_serie }} <br/>{% form_error form.no_serie  %}</td>
+  
+        </tr>
+        <tr class="combustible">
+            <td>Accesorios incluídos:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.accesorios }}</td>
+            {% else %}
+            <td>{{ form.accesorios }} <br/>{% form_error form.accesorios  %}</td>
+            {% endif %}
+        </tr>
+        
+        <tr>
+            <td>Descripción de la falla:</td>
+            
+            <td>
+                {% if not form.instance.id %}
+                {{ form.falla }}
+                {% else %}
+                {{ form.instance.falla }}
+                {% endif %}
+                <br/>
+                {{ form.falla.errors }}
+            </td>
+            
+        </tr>
+        
+        {% if not form.instance.id %}
+        <tr >
+            <td colspan="2">{{ form.garantia_costo }} {{ form.garantia_costo.label_tag }}</td>
+            <td> {{ form.garantia_costo.errors }}</td>
+        </tr>
+        {% endif %}
+    
+        
+        {% if form.instance.id %}
+        <tr>
+            <td>Para uso de soporte técnico:</td>
+            <td>{{ form.acciones_correctivas }}</td>
+            <td> {{ form.acciones_correctivas.errors }}</td>
+        </tr>
+        <tr>
+            <td>Refacciones:</td>
+            <td>{{ form.refacciones }}</td>
+            <td> {{ form.refacciones.errors }}</td>
+        </tr>
+        <tr>
+            <td>Observaciones finales:</td>
+            <td>{{ form.observaciones }}</td>
+            <td> {{ form.observaciones.errors }}</td>
+        </tr>
+
+        <tr >
+            <td>Garantía con costo</td>
+            <td>{{ form.instance.garantia_costo|sino }}</td>
+        </tr>
+
+        <tr >
+            <td>Documento de cobro</td>
+            <td>{{ form.factura_costo_garantia }} <br/>{% form_error form.factura_costo_garantia  %}</td>
+        </tr>
+        {% endif %}
+        
+    </table>
+</div>
+
+{% if not form.instance.id %}
+<div class="left" >
+    <h4>Datos del cliente</h4>
+    <table>
+        <tr id="tr_num"><td>Número</td><td id="numero"></td></tr>
+        <tr><td>{{ form_c.rfc.label_tag }}</td><td>{{ form_c.rfc }} <br/>{% form_error form_c.rfc %}</td></tr>
+        <tr><td>{{ form_c.nombre.label_tag }}</td><td>{{ form_c.nombre }} <br/>{% form_error form_c.nombre %}</td></tr>
+        <tr><td>{{ form_c.sucursal.label_tag }}</td><td>{{ form_c.sucursal }} <br/>{% form_error form_c.sucursal %}</td></tr>
+        <tr><td>{{ form_c.direccion.label_tag }}</td><td>{{ form_c.direccion }} <br/>{% form_error form_c.direccion %}</td></tr>
+        <tr><td>{{ form_c.ciudad.label_tag }}</td><td>{{ form_c.ciudad }} <br/>{% form_error form_c.ciudad %}</td></tr>
+        <tr><td>{{ form_c.estado.label_tag  }}</td><td>{{ form_c.estado }} <br/>{% form_error form_c.estado %}</td></tr>
+        <tr><td>{{ form_c.contacto.label_tag }}</td><td>{{ form_c.contacto }} <br/>{% form_error form_c.contacto %}</td></tr>
+        
+        <tr><td>{{ form_c.celular.label_tag }}</td><td>{{ form_c.celular }} <br/>{% form_error form_c.celular %}</td></tr>
+        <tr><td>{{ form_c.telefono.label_tag }}</td><td>{{ form_c.telefono }} <br/>{% form_error form_c.telefono %}</td></tr>
+        <tr><td>{{ form_c.ext.label_tag }}</td><td>{{ form_c.ext }}  <br/>{% form_error form_c.ext %}</td></tr>
+        <tr><td>{{ form_c.telefono_extra.label_tag}}</td><td>{{ form_c.telefono_extra }} <br/>{% form_error form_c.telefono_extra %}</td></tr>
+        <tr><td>{{ form_c.email.label_tag  }}</td><td>{{ form_c.email }} <br/>{% form_error form_c.email %}</td></tr>
+        <tr>
+            <td>{{ form_c.vendedor.label_tag }}</td>
+            <td id="vendedor_td">{{ form_c.instance.distribuidor.vendedor_interno.nombre }}</td>
+            <td id="vendedor_td_form">{{ form_c.vendedor}} <br/>{% form_error form_c.vendedor %}</td>
+
+        </tr>
+        
+        
+    </table>
+
+</div>
+{% endif %}
+<div class="clear"></div>
+
+    <div class="left">
+        <input type="button" onclick="submit_form()" value="Guardar"/>
+
+        {% if form.instance.id %}
+            <a href="{% url 'imprimir_bitacora_garantia' form.instance.id %}" target="_blank">
+                <img src="/site_media/img/icons/pdf.png">
+                Solicitud de Garantía
+            </a>
+            <a href="{% url 'pdf_tablas' form.instance.id %}" target="_blank">
+                <img src="/site_media/img/icons/pdf.png">
+                Cierre de Garantía
+            </a>
+        {% endif %}
+            
+        
+        {% if id > '0' and form.instance.estado == 0 %}
+            <a href="{% url 'cancelar_bitacora_garantia' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cancelar Garantía</a>
+        {% endif %}
+        
+        {% if id > '0' and form.instance.estado == 1 %}
+            <a href="javascript:cerrar_garantia();"><img src="/site_media/img/icons/delete_32.png"/>Cerrar Garantía</a>
+        {% endif %}
+  </div>
+    {% if form.instance.id %}
+
+        <div class="right" style="width:200px; margin-top:35px;">
+            {% if anterior %}
+            <div class="left">
+                <a href="{% url 'bitacora_garantia' anterior.id %}">
+                    <img src="/site_media/img/icons/left_16.png">
+                    Anterior
+                </a>
+            </div>
+            {% endif %}
+            {% if siguiente %}
+            <div class="right">
+                <a href="{% url 'bitacora_garantia' siguiente.id %}">
+                    Siguiente
+                    <img src="/site_media/img/icons/right_16.png">
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="clear"></div>
+</form>
+
+<script>
+$().ready(function(){
+    //$("input:text").css('width','300px')
+    $("textarea").css('width','350px').css('height','48px');
+});
+</script>
+{% endblock %}

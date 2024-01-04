@@ -1,0 +1,53 @@
+{% extends "main.html" %}
+{% block content %}
+{% load custom_tags %}
+
+<script type="text/javascript" src="/site_media/markitup/jquery.markitup.js"></script>
+<script type="text/javascript" src="/site_media/markitup/sets/default/set.js"></script>
+<link rel="stylesheet" type="text/css" href="/site_media/markitup/skins/markitup/style.css" />
+<link rel="stylesheet" type="text/css" href="/site_media/markitup/sets/default/style.css" />
+<script type="text/javascript">
+<!--
+$(document).ready(function()    {
+    // Add markItUp! to your textarea in one line
+    // $('textarea').markItUp( { Settings }, { OptionalExtraSettings } );
+    $('#id_texto').markItUp(mySettings);
+    
+    // You can add content from anywhere in your page
+    // $.markItUp( { Settings } );  
+    $('.add').click(function() {
+        $.markItUp( {   openWith:'<opening tag>',
+                        closeWith:'<\/closing tag>',
+                        placeHolder:"New content"
+                    }
+                );
+        return false;
+    });
+    
+    // And you can add/remove markItUp! whenever you want
+    // $(textarea).markItUpRemove();
+    $('.toggle').click(function() {
+        if ($("#id_texto.markItUpEditor").length === 1) {
+            $("#id_texto").markItUpRemove();
+            $("span", this).text("get markItUp! back");
+        } else {
+            $('#id_texto').markItUp(mySettings);
+            $("span", this).text("remove markItUp!");
+        }
+        return false;
+    });
+});
+-->
+</script>
+
+<form action="." method="post">{% csrf_token %}
+<div>Titulo: {{ form.titulo}} {{ form.titulo.errors }}</div>
+
+{{ form.texto.errors }}
+<p>
+    {{ form.texto }}
+</p>
+{% submit %}
+</form>
+
+{% endblock %}

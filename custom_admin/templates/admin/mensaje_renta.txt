@@ -1,0 +1,5 @@
+{% if mod %}
+    Se ha modificado una renta
+{% else %}
+    Se ha creado una renta 
+{% endif %}

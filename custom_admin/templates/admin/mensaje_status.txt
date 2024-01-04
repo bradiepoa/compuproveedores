@@ -1,0 +1,12 @@
+Se ha agregado un nuevo status a su reporte de servicio de compuproveedores
+
+Para consultar el status puede dirigirse a la siguiente liga:
+
+{% if bitacora.tipo == 0%}
+    {{ url }}{% url "garantia" %}?guia={{ bitacora.guia }}
+{% endif %}
+
+{% if bitacora.tipo == 1 %}
+    {{ url }}{% url "servicio" %}?guia={{ bitacora.guia }}
+{% endif %}
+

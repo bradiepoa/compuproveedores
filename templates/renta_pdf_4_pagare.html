@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+ 
+	<meta charset="utf-8" />
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="{{ root_url }}/site_media/css/renta_pdf.css" />
+	
+<style>
+#logo {float:left;}
+#direccion{
+    margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 90%;
+	vertical-align: baseline;
+	background: transparent;
+}
+.titulo_{ 
+    font-size:26px; 
+    color:#646060; 
+    padding-top:50px; 
+    padding-left:50px;
+    float:left; 
+    width:355px; 
+    height:90px; 
+    text-align:center;
+}
+
+.right{float:right;}
+.left{float:left;}
+.espacio40{ height:40px;}
+.espacio10{ height:10px;}
+.righttext{text-align:right;}
+
+.center{text-align:center;}
+
+.lefttext{text-align:left;}
+
+.clear {clear:both;}
+.clear {clear:both !important}
+
+#n_folio{
+    border-style:solid;
+    border-width:1px;
+} 
+
+#fecha{
+    border-style:solid;
+    border-width:1px;
+} 
+
+#prestamo_renta{
+    border-style:solid;
+    border-width:1px;
+    background-color:#eee;
+} 
+
+.info{
+    border-style:solid;
+    border-width:1px;
+    font-size:19px;
+}
+
+#autorizo{float:left; width:300px;}
+#recibio{float:right; width:300px;}
+
+.month{ padding-left:5em;}
+.year{ padding-left:6.3em;}
+
+.gris{ background-color:#eee;}
+table { border-collapse: collapse; }
+table  td, table th { border: 1px solid black; padding: 2px; }
+#items { clear: both; width: 100%; margin: 1px 0 0 0; border: 1px solid black; }
+#items th { background-color:#eee; }
+#items tr.item-row td { border: 0; vertical-align: top; }
+
+#datos_deudor{padding-top:3em; float:left; width:400px;}
+#acepto_debo{padding-top:3em; float:right; width:400px;}
+#items #observaciones{ height:70px;  }
+
+.justify{
+    text-align:justify;	
+    text-justify:auto;
+}
+</style>	
+	
+</head>
+<body>
+{% for atencion in atenciones %}
+    <div style="page-break-after: always">
+        {% include "renta_pdf.html" %}</div>
+{% endfor %}
+    <div>
+        {% include "pagare_pdf.html" %}</div>
+
+</body>
+</html>

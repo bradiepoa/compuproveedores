@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>DISTRIBUIDOR</title>
+<style>
+.left{float:left;}
+.right{float:right;}
+#logo {float:left;}
+#act_datos{ font-size:21px; color:#3b5cbd; padding-top:50px; float:left; width:300px; height:90px; text-align:center;}
+
+.righttext{text-align:right;}
+.center{text-align:center;}
+.lefttext{text-align:left;}
+
+#fecha_firma{ float:left; width:240px; font-size:12px;}
+#fecha_aut{ padding-top:3px;}
+.gris {background-color:#eee;}
+#fecha{
+    border-style:solid;
+    border-width:1px;
+    margin-left:20px;
+} 
+
+#fecha_fecha{
+    border-style:solid;
+    border-width:1px;
+    background-color:#eee;
+} 
+
+.uso_interno { padding-left:150px; font-size:14px; border-collapse: collapse;}
+.uso_interno  td, .uso_interno th{ border: 2px solid black; padding: 2px; }
+.uso_interno  td { font-size:11px; font-weight: bold;}
+
+.clear {clear:both;}
+.clear {clear:both !important}
+
+.titulo_tablas {border-style:solid; border-width:1px;text-align:center; background-color:#eee; font-weight: bold;  width:877px;}
+.titulo_tablas2 {border-style:solid; border-width:1px;text-align:center; background-color:#eee; font-weight: bold;  width:877px;}
+.tablas{font-size:12px; border-collapse: collapse;}
+.tablas  .td{ padding-left:5px; border: 1px solid black; }
+.todo { width:873px;}
+.muy_grande { width:520px; height:32px;}
+.grande { width:433px; height:32px;}
+.mediano { width:346px; height:32px;}
+.chico { width:286px; height:32px;}
+.muy_chico { width:213px; height:32px;}
+.muy_muy_chico { width:110px; height:32px;}
+
+
+.rc_empresa { width:246px; height:32px;}
+.rc_ciudad { width:290px; height:32px;}
+.rc_atencion { width:190px; height:32px;}
+.rc_telefono { width:126px; height:32px;}
+
+
+
+#doc_req { background-color:#eee; font-weight: bold; text-align:center; }
+.doc_req_cont {padding-left:30px; width:180px; font-size:13px; float:left }
+.solo_dis{padding-top:15px; height:85px; background-color:#eee;  font-size:12px; text-align:center;}
+</style>	
+	
+</head>
+<body> 
+    <div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+    <div id="logo">    
+        <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+    </div>
+    
+    <div id="act_datos">
+        {% if actualizacion %}
+        <b>ACTUALIZACIÓN DE DATOS DE      
+        {% else %}
+        <b>ALTA DE
+        {% endif %}
+        {% if distribuidor.distribuidor %}
+            DISTRIBUIDORES
+        {% else %}
+            CLIENTES
+        {% endif %}
+        </b> 
+    </div>
+    
+    <div class="left">
+        <table class="uso_interno">
+        
+            <tr>
+                <th colspan="2" class="centertext">USO INTERNO</th>
+            </tr>
+            
+            <tr><td>NO. DE CLIENTE</td><td style="width:100px;">{{ distribuidor.no_clientes_interno|default:"" }}</td></tr>
+            <tr><td>CLASIFICACIÓN</td><td  style="width:100px;">{{ distribuidor.clasificacion_interno|default:"" }}</td></tr>
+            <tr><td>VENDEDOR</td><td  style="width:100px;">{{ distribuidor.vendedor_interno.folio|default:"" }}</td></tr>
+            <tr><td>DÍAS DE CRÉDITO</td><td  style="width:100px;">{{ distribuidor.dias_credito_interno|default:"" }}</td></tr>
+            <tr><td>LÍMITE DE CRÉDITO</td><td  style="width:100px;">{{ distribuidor.limite_credito_interno|default:"" }}</td></tr>
+            
+            
+        </table>
+    </div>
+    
+    <div id="fecha_firma">
+        <div id="fecha">
+            <div class="center" id="fecha_fecha">
+                FECHA DE ALTA
+            </div>
+               
+            <div class="center">
+                <span>{{ distribuidor.created|date:"d/m/Y H:i" }}</span>
+            </div>
+        
+        </div>
+    <div id="fecha_aut" class="center">
+        <div id="fecha">
+            <div class="center" id="fecha_fecha">
+                FECHA DE AUTORIZACIÓN
+            </div>
+               
+            <div class="center">
+                <span>&nbsp;</span>
+            </div>
+        
+        </div>
+    </div>
+    <div id="fecha_aut" class="center">
+        <div id="fecha">
+            <div class="center" id="fecha_fecha">
+                FIRMA DE AUTORIZADO
+            </div>
+               
+            <div class="center">
+                <span>&nbsp;</span>
+            </div>
+        
+        </div>
+    </div>
+      
+    </div>
+<div class="clear"></div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">DATOS GENERALES DE FACTURACIÓN</div>
+
+    <div class="tr">
+        <div class="td muy_grande left">NOMBRE O RAZÓN SOCIAL(COMO APARECE EN EL FORMATO DE ALTA DE HACIENDA) <br/>{{ distribuidor.razon_social}}</div>
+        <div class="td mediano left">NOMBRE COMERCIAL(EN CASO DE TENER) <br/>{{ distribuidor.nombre_comercial}}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+     <div class="tr">
+        <div class="td grande left">DIRECCIÓN(CALLE Y NÚMERO) <br/>{{ distribuidor.domicilio }}</div>
+        <div class="td muy_chico left">COLONIA <br/> {{distribuidor.colonia}}</div>
+        <div class="td muy_chico left">CIUDAD/ESTADO <br/> {{distribuidor.estado}}</div>
+    </div>
+
+
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td chico left">RFC<br/>{{ distribuidor.rfc }}</div>
+        <div class="td chico left">CURP<br/>{{ distribuidor.curp }}</div>
+        <div class="td chico left">TELÉFONO<br/>{{ distribuidor.telefono }}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td chico left">FAX<br/>{{ distribuidor.fax }}</div>
+        <div class="td chico left">CP<br/>{{ distribuidor.cp }}</div>
+        <div class="td chico left">PÁGINA WEB<br/>{{ distribuidor.pagina_web }}</div>
+    </div>
+    
+</div>
+ 
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas2">DATOS PARTICULARES DEL REPRESENTANTE LEGAL</div>
+
+    <div class="tr">
+        <div class="td chico left">APELLIDO PATERNO<br/>{{ distribuidor.representante_apellido_paterno }}</div>
+        <div class="td chico left">APELLIDO MATERNO<br/>{{distribuidor.representante_apellido_materno }}</div>
+        <div class="td chico left">APELLIDO NOMBRE(S)<br/>{{ distribuidor.representante_nombre }}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+     <div class="tr">
+        <div class="td grande left">DIRECCIÓN (CALLE Y NÚMERO)<br/>{{ distribuidor.representante_domicilio }}</div>
+         <div class="td muy_chico left">COLONIA <br/> {{distribuidor.representante_colonia}}</div>
+        <div class="td muy_chico left">CIUDAD/ESTADO <br/> {{distribuidor.representante_ciudad}} {{distribuidor.representante_estado}}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td grande left">TELEFONO/FAX<br/>{{ distribuidor.representante_telefono }}</div>
+        <div class="td muy_chico left">E-MAIL<br/>{{ distribuidor.representante_email }}</div>
+        <div class="td muy_chico left">FIRMA<br/></div>
+    </div>
+    
+    
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">REFERENCIAS BANCARIAS PARA PAGOS</div>
+
+    <div class="tr">
+        <div class="td muy_chico left">BANCO<br/>{{ distribuidor.pagos_banco_1 }}</div>
+        <div class="td muy_chico left">NO. CUENTA<br/>{{ distribuidor.pagos_no_cuenta_1 }}</div>
+        <div class="td muy_chico left">BANCO<br/>{{ distribuidor.pagos_banco_2 }}</div>
+        <div class="td muy_chico left">NO. CUENTA<br/>{{ distribuidor.pagos_no_cuenta_2 }}</div>
+    </div>
+    
+    
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">DATOS DE CRÉDITO Y COBRANZA</div>
+
+    <div class="tr">
+        <div class="td muy_chico left">CONTACTO P/REV DE FACTURAS<br/>{{ distribuidor.contacto_revision_facturas }}</div>
+        <div class="td muy_chico left">DÍAS DE REVISIÓN<br/>{{ distribuidor.dias_revision }}</div>
+        <div class="td muy_chico left">HORARIO<br/>{{ distribuidor.horario_revision }}</div>
+        <div class="td muy_chico left">TELÉFONO/EXT<br/>{{ distribuidor.telefono_revision }}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+     <div class="tr">
+        <div class="td todo left">DOCUMENTOS REQUERIDOS PARA REVISIÓN(EN CASO DE SER NECESARIO)<br/>{{ distribuidor.doc_revision }}</div>
+  
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td muy_chico left">CONTACTO P/PAGOS<br/>{{ distribuidor.encargado_departamento_pago }}</div>
+        <div class="td muy_chico left">DÍAS DE PAGO<br/>{{ distribuidor.dias_pago }}</div>
+        <div class="td muy_chico left">HORARIO<br/>{{ distribuidor.horario_pago }}</div>
+        <div class="td muy_chico left">TELÉFONO/EXT<br/>{{ distribuidor.telefono_pago }}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td grande left">CORREO ELÉCTRONICO<br/>{{ distribuidor.email_pago }}</div>
+        <div class="td grande left">PORTARL P/ENVIO DE FACS(EN CASO DE EXISTIR)<br/>{{ distribuidor.pagina_web_pago }}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+     <div class="tr">
+        <div class="td todo left">DOCUMENTOS REQUERIDOS PARA PAGO(EN CASO DE SER NECESARIO)<br/>{{ distribuidor.documento_revision_pago }}</div>
+  
+    </div>
+
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">DATOS DE ALMACEN</div>
+
+    <div class="tr">
+        <div class="td muy_grande left">ENTREGA EN (CALLE, NUMERO, COLONIA<br/>{{ distribuidor.almacen_domicilio }} {{ distribuidor.almacen_colonia}}</div>
+        <div class="td mediano left">TELEFONO<br/>{{ distribuidor.almacen_telefono }}</div>
+    </div>
+    
+    <div class="clear"></div>
+    
+     <!--<div class="tr">
+        <div class="td todo left">DOCUMENTOS REQUERIDOS PARA REVISIÓN(EN CASO DE SER NECESARIO)</div>
+    </div>-->
+    
+    <div class="clear"></div>
+    
+    <div class="tr">
+        <div class="td muy_chico left">DÍAS<br/>{{ distribuidor.almacen_dias }}</div>
+        <div class="td muy_chico left">HORARIO<br/>{{ distribuidor.almacen_horario }}</div>
+        <div class="td grande left">RESPONSABLE DE RECEPCIÓN DE MERCANCÍA<br/>{{ distribuidor.almacen_atencion_a }}</div>
+    </div>
+
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">DATOS DE COMPRAS</div>
+    
+    <div class="tr">
+        <div class="td chico left">CONTACTO/COMPRAS<br/>{{ distribuidor.datos_compra_contacto }}</div>
+        <div class="td chico left">CORREO ELECTRONICO<br/>{{ distribuidor.datos_compra_correo }}</div>
+        <div class="td chico left">TELÉFONO/EXT<br/>{{ distribuidor.datos_compra_telefono}}</div>
+    </div>
+
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">INFORMACIÓN SOBRE LA EMPRESA</div>
+    
+    <div class="tr">
+        <div class="td muy_muy_chico left">LUGAR<br/>{{ distribuidor.get_lugar_display}}</div>
+        <div class="td chico left">TIEMPO DE RESIDENCIA EN EL LUGAR<br/>{{ distribuidor.tiempo_residir}}</div>
+        <div class="td mediano left">GIRO PRINCIPAL DE LA EMPRESA<br/>{{ distribuidor.giro_principal}}</div>
+        <div class="td muy_muy_chico left">NO. EMPLEADOS<br/>{{ distribuidor.no_empleados}}</div>
+    </div>
+
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<div class="tablas">
+    
+    <div class="titulo_tablas">REFERENCIAS COMERCIALES</div>
+    
+    <div class="tr">
+        <div class="td rc_empresa left">NOMBRE DE LA EMPRESA<br/>{{ distribuidor.nombre_empresa }}</div>
+        <div class="td rc_ciudad left">CIUDAD/ESTADO<br/>{{ distribuidor.ciudad_comerciales}} {{ distribuidor.estado_comerciales}}</div>
+        <div class="td rc_atencion left">ATENCION<br/>{{ distribuidor.atencion_comerciales}}</div>
+        <div class="td rc_telefono left">TELEFONO<br/>{{ distribuidor.telefono_comerciales}}</div>
+    </div>
+    <div class="tr">
+        <div class="td rc_empresa left">NOMBRE DE LA EMPRESA<br/>{{ distribuidor.nombre_empresa_2 }}</div>
+        <div class="td rc_ciudad left">CIUDAD/ESTADO<br/>{{ distribuidor.ciudad_comerciales_2 }} {{ distribuidor.estado_comerciales_2 }}</div>
+        <div class="td rc_atencion left">ATENCION<br/>{{ distribuidor.atencion_comerciales_2 }}</div>
+        <div class="td rc_telefono left">TELEFONO<br/>{{ distribuidor.telefono_comerciales_2 }}</div>
+    </div>
+    <div class="tr">
+        <div class="td rc_empresa left">NOMBRE DE LA EMPRESA<br/>{{ distribuidor.nombre_empresa_3 }}</div>
+        <div class="td rc_ciudad left">CIUDAD/ESTADO<br/>{{ distribuidor.ciudad_comerciales_3 }} {{ distribuidor.estado_comerciales_3 }}</div>
+        <div class="td rc_atencion left">ATENCION<br/>{{ distribuidor.atencion_comerciales_3 }}</div>
+        <div class="td rc_telefono left">TELEFONO<br/>{{ distribuidor.telefono_comerciales_3 }}</div>
+    </div>
+
+</div>
+<div class="clear"></div>
+
+<div style="page-break-after: always"></div>
+
+<div id="doc_req">DOCUMENTACIÓN REQUERIDA</div>
+<div>&nbsp;</div>
+<div class="doc_req_cont">1) COPIA DE LA CÉDULA DEL RFC</div>
+<div class="doc_req_cont">2) COPIA DE ALTA DE HACIENDA</div>
+<div class="doc_req_cont">3) COMPROBANTE DE DOMICILIO</div>
+<div class="doc_req_cont">4) COPIA DE IDENTIFICACIÓN OFICIAL REPRESENTANTE LEGAL</div>
+
+<div class="clear">&nbsp;</div>
+{% if distribuidor.distribuidor == 1 %}
+<div style="font-size:12px;">SÓLO PARA DISTRIBUIDORES</div>
+<div class="solo_dis">
+    AUTORIZO EXCLUSIVAMENTE A LAS SIGUIENTES PERSONA QUENES A MI NOMBRE Y REPRESENTACIÓN PUEDAN RECIBIR
+    LA MERCANCÍA QUE PREVIAMENTE HE SOLICITADO Y FIRMEN LA DOCUMENTACIÓN NECESARIA QUE AMPARA LA ENTREGA
+    DE DICHA MERCANCÍA POR PARTE DE COMPUPROVEEDORES S.A DE C.V., BAJO MI MÁS ESTRICTAS RESPONSABILIDAD, 
+    POR LO CUAL RECONOZCO LOS DATOS Y FIRMAS QUE A CONTINUACIÓN SE ESPICIFICAN Y QUE SON EMPLEADOS DEL SUSCRITO
+
+</div>
+{% endif %}
+<div class="clear">&nbsp;</div>
+
+{% for pa in distribuidor.personas.all %}
+<div class="tablas">
+    
+    <div class="titulo_tablas">PERSONA AUTORIZADA {{ forloop.counter }} </div>
+    
+    <div class="tr">
+        <div class="td chico left">APELLIDO PATERNO<br/>{{ pa.apellido_paterno }}</div>
+        <div class="td chico left">APELLIDO MATERNO<br/>{{ pa.apellido_materno }} </div>
+        <div class="td chico left">NOMBRE<br/>{{ pa.nombre}}</div>
+    </div>
+    
+    <div class="clear"></div>  
+
+    <div class="tr">
+        <div class="td grande left">PUESTO<br/>{{ pa.puesto }}</div>
+        <div class="td grande left">No. IFE<br/>{{ pa.numero_ife }} </div>
+    </div>
+
+    <div class="clear"></div>  
+
+    <div class="tr">
+        <div class="td grande left">FIRMA DE LA PERSONA AUTORIZADA<br/></div>
+        <div class="td grande left">FIRMA DE AUTORIZACIÓN DEL REPRESENTATNE LEGAL<br/></div>
+    </div>
+
+</div>
+<div class="clear"></div>
+{% endfor %}
+
+<div style="height:40px;"></div>
+<div style="color:#6F6F6F;">
+    <div class="center">
+        <b>ACEPTO Y RATIFICO EL PRESENTE DOCUMENTO</b>
+    </div>
+    <div style="height:20px;"></div>
+
+    <div style="width:35%; margin-left:20px;" class="left">
+        __________________________________________
+        <div class="center">
+           <div style="font-size:13px;"> NOMBRE Y FIRMA DEL REPRESENTANTE LEGAL
+            <div class="center">(CLIENTE)</div></div>
+        </div>
+    </div>
+
+    <div style="width:35%, margin-right:20px;" class="right">
+        __________________________________________
+        <div class="center">
+           <div style="font-size:13px;"> NOMBRE Y FIRMA DEL GERENTE
+            <div class="center">(CLIENTE)</div></div>
+        </div>
+    </div>
+    <div style="height:20px;" class="clear"></div>
+
+    <div class="center"><b>MATRIZ HERMOSILLO</b></div>
+    <div class="center">
+        San luís Potosí entre Matamoros y Guerrero Colonia Centro
+        CP: 83000
+        TEL (662) 2-14-22-00
+        FAX (662) 2-15-87-50
+
+    </div>
+    <div style="height:10px;"></div>
+    <div style="width:33%;" class="left">
+        <div class="center"><b>TIJUANA</b></div>
+        <div class="center">
+            Vía rápida Ote. No. 15455 Int.4
+        </div>
+        <div class="center">
+            Tel.(664) 645-1814
+        </div>
+    </div>
+
+    <div style="width:33%;" class="left">
+        <div class="center"><b>AGUASCALIENTES</b></div>
+        <div class="center">
+            Córdoba 218
+        </div>
+        <div class="center">
+            Tel.(449) 913-4418
+        </div>
+    </div>
+
+    <div style="width:33%;" class="left">
+        <div class="center"><b>CULIACÁN</b></div>
+        <div class="center">
+            Álvaro Obregón Nte. 623 L. 214
+        </div>
+        <div class="center">
+            Tel.(667) 715-8533
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block content %}
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %} {{ formset.management_form }}
+    
+    <table>
+        <tr>
+            <th>Puesto</th>
+            <th>Email</th>
+        </tr>
+        
+    {% for f in formset %} 
+        <tbody id="formset_dir">
+            <tr>
+                <td>{{ f.id }}{{ f.nombre }}{{ f.nombre.errors }}</td>
+                <td>{{ f.email }}{{ f.email.errors }}</td>
+                <td>{{ f.DELETE }}<label for="id_form-{{ forloop.counter0 }}-DELETE"><img src="/site_media/img/delete.png"></td>
+       
+            </tr>
+        <tbody>
+    {% endfor %}
+    </table>
+    <input type="submit" value="Guardar" />
+</form>
+
+<script>
+$().ready(function(){
+    
+    $(" #formset_dir tr ").formset({
+        prefix:"{{ formset.prefix }}"
+    
+    });
+
+    
+    
+});
+</script>
+{% endblock %}

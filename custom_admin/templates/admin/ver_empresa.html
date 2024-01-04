@@ -1,0 +1,235 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+
+        <a href="{% url 'generar_clave_distribuidor' form.instance.id %}">Generar clave para modificar</a>
+<form action="." method="post" enctype="multipart/form-data">{% csrf_token %} 
+        <h3>Datos generales (para facturación)</h3>
+        <table>
+            <tr>
+                <td>{{ form.tipo_distribuidor.label_tag }}</td>
+                <td>{{ form.tipo_distribuidor }}</td>
+                <td>{{ form.tipo_distribuidor.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.rfc.label_tag }}</td>
+                <td>{{ form.rfc }}</td>
+                <td>{{ form.rfc.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.nombre.label_tag }}</td>
+                <td>{{ form.nombre }}</td>
+                <td>{{ form.nombre.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.domicilio.label_tag }}</td>
+                <td>{{ form.domicilio }}</td>
+                <td>{{ form.domicilio.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.colonia.label_tag }}</td>
+                <td>{{ form.colonia }}</td>
+                <td>{{ form.colonia.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.telefono.label_tag }}</td>
+                <td>{{ form.telefono }}</td>
+                <td>{{ form.telefono.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.ciudad.label_tag }}</td>
+                <td>{{ form.ciudad }}</td>
+                <td>{{ form.ciudad.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.estado.label_tag }}</td>
+                <td>{{ form.estado }}</td>
+                <td>{{ form.estado.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.cp.label_tag }}</td>
+                <td>{{ form.cp }}</td>
+                <td>{{ form.cp.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.email.label_tag }}</td>
+                <td>{{ form.email }}</td>
+                <td>{{ form.email.errors}}</td>
+            </tr>
+            
+        </table>
+            
+        <hr><h3>Datos del representante de la empresa</h3>
+            
+        <table>
+            
+            <tr>
+                <td>{{ form.repesentante_apellido_paterno.label_tag }}</td>
+                <td>{{ form.repesentante_apellido_paterno }}</td>
+                <td>{{ form.repesentante_apellido_paterno.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_apellido_materno.label_tag }}</td>
+                <td>{{ form.repesentante_apellido_materno }}</td>
+                <td>{{ form.repesentante_apellido_materno.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_nombre.label_tag }}</td>
+                <td>{{ form.repesentante_nombre }}</td>
+                <td>{{ form.repesentante_nombre.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_domicilio.label_tag }}</td>
+                <td>{{ form.repesentante_domicilio }}</td>
+                <td>{{ form.repesentante_domicilio.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_colonia.label_tag }}</td>
+                <td>{{ form.repesentante_colonia }}</td>
+                <td>{{ form.repesentante_colonia.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_telefono.label_tag }}</td>
+                <td>{{ form.repesentante_telefono }}</td>
+                <td>{{ form.repesentante_telefono.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_ciudad.label_tag }}</td>
+                <td>{{ form.repesentante_ciudad }}</td>
+                <td>{{ form.repesentante_ciudad.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_estado.label_tag }}</td>
+                <td>{{ form.repesentante_estado }}</td>
+                <td>{{ form.repesentante_estado.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_cp.label_tag }}</td>
+                <td>{{ form.repesentante_cp }}</td>
+                <td>{{ form.repesentante_cp.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_puesto.label_tag }}</td>
+                <td>{{ form.repesentante_puesto }}</td>
+                <td>{{ form.repesentante_puesto.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_identificacion.label_tag }}</td>
+                <td>{{ form.repesentante_identificacion }}</td>
+                <td>{{ form.repesentante_identificacion.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.repesentante_vencimiento_identificacion.label_tag }}</td>
+                <td>{{ form.repesentante_vencimiento_identificacion }}</td>
+                <td>{{ form.repesentante_vencimiento_identificacion.errors}}</td>
+            </tr>
+        </table>
+            
+        <hr><h3>Copias de documentos de la empresa</h3>
+        
+        <table>
+            <tr>
+                <td>{{ form.copia_rfc.label_tag }}</td>
+                <td>
+                    {% if form.instance.copia_rfc %}
+                        <a href="{{ form.instance.copia_rfc.url }}"> Ver </a>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.copia_alta.label_tag }}</td>
+                <td>
+                    {% if form.instance.copia_alta %}
+                        <a href="{{ form.instance.copia_alta.url }}"> Ver </a>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.copia_identificacion.label_tag }}</td>
+                <td>
+                    {% if form.instance.copia_identificacion %}
+                        <a href="{{ form.instance.copia_identificacion.url }}"> Ver </a>
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.copia_comprobante_domicilio.label_tag }}</td>
+                <td>
+                    {% if form.instance.copia_comprobante_domicilio %}
+                        <a href="{{ form.instance.copia_comprobante_domicilio.url }}"> Ver </a>
+                    {% endif %}
+                </td>
+            </tr>
+        </table>
+            
+        <hr><h3>Información de la persona de contacto.</h3>
+        
+        <table>
+            <tr>
+                <td>{{ form.contacto_nombre.label_tag }}</td>
+                <td>{{ form.contacto_nombre }}</td>
+                <td>{{ form.contacto_nombre.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.contacto_puesto.label_tag }}</td>
+                <td>{{ form.contacto_puesto }}</td>
+                <td>{{ form.contacto_puesto.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.contacto_email.label_tag }}</td>
+                <td>{{ form.contacto_email }}</td>
+                <td>{{ form.contacto_email.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.contacto_telefono.label_tag }}</td>
+                <td>{{ form.contacto_telefono }}</td>
+                <td>{{ form.contacto_telefono.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.contacto_ext.label_tag }}</td>
+                <td>{{ form.contacto_ext }}</td>
+                <td>{{ form.contacto_ext.errors}}</td>
+            </tr>
+            <tr>
+                <td>{{ form.contacto_celular.label_tag }}</td>
+                <td>{{ form.contacto_celular }}</td>
+                <td>{{ form.contacto_celular.errors}}</td>
+            </tr>
+        </table>
+        
+        <hr>
+        <h3>Personas Autorizadas</h3>
+        <p>AUTORIZO EXCLUSIVAMENTE A LAS SIGUIENTES PERSONAS QUIENES A MI NOMBRE Y REPRESENTACIÓN PUEDAN RECIBIR LA MERCANCIA QUE
+    PREVIAMENTE HE SOLICITADO, Y FIRMEN LA DOCUMENTACIÓN NECESARIA QUE AMPARE LA ENTREGA DE DICHA MERCANCIA POR PARTE DE
+    COMPUPROVEEDORES, S.A. DE C.V., BAJO MI MAS ESTRICTA RESPONSABILIDAD POR LO CUAL RECONOZCO LOS DATOS Y FIRMAS QUE A
+    CONTINUACION SE ESPECIFICAN Y QUE SON EMPLEADOS DEL SUSCRITO.</p>
+        
+        <table border="0" cellpadding="0" cellspacing="0"  id="formset_table">
+            <thead>
+                <th>No.</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Nombre(s)</th>
+                <th>Puesto</th>
+                <th>Número de credencial IFE</th>
+            </thead>
+            <tbody>
+                {% for f in form.instance.personas.all %}
+                <tr id="{{ forloop.counter0 }}">
+                    <td><strong>{{ forloop.counter }}.-</strong>{{ f.id }}</td>
+                    <td>{{ f.apellido_paterno }}{{ f.apellido_paterno.errors }}</td>
+                    <td>{{ f.apellido_materno }}{{ f.apellido_materno.errors }}</td>
+                    <td>{{ f.nombre }}{{ f.nombre.errors }}</td>
+                    <td>{{ f.puesto }}{{ f.puesto.errors }}</td>
+                    <td>{{ f.numero_ife }}{{ f.numero_ife.errors }}</td>
+               </tr>
+               {% endfor %}
+           </tbody>
+       </table>
+       {{ formset.management_form }}
+    </form>     
+    
+<script>
+$("input:text").attr('disabled', 'disabled');
+</script>
+{% endblock %}

@@ -1,0 +1,277 @@
+{% extends "main.html" %}
+{% block content %}
+
+<script>
+$().ready(function(){
+
+    $("#formset tr").formset({
+        prefix:"{{ formset.prefix }}"
+    });
+    $("#convertir").click(function(){
+        confirmar_proyecto("{% url 'convertir_proyecto' id %}", "¿Está seguro de convertir esta solicitud en proyecto?")
+    });
+    $("#cancelar").click(function(){
+        confirmar_proyecto("{% url 'cancelar_proyecto' id %}", "¿Está seguro de regresar esta el proyecto a una solicitud interna?")
+    });
+})
+function submit_form(){
+    
+    {% if form.instance.id %}
+    {% if form.instance.estado == 0 or form.instance.estado == 1%}
+    
+    $("form").submit();
+
+    {% else %}
+    
+    alert("No puedes editar esta bitacora porque esta Cancelada o Cerrada");
+    return false;
+    {% endif %}
+    {% else %}
+    $("form").submit();
+    {% endif %}
+    
+}
+
+function confirmar_proyecto(url, text){
+    c = confirm(text);
+    if(c){
+        window.location = url;
+    }
+}
+
+</script>
+
+
+{% if id > '0' %}
+{% if form.instance.estado == 2 %}<div class="right red">CERRADA</div>{% endif %}
+{% if form.instance.estado == 3 %}<div class="right red">CANCELADA</div>{% endif %}
+<div>Creado por: {{ form.instance.usuario.first_name }}</div>
+<div>Ultmia modificación: {{ form.instance.usuario_modificado.first_name }}, el {{ form.instance.fecha_modificado|date:"d/m/Y, H:i:s" }}</div>
+
+<div class="bitacora_status">
+    <a class=right href="{% url 'agregar_status' form.instance.id %}"><img src="/site_media/img/add.png" />Agregar avances</a>
+    <div class="clear"></div>
+    
+    <table>
+    {% for s in form.instance.status.all %}
+        {% if forloop.first %}
+            <h4>Avance Actual:</h4>
+        {% endif %}
+        
+        {% if forloop.counter0 == 1 %}
+            <div>&nbsp;</div>
+            <h4>Avances Anteriores:</h4>
+        {% endif %}
+        
+        <div  {% if forloop.first %} class="status_actual" {% endif%}>
+            {{ s.creado }} - {{ s.status }}
+        </div>
+    {% endfor%}
+    </table>    
+</div>    
+
+{% endif %}
+{{ form.non_field_errors }}
+<h3>SOLICITUD INTERNA</h3>
+
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %} {{ formset.management_form }}
+    <table>
+        <tr>
+            <td>Folio:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.folio }}</td>
+            {% else %}
+            <td>{{ folio }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Fecha:</td>
+            <td>
+                {% if form.instance.id %}
+                    {{ form.instance.fecha }}
+                {% else %}
+                    {% now "d/m/y H:i"  %}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>Fecha de vencimiento:</td>
+            <td>
+                {% if form.instance.id %}
+                    {{ form.instance.fecha_vencimiento }}
+                {% else %}
+                    {{ fecha_vencimiento|date:"d/m/y" }}
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>Sucursal:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.usuario.perfil.get_sucursal_display }}</td>
+            {% else %}
+            <td>{{ user.perfil.get_sucursal_display }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Usuario:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.usuario.first_name }}</td>
+            {% else %}
+            <td>{{ user.first_name }}</td>
+            {% endif %}
+        </tr>
+        
+        <tr>
+            <td>Departamento:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.usuario.perfil.departamento }}</td>
+            {% else %}
+            <td>{{ user.perfil.departamento }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Extensión o teléfono:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.usuario.perfil.extension }}</td>
+            {% else %}
+            <td>{{ user.perfil.extension }}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Falla:</td>
+            <td>
+                {% if not form.instance.id %}
+                {{ form.falla }}
+                {% else %}
+                {{ form.instance.falla }}
+                {% endif %}
+            </td>
+            <td> {{ form.falla.errors }}</td>
+        </tr>
+        
+        
+    </table>
+    <div class="clear espacio40"></div>
+
+    <table>
+
+        <tbody id="formset">
+        {% for f in formset %}
+            <tr>
+                <td>{{ f.id }}{{ f.imagen }}</td>
+                <td>{{ f.imagen.errors }}</td>
+                <td>{{ f.DELETE }}</td>
+            </tr>
+        {% endfor %}
+        
+        </tbody>
+
+    </table>
+ 
+    
+    <div class="clear espacio40"></div>
+    <table>
+    {% if form.instance.id %}
+        <tr>
+            <td>Imágenes:
+                {% for i in form.instance.imagenes.all %}
+                    <a href="{{ i.imagen.url }}">Imagen {{ forloop.counter }}</a> &nbsp;&nbsp; 
+                {% endfor %}
+            </td>
+            <td>{{ form.acciones_correctivas.errors }}</td>
+        </tr>
+    {% endif %}
+        
+        {% if form.instance.id %}
+        <tr>
+            <td>Acciones Correctivas:</td>
+            <td>{{ form.acciones_correctivas }}</td>
+            <td> {{ form.acciones_correctivas.errors }}</td>
+        </tr>
+        <tr>
+            <td>Refacciones:</td>
+            <td>{{ form.refacciones }}</td>
+            <td> {{ form.refacciones.errors }}</td>
+        </tr>
+        <tr>
+            <td>Observaciones:</td>
+            <td>{{ form.observaciones }}</td>
+            <td> {{ form.observaciones.errors }}</td>
+        </tr>
+        {% endif %}
+    </table>
+    
+    <div class="left">
+        <input type="button" onclick="submit_form()" value="Guardar"/>
+   
+    {% if form.instance.id %}
+        <a href="{% url 'imprimir_bitacora_interno' form.instance.id %}" target="_blank">
+            <img src="/site_media/img/icons/pdf.png">
+            Solicitud Interna
+        </a>
+        &nbsp;&nbsp;
+
+        <a href="{% url 'pdf_tablas' form.instance.id %}" target="_blank">
+            <img src="/site_media/img/icons/pdf.png">
+            Cierre de Reporte
+        </a>
+        &nbsp;&nbsp;
+
+            
+        {% if id > '0' %}
+
+        
+    {% endif %}
+        
+            {% if form.instance.es_proyecto %}
+                <a id="cancelar" href="#">Deshacer proyecto.</a>
+            {% else %}
+                <a id="convertir" href="#">Convertir en proyecto.</a>
+            {% endif %}
+            
+        {% endif %}
+        
+        {% if id > '0' and form.instance.estado == 0 %}
+            <a href="{% url 'cancelar_bitacora_interno' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cancelar Solicitud</a>
+        {% endif %}
+        
+        {% if id > '0' and form.instance.estado < 2 %}
+            <a href="{% url 'cerrar_bitacora_interno' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cerrar Solicitud</a>
+        {% endif %}
+    </div>
+    {% if form.instance.id %}
+        <div class="right" style="width:200px; margin-top:35px;">
+            {% if anterior %}
+            <div class="left">
+                <a href="{% url 'bitacora_interno' anterior.id %}">
+                    <img src="/site_media/img/icons/left_16.png">
+                    Anterior
+                </a>
+            </div>
+            {% endif %}
+            {% if siguiente %}
+            <div class="right">
+                <a href="{% url 'bitacora_interno' siguiente.id %}">
+                    Siguiente
+                    <img src="/site_media/img/icons/right_16.png">
+                </a>
+            </div>
+            {% endif %}
+
+
+        </div>
+    {% endif %}
+    
+    <div class="clear"></div>
+    
+    
+    
+</form>
+
+<script>
+$().ready(function(){
+    //$("input:text").css('width','300px')
+    $("#id_folio").css('width', '40px');
+});
+</script>
+{% endblock %}

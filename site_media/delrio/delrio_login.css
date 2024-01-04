@@ -1,0 +1,108 @@
+body {
+background-image:url(images/bg.jpg);
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:0.75em;
+}
+
+a {
+color:#000;
+text-decoration:underline;
+}
+
+h1 {
+font-size:1.6em;
+margin:0.5em 0.5em 1em 0;
+}
+
+h2 {
+font-size:1.2em;
+margin:0.8em 0.5em 0.3em 0.6em;
+}
+
+h3 {
+font-size:1.1em;
+margin:0.8em 0.5em 0.3em 0.8em;
+}
+
+h4 {
+font-size:1em;
+margin:0.7em 0.5em 0.3em 1em;
+}
+
+h5 {
+font-size:0.9em;
+margin:0.6em 0.5em 0.2em 1.5em;
+}
+
+p {
+margin:1px 0.5em 0.5em 1.5em;
+}
+
+#centre {
+border:1px solid #202020;
+border-bottom:0;
+border-top:0;
+color:#000;
+padding:1.5em;
+}
+
+
+
+
+#error_message {
+    background-color:orange;
+    height:20px;
+    padding-top:5px;
+    text-align:center;
+}
+
+#success_message {
+    background-color:green;
+    height:20px;
+    padding-top:5px;
+    text-align:center;
+}
+
+
+.righttext { text-align:right; }
+
+
+#wrap { width: 980px; margin: 10px auto 0 auto;}
+#wrap_login { width: 640px; margin: 0 auto;}
+
+#contenidos { 
+    min-height:270px; 
+    background:#FFFFFF url(images/bk-content-gradient.jpg) repeat-x top; 
+    
+}
+
+#content { margin:auto; width:960px;  }
+#content_login { margin:auto; width:560px;  }
+
+#bottomround_login { 
+    background:url(images/round-bottom-content.gif);
+    width:640px; height:45px; margin:0 auto;
+} 
+
+
+table.list-table { border-width: 1px; border-spacing: 0px; border-style: outset;
+                   border-color: gray; border-collapse: separate;  }
+    
+table.list-table th { border-width: 1px; padding: 1px; border-style: inset;
+                      border-color: gray; -moz-border-radius: 0px; }
+    
+table.list-table td { border-width: 1px; padding: 1px; border-style: inset;
+                      border-color: gray; -moz-border-radius: 0px; 
+                      min-height:50px; }
+table.list-table tr td { height:20px; }
+
+.option {
+    font-size:1.5em;
+    margin:10px;
+}
+.errorlist{ color:red; }
+
+.clear {clear:both;}
+.left{ float:left; }
+.right{ float:right; }
+.margin-t{  padding-left:90px; }

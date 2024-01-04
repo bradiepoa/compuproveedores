@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+
+ $(document).ready(function(){
+        {% if imagenes_mt %}
+            $('.rotar_mundo_tecnologia').cycle({ 
+                fx: 'fade', 
+                speed: '2000', 
+                timeout: 10000
+            }); 
+        {% endif %}
+        
+  });
+  
+  
+</script>
+<div class="cuadro_fondo_gris">
+    <div class="espacio20"></div>
+    <div class="cuadro_fondo_gris_titulo" >MUNDO Y TECNOLOGÍA</div>
+    
+    <div class="rotar_mundo_tecnologia">
+        {% for imagen in imagenes_mt %}
+            {% if imagen.imagen %}
+                <div style="padding-left:37px; padding-top:15px;" >
+                	<img src="{{ imagen.imagen.url }}" class="banner" width="600" height="425" alt="mundo_tecnologia" />
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div> 
+
+</div>
+
+{% endblock %}

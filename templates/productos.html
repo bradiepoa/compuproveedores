@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<script>
+function search(){
+    window.location = '{% url 'productos' %}?q=' + $("#id_search").val();
+}
+</script>
+<div class="gray rounded">
+<div class="espacio20"></div>
+<img src="/site_media/fc/images/search.png">
+<input type="text" value="{{ q }}" id="id_search" onkeypress="check_enter(event, search)">
+<input type='button' value="Buscar" onclick="search()">
+
+<table class="list-table">
+    <tr>
+        <th>Marca</th>
+        <th>Tipo</th>
+        <th>Clave</th>
+        <th>Descripci&oacute;n</th>
+    </tr>
+    {% for p in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td>{{ p.marca }}</td>
+            <td>{{ p.tipo }}</td>
+            <td>{{ p.clave }}</td>
+            <td>{{ p.descripcion }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% include 'paginado.html' %}
+
+<script>
+    
+    function post(){
+        window.location = '.?q=' + $("#q").val();
+    }
+    
+    $("#q").keydown(function(){ check_enter(event, post); });
+    $("#go").click(post);
+    $("#q").val('{{ q|safe }}');
+</script>
+<div class="espacio10"></div>
+</div>
+{% endblock %}

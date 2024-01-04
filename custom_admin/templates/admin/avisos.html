@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+{% block content %}
+{% load url from future %}
+{% load custom_tags %}
+<div>
+    <a href="{% url "admin-aviso_privacidad" 0 %}">
+    <img src="/site_media/fc/images/add.gif">Agregar aviso de privacidad</a> 
+</div>
+<table class="list-table">
+    <tr>
+        <th>Creado</th>
+        <th>Titulo</th>
+    </tr>
+    {% for r in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url "renta" r.id %}">{{ r.creado }}</a></td>
+            <td><a href="{% url "renta" r.id %}">{{ r.titulo }}</a></td>
+            
+        </tr>
+    {% endfor %}
+</table>
+{% include 'paginado.html' %}
+
+{% endblock %}
+
+
+

@@ -1,0 +1,85 @@
+{% extends "admin_base.html" %}
+{% load custom_tags %}
+{% block content %}
+
+
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <table>
+
+        <tr>
+            <td>Folio:</td>
+            <td>{{ sertec.folio }}</td>
+        </tr>
+        
+        <tr>
+            <td>Fecha de solicitud:</td>
+            <td>{{ sertec.fecha }}</td>
+        </tr>
+        <tr>
+            <td>Fecha de vencimiento:</td>
+            <td>
+                <span id="fecha_vencimiento_div">{{ sertec.fecha_vencimiento|default:"" }}</span>
+            </td>
+        </tr>
+        <tr class="combustible">
+            <td>Número de años:</td>
+            <td>
+                  <span >{{ sertec.no_years }}</span>
+            </td>
+        </tr>
+    
+        <tr>
+            <td>Sucursal:</td>
+            <td>{{ sertec.get_sucursal_display }}</td>
+        </tr>
+        <tr>
+            <td>Cliente:</td>
+            <td>{{ sertec.cliente.nombre }}</td>
+        </tr>
+        
+        <tr>
+            <td>Tipo:</td>
+            <td>{{ sertec.get_tipo_sertec_display }}</td>
+        </tr>
+
+         <tr>
+            <td>Tipo equipo:</td>
+            <td>
+                {{ sertec.get_tipo_equipo_display|default:"" }}
+            </td>
+        </tr>
+        <tr>
+            <td>Marca:</td>
+            <td>{{ sertec.marca }}</td>
+        </tr>
+
+        <tr>
+            <td>Modelo:</td>
+            <td>{{ sertec.modelo }}</td>
+        </tr>
+
+        <tr class="combustible">
+            <td>No. de Serie:</td>
+            <td>{{ sertec.no_serie }} </td>
+  
+        </tr>
+        
+        <tr>
+            <td>Número de Años: </td>
+            <td> {{ form.no_years }}</td>
+            <td> {{ form.no_years.errors }}</td>
+        </tr>
+
+        <tr>
+            <td> Documento de cobro</td>
+            <td> {{ form.factura_costo_garantia }}</td>
+            <td> {{ form.factura_costo_garantia.errors }}</td>
+        </tr>
+    </table>
+    <div>
+        <input type="submit" value="Guardar">
+    </div>
+</form>
+
+
+{% endblock %}

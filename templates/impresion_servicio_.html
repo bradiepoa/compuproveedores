@@ -1,0 +1,400 @@
+{% load custom_tags %}
+<!--<div class="folio_r1">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="folio_r2">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="clear espacio50"></div>
+--> 
+<div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+
+<div id="logo" class="left">    
+    <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+</div>
+
+<div class="titulo_g">
+    <b>SOLICITUD DE <br /> SERVICIO</b>
+</div>
+<div class="fechas">
+    <div >
+            <div class="center folio_fecha_titulo">
+                <div><b>FECHA</b></div>
+            </div>
+               
+            <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Día</div>
+                    {{ bitacora.fecha.day }}
+                </div>
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Mes</div>
+                    {{ bitacora.fecha.month }}
+                </div>
+                <div class="left center" style="width:66px;">
+                    <div>Año</div>
+                    {{ bitacora.fecha.year }}
+                </div>
+            </div>
+
+    </div>
+    <div style="height:10px;"></div>
+    <div>
+            <div class="center folio_fecha_titulo">
+                <div><b>VIGENCIA</b></div>
+            </div>
+
+           <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Día</div>
+                    {{ bitacora.fecha_vencimiento.day }}
+                </div>
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Mes</div>
+                    {{ bitacora.fecha_vencimiento.month }}
+                </div>
+                <div class="left center" style="width:66px;">
+                    <div>Año</div>
+                    {{ bitacora.fecha_vencimiento.year }}
+                </div>
+            </div>
+            
+
+
+    </div>
+</div>
+<div class="left" style="width:20px;">&nbsp;</div>
+<div class="fechas">
+    <div >
+            <div class="center folio_fecha_titulo" >
+                <div><b>FOLIO</b></div>
+            </div>
+               
+            <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="center" style="margin-top:10px;">
+                    {{ bitacora.folio }}
+                </div>
+            </div>
+
+    </div>
+    <div style="height:10px;"></div>
+    <div>
+            <div class="center folio_fecha_titulo">
+                <div><b>CÓDIGO DE SERVICIO</b></div>
+            </div>
+
+           <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="center" style="margin-top:10px;">
+                    {{ bitacora.guia }}
+                </div>
+            </div>
+            
+    </div>
+</div>
+
+<div class="clear"></div>
+    
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+            <th colspan="2" style="padding-bottom:4px; padding-top:0;">DATOS DEL CLIENTE</th>
+    </thead>
+
+    <tbody style="font-size:9px; line-height:20px;">
+        <tr style="border-bottom:solid 1px #000;">
+            <td>CLIENTE: &nbsp;&nbsp; {{ bitacora.cliente.nombre }}</td>
+            <td>NO. DE CLIENTE:&nbsp;&nbsp;{{ bitacora.cliente.distribuidor.no_clientes_interno|default:"MOST" }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>DIRECCIÓN:&nbsp;&nbsp;{{ bitacora.cliente.direccion }}</td>
+            <td>RFC:&nbsp;&nbsp;{{ bitacora.cliente.rfc }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>POBLACIÓN:&nbsp;&nbsp;{{ bitacora.cliente.ciudad }}</td>
+            <td>VENDEDOR: &nbsp;&nbsp;{{ bitacora.cliente.distribuidor.vendedor_interno.folio }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>CONTACTAR A:&nbsp;&nbsp;{{ bitacora.cliente.contacto }}</td>
+            <td>CORREO: &nbsp;&nbsp;{{ bitacora.cliente.email }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="left" style="width:200px;">TELÉFONO:&nbsp;&nbsp;{{ bitacora.cliente.telefono }}</div>
+                
+                <div class="left" style="width:200px;">EXT.:&nbsp;&nbsp; {{ bitacora.cliente.ext|default:"" }}</div>
+               
+                <div class="left" style="width:200px;">TELÉFONO ADICIONAL:&nbsp;&nbsp; {{ bitacora.cliente.telefono_extra }}</div>
+                
+                <div class="left" style="width:200px;">CELULAR &nbsp;&nbsp; {{ bitacora.cliente.celular }}</div>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="clear espacio10"></div>
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+            <th colspan="2" style="padding-bottom:4px; padding-top:0;">DESCRIPCIÓN DEL SERVICIO EN PROCESO</th>
+    </thead>
+
+    <tbody style="font-size:9px; line-height:20px;">
+        <tr style="border-bottom:solid 1px #000;">
+            <td>SUCURSAL: &nbsp;&nbsp; {{ bitacora.get_sucursal_display }}</td>
+            <td>LUGAR DE SERVICIO:&nbsp;&nbsp;{{ bitacora.get_lugar_servicio_display|default:"" }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>TIPO DE SERVICIO:&nbsp;&nbsp;{{ bitacora.get_tipo_servicio_display }}</td>
+            <td>TIPO DE EQUIPO:&nbsp;&nbsp;{{ bitacora.get_tipo_equipo_display }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="clear espacio10"></div>
+<table class="tablas" class="with_border" border="1">
+    <thead>
+            <th>MARCA:</th>
+            <th>MODELO:</th>
+            <th>NÚMERO DE SERIE:</th>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas">
+            <td class="center">{{ bitacora.marca }}</td>
+            <td class="center">{{ bitacora.modelo }}</td>
+            <td class="center">{{ bitacora.no_serie }}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="clear espacio10"></div>
+    
+<div id="recepcion">RECEPCIÓN DE</div>
+
+<div class="espacio10"></div>
+
+<!--
+<div class="left" style=" width:290px;">    
+    &nbsp;
+</div>
+
+-->
+
+<div style="margin:auto;"> 
+    {% if bitacora.tipo_equipo == 3 %}
+    <div id="impresora">
+        <div class="left">
+            <img src="{{ root_url }}/site_media/compu/images/impresora.jpg" style="width:140px; height:120px;">
+        </div>
+        <div class="left">
+            <div>{{ bitacora.bandeja|cruz_roja }}{{ bitacora|label_tag2:"bandeja" }}</div>
+            <div>{{ bitacora.cabezales|cruz_roja }}{{ bitacora|label_tag2:"cabezales" }}</div> 
+            <div>{{ bitacora.cable_corriente_imp|cruz_roja }}{{ bitacora|label_tag2:"cable_corriente_imp" }}</div>  
+            <div>{{ bitacora.cable_paralelo|cruz_roja }}{{ bitacora|label_tag2:"cable_paralelo" }}</div>   
+            <div>{{ bitacora.cable_usb|cruz_roja }}{{ bitacora|label_tag2:"cable_usb" }}</div>  
+            <div>{{ bitacora.cartuchos_tinta|cruz_roja }}{{ bitacora|label_tag2:"cartuchos_tinta" }}</div>    
+            <div>{{ bitacora.otros_imp|cruz_roja }}{{ bitacora|label_tag2:"otros_imp" }}</div> 
+            {% if bitacora.otros_imp %}
+            <div id="otros_especificar_imp">({{ bitacora|label_tag2:"otros_especificar_imp" }}){{ bitacora.otros_especificar_imp}}</div>  
+            {% endif %}
+            <div>{{ bitacora.toner|cruz_roja }}{{ bitacora|label_tag2:"toner" }}</div>
+        </div>
+    </div>
+    {% endif %}
+    {% if bitacora.tipo_equipo == 1 %}
+    <div id="lap_top">
+        <div class="left">
+            <img src="{{ root_url }}/site_media/compu/images/lap_top.jpg" style="width:140px; height:120px;"  >
+        </div>   
+        <div class="left">
+            <div>{{ bitacora.bateria|cruz_roja }}{{ bitacora|label_tag2:"bateria" }}</div>    
+            <div>{{ bitacora.cable_corriente_lap|cruz_roja }}{{ bitacora|label_tag2:"cable_corriente_lap" }}</div> 
+            <div>{{ bitacora|label_tag:"contrasena_bios" }} {{ bitacora.contrasena_bios }}</div> 
+            <div>{{ bitacora|label_tag:"contrasena_sesion" }} {{ bitacora.contrasena_sesion }}</div> 
+            <div>{{ bitacora.otros_lap|cruz_roja }}{{ bitacora|label_tag2:"otros_lap" }}</div> 
+            {% if bitacora.otros_lap %}
+            <div id="otros_especificar_lap">({{ bitacora|label_tag2:"otros_especificar_lap" }}) {{ bitacora.otros_especificar_lap }}</div> 
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+    {% if bitacora.tipo_equipo == 2 %}
+    <div id="pc">
+        <div class="left">
+            <img src="{{ root_url }}/site_media/compu/images/pc1.jpg" style="width:100px; height:120px;" >
+        </div> 
+        <div class="left">
+            <div>{{ bitacora.cable_corriente|cruz_roja }}{{ bitacora|label_tag2:"cable_corriente" }}</div>
+            
+            <div>{{ bitacora.monitor|cruz_roja }}{{ bitacora|label_tag2:"monitor" }}</div>  
+            <div>{{ bitacora.otros_pc|cruz_roja }}{{ bitacora|label_tag2:"otros_pc" }}</div> 
+            {% if bitacora.otros_pc %}
+            <div id="otros_especificar_pc">({{ bitacora|label_tag2:"otros_especificar_pc" }}){{ bitacora.otros_especificar_pc}}</div>  
+            {% endif %}  
+            <div>{{ bitacora.password|cruz_roja }}{{ bitacora|label_tag2:"password" }}</div> 
+            {% if bitacora.password %}
+            <div id="password_especificar">({{ bitacora|label_tag2:"password_especificar" }}) {{ bitacora.password_especificar }}</div>      
+            {% endif %}            
+            <div>{{ bitacora.sesion|cruz_roja }}{{ bitacora|label_tag2:"sesion" }}</div> 
+            {% if biracora.sesion %}
+            <div id="sesion_especificar">({{ bitacora|label_tag2:"sesion_especificar" }}) {{ bitacora.sesion_especificar }}</div>      
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if bitacora.tipo_equipo == 4 %}
+    <div id="cuadro_otro">
+        <div id="cuadro_otro_otros" class="left">
+            <div class="title_otros">
+                OTROS
+            </div>
+            <div class="otros_text" style="font-size:9px;">
+                {{ bitacora.otros }}
+            </div>
+        </div>
+
+        <div id="accesorios_incluye"  class="left">
+            <div class="title_otros">
+                ACCESORIOS QUE INCLUYE
+            </div>
+            <div class="otros_text" style="font-size:9px;">
+                {{ bitacora.accesorios_incluye }}
+            </div>
+        </div>
+
+    </div>
+    {% endif %}
+
+</div>    
+
+<!--
+<div class="clear espacio10"></div>
+<table class="tablas" class="with_border" border="1">
+    <thead>
+        	<th>OTROS</th>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas">
+            <td>{{ bitacora.otros|default:"" }}</td>
+        </tr>
+    </tbody>
+</table>
+-->
+
+<div class="clear espacio10"></div>
+<table class="tablas" class="with_border" border="1">
+    <thead>
+      	<th>FALLA REPORTADA</th>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas">
+            <td>{{ bitacora.falla }}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="clear espacio10"></div>
+
+
+
+{% if bitacora.lugar_servicio == 2 %}
+
+<div>
+    <div style="width:30%; float:left; text-align:center;">
+        {{ bitacora.usa_herramienta|cruz_roja }} 
+        Herramienta
+    </div>
+    <div style="width:30%; float:left; text-align:center;">
+        {{ bitacora.usa_escalera|cruz_roja }} 
+        Escalera
+    </div>
+    <div style="width:30%; float:left; text-align:center;">
+        {{ bitacora.usa_equipo|cruz_roja }} 
+        Equipo de Seguridad
+    </div>
+</div>
+
+<div class="clear espacio10"></div>
+<table class="tablas" class="with_border" border="1">
+    <thead>
+            <th>DOCUMENTOS ANEXADOS PARA FIRMAR</th>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas">
+            <td>
+                <div style="width:48%; float:left; border-right:1px solid #000;">
+                    <div style="float:right; padding-right:120px;">
+                        <div>
+                            {{ bitacora.usa_reporte|cruz_roja }} 
+                            Reporte Técnico
+                        </div>
+                        <div>
+                            {{ bitacora.usa_remision|cruz_roja }} 
+                            Remisión
+                        </div>
+                        <div>
+                            {{ bitacora.usa_factura|cruz_roja }} 
+                            Factura
+                        </div>
+                    </div>
+                </div>
+                <div style="width:48%; float:left;">
+
+                    <div style="padding-left:100px;">
+                        <div>
+                            {{ bitacora.usa_acuerdo|cruz_roja }} 
+                            Acuerdo de trabajo
+                        </div>
+                        <div>
+                            {{ bitacora.usa_liberacion|cruz_roja }} 
+                            Liberación de proyecto
+                        </div>
+                        <div>
+                            {{ bitacora.usa_otro|cruz_roja }} 
+                            Otro
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+<div class="clear espacio10"></div>
+<div style="text-align:center; font-size:10px;" >
+    <div style="font-size:12px; font-weight:900;">____________________________________</div>
+    <div class="center">NOMBRE Y FIRMA DE ENTERADO DEL <BR> COORDINADOR EMPRESARIAL</div>
+</div>    
+
+<div style="font-size:10px;">
+    <div class="center" style="width:30%; float:left;">
+        <div style="font-size:12px; font-weight:900;" >____________________________________</div>
+        <div>NOMBRE Y FIRMA DEL TÉCNICO</div>
+        <div>ASIGNADO AL SERVICIO</div>
+    </div> 
+    <div class="center" style="width:30%; float:right;">
+        <div style="font-size:12px; font-weight:900;">____________________________________</div>
+        <div>NOMBRE Y FIRMA DEL CLIENTE</div>
+    </div>   
+</div>
+<div class="clear espacio10"></div>
+
+{% include "politicas.html" %}
+<div class="clear espacio10"></div>
+<div class="center" style="font-size:9px;">
+    {{ atencion }}
+</div>
+
+<!--
+<div style="text-align:center; font-size:11px;">
+    MATRIZ: San Luis Potosí No. 21 entre Matamoros y Guerrero, Col. Centro CP 83000 Tel.(662)2142200 Fax(662)2158750
+</div>
+<div style="text-align:center; font-size:11px;">
+    Sucursales: <b>Tijuana</b> . <b>Culiacán</b> . <b>Aguascalientes</b>
+</div>
+-->

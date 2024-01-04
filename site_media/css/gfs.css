@@ -1,0 +1,15 @@
+#tabla_listado{
+    margin-left:1em;
+    margin-top:1em;
+    font-size:14px;
+    border-width:5px;	
+    border-style:ridge;
+}
+
+#tabla_listado tr td{ padding-top:3px; border:2px; border-style:groove; }
+#fecha { font-size:16px; font-weight:bolder;}
+.blue{ color:blue; font-weight:bolder; }
+.errorlist{color:red;}
+#tabla_reporte_diario{ border-width:2px;border-style:ridge; border-color:black;}
+#tabla_reporte_diario th{padding-left:1em; background-color:#eee; } 
+#tabla_reporte_diario td{ padding-left:1em; padding-top:0.3em; } 

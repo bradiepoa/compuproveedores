@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load custom_tags %}
+{% block content %}
+
+<script type="text/javascript">
+    function submit_aceptar(){
+        if( ($("#id_nombre").val() > '') && ($("#id_telefono").val() > '' ) &&  ($("#id_email").val() > '' ) && ($("#id_curriculum").val() > '') ){
+            $("#id_aceptar").val("aceptar");
+            $("#form_vacante").submit();
+        
+        } else {
+            alert("Es necesario llenar los campos")
+        }
+        
+        
+
+    }
+
+</script>
+
+
+<div class="fondo_gris_concrete_cita">
+    <div class="espacio20" style="width:300px;"></div>
+    <div class="cuadro_fondo_gris_titulo" style='font-family:"Trebuchet MS"; margin-left:2px;'>SOLUCIONES TECNOLÓGICAS</div>
+        {% espacio 10 %}
+
+
+      <div id="concrete" >
+            <div id="concrete_titulo">CONCIERTE UNA CITA</div>
+            <div class="espacio10"></div>
+            <form action="." id="form_buscar" method="post" enctype="multipart/form-data">{% csrf_token %}
+               <div style="margin-left:5px;">
+                    {% espacio 30 %}    
+                    <div><div class="tag">{{ form.nombre.label_tag }}:</div> {{ form.nombre }}</div> 
+                    {% espacio 16 %}    
+                    <div><div class="tag">{{ form.empresa.label_tag }}:</div> {{ form.empresa }}</div> 
+                    {% espacio 16 %}    
+                    <div><div class="tag">{{ form.telefono.label_tag }}:</div> {{ form.telefono }}</div>  
+                    {% espacio 16 %}  
+                    <div><div class="tag">{{ form.email.label_tag }}:</div> {{ form.email}}</div>   
+                    {% espacio 16 %}  
+                    <div>
+                        <div style="margin-left:20px; padding-top:3px; font-size:13px;"> 
+                            {{ form.comentarios.label_tag }}:
+                        </div>
+                        {% espacio 6 %}  
+                        <div style="margin-left:20px; ">{{ form.comentarios }}</div>
+                        {% espacio 10 %} 
+                        <input type="submit" value="Enviar" style="margin-left:186px;" />
+                     </div>   
+                </div>
+            </form>
+      </div>   
+        
+      {% if success %}
+        <div id="dialog-success">
+                <div id="text_dialog_success">
+                    Gracias por su interés en nuestra empresa, recibirá una llamada para confirmar cita.
+                </div>
+        </div>      
+        <a href="/concretar_cita/{{ id }}/"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+    {% endif %}
+    
+    
+    
+    <div class="clear"></div>
+<div class="espacio10"></div>
+</div>
+<script>
+
+    var val ='160px';
+    $("#form_buscar").validate();
+    $("#id_nombre").css('width', val);
+    $("#id_telefono").css('width', val);
+    $("#id_empresa").css('width', val);
+    $("#id_email").css('width', val);
+    $("#id_comentarios").css('width', '215px');
+    $("#id_comentarios").css('height', '120px');
+
+
+    {% if form.errors %}
+        var errores = ""
+        {% if form.curriculum.errors %} errores += "Curriculum: {{ form.curriculum.errors.0 }} \n"{% endif %}
+        {% if form.nombre.errors %} errores += "Nombre: {{ form.nombre.errors.0 }} \n"{% endif %}
+        {% if form.telefono.errors %} errores += "Teléfono: {{ form.telefono.errors.0 }} \n"{% endif %}
+        {% if form.email.errors %} errores += "Correo Electrónico: {{ form.email.errors.0 }} \n"{% endif %}
+        {% if form.puesto.errors %} errores += "Puesto: {{ form.puesto.errors.0 }} \n"{% endif %}
+        {% if form.aspiracion.errors %} errores += "Sueldo: {{ form.aspiracion.errors.0 }} \n"{% endif %}
+        setTimeout(function(){alert("Se encontraron los siguientes errores:\n" + errores );}, 500);
+    {% endif %}
+
+
+</script>    
+{% endblock %}
+

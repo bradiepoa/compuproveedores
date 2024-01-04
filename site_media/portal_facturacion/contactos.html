@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contactos</title>
+	<link rel="stylesheet" href="css/base.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('input[type=checkbox]').attr('checked', 'checked');
+	});
+	</script>
+</head>
+<body>
+	<div class="header">
+		<div class="logo_empresa">
+			<a href="index.html"><img style="height:100px" src="img/sblogo.png" alt="Tu empresa"></a>
+		</div>
+		<div class="swf_container">
+			
+		</div>
+		<div class="at_logo">
+			<a href="http://www.admintotal.com">
+				<img src="img/at_logo.png" alt="Admintotal Logo">
+			</a>
+		</div>
+		<div class="clear"></div>
+	</div><!-- FIN HEADER-->
+	<div class="nav_buttons">
+		<ul>
+			<li><a href="direcciones.html" style="text-decoration:none"><img style="position:absolute" src="img/direcciones.png" title="Direcciones" alt="Direcciones"><span style="line-height:45px;color:#FFF;margin-left:45px;">Direcciones</span></a></li>
+			<li><a href="contactos.html" style="text-decoration:none"><img style="position:absolute" src="img/contactos.png" alt="Contáctos" title="Contáctos"><span style="line-height:45px;color:#FFF;margin-left:45px;">Contáctos</span></a></li>
+		</ul>
+	</div><!-- FIN NAV_BUTTONS-->
+	<div class="center">
+			<div class="container">
+				<h2 align="center" class="title">Contactos</h2>
+				<form action="" data-validate="parsley">
+					<table align="center" class="tabla_regisgtro">
+						<tr>
+							<td class="label">Nombre:</td>
+							<td><input style="width:240px;" type="text" name="rfc" data-required="true"></td>
+							<td class="label">Teléfono / Ext:</td>
+							<td><input type="text" name="razon_social" data-required="true"></td>
+						</tr>
+						<tr class="last-tr">
+							<td class="label">Email:</td>
+							<td><input style="width:240px;" type="text" name="codigo"></td>
+							<td class="label">Celular:</td>
+							<td><input type="text" name="calle" data-required="true"></td>
+						</tr>
+						<tr>
+							<td colspan="4" style="text-align:center;padding-top:10px;">
+								<input id="facturas" type="checkbox"><label for="facturas">Facturas</label>
+								<input type="checkbox" id="cotizaciones"><label for="cotizaciones">Cotizaciones</label>
+								<input type="checkbox" id="edo_cuenta"><label for="edo_cuenta">Estados de cuenta</label>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="4"><div class="divider"></div></td>
+						</tr>
+						<tr>
+							<td colspan="3"><a title="Agregar otro contácto" href="" class="slim_btn"><span style="color:#1AA305;display:inline;font-weight:bold;margin:0 5px 0;">+</span>Agregar Otro</a></td>
+						</tr>
+						<tr>
+							<td colspan="4" style="text-align:center"><br>
+							<a href="index.html" class="atras">Atrás</a>
+							<input class="submit" type="submit" value="Guardar"></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+	</div>
+<script src="js/alertify.min.js"></script>
+</body>
+</html>

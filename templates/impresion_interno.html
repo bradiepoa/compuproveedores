@@ -1,0 +1,155 @@
+{% load custom_tags %}
+<!--<div class="folio_r1">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="folio_r2">
+    <div class="center">Folio</div>
+    <div class="center folio_r_cont">{{ bitacora.folio }}</div>
+</div> 
+
+<div class="clear espacio50"></div>
+--> 
+<div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+
+<div id="logo" class="left">    
+    <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+</div>
+
+<div class="titulo_g">
+    <b>SOLICITUD<BR> INTERNA</b>
+</div>
+
+<div class="fechas">
+
+<div >
+            <div class="center folio_fecha_titulo">
+                <div><b>FECHA</b></div>
+            </div>
+               
+            <div style="border:solid 1px #000; height:19px; font-size:11px; padding-top:11px;" class="center" >
+                {{ bitacora.fecha|date:"d/m/y H:i:s" }}
+            </div>
+
+    </div>
+    <div style="height:10px;"></div>
+    <div>
+            <div class="center folio_fecha_titulo">
+                <div><b>VIGENCIA</b></div>
+            </div>
+
+           <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Día</div>
+                    {{ bitacora.fecha_vencimiento.day }}
+                </div>
+                <div class="left center" style="width:66px; border-right:solid 1px #000;">
+                    <div>Mes</div>
+                    {{ bitacora.fecha_vencimiento.month }}
+                </div>
+                <div class="left center" style="width:66px;">
+                    <div>Año</div>
+                    {{ bitacora.fecha_vencimiento.year }}
+                </div>
+            </div>
+            
+
+
+    </div>
+</div>
+<div class="left" style="width:20px;">&nbsp;</div>
+<div class="fechas">
+    <div >
+            <div class="center folio_fecha_titulo" >
+                <div><b>FOLIO</b></div>
+            </div>
+               
+            <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="center" style="margin-top:10px;">
+                    {{ bitacora.folio }}
+                </div>
+            </div>
+
+    </div>
+    <div style="height:10px;"></div>
+    <div>
+            <div class="center folio_fecha_titulo">
+                <div><b>SUCURSAL</b></div>
+            </div>
+
+           <div style="border:solid 1px #000; height:30px; font-size:11px;">
+                <div class="center" style="margin-top:10px;">
+                    {{ bitacora.usuario.perfil.get_sucursal_display }}
+                </div>
+            </div>
+            
+    </div>
+</div>
+
+
+<div class="clear"></div>
+
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+            <th colspan="2" style="padding-bottom:4px; padding-top:0;">DATOS DEL USUARIO</th>
+    </thead>
+<tbody style="font-size:9px; line-height:20px;">
+        <tr style="border-bottom:solid 1px #000;">
+            <td style="width:30px;">USUARIO: &nbsp;&nbsp; {{ bitacora.usuario.first_name }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td style="width:30px;">DEPARTAMENTO: &nbsp;&nbsp; {{ bitacora.usuario.perfil.departamento }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td style="width:30px;">EXTENSIÓN TELÉFONO: &nbsp;&nbsp; {{ bitacora.usuario.perfil.extension }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="clear espacio10"></div>
+<table class="tablas" class="with_border" border="1">
+    <thead>
+        	<th>FALLA REPORTADA</th>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas">
+            <td>{{ bitacora.falla }}</td>
+        </tr>
+    </tbody>
+</table>
+<div class="clear espacio10"></div>
+
+<div>
+    <div style="width:30%; float:left;">
+        IMAGEN ADJUNTA
+    </div>
+    <div style="width:25%; float:left;">
+        {{ bitacora.imagenes_si|cruz_roja }} SI
+    </div>
+    <div style="width:25%; float:left;">
+        {{ bitacora.imagenes_no|cruz_roja }} NO
+    </div>
+</div>
+
+<div class="clear espacio10"></div>
+
+<div class="firmas left">
+    <div>____________________________________</div>
+    <div style="text-align:center; font-size:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOMBRE Y FIRMA DEL USUARIO</div>
+</div>    
+    
+<div class="firmas right">
+    <div>____________________________________</div>
+    <div style="text-align:center; font-size:10px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NOMBRE Y FIRMA DEL TÉCNICO</div>
+</div>    
+<div class="clear espacio10"></div>
+{% for i in "......................................." %}
+<br>
+{% endfor %}
+<div class="center"  style="font-size:9px;">
+    {{ atencion }}
+</div>
+
+<div class="clear"></div>

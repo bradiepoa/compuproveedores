@@ -1,0 +1,195 @@
+<div>
+    <img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" alt="Linea"/>
+</div>
+<div class="logo">    
+    <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+</div>
+<div class="titulo_">
+    {% if bitacora.tipo == 0%}
+    <b>CIERRE DE GARANTÍA</b>
+    {% endif %}
+    {% if bitacora.tipo == 1%}
+    <b>CIERRE DE SERVICIO</b>
+    {% endif %}
+    {% if bitacora.tipo == 2 %}
+    <b>CIERRE DE REPORTE INTERNO</b>
+    {% endif %}
+</div>
+
+<div class="folio_fecha">
+        <div class="center folio_fecha_titulo">
+            <b>FOLIO</b>
+        </div>
+           
+        <div class="center folio_fecha_cont" style="font-size:11px;">
+            <span>No. {{ bitacora.folio }}</span>
+        </div>
+
+</div>
+<div class="folio_fecha">
+        <div class="center folio_fecha_titulo">
+            <b>FECHA</b>
+        </div>
+           
+        <div class="center folio_fecha_cont" style="font-size:11px;">
+            <span>{% now "d/m/y H:i:s" %}{# bitacora.fecha_cierre|date:"d/m/y H:i:s" #}</span>
+        </div>
+
+</div>
+
+<div class="espacio10;"></div>
+
+{% if bitacora.tipo == 1 or bitacora.tipo == 0%}
+<table class="tablas with_border" border="1" >
+    <thead>
+            <tr><th colspan="2" style="padding-bottom:4px; padding-top:0;">DATOS DEL CLIENTE</th></tr>
+    </thead>
+
+    <tbody style="font-size:9px; line-height:20px;">
+        <tr style="border-bottom:solid 1px #000;">
+            <td>CLIENTE: &nbsp;&nbsp; {{ bitacora.cliente.nombre }}</td>
+            <td>NO. DE CLIENTE:&nbsp;&nbsp;{{ bitacora.cliente.distribuidor.no_clientes_interno|default:"MOST" }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>DIRECCIÓN:&nbsp;&nbsp;{{ bitacora.cliente.direccion }}</td>
+            <td>RFC:&nbsp;&nbsp;{{ bitacora.cliente.rfc }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>POBLACIÓN:&nbsp;&nbsp;{{ bitacora.cliente.ciudad }}</td>
+            <td>VENDEDOR: &nbsp;&nbsp;{{ bitacora.cliente.vendedor }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td>CONTACTAR A:&nbsp;&nbsp;{{ bitacora.cliente.contacto }}</td>
+            <td>CORREO: &nbsp;&nbsp;{{ bitacora.cliente.email }}</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <div class="left" style="width:200px;">TELÉFONO:&nbsp;&nbsp;{{ bitacora.cliente.telefono }}</div>
+                
+                <div class="left" style="width:200px;">EXT.:&nbsp;&nbsp; {{ bitacora.cliente.ext|default:"" }}</div>
+               
+                <div class="left" style="width:200px;">TELÉFONO ADICIONAL:&nbsp;&nbsp; {{ bitacora.cliente.telefono_extra }}</div>
+                
+                <div class="left" style="width:200px;">CELULAR &nbsp;&nbsp; {{ bitacora.cliente.celular }}</div>
+                
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+{% if bitacora.tipo == 2 %}
+
+<table class="tablas" class="with_border" border="1" >
+    <thead>
+            <th colspan="2" style="padding-bottom:4px; padding-top:0;">DATOS DEL USUARIO</th>
+    </thead>
+    <tbody style="font-size:9px; line-height:20px;">
+        <tr style="border-bottom:solid 1px #000;">
+            <td style="width:30px;">SUCURSAL: &nbsp;&nbsp; {{ bitacora.usuario.perfil.get_sucursal_display }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td style="width:30px;">USUARIO: &nbsp;&nbsp; {{ bitacora.usuario.first_name }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td style="width:30px;">DEPARTAMENTO: &nbsp;&nbsp; {{ bitacora.usuario.perfil.departamento }}</td>
+        </tr>
+        <tr style="border-bottom:solid 1px #000;">
+            <td style="width:30px;">EXTENSIÓN TELÉFONO: &nbsp;&nbsp; {{ bitacora.usuario.perfil.extension }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endif %}
+
+<div class="espacio10"></div>
+
+<div class="clear"></div>
+
+
+<div class="clear espacio10"></div>
+<div class="clear espacio10"></div>
+<table class="tablas with_border" border="1">
+    <thead>
+        	<tr><th>FALLA REPORTADA</th></tr>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas">
+            <td>{{ bitacora.falla }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="tablas with_border" border="1">
+    <thead>
+        	<tr><th>AVANCES</th></tr>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas">
+             <td>
+                <table >
+                    {% for s in bitacora.status_all %}
+                    <tr>
+                         <td>{{ s.status }}</td><td> - </td><td>{{ s.creado }}, </td><td>{{ s.usuario }}</td> 
+                    </tr>
+                     {% endfor %}
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="tablas with_border" border="1">
+    <thead>
+        	<tr><th>REFACCIONES</th></tr>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas">
+            <td>{{ bitacora.refacciones }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<table class="tablas with_border" border="1">
+    <thead>
+    	<tr>
+    	    <th>OBSERVACIONES</th>
+    	</tr>
+    </thead>
+
+    <tbody>
+        <tr class="tr_tablas"> 
+            <td>{{ bitacora.observaciones }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<br><br>
+
+<table style="font-size:10px; width:100%;">
+    <tr>
+        <td stlye="text-align:center;">___________________________________________________</td>
+        <td>
+        {% for i in '.......................' %}
+        &nbsp;&nbsp;&nbsp;
+        {% endfor %}
+        </td>
+        <td stlye="text-align:center;">___________________________________________________</td>
+    </tr>
+    {% if bitacora.tipo == 2 %}
+        <tr>
+            <td style="text-align:center; font-size:10px;">NOMBRE Y FIRMA DE CONFORMIDAD <BR>DEL USUARIO</td>
+            <td>&nbsp;</td>
+            <td style="text-align:center; font-size:10px;">NOMBRE Y FIRMA DE TÉCNICO <BR>QUE RESOLVIÓ SU SOLICITUD</td>
+        </tr>
+    {% else %}   
+        <tr>
+            <td style="font-size:10px; text-align:center;">NOMBRE Y FIRMA DE CONFORMIDAD DEL CLIENTE</td>
+            <td>&nbsp;</td>
+            <td style="font-size:10px; text-align:center;">NOMBRE Y FIRMA DE TÉCNICO QUE ENTREGA EQUIPO{% if bitacora.tipo == 1 %}/SERVICIO{% endif %}</td>
+        </tr>
+    {% endif %}
+</table>
+

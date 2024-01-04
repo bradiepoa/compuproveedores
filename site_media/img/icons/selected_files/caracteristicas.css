@@ -1,0 +1,90 @@
+	img{
+		outline: none;
+		border: none;
+	}
+	.bloc_info{
+		background-color: rgba(0, 0, 0, 0.1);
+		width:350px;
+		padding: 10px;
+		float: left;
+		min-height: 80px;
+	}
+	.bloc_info p{
+		color: #fff;
+		margin: 5px;
+		font-size: 13pt;
+		text-align: justify;
+	}
+	.iconos{
+		float: left;
+		height: 120px;
+	}
+	.iconos img{
+		padding: 0px 10px 5px 10px;
+		margin: 20px;
+	}
+	#ulicons_list{
+		list-style: none;
+		padding: 0;
+		background-color: #fff;
+		width: 720px;
+		height: 85px;
+		position: relative;
+		left: 50%;
+		margin-top: 20px;
+		margin-left: -375px;
+	}
+	#ulicons_list li{
+		display: inline-block;
+		margin: 0;
+		cursor: pointer;
+	}
+	#ulicons_list li a{
+		outline: none;
+		border: none;
+	}
+	#ulicons_list li img{
+		position: relative;
+	}
+	.selected{
+		background-image: url('../img/icons/selected.png');
+	}
+	section{
+		width: 700px;
+		position: relative;
+		left: 50%;
+		margin: 30px auto 0 -365px;
+	}
+	section h1{
+		font-size: 40px;
+		letter-spacing: -1px;
+		line-height: 60px;
+		margin-bottom: 10px;
+		color: #272726;
+	}
+	.lista_descripcion{
+		list-style-image: url('../img/arrow.png');
+		background-color: rgba(0, 0, 0, 0.1);
+		position: relative;
+		padding: 10px 50px 10px 50px;
+		margin-bottom: 50px;
+	}
+	.lista_descripcion li{
+		font-size: 20px;
+		color: #fff;
+		margin-bottom: 4px;
+	}
+	.ver_mas_lb{
+		cursor: pointer;
+		padding: 3px 15px 3px 15px;
+		background-color: rgba(0, 0, 0, 0.8);
+		color: #fff;
+		text-decoration: none;
+		transition: all .4s ease-out;
+		-webkit-transition: all .4s ease-out; /* Safari */
+	}
+	.ver_mas_lb:hover{
+		padding: 3px 25px 3px 25px;
+		background-color: rgba(255, 255, 255, 0.8);
+		color: black;
+	}

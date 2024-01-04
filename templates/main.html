@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% comment %} {% load url from future %} {% endcomment %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Compuproveedores</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link href="/site_media/compu/compuproveedores_admin.css" rel="stylesheet" type="text/css" />
+    <link href="/site_media/datetimepicker/jquery-ui-timepicker-addon.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/site_media/css/ui/all.css" />
+    <link rel="stylesheet" href="/site_media/css/jquery.autocomplete.css" type="text/css" />
+    <link rel='stylesheet' type='text/css' href='/site_media/fullcalendar/fullcalendar.css' />
+    <link rel='stylesheet' type='text/css' href='/site_media/fullcalendar/fullcalendar.print.css' media='print' />
+    <link href="/site_media/css/custom.css" rel="stylesheet" type="text/css" />
+    {% block extra_head %}
+    
+    {% endblock %}
+</head>
+
+<body>
+    
+    <div class="container">
+        <nav style="background: url('/site_media/img/icons/nav.jpg') center / cover no-repeat; height: 100px;" class="nav nav-pills nav-fill p-5">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <!-- Your content goes here -->
+                    </div>
+                    <div class="col-auto">
+                        <a href="{% url 'logout' %}" class="nav-link ml-auto">
+                            <img src="/site_media/img/icons/logout.png" width="20" alt="Logout Icon" />
+                            Cerrar sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>       
+
+        <nav style="background-color: blue;" class="nav nav-pills nav-fill bg-light p-2 bg">
+            <a class="nav-link" href="{% url 'admin' %}">INICIO</a>
+            <a class="nav-link" href="{% url 'clientes' %}">Clientes</a>
+            <a class="nav-link" href="{% url 'usuarios' %}">Administrar Usuarios</a>
+          </nav>
+        <!-- my navbar -->
+        
+        <div class="section">
+            <div class="card">
+            {% block content %}
+            
+            {% endblock %}
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>  
+    
+    <!-- end of my navbar -->
+<!-- start of js -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<!-- end of my js -->
+<script type="text/javascript" src="/site_media/datetimepicker/localization/jquery-ui-timepicker-es.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery-ui.js"></script>
+<script type="text/javascript" src="/site_media/js/date.js"></script> 
+<script type="text/javascript" src="/site_media/js/global_functions.js"></script>
+<script type="text/javascript" src="/site_media/js/jquery.formset.min.js"></script>
+<script type="text/javascript" src="/site_media/datetimepicker/jquery-ui-timepicker-addon.js"></script>
+<script type='text/javascript' src='/site_media/fullcalendar/jquery-ui-1.8.11.custom.min.js'></script>
+<script type='text/javascript' src='/site_media/fullcalendar/fullcalendar.min.js'></script>
+<script>
+    jQuery.browser={};(function(){jQuery.browser.msie=false;
+    jQuery.browser.version=0;if(navigator.userAgent.match(/MSIE ([0-9]+)\./)){
+    jQuery.browser.msie=true;jQuery.browser.version=RegExp.$1;}})();
+</script>
+<script>
+
+    var cal_options = {
+        changeMonth: true,
+        changeYear: true,
+        dateFormat: 'dd/mm/y',
+        showOn: 'button',
+        buttonImage: '/site_media/img/calendar.gif',
+        buttonImageOnly: true,        
+    };
+    
+    var cal_options_h = {
+        hourMin: "0",
+        hourMax: "23",
+        dateFormat: 'dd/mm/y',
+    };
+
+    $(document).ready(function(){
+            $(".has_datepicker").datepicker(cal_options);
+            $(".has_datetimepicker").datetimepicker(cal_options_h);
+
+        });
+</script>
+</body>
+</html>
+

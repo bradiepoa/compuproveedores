@@ -1,0 +1,19 @@
+body {background:#238e23;}
+img {border:none;}
+
+#demotip {
+	display:none;
+	background:transparent url(black_arrow.png);
+	font-size:12px;
+	height:70px;
+	width:160px;
+	padding:25px;
+	color:#fff;	
+}
+ 
+/* style the trigger elements */
+#area {
+	border:0;
+	cursor:pointer;
+	margin:0 8px;
+}

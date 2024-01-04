@@ -1,0 +1,132 @@
+#politicas {font-size:20px; width:500px;}
+#reporte_tecnico {font-size:25px; float:right; width:700px;}
+#rt_titulo { background-color:black; color:#fff; }
+.logo {float:left;}
+
+.titulo_{ 
+    font-size:24px; 
+    color:#646060; 
+    padding-top:50px; 
+    padding-left:50px;
+    float:left; 
+    width:355px; 
+    height:90px; 
+    text-align:center;
+}
+
+.titulo_g{ 
+    font-size:24px; 
+    color:#646060; 
+    padding-top:50px; 
+    padding-left:10px;
+    float:left; 
+    width:280px; 
+    height:74px; 
+    text-align:center;
+}
+
+.folio_fecha{ padding-top:4px; float:right; width:200px; font-size:14px;}
+
+.fechas{ padding-top:4px; float:left; width:210px; font-size:14px;}
+
+.gris{ background-color:#eee;}
+
+.folio_fecha_titulo{ 
+    border-style:solid;
+    border-width:1px;
+    background-color:#eee;
+
+
+} 
+
+.folio_fecha_titulo div{
+    padding-top: 0;
+    margin-bottom: 2px;
+}
+.folio_fecha_cont{  
+    padding-left:10px;
+    border-style:solid;
+    border-width:1px;
+    height:30px;
+} 
+#recepcion{ background-color:#eee; text-align:center; font-size:18px; font-weight:bold; color:#777;}
+
+.espacio6 { height:6px;}
+.espacio10{ height:10px;}
+.espacio40{ height:40px;}
+.espacio50{ height:50px;}
+#direccion{
+	font-size: 11px;
+	vertical-align: baseline;
+	background: transparent;
+}
+
+#items, .tablas { border-collapse: collapse;}
+#items  td, #items th, .tablas th { border: 1px solid black; padding: 1px; }
+
+#items, .tablas {font-size:15px; clear: both; width: 100%; margin: 1px 0 0 0; border: 1px solid black; }
+#items tr, .tablas tr { border: 0; vertical-align: top; }
+.tablas th { background-color:#eee; }
+.tablas { margin-top:0.3em;}
+.tablas tbody .tr_tablas { height:40px;}
+#items  tbody tr{ height:40px; }
+
+.right{float:right;}
+.left{float:left;}
+
+.righttext{text-align:right;}
+
+.center{text-align:center;}
+
+.lefttext{text-align:left;}
+
+.clear {clear:both;}
+.clear {clear:both !important}
+
+.firmas {font-size: 15px; padding-top:3em; float:left; width:250px;}
+.firmas {font-size: 15px; padding-top:3em; float:right; width:250px;}
+
+.espacio10{ height:10px;}
+.espacio50{ height:50px;}
+.espacio30{ height:30px;}
+
+.folio_r1 {font-size:18px; font-weight:bold; border-top: 1px dashed black; border-right: 1px dashed black; height:60px; width:440px; float:left;}
+.folio_r2 {font-size:18px; font-weight:bold; border-top: 1px dashed black; width:440px; float:right;}
+
+.folio_r_cont {font-size:25px; font-weight:bold;}
+
+#cuadro_otro{
+    margin-left:0px;
+    width: 900px;
+    height: 120px;
+    border: 1px solid #000;
+}
+
+#cuadro_otro_otros{
+    border-right: 1px solid #000;
+    float: left;
+    width: 450px;
+    height: 100%;
+}
+
+#accesorios_incluye{
+    float: left;
+    width: 445px;
+    height: 100%;
+
+}
+
+.title_otros{
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 2px;
+
+}
+
+.otros_text{
+    font-size: 17px;
+    margin-left: 20px;
+    margin-top: 3px;
+}
+p { margin: 0.4em 0px }

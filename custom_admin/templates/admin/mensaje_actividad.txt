@@ -1,0 +1,2 @@
+para leer y confirmar haga click en la siguiente liga:
+{{ url }}{% url "confirmar_actividad" act.id %}

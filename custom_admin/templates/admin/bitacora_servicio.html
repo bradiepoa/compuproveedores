@@ -1,0 +1,763 @@
+{% extends "main.html" %}
+{% load custom_tags %}
+{% block content %}
+
+<script>
+$().ready(function(){
+    $("#tr_num").hide();
+    change_lugar_servicio()
+    $("#id_lugar_servicio").change(change_lugar_servicio);
+    set_tipos();
+    {% if form.instance.id %}
+        set_editar_cliente("/admin/cliente/{{ form.instance.id }}/");
+    {% endif %}
+    $("#id_cliente").css('width', '250px');  
+    /*
+    $("#id_cliente").autocomplete({
+        source:'{% url 'cliente_contains' %}',
+        minLength:1,
+        select: function(even, ui){
+            set_editar_cliente(ui.item.edit);
+        }
+        
+    });
+    */
+    {% if sucursal %}
+        $("#id_sucursal").val("{{ sucursal }}");
+    {% endif %}
+    set_cliente_ac();
+     $("#id_sucursal").change(set_cliente_ac);
+    $("#id_tipo_equipo").change(set_tipos);
+    $("#id_fecha").change(set_fecha_vencimiento);
+    $("#id_folio").css('width', '40px');
+    
+    {% if not form.instance.otros_lap %}
+    $("#otros_especificar_lap").hide()
+    {% endif %}
+    
+    {% if not form.instance.sesion %}
+    $("#sesion_especificar").hide()
+    {% endif %}
+    
+    {% if not form.otros_imp.sesion %}
+    $("#otros_especificar_imp").hide()
+    {% endif %}
+    
+    {% if not form.otros_pc.sesion %}
+    $("#otros_especificar_pc").hide()
+    {% endif %}
+    
+    {% if not form.instance.password %}
+    $("#password_especificar").hide()
+    {% endif %}
+    
+    $("#id_otros_lap").change(function(){
+        
+        var sel = $(this).attr("checked")
+        
+        if (sel){
+            $("#otros_especificar_lap").show()
+        
+        }else{
+            $("#otros_especificar_lap").hide()
+        }
+    
+    });
+    
+    $("#id_otros_pc").change(function(){
+        
+        var sel = $(this).attr("checked")
+        
+        if (sel){
+            $("#otros_especificar_pc").show()
+        
+        }else{
+            $("#otros_especificar_pc").hide()
+        }
+    
+    });
+    
+    $("#id_otros_imp").change(function(){
+        
+        var sel = $(this).attr("checked")
+        
+        if (sel){
+            $("#otros_especificar_imp").show()
+        
+        }else{
+            $("#otros_especificar_imp").hide()
+        }
+    
+    });
+    
+    $("#id_sesion").change(function(){
+        
+        var sel = $(this).attr("checked")
+        
+        if (sel){
+            $("#sesion_especificar").show()
+        
+        }else{
+            $("#sesion_especificar").hide()
+        }
+    
+    });
+  
+  
+    $("#id_password").change(function(){
+        
+        var sel = $(this).attr("checked")
+        
+        if (sel){
+            $("#password_especificar").show()
+        
+        }else{
+            $("#password_especificar").hide()
+        }
+    
+    });
+
+    
+
+
+});
+  
+function change_lugar_servicio(){
+
+    {% if not form.instance.id %}
+        
+    
+        lugar_servicio = $("#id_lugar_servicio").val();
+        if(lugar_servicio){
+            lugar_servicio = lugar_servicio.toString();
+        }
+
+        if(lugar_servicio == "2"){
+            $("#en_sitio").show();
+            $(".fechas_en_sitio").show();
+            $(".fechas_taller").hide();
+        }else{
+            $("#en_sitio").hide();
+            $(".fechas_en_sitio").hide();
+            $(".fechas_taller").show();
+        }
+    {% endif %}
+
+}
+function set_editar_cliente(url){
+
+    editar = '<a href="'+url+'" target="_blank"><img src="/site_media/img/icons/iconos/pencil_16.png"></a>';
+    $("#editar_cliente").html(editar);
+    
+}
+
+function submit_form(){
+  
+    if(!$("#id_otros_lap").attr('checked')){
+        $("#id_otros_especificar_lap").val("");
+    }
+    
+    if(!$("#id_otros_imp").attr('checked')){
+        $("#id_otros_especificar_imp").val("");
+    }
+    
+    if(!$("#id_otros_pc").attr('checked')){
+        $("#id_otros_especificar_pc").val("");
+    }
+    
+    if(!$("#id_sesion").attr('checked')){
+        $("#id_sesion_especificar").val("");   
+    }
+    
+    
+    
+    if(!$("#id_password").attr('checked')){
+        $("#id_password_especificar").val("");
+    }
+    
+    {% if form.instance.id %}
+    {% if form.instance.estado == 0 or form.instance.estado == 1%}
+    
+    $("form").submit();
+
+    {% else %}
+    
+    alert("No puedes editar esta bitacora porque esta Cancelada o Cerrada");
+    return false;
+    {% endif %}
+    {% else %}
+    $("form").submit();
+    {% endif %}
+    
+}
+
+function set_fecha_vencimiento(){
+    
+    fecha = $('#id_fecha').val(); 
+
+
+    fecha = Date.parseExact(fecha,'dd/MM/yy')
+    if(fecha){
+        fecha.addDays(7);
+        $('#fecha_vencimiento_div').html(fecha.toString('dd/MM/yy'));
+    }
+ 
+}
+
+{% if not form.instance.id %}
+function set_clientes(tipo){
+
+    var cliente_id = $("#id_cliente_id").val();
+
+    if(cliente_id){
+
+        if(tipo == 1){
+            var cliente = $("#id_cliente").val();
+            $("#id_cliente-nombre").val(cliente);
+        }else{
+             var cliente = $("#id_cliente-nombre").val();
+             if(numero_cliente){
+                $("#id_cliente").val(numero_cliente + " - " + cliente);
+             }else{
+                $("#id_cliente").val(cliente);
+             }
+            
+
+        }
+
+
+    }
+
+}
+{% endif %}
+function set_cliente_ac(){
+    sucursal = $("#id_sucursal").val()
+    if(sucursal){
+        $("#id_cliente").autocomplete({
+            source:'{% url 'cliente_contains' %}?sucursal='+sucursal,
+            minLength:1,
+            select: function(even, ui){
+                {% if not form.instance.id %}
+                numero_cliente = ui.item.numero;
+                if(ui.item.numero){
+                    $("#tr_num").show();
+                    $("#numero").html(ui.item.numero);    
+                }else{
+
+                    $("#tr_num").hide();
+                }
+           
+                $("#id_cliente-numero").val(ui.item.numero);
+                $("#id_cliente-rfc").val(ui.item.rfc);
+                $("#id_cliente-nombre").val(ui.item.nombre);
+                $("#id_cliente-sucursal").val(ui.item.sucursal);
+                $("#id_cliente-direccion").val(ui.item.direccion);
+                $("#id_cliente-ciudad").val(ui.item.ciudad);
+                $("#id_cliente-estado").val(ui.item.estado);
+                $("#id_cliente-celular").val(ui.item.celular);
+                $("#id_cliente-telefono").val(ui.item.telefono);
+                $("#id_cliente-telefono_extra").val(ui.item.telefono_extra);
+                $("#id_cliente-email").val(ui.item.email);
+                $("#id_cliente-vendedor").val(ui.item.vendedor);
+                $("#id_cliente-contacto").val(ui.item.contacto);
+                $("#id_cliente-ext").val(ui.item.ext);
+                $("#id_cliente_id").val(ui.item.id);
+                $("#id_cliente_hidden").val(ui.item.id);
+                $("#id_cliente").keyup(function(){set_clientes(1)});
+                $("#id_cliente-nombre").keyup(function(){set_clientes(2)});
+
+
+                $("#id_cliente-sucursal").change(function(){
+
+                    $("#id_sucursal").val($(this).val());
+                })
+                $("#id_sucursal").change(function(){
+                    $("#id_cliente-sucursal").val($(this).val());
+                })
+   
+
+                {% endif %}
+            }
+            
+        });   
+    }else{
+    
+    }
+}
+
+function all_tipos_hide(){
+    $("#tipo_laptop").hide();
+    $("#tipo_computadora").hide();
+    $("#tipo_otro").hide();
+    $("#tipo_impresora").hide();
+    $("#tipo_otro").hide();
+    $("#row_accesorios").hide();
+}
+function set_tipos(){
+    
+    {% if form.instance.id %}
+        tipo = '{{ form.instance.tipo_equipo }}';
+    {% else %}    
+        tipo = $("#id_tipo_equipo").val();
+    {% endif %}
+    
+    all_tipos_hide();
+    if(tipo == "1"){
+        $("#tipo_laptop").show();
+    }else if(tipo == "2"){
+        $("#tipo_computadora").show();
+    }else if(tipo == "3"){
+        $("#tipo_impresora").show();
+    }else if(tipo == "4"){
+        $("#tipo_otro").show();
+        $("#row_accesorios").show();
+        
+    }
+}
+
+</script>
+
+{% if id > '0' %}
+{% if form.instance.estado == 2 %}<div class="right red">CERRADA</div>{% endif %}
+{% if form.instance.estado == 3 %}<div class="right red">CANCELADA</div>{% endif %}
+<div>Creado por: {{ form.instance.usuario.first_name }} {{ form.instance.fecha|date:"d/m/Y H:i:s" }}</div>
+<div>Última modificación: {{ form.instance.usuario_modificado }}, el {{ form.instance.fecha_modificado|date:"d/m/Y, H:i:s" }}</div>
+
+{% if form.instance.id %}
+    <tr>
+        <td>Guia:</td>
+        <td>{{ form.instance.guia }}</td>
+    </tr>
+{% endif %}
+
+<div class="bitacora_status">
+    <a class=right href="{% url 'agregar_status' form.instance.id %}"><img src="/site_media/img/add.png" />Agregar avance</a>
+    <div class="clear"></div>
+    
+
+    {% for s in form.instance.status.all %}
+        {% if forloop.first %}
+            <h4>Avance Actual:</h4>
+        {% endif %}
+        
+        {% if forloop.counter0 == 1 %}
+            <div>&nbsp;</div>
+            <h4>Avances
+
+             Anteriores:</h4>
+        {% endif %}
+        
+        <div  {% if forloop.first %} class="status_actual" {% endif%}>
+            {{ s.creado }} - {{ s.status }}
+        </div>
+    {% endfor%}
+    
+</div>    
+
+{% endif %}
+
+<h3>{% if not form.instance.id %}SOLICITUD DE {% endif %}SERVICIO</h3>
+{{ form.non_field_errors }}
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %} {{ formset.management_form }}
+<input type="hidden" id="id_cliente_id" name="cliente_id" value="{{ form_c.instance.id|default:"" }}" >
+{{ form.cliente }}
+
+<div class="left">
+    <table>
+        <tr>
+            <td>Folio:</td>
+            {% if form.instance.id %}
+            <td style="font-weight:bold;">{{ form.instance.folio }}</td>
+            {% else %}
+            <td style="font-weight:bold;">{{ folio }}</td>
+            {% endif %}
+        </tr>
+        {% if not form.instance.id %}
+        <tr class="fechas_taller">
+            <td>Fecha de solicitud: </td>
+            <td>{{ fecha }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td>Fecha de inicio: </td>
+            {% if form.instance.lugar_servicio == 1 %}
+                <td>{{ form.instance.fecha|date:"l d F Y"  }}</td>
+            {% else %}
+                <td class="fechas_en_sitio">
+                    Inicio: {{ form.fecha_inicio }}
+                    <span class="red">{{ form.fecha_inicio.errors.0 }}</span>
+
+                    Término: {{ form.fecha_termino }}
+                    <span class="red">{{ form.fecha_termino.errors.0 }}</span>
+                </td>
+                <td></td>
+            {% endif %}
+        </tr>
+        {% endif %}
+        
+        <tr class="fechas_taller">
+            <td>Fecha de vencimiento:</td>
+            <td>
+                {% if form.instance.id %}
+                    <span id="fecha_vencimiento_div">{{ form.instance.fecha_vencimiento|date:"l d F Y" }}</span>
+                {% else %}
+                    <span id="fecha_vencimiento_div">{{ fecha_vencimiento|date:"d/m/y" }}</span>
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <td>Sucursal:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.get_sucursal_display }}</td>
+            {% else %}
+            <td>{{ form.sucursal }} <br/>{% form_error form.sucursal  %}</td>
+            {% endif %}
+        </tr>
+        <tr>
+            <td>Cliente:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.cliente.nombre }}</td>
+            {% else %}r
+            <td>{{ form.cliente_txt }} </span>
+            <br/>{% form_error form.cliente  %}</td>
+            {% endif %}
+
+        </tr>
+        <tr>
+            <td>Lugar de servicio:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.get_lugar_servicio_display }}</td>
+            {% else %}
+            <td>{{ form.lugar_servicio }} </span>
+            <br/>{% form_error form.lugar_servicio  %}</td>
+            {% endif %}
+
+        </tr>
+        {% if not form.instance.id %}
+            <tr>
+                <td class="fechas_en_sitio">Inicio:{{ form.fecha_inicio }}<span class="red">{{ form.fecha_inicio.errors.0 }}</span></td>
+                <td class="fechas_en_sitio">Término:{{ form.fecha_termino }}<span class="red">{{ form.fecha_termino.errors.0 }}</span></td>
+            </tr>
+        {% endif %}
+
+        <tr>
+            <td>Tipo servicio:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.get_tipo_servicio_display }}</td>
+            {% else %}
+            <td>{{ form.tipo_servicio }} </span>
+            <br/>{% form_error form.tipo_servicio  %}</td>
+            {% endif %}
+
+        </tr>
+
+        <tr>
+            <td>Tipo equipo:</td>
+            {% if form.instance.id %}
+            <td>
+                {{ form.instance.get_tipo_equipo_display }}
+                {% if form.instance.tipo_equipo == 4 %}
+                    {{ form.instance.otros }}
+                {% endif%}
+            </td>
+            {% else %}
+            <td>{{ form.tipo_equipo }} </span>
+            <span id="tipo_otro">
+                <span>{{ form.otros }}</span>
+                <span> {{ form.otros.errors }}</span>
+            </span>
+               
+            <br/>{% form_error form.tipo_equipo  %}</td>
+            {% endif %}
+
+        </tr>
+        
+        <!--
+        <tr>
+            <td>Equipo:</td>
+            <td>{{ form.equipo }}
+                 <br/>{% form_error form.equipo %}
+             </td>
+        </tr>
+        -->
+        <tr>
+            <td>Marca:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.marca }}</td>
+            {% else %}
+            <td>{{ form.marca }} </span>
+            <br/>{% form_error form.marca  %}</td>
+            {% endif %}
+
+        </tr>
+
+        <tr>
+            <td>Modelo:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.modelo }}</td>
+            {% else %}
+            <td>{{ form.modelo }} </span>
+            <br/>{% form_error form.modelo  %}</td>
+            {% endif %}
+
+        </tr>
+
+        <tr>
+            <td>N° de serie:</td>
+            <td>{{ form.no_serie }} 
+                 <br/>{% form_error form.no_serie %}
+            </td>
+        </tr>
+        <tr id="row_accesorios">
+            <td>Accesorios que incluye:</td>
+            <td>
+                {{ form.accesorios_incluye }}
+            </td>
+            <td> {{ form.accesorios_incluye.errors }}</td>
+        </tr>
+</div>
+        
+    </table>
+</div>
+
+{% if not form.instance.id %}
+<div class="left" >
+    <h4>Datos del cliente</h4>
+    <table>
+        <tr id="tr_num"><td>Número</td><td id="numero"></td></tr>
+        <tr><td>{{ form_c.rfc.label_tag }}</td><td>{{ form_c.rfc }} <br/>{% form_error form_c.rfc %}</td></tr>
+        <tr><td>{{ form_c.nombre.label_tag }}</td><td>{{ form_c.nombre }} <br/>{% form_error form_c.nombre %}</td></tr>
+        <tr><td>{{ form_c.sucursal.label_tag }}</td><td>{{ form_c.sucursal }} <br/>{% form_error form_c.sucursal %}</td></tr>
+        <tr><td>{{ form_c.direccion.label_tag }}</td><td>{{ form_c.direccion }} <br/>{% form_error form_c.direccion %}</td></tr>
+        <tr><td>{{ form_c.ciudad.label_tag }}</td><td>{{ form_c.ciudad }} <br/>{% form_error form_c.ciudad %}</td></tr>
+        <tr><td>{{ form_c.estado.label_tag  }}</td><td>{{ form_c.estado }} <br/>{% form_error form_c.estado %}</td></tr>
+        <tr><td>{{ form_c.contacto.label_tag }}</td><td>{{ form_c.contacto }} <br/>{% form_error form_c.contacto %}</td></tr>
+        <tr><td>{{ form_c.celular.label_tag }}</td><td>{{ form_c.celular }} <br/>{% form_error form_c.celular %}</td></tr>
+        <tr><td>{{ form_c.telefono.label_tag }}</td><td>{{ form_c.telefono }} <br/>{% form_error form_c.telefono %}</td></tr>
+        <tr><td>{{ form_c.ext.label_tag }}</td><td>{{ form_c.ext }}  <br/>{% form_error form_c.ext %}</td></tr>
+        <tr><td>{{ form_c.telefono_extra.label_tag}}</td><td>{{ form_c.telefono_extra }} <br/>{% form_error form_c.telefono_extra %}</td></tr>
+        <tr><td>{{ form_c.email.label_tag  }}</td><td>{{ form_c.email }} <br/>{% form_error form_c.email %}</td></tr>
+        <tr><td>{{ form_c.vendedor.label_tag }}</td><td>{{ form_c.vendedor}} <br/>{% form_error form_c.vendedor %}</td></tr>
+    </table>
+
+</div>
+{% endif %}
+
+<div class="clear"></div>
+
+<div id="tipos">
+ 
+    <div class="left" style=" width:340px;" id="tipo_laptop">    
+        <div><img src="/site_media/compu/images/lap_top.jpg" style="width:140px; height:120px;"  ></div>        
+        <div>{{ form.cable_corriente_lap }}{{ form.cable_corriente_lap.label_tag }}</div> 
+        <div>{{ form.bateria }}{{ form.bateria.label_tag }}</div> 
+        <div>{{ form.otros_lap }}{{ form.otros_lap.label_tag }}</div> 
+        <div id="otros_especificar_lap">({{ form.otros_especificar_lap.label_tag }}){{ form.otros_especificar_lap }}</div> 
+        <div>{{ form.contrasena_bios.label_tag }}{{ form.contrasena_bios}}</div> 
+        <div>{{ form.contrasena_sesion.label_tag }}{{ form.contrasena_sesion}}</div> 
+    </div>
+    
+    <div class="left" style="  width:280px; " id="tipo_impresora"> 
+        <div><img src="/site_media/compu/images/impresora.jpg" style="width:140px; height:120px;"  ></div>
+        <div>{{ form.bandeja }}{{ form.bandeja.label_tag }}</div>  
+        <div>{{ form.toner }}{{ form.toner.label_tag }}</div>   
+        <div>{{ form.cartuchos_tinta }}{{ form.cartuchos_tinta.label_tag }}</div>   
+        <div>{{ form.cabezales }}{{ form.cabezales.label_tag }}</div>  
+        <div>{{ form.cable_paralelo }}{{ form.cable_paralelo.label_tag }}</div>   
+        <div>{{ form.cable_usb }}{{ form.cable_usb.label_tag }}</div>   
+        <div>{{ form.cable_corriente_imp }}{{ form.cable_corriente_imp.label_tag }}</div>   
+        <div>{{ form.otros_imp }}{{ form.otros_imp.label_tag }}</div> 
+        <div id="otros_especificar_imp">({{ form.otros_especificar_imp.label_tag }}){{ form.otros_especificar_imp }}</div>  
+    </div>    
+    
+    <div class="left" style=" width:280px;" id="tipo_computadora">          
+        <div><img src="/site_media/compu/images/pc1.jpg" style="width:100px; height:120px;" ></div> 
+        <div>{{ form.monitor }}{{ form.monitor.label_tag }}</div>              
+        <div>{{ form.sesion }}{{ form.sesion.label_tag }}</div> 
+        <div id="sesion_especificar">({{ form.sesion_especificar.label_tag }}){{ form.sesion_especificar }}</div>      
+        <div>{{ form.password }}{{ form.password.label_tag }}</div> 
+        <div id="password_especificar">({{ form.password_especificar.label_tag }}){{ form.password_especificar }}</div>      
+        <div>{{ form.cable_corriente }}{{ form.cable_corriente.label_tag }}</div>    
+        <div>{{ form.otros_pc }}{{ form.otros_pc.label_tag }}</div> 
+        <div id="otros_especificar_pc">({{ form.otros_especificar_pc.label_tag }}){{ form.otros_especificar_pc }}</div>    
+    </div>
+    
+    <div class="clear "></div>
+   
+    
+</div>
+    <div class="espacio40"></div>
+    <table>
+        <tr>
+            <td>Falla:</td>
+            <td>
+                {% if not form.instance.id %}
+                {{ form.falla }}
+                {% else %}
+                {{ form.instance.falla }}
+                {% endif %}
+            </td>
+            <td> {{ form.falla.errors }}</td>
+        </tr>
+        
+        {% if form.instance.id %}
+        <tr>
+            <td>Para uso de soporte técnico:</td>
+            <td>{{ form.acciones_correctivas }}</td>
+            <td> {{ form.acciones_correctivas.errors }}</td>
+        </tr>
+        <tr>
+            <td>Refacciones:</td>
+            <td>{{ form.refacciones }}</td>
+            <td> {{ form.refacciones.errors }}</td>
+        </tr>
+        <tr>
+            <td>Observaciones finales:</td>
+            <td>{{ form.observaciones }}</td>
+            <td> {{ form.observaciones.errors }}</td>
+        </tr>
+        <tr>
+            <td>Documento de cobro:</td>
+            <td>{{ form.factura_costo_garantia }}</td>
+            <td> {{ form.factura_costo_garantia.errors }}</td>
+        </tr>
+        {% endif %}
+    </table>
+
+
+    {% if not form.instance.id %}
+        <table id="en_sitio">
+            <tr>
+                <td>{{ form.usa_herramienta}} {{ form.usa_herramienta.label_tag }}</td>
+                <td>{{ form.usa_escalera}}{{ form.usa_escalera.label_tag }}</td>
+                <td>{{ form.usa_equipo}}{{ form.usa_equipo.label_tag }}</td>
+            </tr>
+            <tr><td colspan="3">Documentación anexada</td></tr>
+            <tr>
+                <td>{{ form.usa_reporte}}{{ form.usa_reporte.label_tag }}</td>
+                <td>{{ form.usa_remision}}{{ form.usa_remision.label_tag }}</td>
+                <td>{{ form.usa_factura}}{{ form.usa_factura.label_tag }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.usa_acuerdo}}{{ form.usa_acuerdo.label_tag }}</td>
+                <td>{{ form.usa_liberacion}}{{ form.usa_liberacion.label_tag }}</td>
+                <td>{{ form.usa_otra}}{{ form.usa_otra.label_tag }}</td>
+            </tr>
+
+        </table>
+
+    {% else %}
+        {% if form.instance.lugar_servicio == 2 %}
+        <table>
+            <tr>
+                 <td>
+                    {{ form.instance.usa_herramienta|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_herramienta" }}
+                </td>
+
+                <td>
+                    {{ form.instance.usa_escalera|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_escalera" }}
+                </td>
+
+                <td>
+                    {{ form.instance.usa_equipo|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_equipo" }}
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    {{ form.instance.usa_reporte|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_reporte" }}
+                </td>
+
+                <td>
+                    {{ form.instance.usa_remision|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_remision" }}
+                </td>
+
+                <td>
+                    {{ form.instance.usa_factura|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_factura" }}
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    {{ form.instance.usa_acuerdo|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_acuerdo" }}
+                </td>
+
+                <td>
+                    {{ form.instance.usa_liberacion|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_liberacion" }}
+                </td>
+
+                <td>
+                    {{ form.instance.usa_otra|cruz_roja }} 
+                    {{ form.instance|label_tag2:"usa_otra" }}
+                </td>
+            </tr>
+
+        </table>
+        {% endif %}
+    {% endif %}
+    <div class="left">
+        <input type="button" onclick="submit_form()" value="Guardar"/>
+        {% if form.instance.id %}
+            <a href="{% url 'imprimir_bitacora_servicio' form.instance.id %}"  target="_blank">
+                <img src="/site_media/img/icons/pdf.png">
+                Solicitud de Servicio
+            </a>
+            <a href="{% url 'pdf_tablas' form.instance.id %}" target="_blank">
+                <img src="/site_media/img/icons/pdf.png">
+                Cierre de Servicio
+            </a>
+        {% endif %}
+            
+        
+        {% if id > '0' and form.instance.estado == 0 %}
+            <a href="{% url 'cancelar_bitacora_servicio' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cancelar Solicitud</a>
+        {% endif %}
+        
+        {% if id > '0' and form.instance.estado == 1 %}
+            <a href="{% url 'cerrar_bitacora_servicio' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cerrar Solicitud</a>
+        {% endif %}
+        
+   </div> 
+    {% if form.instance.id %}
+
+        <div class="right" style="width:200px; margin-top:35px;">
+            {% if anterior %}
+            <div class="left">
+                <a href="{% url 'bitacora_servicio' anterior.id %}">
+                    <img src="/site_media/img/icons/left_16.png">
+                    Anterior
+                </a>
+            </div>
+            {% endif %}
+            {% if siguiente %}
+            <div class="right">
+                <a href="{% url 'bitacora_servicio' siguiente.id %}">
+                    Siguiente
+                    <img src="/site_media/img/icons/right_16.png">
+                </a>
+            </div>
+            {% endif %}
+        </div>
+
+    {% endif %}
+    <div class="clear"></div>
+</form>
+
+<script>
+$().ready(function(){
+    //$("input:text").css('width','300px')
+    //$("#id_otros").css('width','500px')
+    //$("#id_otros").css('height','50px')
+    $("textarea").css('width','350px').css('height','48px');
+    $("#id_accesorios_incluye").css('width','250px').css('height','34px')
+});
+</script>
+{% endblock %}

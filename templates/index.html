@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% comment %} {% load url from future %} {% endcomment %}
+{% block extra_head %}
+<script type="text/javascript"> 
+    $(document).ready(function(){
+        
+        $(' .rotate_banner_ppal ').cycle({ 
+            fx: 'fade', 
+            speed: '700', 
+            timeout: 4400
+        }); 
+        
+    });
+</script>  
+{% endblock %}
+{% block content %}
+    <div class="rotate_banner_ppal">
+        {% for imagen_inicio in imagenes_inicio %}
+                <a href="{{ imagen_inicio.url }}"><img src="{{ imagen_inicio.imagen.url }}" class="banner_ppal" /></a>
+        {% endfor %}
+    </div>
+   
+    <div class="red_box">
+        <div class="red_box_inner">
+            <img src="/site_media/compu/images/pic_certificaciones.png" class="pic" />
+            <div class="titulo_texto"> 
+                <div class="title titulo_red_box">CERTIFICACIONES</div>
+                <div class="text">
+                    Conoce las certificaciones que nos respaldan como una empresa altamente calificada.
+                </div><!--text-->
+            </div>
+            <a href="{% url "certificaciones" %}">
+                <img src="/site_media/compu/images/boton_vermas.png" class="boton_vermas" />
+            </a>
+        </div>
+    </div>
+	
+    <div class="red_box">
+        <div class="red_box_inner">
+            <img src="/site_media/compu/images/pic_promociones.png" class="pic" />
+            <div class="titulo_texto"> 	
+                <div class="title titulo_red_box">PROMOCIONES</div>
+                <div class="text">
+                Conoce nuestros increíbles precios.
+                </div><!--text-->
+            </div>
+            <a href="{% url "promociones" %}">
+                <img src="/site_media/compu/images/boton_vermas.png" class="boton_vermas" />
+            </a>
+        </div>
+    </div>
+   
+    <div class="red_box">
+        <div class="red_box_inner">
+	        <img src="/site_media/compu/images/pic_block.png" class="pic" />
+	        <div class="titulo_texto"> 
+                <div class="title titulo_red_box">EL MUNDO DE LA TECNOLOGÍA</div>
+                <div class="text">
+                Entérate de las noticias más importantes de la tecnología del momento .
+                </div><!--text-->
+            </div>
+            <a href="{% url "mundo_tecnologia" %}">
+                <img src="/site_media/compu/images/boton_vermas.png" class="boton_vermas" />
+            </a>
+        </div>
+    </div>
+   
+    <div class="red_box">
+        <div class="red_box_inner">
+            <img src="/site_media/compu/images/pic_garantias.png" class="pic" />
+            <div class="titulo_texto"> 
+                <div class="title titulo_red_box">GARANTIAS Y SERVICIOS</div>
+                <div class="text">
+                Consulta el estatus de tu orden.
+                </div><!--text-->
+            </div>
+            <a href="{% url "seleccionar" %}">
+            <img src="/site_media/compu/images/boton_vermas.png" class="boton_vermas" />
+            </a>
+        </div>
+    </div>
+   	<div class="clear"></div>
+{% endblock %}

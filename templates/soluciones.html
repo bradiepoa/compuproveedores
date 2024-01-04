@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="gray rounded">
+<div class="espacio20"></div>
+    <h1>Soluciones</h1>
+    
+        <table>
+            {% for m in marcas %}
+            <tr>                 
+                <td><a href="{% url 'solucion' m.id %}">{{ m.nombre }}</a></td>
+                <td id="imagen_marca">{% if m.logo %}<a href="{% url 'solucion' m.id %}"><img src="{{m.logo.url}}" width="20em;"></a>{% endif %}</td>
+                   
+            </tr>    
+            {% endfor %}
+        </table>
+        
+<div class="espacio10"></div>
+</div>      
+{% endblock %}

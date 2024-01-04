@@ -1,0 +1,331 @@
+﻿#header {
+	width: 100%;
+	height: 180px;
+	background-color: #FFFFFF;
+	background-image: url('images/header_fill.jpg');
+	background-repeat: repeat-x;
+}
+#header_derecha {
+	background-image: url('images/header.jpg');
+	height: 180px;
+	width: 658px;
+	right: 0px;
+	float: right;
+	vertical-align: bottom;
+	position: relative;
+}
+#botones_header {
+	padding: 0px;
+	
+	position: absolute;
+	right: 10px;
+	bottom: 15px;
+}
+#botones_header a{
+	width: 79px;
+	height: 63px;
+	display: inline-block;
+}
+#configuracion {
+	background-image: url('images/configuracion.png');
+}
+#ayuda {
+	background-image: url('images/ayuda.png');
+}
+#cerrar_sesion {
+	background-image: url('images/cerrar.png');
+}
+#configuracion:hover {
+	background-image: url('images/configuracion_hover.png');
+}
+#cerrar_sesion:hover {
+	background-image: url('images/cerrar_hover.png');
+}
+#ayuda:hover {
+	background-image: url('images/ayuda_hover.png');
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	font-family: Helvetica;
+	font-size: small;
+    /** color: #737373; **/
+    color: #000000;
+}
+
+html, body, #wrapper{
+	
+	min-height: 100%;
+    width: 100%;
+    height: 100%;
+}
+
+html>body, html>body #wrapper {
+    height: auto;
+}
+
+#wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#logotipo {
+    margin-right:13px;
+	height: 98px;
+	
+	background-color: #FFFFFF;
+	
+}
+#texto_logo {
+	display: inline-block;
+	position:absolute;
+	top:40px;
+	left:198px;
+	font-family: Helvetica;
+}
+#contenedor_logo{
+	position:absolute;
+	left:20px;
+	top:44px;
+	height:98px;
+	display:inline-block;
+}
+.sistema {
+	font-size: 28pt;
+	color: #243A6F;
+}
+.admonTotal {
+	font-size: 18pt;
+	color: #185173;
+}
+#footer {
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+	width: 100%;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-size: x-small;
+	color: #808080;
+	margin-bottom: 10px;
+	margin-top:10px;
+	clear:both;
+}
+#navegacion {
+	margin-top: 15px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	position:relative;
+}
+.item_navegacion {
+	font-family: Helvetica;
+	font-size: 9pt;
+}
+.bold{
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+#menu {
+	margin-left: 16px;
+	margin-right:16px;
+	height: 100%;
+	width: 184px;
+	float:left;
+	z-index:1;
+}
+
+#menu table{
+	border-style:none;
+	border-spacing:4px;
+}
+
+#menu table a{
+	width:86px;
+	height:82px;
+	background-color:#2e75a3;
+	display:block;
+}
+
+/*#menu table a:hover{
+	background-color:#3f98d2;
+}*/
+
+#rcontent{
+    float:left;
+    width:1000px;
+
+}
+#contenido{
+	margin-left:20px;
+	margin-right:20px;
+	margin-bottom:30px;
+	}
+
+#contenido table {
+  border-collapse: collapse;
+  border: 1px solid #2e75a3;
+  font: normal 11px verdana, arial, helvetica, sans-serif;
+  /**color: #363636; **/
+  color: #000000;
+  background: #f6f6f6;
+  text-align:left;
+  }
+  
+#contenido caption {
+  text-align: center;
+  font: bold 16px arial, helvetica, sans-serif;
+  background: transparent;
+  padding:6px 4px 8px 0px;
+  color: #CC00FF;
+  text-transform: uppercase;
+}
+
+#contenido thead, #contenido tfoot {
+background:url(images/tabla/bg1.png) repeat-x;
+text-align:left;
+height:30px;
+color:#243a6f;
+}
+
+#contenido thead th, #contenido tfoot th {
+padding:5px;
+}
+
+#contenido table a {
+/** color: #333333; ****/
+color:#000000;
+text-decoration:none;
+}
+
+#contenido table a:hover {
+text-decoration:underline;
+}
+
+#contenido tr.odd {
+background: #e3e3e3;
+}
+
+#contenido tbody th, #contenido tbody td {
+padding:5px;
+}
+
+
+
+#acciones_importantes{
+	width:207px;
+	height:233px;
+	background-image:url('images/pestana_background.png');
+	background-repeat:no-repeat;
+	overflow:hidden;
+	position:absolute;
+	z-index:10;
+	top:-30px;
+	right:223px;
+	font-family:Helvetica;
+	font-size:14px;
+	color:#162365;
+	text-align:center;
+	 
+}
+
+#acciones_importantes span.item{
+	display:block;
+	margin-top:4px;
+}
+
+#acciones_importantes a{
+	text-decoration:none;
+	color:inherit;
+}
+
+#acciones_importantes a:hover{
+	color:#0099FF;
+}
+
+#acciones_importantes_footer a:hover{
+	color:#33CCFF;
+}
+
+.titulo_acciones_importantes{
+	font-size:20px; color:#2e75a3; font-family:Tahoma; margin:0 5px 0 5px;
+}
+
+.subtitulo_acciones_importantes{
+	font-size:14px; color:#2e75a3; font-family:Tahoma; display:block; padding-top:10px;
+}
+
+#acciones_importantes_footer{
+	font-size:12px;
+	width:177px;
+	position:absolute;
+	bottom:0px;
+	margin:0px 15px 15px 15px;
+}
+
+#acciones_importantes_content{
+	padding:29px 27px 25px 27px;
+}
+
+
+#acciones_rapidas {
+	z-index:10;
+	position:absolute;
+	top:-30px;
+	right:-10px;
+	margin-right:20px;
+	width: 203px;
+	overflow:hidden;
+	
+}
+
+#acciones_rapidas_wrapper{
+	background-image:url('images/borders_acciones.png');
+	background-repeat:repeat-y;
+	overflow:hidden;
+}
+
+#acciones_rapidas_wrapper2{
+	padding-top:1em;
+	background-image:url('images/acciones.png');
+	background-repeat:no-repeat;
+	overflow:hidden;
+}
+
+#acciones_rapidas li a{
+	text-decoration:none;
+	color:inherit;
+}
+
+#acciones_rapidas li a:hover{min-width: 100px;
+	color:#4D5D7A;
+}
+
+
+.acciones_rapidas_caption{
+	font-weight:bold;
+	color:#4D5D7A;
+	margin-left:2em;
+	font-size:15px;
+}
+
+#acciones_rapidas_base{
+	position:relative;
+	/*top:-15px;*/
+	background-color:transparent;
+	background-image:url('images/base_acciones.png');
+	height:19px;
+}
+
+.bulletFlecha{
+	list-style-image:url('images/vinetas/vineta_triangular.png');
+}
+
+.bulletCruz{
+	list-style-image:url('images/vinetas/vineta_agregar.png');
+}
+a:link {color: #4D5D7A; text-decoration: none; }
+a:active {color: #4D5D7A; text-decoration: none; }
+a:visited {color: #4D5D7A; text-decoration: none; }
+a:hover {color: #999999; text-decoration: none; }
+#index_logo { margin:auto; width:500px; }

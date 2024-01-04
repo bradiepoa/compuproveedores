@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% block content %}
+
+<script>
+var hovered;
+$().ready(function(){
+
+    //$("#contactanos_sucursal").hover(function(e){ alert(e.offsetX + "," + e.offsetY); }, function(e) { alert(e.offsetX + "," + e.offsetY); });
+
+    {% for s in sucursales%}
+    $("#iluminado_{{ s.nombre }}").hover(
+        function(e){
+            if (hovered != "{{ s.nombre }}"){
+                $("#iluminado_{{ s.nombre }}").attr("src", "/site_media/compu/images/llamativo.png"); 
+                hovered = "{{ s.nombre }}";
+            }
+        },
+        function(e){
+
+  
+            if((e.offsetX > 40 || e.offsetX < 1) || (e.offsetY > 40 || e.offsetY < 1) ){
+                $("#iluminado_{{ s.nombre }}").attr("src", "/site_media/compu/images/llamativo_transparente.png");
+                hovered = "";
+             } 
+        }  
+    );
+    
+    {% endfor %}
+    
+    
+    
+    
+});
+
+
+function get_sucursal(sucursal){
+    
+    {% for s in sucursales %}
+    $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_gris.png");
+    
+    if(sucursal == '{{ s.nombre }}'){
+        var ciudad = '{{ s.ciudad }}'
+        var direccion = '{{ s.direccion }}'
+        var telefono = '{{ s.telefono }}'
+        var fax = '{{ s.fax }}'
+        var cob1 = '{{ s.cob1 }}'
+        var cob2 = '{{ s.cob2 }}'
+        var cob3 = '{{ s.cob3 }}'
+        var cob4 = '{{ s.cob4 }}'
+        var cob5 = '{{ s.cob5 }}'
+        var cob6 = '{{ s.cob6 }}'
+        var cob7 = '{{ s.cob7 }}'
+        var cob8 = '{{ s.cob8 }}'
+        $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_rojo.png");
+    }
+    {% endfor %}
+    
+    $(".ciudad").html(ciudad)
+    $("#direccion_suc").html(direccion)
+    $("#telefono_suc").html(telefono)
+    $("#fax_suc").html(fax)
+    $("#cob1_suc").html(cob1)
+    $("#cob2_suc").html(cob2)
+    $("#cob3_suc").html(cob3)
+    $("#cob4_suc").html(cob4)
+    $("#cob5_suc").html(cob5)
+    $("#cob6_suc").html(cob6)
+    $("#cob7_suc").html(cob7)
+    $("#cob8_suc").html(cob8)
+
+}
+</script>
+
+<div class="fondo_gris_titulo">CONTÁCTANOS</div>
+<div class="fondo_gris">
+<div class="espacio20"></div>
+
+<div id="nuestras_suc">
+Nuestras <span style="color:red;">sucursales</span>
+</div>
+<form action=".?serie={{ serie }}&folio={{ folio }}" method="post">{% csrf_token %}
+    <div id="mapa_sucursales">
+        
+
+     <div id="contactanos_sucursal">
+        <div id="contactanos_sucursal_titulo">
+        Sucursal Compuproveedores<br/>
+        <div class="ciudad">HERMOSILLO</div>
+        </div>
+        <div class="marginl20 margint10">
+            <div id="direccion_suc">PORAI Hermosillo</div>
+            <div id="telefono_suc">(662) 554879</div>
+            <div id="fax_suc">(662) 5545269</div>
+            <div class="espacio10"></div>
+            <div style="color:blue;">COBERTURA:</div>
+            <div><span id="cob1_suc">SONORA</span> <span id="cob2_suc"></span></div>
+            <div><span id="cob3_suc"></span> <span id="cob4_suc"></span></div>
+            <div><span id="cob5_suc"></span> <span id="cob6_suc"></span></div>
+            <div><span id="cob7_suc"></span> <span id="cob8_suc"></span></div>
+        </div>
+     </div>
+     
+     <div class="espacio20"></div>
+     <div class="right" id="mapa_sucursales2">
+        <img src="/site_media/compu/images/mapa.png"/>
+     </div>
+     
+     <div id="mensaje_contacto">
+         <table>
+            <tr>
+                <td>{{ form.nombre.label_tag }}:</td>
+                <td>{{ form.nombre }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.empresa.label_tag }}:</td>
+                <td>{{ form.empresa }}</td>
+            </tr>
+
+            <tr>
+                <td>{{ form.telefono.label_tag }}:</td>
+                <td>{{ form.telefono }}</td>
+            </tr>
+
+            <tr><td>{{ form.comentarios.label_tag }}:</td></tr>
+            <tr>
+                <td colspan="2">{{ form.comentarios }}</td>
+            </tr>
+            </table>
+            <div class="contacto_boton right"><input type="submit" value="Enviar" /></div>
+     </div>
+        <div class="clear"></div>
+        {% for s in sucursales %}    
+    <a href="javascript:get_sucursal('{{ s.nombre }}')" class="right" >
+        <img 
+            src="/site_media/compu/images/llamativo_transparente.png" 
+            class="iluminado" 
+            id="iluminado_{{ s.nombre }}" 
+            style="top:{{s.llamativo_t}}px; right:{{s.llamativo_r}}px;" 
+        />
+        <img 
+            src="/site_media/compu/images/logo_gris.png" 
+            class="iluminado" 
+            id="logo_{{ s.nombre }}" 
+            style="top:{{s.logo_t}}px; right:{{s.logo_r}}px;" 
+        />
+    </a>
+    
+    {% endfor %}
+</form>
+
+</div>
+</div>
+
+<script>
+    
+    $("#id_comentarios").css('width', '240px');
+    $("#id_comentarios").css('height', '80px');
+        
+</script>
+<div class="clear"></div>
+{% endblock %}
+

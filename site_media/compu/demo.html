@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>CSS3 for Older Browsers</title>
+	
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> <!-- jQuery -->
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.0/mootools-yui-compressed.js"></script> <!-- Mootols -->
+	<script type="text/javascript" src="selectivizr-min.js"></script> <!-- Selectivizr -->
+	<script type="text/javascript" src="http://www.hintzmann.dk/testcenter/js/jquery/textshadow/jquery.textshadow.js"></script> <!-- jQuery Shadow Script -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+		  $(".txt").textShadow();
+		})
+	</script>
+	<!--[if IE]>
+		<link rel="stylesheet" type="text/css" href="ie.css" />
+	<![endif]-->
+</head>
+<body>
+	<div id="wrapper">
+	
+		<h1>CSS3 for Older Browsers</h1>
+		
+		<h3>CSS3 PIE</h3>
+		
+		<div class="example">
+			<div class="box radius">
+			</div>
+			
+			<div class="description">
+				<p>border-radius</p>
+				
+				<pre>
+.box {
+	border-radius: 10px;
+	behavior: url(PIE.htc);
+}
+				</pre>
+			</div>
+		</div>
+		
+		<div class="example">
+			<div class="box radius shadow">
+			</div>
+			
+			<div class="description">
+				<p>box-shadow + RGBA Colors</p>
+				
+				<pre>
+.box {
+	box-shadow: 5px 5px 5px rgba(0, 0, 0, .75);
+	behavior: url(PIE.htc);
+}
+				</pre>
+			</div>
+		</div>
+		
+		<div class="example">
+			<div class="box radius shadow gradient">
+			</div>
+			
+			<div class="description">
+				<p>background gradient</p>
+				
+				<pre>
+.box {
+	background: -webkit-linear-gradient(top, #0072bc, #00bff3); /* Safari, Chrome */
+		background: -moz-linear-gradient(top, #0072bc, #00bff3);  /* Firefox */
+		background: -o-linear-gradient(top, #0072bc, #00bff3);  /* Opera */
+		background: -ms-linear-gradient(top, #0072bc, #00bff3);  /* IE10 */
+		
+	-pie-background: linear-gradient(#0072bc, #00bff3);  /* IE6+ */
+	behavior: url(PIE.htc);
+}
+				</pre>
+			</div>
+		</div>
+		
+		<div class="example">
+			<div class="box radius shadow gradient backgrounds">
+			</div>
+			
+			<div class="description">
+				<p>multiple backgrounds</p>
+				
+				<pre>
+.box {
+	background: url(img/flash.png) 20px 20px no-repeat, url(img/airplane.png) 90px 50px no-repeat, #00BFF3; /* Modern Browsers */
+	
+	-pie-background: url(img/flash.png) 20px 20px no-repeat, url(img/airplane.png) 90px 50px no-repeat, #00BFF3; /* IE6+ */
+	behavior: url(PIE.htc);
+}
+				</pre>
+			</div>
+		</div>
+		
+		<h3>Selectivizr</h3>
+		
+		<div class="example">
+			<div class="box">
+				<table>
+					<tr><td>&nbsp;</td></tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr><td>&nbsp;</td></tr>
+					<tr><td>&nbsp;</td></tr>
+				</table>
+			</div>
+			
+			<div class="description">
+				<p>CSS3 Selectors</p>
+				
+				<pre>
+table tr:first-child {
+	background: #252525;
+}
+				
+table tr:nth-child(2n+1) {
+	background: #ebebeb;
+}
+				</pre>
+			</div>
+		</div>
+		
+		<h3>jQuery</h3>
+		
+		<div class="example">
+			<div class="box radius txt">
+				Shadow This!
+			</div>
+			
+			<div class="description">
+				<p>text-shadow</p>
+				<pre>
+&lt;script type="text/javascript" src="http://www.hintzmann.dk/testcenter/js/jquery/textshadow/jquery.textshadow.js">&lt;/script> &lt;!-- jQuery Shadow Script -->
+&lt;script type="text/javascript">
+	$(document).ready(function(){
+	  $(".txt").textShadow();
+	})
+&lt;/script>
+				</pre>
+				<pre>
+.txt {		
+	text-shadow: 2px 2px 2px black;
+}
+				</pre>
+			</div>
+		</div>
+		
+		<h3>IE Special Filters</h3>
+		
+		<div class="example">
+			<div class="box IEgradient">
+				
+			</div>
+			
+			<div class="description">
+				<p>background gradient !! AFFECT ONLY IE !!</p>
+				<pre>
+.box {
+	background: #FFFFFF;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#444444', EndColorStr='#999999'); /* IE6ÐIE9 */
+}
+				</pre>
+
+			</div>
+		</div>
+		<div class="example">
+			<!--[if IE]>
+				<style type="text/css">
+					/* Created with: http://www.useragentman.com/IETransformsTranslator/ */
+					.rotate {
+					   /* IE8+ - must be on one line, unfortunately */ 
+					   -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.9848077530122079, M12=-0.17364817766693127, M21=0.17364817766693127, M22=0.9848077530122079, SizingMethod='auto expand')";	   
+					   /* IE6 and 7 */ 
+					   filter: progid:DXImageTransform.Microsoft.Matrix(
+					            M11=0.9848077530122079,
+					            M12=-0.17364817766693127,
+					            M21=0.17364817766693127,
+					            M22=0.9848077530122079,
+					            SizingMethod='auto expand');
+					   margin-left: -14px; 
+					   margin-top: -21px;
+					
+					} 
+				</style>
+			<![endif]-->
+			<div class="box rotate">
+				
+			</div>
+			<div class="description">
+				<p>transform</p>
+				<pre>
+.box {
+	/* Created with: http://www.useragentman.com/IETransformsTranslator/ */
+	/* IE8+ - must be on one line, unfortunately */ 
+   -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.9848077530122079, M12=-0.17364817766693127, M21=0.17364817766693127, M22=0.9848077530122079, SizingMethod='auto expand')";	   
+   /* IE6 and 7 */ 
+   filter: progid:DXImageTransform.Microsoft.Matrix(
+            M11=0.9848077530122079,
+            M12=-0.17364817766693127,
+            M21=0.17364817766693127,
+            M22=0.9848077530122079,
+            SizingMethod='auto expand');
+   margin-left: -14px; 
+   margin-top: -21px;
+}
+				</pre>
+
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

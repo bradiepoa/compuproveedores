@@ -1,0 +1,80 @@
+{% extends "main.html" %}
+{% block content %}
+
+
+<script>
+function search(){
+    window.location = '{% url 'bitacoras_servicio' %}?q=' + $("#id_search").val();
+}
+</script>
+
+<h3>Bitácoras de Servicio</h3>
+<div id="div_add">
+  
+<form action="." method="get">{% csrf_token %}
+    <table id="tabla_filtros">
+        <tr>
+            <td></td>
+            <td>Estado:</td>
+            <td>Sucursal:</td>
+            <td>Tipo de Servicio:</td>
+            <td>Lugar:</td>
+            <td>Tipo de Equipo:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><img src="/site_media/fc/images/search.png">{{ form.q }}</td>
+            <td>{{ form.estado }} </td>
+            <td>{{ form.sucursal }} </td>
+            <td>{{ form.tipo_servicio }}</td>
+            <td>{{ form.lugar_servicio }}</td>
+            <td>{{ form.tipo_equipo }}</td>
+            <td><input type='submit' value="Buscar" /></td>
+        </tr>
+    </table>
+</form>
+
+    
+</div>
+
+<table class="list-table">
+    <tr>
+        <th>Folio</th>
+        <th>Cliente</th>
+        <th>Sucursal</th>
+        <th>Lugar</th>
+        <th>Tipo Servicio</th>
+        <th>Tipo Equipo</th>
+        <th>Modificado por</th>
+        <th>Fecha<br>Modificación</th>
+        <th>Fecha vencimiento</th>
+        <th>Estado</th>
+        <th>Fecha <br>cierre</th>
+        <th>Documento de cobro</th>
+
+    </tr>
+    {% for b in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.folio }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.cliente }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.get_sucursal_display|default:"" }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.get_lugar_servicio_display|default:"" }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.get_tipo_servicio_display|default:"" }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.get_tipo_equipo_display|default:"" }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.usuario_modificado.first_name }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.fecha_modificado|date:"d/m/y H:i:s" }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.fecha_vencimiento|date:"d/m/y" }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.get_estado_display }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.fecha_cierre|date:"d/m/y H:i:s" }}</a></td>
+            <td><a href="{% url 'bitacora_servicio' b.id %}">{{ b.factura_costo_garantia|default:"" }}</a></td>
+            
+        </tr>
+    {% endfor %}
+</table>
+<script>
+    $("#id_tipo_servicio").css("width", "100px")
+    $("#id_sucursal").css("width", "100px")
+</script>
+{% include 'paginado.html' %}
+{% endblock %}
+

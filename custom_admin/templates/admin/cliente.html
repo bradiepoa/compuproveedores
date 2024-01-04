@@ -1,0 +1,32 @@
+{% extends "main.html" %}
+{% block content %}
+
+<script type="text/javascript">
+    $().ready(function(){
+        {% if form.instance.distribuidor.vendedor_interno %}
+            $("#id_vendedor").parent().parent().hide();
+        {% endif %}
+
+    })
+</script>
+
+<form action=".?next={{ next }}" method="post">{% csrf_token %}
+    {{ form.errors.non_field_error }}
+    <table>
+        {% if form.instance.numero %}
+        <tr><th>Número:</th><td>{{ form.instance.numero }}</td></tr>
+        {% endif %}
+        {{ form.as_table }}
+        {% if form.instance.distribuidor.vendedor_interno %}
+        <tr><th>Vendedor:</th><td>{{ form.instance.distribuidor.vendedor_interno }}</td></tr>
+        {% endif %}
+    </table>
+    <div class="contacto_boton">
+        <input type="submit" value="Enviar" />
+        {% if id > '0' %}
+        <a href="{% url 'eliminar_cliente' id %}"><img src="/site_media/img/icons/delete_32.png"/>Elimiar</a>
+        {% endif %}
+    </div>
+</form>
+{% endblock %}
+

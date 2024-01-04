@@ -1,0 +1,107 @@
+{% extends "main.html" %}
+{% block content %}
+<link rel="stylesheet" href="/site_media/css/colorpicker.css" type="text/css" />
+<script type="text/javascript" src="/site_media/js/colorpicker.js"></script>
+
+<script type="text/javascript">
+$().ready(function() {
+	$('#color').css('background-color', '#{{ perfil_form.instance.color }}');
+	
+	$('#color').ColorPicker({
+		color:'#{{ perfil_form.instance.color }}',
+		onShow: function(colpkr){
+			$(colpkr).fadeIn(500);
+			return false;
+		},
+		onHide: function(colpkr){
+			$(colpkr).fadeOut(500);
+			return false;
+		},
+		onChange: function(hsb, hex, rgb){
+			$('#color').css('background-color', '#'+hex);
+			$('.odd td').css('background-color', '#' + hex);
+			$('#id_color').val(hex);
+		}
+	});
+
+    
+});
+</script>
+
+{% if id > '0' %}
+    <a class="right" href="{% url 'cambiar_password' id %}"><img src="/site_media/img/icons/key_16.png" />Cambiar contraseña</a>
+{% endif %}
+    
+    <form action="." method="post">{% csrf_token %}
+    <table>
+        <tr>
+            <td>Usuario:</td>
+            <td>{{ form.username }}</td>
+            <td>{{ form.username.errors }}</td>
+        </tr>
+        <tr>
+            <td>Nombre:</td>
+            <td>{{ form.first_name }}</td>
+            <td>{{ form.first_name.errors }}</td>
+        </tr>
+        <tr>
+            <td>Correo electrónico:</td>
+            <td>{{ form.email }}</td>
+            <td>{{ form.email.errors }}</td>
+        </tr>
+
+        <tr>
+            <td>Permiso:</td>
+            <td>{{ form.permiso }}</td>
+            <td>{{ form.permiso.errors }}</td>
+        </tr>
+
+        {% if not form.instance.id %}
+            <tr>
+                <td>Contraseña:</td>
+                <td><input type="text" name="password" size="16" class="required"></td>
+                {% if mensaje %}<td><ul><li class="errorlist">{{ mensaje }}</li></ul></div></td>{% endif %}
+            </tr>
+
+        {% endif %}
+        <tr>
+            <td>Color para actividades:</td>
+            <td>{{ perfil_form.color }}</td>
+            {% if perfil_form.color.errors %}<td>{{ perfil_form.color.errors }}</td>{% endif %}
+            <td id="color" class="left color_selector"></td>
+            
+	        <td class="clear"></td>
+        </tr>
+        <tr>
+            <td>Departamento:</td>
+            <td>{{ perfil_form.departamento }}</td>
+            {% if perfil_form.departamento.errors %}<td>{{ perfil_form.departamento.errors }}</td>{% endif %}
+
+        </tr>
+        <tr>
+            <td>Extensión:</td>
+            <td>{{ perfil_form.extension }}</td>
+            {% if perfil_form.extension.errors %}<td>{{ perfil_form.extension.errors }}</td>{% endif %}
+
+        </tr>
+        <tr>
+            <td>Sucursal:</td>
+            <td>{{ perfil_form.sucursal }}</td>
+            {% if perfil_form.sucursal.errors %}<td>{{ perfil_form.sucursal.errors }}</td>{% endif %}
+
+        </tr>
+                
+            
+    </table>
+            <div class="contacto_boton">
+                <input type="submit" value="Enviar" />
+                {% if id > '0' %}
+                    <a href="{% url 'eliminar_usuario' id %}"><img src="/site_media/img/icons/delete_32.png"/>Eliminar</a>
+                {% endif %}
+                
+            
+            </div>
+            </form>
+          
+{% endblock %}
+

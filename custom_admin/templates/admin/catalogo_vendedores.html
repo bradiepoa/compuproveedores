@@ -1,0 +1,35 @@
+{% extends "main.html" %}
+{% load custom_tags %}
+{% block content %}
+
+<div>
+    <a href="{% url 'admin-vendedor' 0 %}">
+        <img src="/site_media/fc/images/add.gif">
+        Agregar Vendedor
+    </a>
+
+    <a href="{% url 'admin-subir_vendedores'%}">
+        <img src="/site_media/fc/images/add.gif">
+        Subir una lista de vendedores
+    </a>
+</div>
+
+{% espacio 10 %}
+<table class="list-table">
+    <tr>
+        <th>Nombre</th>
+        <th>Folio</th>
+
+    </tr>
+    {% for v in vendedores.object_list %}
+        <tr>
+            <td><a href="{% url 'admin-vendedor' v.id %}">{{ v.nombre }}</a></td>
+            <td><a href="{% url 'admin-vendedor' v.id %}">{{ v.folio }}</a></td>
+        </tr>
+    {% endfor %}
+</table>
+
+{% include 'paginado.html' %}
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "main.html" %}
+{% block content %}
+<h2>Block</h2>
+<form action="." method="POST" enctype="multipart/form-data">{% csrf_token %} {{ formset.management_form }}
+    
+    <table>
+
+    {% for f in formset %} 
+        <tr>
+            <td>{{ f.id }}{{ f.texto }}{{ f.texto.errors }}</td>
+            {% if f.instance.id %}
+                <td>{{ f.DELETE }}<label for="id_form-{{ forloop.counter0 }}-DELETE"><img src="/site_media/img/delete.png"></td>
+            {% endif %}
+        </tr>
+    <script>
+        $("id_form-{{ forloop.counter0 }}-texto").css("width", "7em");
+    </script>
+    {% endfor %}
+    </table>
+    <input type="submit" value="Guardar" />
+</form>
+
+
+{% endblock %}

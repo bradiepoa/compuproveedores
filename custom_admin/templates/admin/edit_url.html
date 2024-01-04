@@ -1,0 +1,34 @@
+{% extends "admin_base.html" %}
+{% block content %}
+
+
+<form acciton="." method="post">{% csrf_token %}
+<div>
+<table >
+    
+    
+    <tr>
+    <td><h2>Marcas</h2></td>
+    <td><h2>SubCategorias</h2></td>
+    <td><h2>URL</h2></td>
+    </tr>
+    
+    <tr>
+        <td>{{ form.marca }} </td>
+        <td>{{ form.subcategoria }} </td>
+        <td>{{ form.url }}</td>
+        
+    </tr>
+    
+</table>
+        <input type="submit" value="Guardar">
+        {% if id > '0' %}
+            <a href="{% url 'eliminar_url' id %}"><img src="/site_media/img/icons/delete_32.png"/>Eliminar</a>
+        {% endif %}
+</div>
+{{ form.errors }}
+</form>
+
+<div style="clear:both;"></div>
+
+{% endblock %}

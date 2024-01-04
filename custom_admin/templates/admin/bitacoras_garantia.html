@@ -1,0 +1,75 @@
+{% extends "main.html" %}
+{% load custom_tags %}
+{% block content %}
+<style >
+    #tabla_filtros{
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+</style>
+<h3>Bitácora de Garantía</h3>
+
+<div id="div_add">
+
+<form action="." method="get">{% csrf_token %}
+
+    
+    <table id="tabla_filtros">
+        <tr>
+            <td></td>
+            <td>Estado:</td>
+            <td>Sucursal:</td>
+            <td>Tipo de garantía:</td>
+            <td>Con costo:</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><img src="/site_media/fc/images/search.png">{{ form.q }}</td>
+            <td>{{ form.estado }} </td>
+            <td>{{ form.sucursal }} </td>
+            <td>{{ form.tipo_garantia }}</td>
+            <td>{{ form.con_costo }}</td>
+            <td><input type='submit' value="Buscar" /></td>
+        </tr>
+    </table>
+
+    
+</form>
+    
+</div>
+
+<table class="list-table">
+    <tr>
+        <th>Folio</th>
+        <th>Cliente</th>
+        <th>Sucursal</th>
+        <th>Tipo de garantía</th>
+        <th>Modificado por</th>
+        <th>Fecha<br>Modificación</th>
+        <th>Fecha vencimiento</th>
+        <th>Estado</th>
+        <th>Fecha <br>cierre</th>
+        <th>Costo</th>
+        <th>Documento de cobro</th>
+
+    </tr>
+    {% for b in pagina.object_list %}
+        <tr class="{% cycle 'odd' 'even' %}">
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.folio }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.cliente }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.get_sucursal_display|default:"" }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.get_tipo_garantia_display|default:"" }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.usuario_modificado.first_name }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.fecha_modificado|date:"d/m/y H:i:s" }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.fecha_vencimiento|date:"d/m/y" }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.get_estado_display }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.fecha_cierre|date:"d/m/y H:i:s" }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.garantia_costo|sino }}</a></td>
+            <td><a href="{% url 'bitacora_garantia' b.id %}">{{ b.factura_costo_garantia|default:"" }}</a></td>
+        </tr>
+    {% endfor %}
+</table>
+{% include 'paginado.html' %}
+
+{% endblock %}
