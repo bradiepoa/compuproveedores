@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{% load static %}
 {% load custom_tags %}
 {% block content %}
 
@@ -12,7 +13,7 @@
 </table>
     <input type="submit" value="Guardar">
     {% if id > '0' %}
-        <a href="{% url 'eliminar_categoria' id %}"><img src="/site_media/img/icons/delete_32.png"/>Eliminar</a>
+        <a href="{% url 'eliminar_categoria' id %}"><img src="{% static 'site_media/img/icons/delete_32.png' %}"/>Eliminar</a>
     {% endif %}
 </form>
 {% espacio 15 %}

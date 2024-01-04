@@ -9,7 +9,7 @@
 <input type="submit" value="Guardar y enviar" />
 </form>
 {% if form.instance.id %}
-<a href="{% url 'eliminar_actividad' form.instance.id %}" ><img src="/site_media/img/icons/delete_32.png" />Eliminar</a>
+<a href="{% url 'eliminar_actividad' form.instance.id %}" ><img src="{% static 'site_media/img/icons/delete_32.png' %}" />Eliminar</a>
 {% endif %}
 
 <script>
