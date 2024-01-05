@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{% load static %}
 {% load custom_tags %}
 {% block content %}
 <style >
@@ -6,7 +7,6 @@
         border-collapse: collapse;
         border-spacing: 0;
     }
-
 </style>
 <h3>Bitácora de Pólizas de Servicio Tecnico</h3>
 
@@ -24,7 +24,7 @@
             <td></td>
         </tr>
         <tr>
-            <td><img src="/site_media/fc/images/search.png">{{ form.q }}</td>
+            <td><img src="{% static 'site_media/fc/images/search.png' %}">{{ form.q }}</td>
             <td>{{ form.estado }} </td>
             <td>{{ form.sucursal }} </td>
             <td>{{ form.con_costo }}</td>

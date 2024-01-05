@@ -872,7 +872,8 @@ class ImportarClienteForm(forms.Form):
 class BitacoraGarantiaForm(forms.ModelForm):
     class Meta:
         model = Bitacora
-        fields = ("cliente", 
+        fields = (
+                "cliente", 
                 "fecha_factura", 
                 'clave',
                 'descripcion', 
