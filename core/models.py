@@ -321,10 +321,10 @@ class Cliente(models.Model):
         ('vendor2','vendor2'),
     )
 
-
     rfc = models.CharField(max_length=255, verbose_name="RFC")
     nombre = models.CharField(max_length=255, verbose_name="Nombre")
     numero = models.CharField(max_length=255, verbose_name="numero")
+    numero_de_cliente = models.CharField(max_length=255, verbose_name="Número de Cliente")
     sucursal = models.IntegerField(choices=SUCURSALES)
     direccion = models.CharField(max_length=255, verbose_name="Dirección")
     ciudad = models.CharField(max_length=255, verbose_name="Ciudad")
@@ -333,6 +333,8 @@ class Cliente(models.Model):
     telefono = models.CharField(max_length=255, verbose_name="Teléfono")
     telefono_extra = models.CharField(max_length=255, verbose_name="Teléfono Extra")
     email = models.EmailField(max_length=255,verbose_name="Correo")
+    email_two = models.EmailField(max_length=255,blank=True, verbose_name="Correo two")
+    email_three = models.EmailField(max_length=255,blank=True, verbose_name="Correo three")
     vender = models.CharField(max_length=200, choices=VENDENDOR,verbose_name="Vendedor")
     contacto = models.CharField(max_length=255, verbose_name="Contacto")
     desactivar_email = models.BooleanField(default=False)
@@ -403,7 +405,7 @@ class Cliente(models.Model):
         return True
 
 class DirecciónDeReporte(models.Model):
-    client =models.CharField(max_length=254)
+    client =models.ForeignKey(Cliente, on_delete=models.CASCADE, blank=True)
     address = models.TextField(max_length=254)
     active = models.BooleanField(default=False)
     created = models.DateField(auto_now_add=True)

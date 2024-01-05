@@ -650,7 +650,7 @@ class ClienteForm(forms.ModelForm):
         model = Cliente
         exclude = ('desactivar_email', 'numero', 'distribuidor', )
     
-    vendedor = forms.ModelChoiceField(queryset=Vendedor.objects.all(), required=False)
+    # vendedor = forms.ModelChoiceField(queryset=Vendedor.objects.all(), required=False)
 
     def __init__(self, *args, **kwargs):
         super(ClienteForm, self).__init__(*args, **kwargs)
