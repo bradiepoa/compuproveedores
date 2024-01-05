@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{% load static %}
 {% block content %}
 
 <form action="." method="GET">
@@ -18,10 +19,10 @@
 
 <div id="div_add">
     <a href="{% url 'cliente' 0 %}">
-    <img src="/site_media/fc/images/add.gif"> Agregar Cliente</a>
+    <img src="{% static 'site_media/fc/images/add.gif' %}"> Agregar Cliente</a>
     
     <a href="{% url 'subir_clientes' %}">
-    <img src="/site_media/fc/images/add.gif"> Subir una lista de clientes</a>
+    <img src="{% static 'site_media/fc/images/add.gif' %}"> Subir una lista de clientes</a>
     
 </div>
 
@@ -33,8 +34,8 @@
         <th>Sucursal</th>
         <th>Datos Soporte</th>
         <!-- <th>Datos Administrativos</th> -->
-        <th>Crédito</th>
-        <th>C</th>
+        <!-- <th>Crédito</th>
+        <th>C</th> -->
         <th>Eliminar</th>
         
     </tr>
@@ -46,8 +47,8 @@
             <td>{{ u.get_sucursal_display }}</td>
             <td><a href="{% url 'cliente' u.id %}">Editar: {{ u.mostrar_datos }}</a></td>
             <!-- <td><a href="{% url 'ver_distribuidor' u.distribuidor.id %}">Editar: {{ u.distribuidor.mostrar_datos }}</a></td> -->
-            <td><a href="{% url 'solicitud_credito_distribuidor' u.distribuidor.id %}">Editar: {{ u.solicitarcredito.mostrar_datos }}</a></td>
-            <td>{{ u.distribuidor.mostrar_clasificacion }}</td>
+            <!-- <td><a href="{% url 'solicitud_credito_distribuidor' u.distribuidor.id %}">Editar: {{ u.solicitarcredito.mostrar_datos }}</a></td>
+            <td>{{ u.distribuidor.mostrar_clasificacion }}</td> -->
             <td><a href="{% url 'eliminar_cliente' u.id %}">Eliminar</a></td>
         </tr>
     {% endfor %}
