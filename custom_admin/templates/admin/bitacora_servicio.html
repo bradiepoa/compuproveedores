@@ -373,6 +373,7 @@ function set_tipos(){
             <td style="font-weight:bold;">{{ folio }}</td>
             {% endif %}
         </tr>
+       
         {% if not form.instance.id %}
         <tr class="fechas_taller">
             <td>Fecha de solicitud: </td>
@@ -481,6 +482,17 @@ function set_tipos(){
              </td>
         </tr>
         -->
+        <tr>
+            <td>Contracto:</td>
+            {% if form.instance.id %}
+            <td>{{ form.instance.contracto }}</td>
+            {% else %}
+            <td>{{ form.contracto }} </span>
+            <br/>{% form_error form.contracto  %}</td>
+            {% endif %}
+
+        </tr>
+
         <tr>
             <td>Marca:</td>
             {% if form.instance.id %}
@@ -708,22 +720,22 @@ function set_tipos(){
         <input type="button" onclick="submit_form()" value="Guardar"/>
         {% if form.instance.id %}
             <a href="{% url 'imprimir_bitacora_servicio' form.instance.id %}"  target="_blank">
-                <img src="/site_media/img/icons/pdf.png">
+                <img src="{% static 'site_media/img/icons/pdf.png' %}">
                 Solicitud de Servicio
             </a>
             <a href="{% url 'pdf_tablas' form.instance.id %}" target="_blank">
-                <img src="/site_media/img/icons/pdf.png">
+                <img src="{% static 'site_media/img/icons/pdf.png' %}">
                 Cierre de Servicio
             </a>
         {% endif %}
             
         
         {% if id > '0' and form.instance.estado == 0 %}
-            <a href="{% url 'cancelar_bitacora_servicio' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cancelar Solicitud</a>
+            <a href="{% url 'cancelar_bitacora_servicio' id %}"><img src="{% static 'site_media/img/icons/delete_32.png' %}"/>Cancelar Solicitud</a>
         {% endif %}
         
         {% if id > '0' and form.instance.estado == 1 %}
-            <a href="{% url 'cerrar_bitacora_servicio' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cerrar Solicitud</a>
+            <a href="{% url 'cerrar_bitacora_servicio' id %}"><img src="{% static 'site_media/img/icons/delete_32.png' %}"/>Cerrar Solicitud</a>
         {% endif %}
         
    </div> 
@@ -733,7 +745,7 @@ function set_tipos(){
             {% if anterior %}
             <div class="left">
                 <a href="{% url 'bitacora_servicio' anterior.id %}">
-                    <img src="/site_media/img/icons/left_16.png">
+                    <img src="{% static 'site_media/img/icons/left_16.png' %}">
                     Anterior
                 </a>
             </div>
@@ -742,7 +754,7 @@ function set_tipos(){
             <div class="right">
                 <a href="{% url 'bitacora_servicio' siguiente.id %}">
                     Siguiente
-                    <img src="/site_media/img/icons/right_16.png">
+                    <img src="{% static 'site_media/img/icons/right_16.png' %}">
                 </a>
             </div>
             {% endif %}
