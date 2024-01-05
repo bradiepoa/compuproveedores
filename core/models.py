@@ -404,15 +404,18 @@ class Cliente(models.Model):
     def es_cliente(self):
         return True
 
+# ==================================================================================================
+
 class DirecciónDeReporte(models.Model):
-    client =models.ForeignKey(Cliente, on_delete=models.CASCADE, blank=True)
+    client = models.ForeignKey(Cliente, on_delete=models.CASCADE, blank=True)
     address = models.TextField(max_length=254)
     active = models.BooleanField(default=False)
     created = models.DateField(auto_now_add=True)
-    created = models.DateField(auto_now=True)
+    updated = models.DateField(auto_now=True)
 
     def __str__(self):
-        return self.client
+        return f"{self.client} - {self.address}"
+
 # first model that was lost, ====================================================
 class Bitacora(models.Model):
 
@@ -464,7 +467,7 @@ class Bitacora(models.Model):
     usuario_modificado = models.ForeignKey(User, related_name="usuarios_modificado", on_delete=models.CASCADE)
     usuario = models.ForeignKey(User, on_delete=models.PROTECT, related_name="bitacoras")   
     folio = models.IntegerField()
-    contracto = models.CharField(max_length=255)
+    Contrato = models.CharField(max_length=255,verbose_name="Contrato")
     fecha = models.DateTimeField(null=True)
     fecha_factura = models.DateField(null=True)
     fecha_vencimiento = models.DateField(null=True)

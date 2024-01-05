@@ -24,11 +24,12 @@ from .views import (
     catalogo_vendedores, convertir_proyecto, cancelar_proyecto, eliminar_clientes_repetidos, vendedor,
     imagenes_inicio, admin_mundo_tecnologia,
     editar_distribuidor, eliminar_solicitud_trabajo, database_backup_compuproveedores,
-    aviso_privacidad, avisos, subir_vendedores
+    aviso_privacidad, avisos, subir_vendedores,addAdress
 )
 
 urlpatterns = [
     path('', admin, name="admin"),
+    path('add_addresses/', addAdress, name="add_addresses"),
     path('administrar_productos/', administrar_productos, name="administrar_productos"),
     path('administrar_imagenes/', administrar_imagenes, name="administrar_imagenes"),
     path('administrar_directorio/', administrar_directorio, name="administrar_directorio"),

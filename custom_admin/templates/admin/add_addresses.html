@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% load static %}
+{% load custom_tags %}
+{% block content %}
+<div class="container">
+    <form action="" method="POST" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">entregar</button>
+    </form>
+
+<hr>
+    <h2 class="text-center bg-prmary">Clients Addresses</h2>
+    <table class="table">
+        <thead>
+            <th>Client</th>
+            <th>Address</th>
+            <th>Status</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Cliente name</td>
+                <td>Address goes here</td>
+                <td>status</td>
+            </tr>
+
+            <tr>
+                <td>Cliente name</td>
+                <td>Address goes here</td>
+                <td>status</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

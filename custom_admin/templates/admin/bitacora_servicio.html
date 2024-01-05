@@ -485,10 +485,10 @@ function set_tipos(){
         <tr>
             <td>Contracto:</td>
             {% if form.instance.id %}
-            <td>{{ form.instance.contracto }}</td>
+            <td>{{ form.instance.Contrato }}</td>
             {% else %}
-            <td>{{ form.contracto }} </span>
-            <br/>{% form_error form.contracto  %}</td>
+            <td>{{ form.Contrato }} </span>
+            <br/>{% form_error form.Contrato  %}</td>
             {% endif %}
 
         </tr>
@@ -530,7 +530,7 @@ function set_tipos(){
         </tr>
 </div>
         
-    </table>
+</table>
 </div>
 
 {% if not form.instance.id %}

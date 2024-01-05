@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*- 
 # from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from annoying.decorators import render_to
 from annoying.functions import get_object_or_None
@@ -1201,7 +1201,18 @@ Falla: %s
     return {'form':form, 'success':request.GET.get('success'), 
             'id':id, 'fecha_vencimiento':fecha_vencimiento,
             'form_c':form_c, "folio":get_folio(1), "fecha":date.today() }
+            
+# =======================================================================================
+def addAdress(request):
+    form = addAddressForm()
+    if request.method == "POST":
+        form = addAddressForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('add_addresses')  # Update this to the correct URL name
 
+    context = {"form": form}
+    return render(request, 'admin/add_addresses.html', context)
     
 @login_required()
 @render_to('admin/bitacora_servicio.html')

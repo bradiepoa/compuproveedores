@@ -868,6 +868,12 @@ class ImportarClienteForm(forms.Form):
             raise forms.ValidationError('Debe ser un archivo con terminación xls o xlsx')
         
         return archivo
+# ================================================================================================================
+
+class addAddressForm(forms.ModelForm):
+    class Meta:
+        model = DirecciónDeReporte
+        fields = '__all__'
 
 class BitacoraGarantiaForm(forms.ModelForm):
     class Meta:
