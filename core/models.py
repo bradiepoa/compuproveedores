@@ -407,7 +407,7 @@ class Cliente(models.Model):
 # ==================================================================================================
 
 class DirecciónDeReporte(models.Model):
-    client = models.ForeignKey(Cliente, on_delete=models.CASCADE, blank=True)
+    client = models.CharField(max_length=200, blank=True)
     address = models.TextField(max_length=254)
     active = models.BooleanField(default=False)
     created = models.DateField(auto_now_add=True)

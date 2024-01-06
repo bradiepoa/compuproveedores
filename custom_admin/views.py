@@ -1210,8 +1210,8 @@ def addAdress(request):
         if form.is_valid():
             form.save()
             return redirect('add_addresses')  # Update this to the correct URL name
-
-    context = {"form": form}
+    dists = DirecciónDeReporte.objects.all().order_by('created')
+    context = {"form": form, 'dists':dists}
     return render(request, 'admin/add_addresses.html', context)
     
 @login_required()

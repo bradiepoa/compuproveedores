@@ -18,20 +18,14 @@
             <th>Status</th>
         </thead>
         <tbody>
+            {% for direct in dists %}
             <tr>
-                <td>Cliente name</td>
-                <td>Address goes here</td>
-                <td>status</td>
+                <td>{{direct.client}}</td>
+                <td>{{direct.address}}</td>
+                <td>{{direct.active}}</td>
             </tr>
-
-            <tr>
-                <td>Cliente name</td>
-                <td>Address goes here</td>
-                <td>status</td>
-            </tr>
-            
+            {% endfor %}           
         </tbody>
     </table>
 </div>
-
 {% endblock %}
