@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2#9@orl61&3x4pu1=$c^0)&5=jsw%w!e#0zu72-$y0j4cqmf!='
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -99,13 +99,13 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 # locacal server static config
-STATICFILES_DIRS =[
-    os.path.join(BASE_DIR, 'static')
-]
+# STATICFILES_DIRS =[
+#     os.path.join(BASE_DIR, 'static')
+# ]
 
 
 # config media files

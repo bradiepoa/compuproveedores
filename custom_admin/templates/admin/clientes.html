@@ -3,7 +3,7 @@
 {% block content %}
 
 <form action="." method="GET">
-    <img src="/site_media/fc/images/search.png">
+    <img src="{% static 'site_media/fc/images/search.png' %}">
     {{ form.q }}
     {{ form.tipo }}
 
