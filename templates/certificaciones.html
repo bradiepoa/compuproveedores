@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <style>
@@ -11,10 +12,10 @@
 <div class="espacio20"></div>
     <div class="cuadro_fondo_gris_titulo">CERTIFICACIONES</div>
     <div class="images_cer">
-    	<img src="/site_media/compu/images/certificaciones1.png">
-    	<img src="/site_media/compu/images/certificaciones2.png">
-    	<img src="/site_media/compu/images/certificaciones3.png">
-    	<img src="/site_media/compu/images/certificaciones4.png">
+    	<img src="{% static 'site_media/compu/images/certificaciones1.png' %}">
+    	<img src="{% static 'site_media/compu/images/certificaciones2.png' %}">
+    	<img src="{% static 'site_media/compu/images/certificaciones3.png' %}">
+    	<img src="{% static 'site_media/compu/images/certificaciones4.png' %}">
   	</div>
 <div class="espacio10"></div>
 </div>

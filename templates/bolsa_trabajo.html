@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load custom_tags %}
 {% block content %}
 
@@ -11,9 +12,6 @@
         } else {
             alert("Es necesario llenar los campos")
         }
-        
-        
-
     }
 
 </script>
@@ -50,7 +48,7 @@
                    <div>Ciudad/Estado: {{ buscar_form.ciudad }}</div>
                    <div class="contacto_boton right">
                     <input type="submit" name="buscar" value="Buscar" class="clickeable">
-                        {#<img src="/site_media/compu/images/boton_buscar.png" /></button>#}
+                        {#<img src="{% static 'site_media/compu/images/boton_buscar.png' %}" /></button>#}
                 </div>
                </div>
             </form>
@@ -84,7 +82,7 @@
                 {% espacio 10 %}
                 <div class="contacto_boton" style="text-align:center;">
                     <input type="button" onclick="submit_aceptar();", name="aceptar" value="Aceptar" id="id_aceptar" class="clickeable" />
-                        {#<img src="/site_media/compu/images/boton_aceptar.png" /></button>#}
+                        {#<img src="{% static 'site_media/compu/images/boton_aceptar.png' %}" /></button>#}
                 </div>
             </form>
         </div>
@@ -96,7 +94,7 @@
                    una vacante nos comunicaremos con usted.
                 </div>
         </div>      
-        <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+        <a href="#"><img src="{% static 'site_media/compu/images/x_mensaje.png' %}" alt="" id="cerrar_dialog_success"/></a>
     {% endif %}
     <div class="clear"></div>
 <div class="espacio10"></div>

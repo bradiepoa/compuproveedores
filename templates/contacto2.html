@@ -13,7 +13,7 @@ $().ready(function(){
 function get_sucursal(sucursal){
     
     {% for s in sucursales %}
-    $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_gris2.png");
+    $("#logo_{{ s.nombre }}").attr("src", "{% static 'site_media/compu/images/logo_gris2.png' %}");
     
     if(sucursal == '{{ s.nombre }}'){
         var ciudad = '{{ s.ciudad }}'
@@ -29,7 +29,7 @@ function get_sucursal(sucursal){
         var cob6 = '{{ s.cob6 }}'
         var cob7 = '{{ s.cob7 }}'
         var cob8 = '{{ s.cob8 }}'
-        $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_rojo2.png");
+        $("#logo_{{ s.nombre }}").attr("src", "{% stattic 'site_media/compu/images/logo_rojo2.png' %}");
     }
     {% endfor %}
     

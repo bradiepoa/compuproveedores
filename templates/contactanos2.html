@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load custom_tags %}
 {% block content %}
 <script>
@@ -26,7 +27,7 @@ function validate_serie_folio(tipo){
                 out += '            favor de introducir la serie y folio correctos. ';
                 out += '      </div>';
                 out += '</div>';      
-                out += '<a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success" ></a>';
+                out += '<a href="#"><img src="{% static 'site_media/compu/images/x_mensaje.png' %}" alt="" id="cerrar_dialog_success" ></a>';
 
                 $(" #datos_incorrectos ").html(out);
                 $("#cerrar_dialog_success").click(function(){
@@ -50,7 +51,7 @@ function validate_serie_folio(tipo){
 function get_sucursal(sucursal){
     
     {% for s in sucursales %}
-    $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_gris2.png");
+    $("#logo_{{ s.nombre }}").attr("src", "{% static 'site_media/compu/images/logo_gris2.png' %}");
     
     if(sucursal == '{{ s.nombre }}'){
         var ciudad = '{{ s.ciudad }}'
@@ -66,7 +67,7 @@ function get_sucursal(sucursal){
         var cob6 = '{{ s.cob6 }}'
         var cob7 = '{{ s.cob7 }}'
         var cob8 = '{{ s.cob8 }}'
-        $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_rojo2.png");
+        $("#logo_{{ s.nombre }}").attr("src", "{% static 'site_media/compu/images/logo_rojo2.png' %}");
     }
     {% endfor %}
     
@@ -150,7 +151,7 @@ function get_sucursal(sucursal){
                     favor de introducir la serie y folio correctos. 
                 </div>
         </div>      
-        <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+        <a href="#"><img src="{% static 'site_media/compu/images/x_mensaje.png' %}" alt="" id="cerrar_dialog_success"/></a>
     {% endif %}
     <div id="datos_incorrectos"></div> 
     {% if success_comentarios %}
@@ -160,7 +161,7 @@ function get_sucursal(sucursal){
                     trabajamos para ofrecerle un mejor servicio. 
                 </div>
         </div>      
-        <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+        <a href="#"><img src="{% static 'site_media/compu/images/x_mensaje.png' %}" alt="" id="cerrar_dialog_success"/></a>
     {% endif %}
     
     {% if success_encuesta %}
@@ -170,13 +171,10 @@ function get_sucursal(sucursal){
                     las tomaremos en cuenta para ofrecerle un mejor servicio.
                 </div>
         </div>      
-        <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+        <a href="#"><img src="{% static 'site_media/compu/images/x_mensaje.png' %}" alt="" id="cerrar_dialog_success"/></a>
     {% endif %}
     
     <div class="clear"></div>
 <div class="espacio10"></div>
 </div>
-
-
-
 {% endblock %}

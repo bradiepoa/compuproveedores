@@ -19,7 +19,7 @@ $().ready(function(){
 
   
             if((e.offsetX > 40 || e.offsetX < 1) || (e.offsetY > 40 || e.offsetY < 1) ){
-                $("#iluminado_{{ s.nombre }}").attr("src", "/site_media/compu/images/llamativo_transparente.png");
+                $("#iluminado_{{ s.nombre }}").attr("src", "{% static 'site_media/compu/images/llamativo.png' %}");
                 hovered = "";
              } 
         }  
@@ -36,7 +36,7 @@ $().ready(function(){
 function get_sucursal(sucursal){
     
     {% for s in sucursales %}
-    $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_gris.png");
+    $("#logo_{{ s.nombre }}").attr("src", "{% static 'site_media/compu/images/logo_gris.png' %}");
     
     if(sucursal == '{{ s.nombre }}'){
         var ciudad = '{{ s.ciudad }}'
@@ -51,7 +51,7 @@ function get_sucursal(sucursal){
         var cob6 = '{{ s.cob6 }}'
         var cob7 = '{{ s.cob7 }}'
         var cob8 = '{{ s.cob8 }}'
-        $("#logo_{{ s.nombre }}").attr("src", "/site_media/compu/images/logo_rojo.png");
+        $("#logo_{{ s.nombre }}").attr("src", "{% static 'site_media/compu/images/logo_rojo.png' %}");
     }
     {% endfor %}
     
@@ -102,7 +102,7 @@ Nuestras <span style="color:red;">sucursales</span>
      
      <div class="espacio20"></div>
      <div class="right" id="mapa_sucursales2">
-        <img src="/site_media/compu/images/mapa.png"/>
+        <img src="{% static 'site_media/compu/images/mapa.png' %}"/>
      </div>
      
      <div id="mensaje_contacto">
@@ -132,13 +132,13 @@ Nuestras <span style="color:red;">sucursales</span>
         {% for s in sucursales %}    
     <a href="javascript:get_sucursal('{{ s.nombre }}')" class="right" >
         <img 
-            src="/site_media/compu/images/llamativo_transparente.png" 
+            src="{% static 'site_media/compu/images/llamativo_transparente.png' %}" 
             class="iluminado" 
             id="iluminado_{{ s.nombre }}" 
             style="top:{{s.llamativo_t}}px; right:{{s.llamativo_r}}px;" 
         />
         <img 
-            src="/site_media/compu/images/logo_gris.png" 
+            src="{% static 'site_media/compu/images/logo_gris.png' %}" 
             class="iluminado" 
             id="logo_{{ s.nombre }}" 
             style="top:{{s.logo_t}}px; right:{{s.logo_r}}px;" 

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% load custom_tags %}
 {% block content %}
 
@@ -58,7 +59,7 @@
                     Gracias por su interés en nuestra empresa, recibirá una llamada para confirmar cita.
                 </div>
         </div>      
-        <a href="/concretar_cita/{{ id }}/"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+        <a href="/concretar_cita/{{ id }}/"><img src="{% static 'site_media/compu/images/x_mensaje.png' %}" alt="" id="cerrar_dialog_success"/></a>
     {% endif %}
     
     

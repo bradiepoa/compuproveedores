@@ -1,13 +1,14 @@
+{% load static %}
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html>
 	<head>
 		<title>COMPUPROVEEDORES</title>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-		<link rel="stylesheet" href="/site_media/css/compuproveedores.css" />
-		<script type="text/javascript" src="/site_media/js/jquery.js"></script>
-		<script type="text/javascript" src="/site_media/js/global_functions.js"></script>
-		<script type="text/javascript" src="/site_media/js/jquery.validate.min.js"></script>
+		<link rel="stylesheet" href="{% static 'site_media/css/compuproveedores.css' %}" />
+		<script type="text/javascript" src="{% static 'site_media/js/jquery.js' %}"></script>
+		<script type="text/javascript" src="{% static 'site_media/js/global_functions.js' %}"></script>
+		<script type="text/javascript" src="{% static 'site_media/js/jquery.validate.min.js' %}"></script>
 		
 		{% block extra_head %}{% endblock %}
 		
