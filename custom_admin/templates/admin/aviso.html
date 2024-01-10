@@ -1,11 +1,12 @@
 {% extends "main.html" %}
+{% load static %}
 {% block content %}
 {% load custom_tags %}
 
-<script type="text/javascript" src="/site_media/markitup/jquery.markitup.js"></script>
-<script type="text/javascript" src="/site_media/markitup/sets/default/set.js"></script>
-<link rel="stylesheet" type="text/css" href="/site_media/markitup/skins/markitup/style.css" />
-<link rel="stylesheet" type="text/css" href="/site_media/markitup/sets/default/style.css" />
+<script type="text/javascript" src="{% static 'site_media/markitup/jquery.markitup.js' %}"></script>
+<script type="text/javascript" src="{% static 'site_media/markitup/sets/default/set.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'site_media/markitup/skins/markitup/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'site_media/markitup/sets/default/style.css' %}" />
 <script type="text/javascript">
 <!--
 $(document).ready(function()    {

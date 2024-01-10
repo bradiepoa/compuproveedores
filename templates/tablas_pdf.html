@@ -1,8 +1,9 @@
+{% load static %}
 <div>
-    <img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" alt="Linea"/>
+    <img src="{{ root_url }} /{% static 'site_media/compu/images/distribuidor_arriba.png' %}" alt="Linea"/>
 </div>
 <div class="logo">    
-    <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+    <img src="{{root_url}}/{% static 'site_media/compu/images/logo.png' %}" width="120" alt="Logo">
 </div>
 <div class="titulo_">
     {% if bitacora.tipo == 0%}

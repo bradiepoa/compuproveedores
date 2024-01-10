@@ -24,7 +24,7 @@
     <div class="contacto_boton">
         <input type="submit" value="Enviar" />
         {% if id > '0' %}
-        <a href="{% url 'eliminar_cliente' id %}"><img src="/site_media/img/icons/delete_32.png"/>Elimiar</a>
+        <a href="{% url 'eliminar_cliente' id %}"><img src="{% static 'site_media/img/icons/delete_32.png' %}"/>Elimiar</a>
         {% endif %}
     </div>
 </form>

@@ -1,10 +1,11 @@
 {% extends "main.html" %}
+{% load static %}
 {% block content %}
 {% load url from future %}
 {% load custom_tags %}
 <div>
     <a href="{% url "admin-aviso_privacidad" 0 %}">
-    <img src="/site_media/fc/images/add.gif">Agregar aviso de privacidad</a> 
+    <img src="{% static 'site_media/fc/images/add.gif' %}">Agregar aviso de privacidad</a> 
 </div>
 <table class="list-table">
     <tr>

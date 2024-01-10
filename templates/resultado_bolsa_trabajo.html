@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 <script>
 $().ready(function(){
@@ -81,7 +82,7 @@ $().ready(function(){
                     <div id="text_dialog_success">Gracias por su interés en nuestra empresa, al cubrir el perfil
                     recibirá una llamada para entrevista</div>
             </div>      
-            <a href="#"><img src="/site_media/compu/images/x_mensaje.png" alt="" id="cerrar_dialog_success"/></a>
+            <a href="#"><img src="{% static 'site_media/compu/images/x_mensaje.png' %}" alt="" id="cerrar_dialog_success"/></a>
         {% endif %}
 
         {% else %}
@@ -89,7 +90,7 @@ $().ready(function(){
                     <div id="text_dialog_success">No se encontraron vacantes con la descripción solicitada.</div>
             </div>      
             <a href="{% url bolsa_trabajo%}">
-                <img src="/site_media/compu/images/flecha_regresar_mensaje.png" alt="" id="flecha_regresar_mensaje"/>
+                <img src="{% static 'site_media/compu/images/flecha_regresar_mensaje.png' %}" alt="" id="flecha_regresar_mensaje"/>
             </a>
         {% endif %}
      </div>

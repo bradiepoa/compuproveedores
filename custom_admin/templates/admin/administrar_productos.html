@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{%load static %}
 {% block content %}
 
 <script>
@@ -42,7 +43,7 @@ function eliminar(id){
             <td>{{ l.created|date:"d/m/Y H:i" }}</td>
             <td>{{ l.fecha_vencimiento|default:"No especificada" }}</td>
             <td><a href="{{ l.archivo.url }}">Descargar</a></td>
-            <td><a href="javascript:eliminar({{ l.id }});"><img src="/site_media/img/icons/delete_16.png" /></a></td>
+            <td><a href="javascript:eliminar({{ l.id }});"><img src="{% static 'site_media/img/icons/delete_16.png' %}" /></a></td>
         </tr>
     {% endfor %}
     

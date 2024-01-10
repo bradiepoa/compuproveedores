@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 {% block content %}
 {% if imagenes %}
 <script>
@@ -122,8 +123,8 @@ function onAfter(curr, next, opts) {
 <div class="espacio20"></div>
     <div class="cuadro_fondo_gris_titulo">PROMOCIONES</div>
     <div id="cuadro_blanco_promociones">
-        <div  class="left botones_imagen_izquierda"><a id="prev" href="#"><img src="/site_media/compu/images/flecha_izquierda.png" /></a></div>
-            <div class="right botones_imagen_derecha"><a id="next" href="#"><img src="/site_media/compu/images/flecha_derecha.png" /></a></div> 
+        <div  class="left botones_imagen_izquierda"><a id="prev" href="#"><img src="{% static 'site_media/compu/images/flecha_izquierda.png' %}" /></a></div>
+            <div class="right botones_imagen_derecha"><a id="next" href="#"><img src="{% static 'site_media/compu/images/flecha_derecha.png' %}" /></a></div> 
         <div style="margin: 20px; 0 0 25px;">
         <div style="width:100%; height:20px;">&nbsp;</div>
         {% if imagenes %}

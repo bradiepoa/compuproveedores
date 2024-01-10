@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{% load static %}
 {% block content %}
 <div class="right">La imagen debe de ser 178 x 565</div>
 <div clasS="clear"></div>
@@ -23,7 +24,7 @@
             
             {% if f.instance.imagen_chica %}            
                 <td><img src="{{ f.instance.imagen_chica.url }}" style="height:80px; width:80px;"></td>
-                <td>{{ f.DELETE }}<label for="id_form-{{ forloop.counter0 }}-DELETE"><img src="/site_media/img/delete.png"></td>
+                <td>{{ f.DELETE }}<label for="id_form-{{ forloop.counter0 }}-DELETE"><img src="{% static 'site_media/img/delete.png' %}"></td>
             {% endif %}
         </tr>
        

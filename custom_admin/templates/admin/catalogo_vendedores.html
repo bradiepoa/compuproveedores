@@ -4,12 +4,12 @@
 
 <div>
     <a href="{% url 'admin-vendedor' 0 %}">
-        <img src="/site_media/fc/images/add.gif">
+        <img src="{% static 'site_media/fc/images/add.gif' %}">
         Agregar Vendedor
     </a>
 
     <a href="{% url 'admin-subir_vendedores'%}">
-        <img src="/site_media/fc/images/add.gif">
+        <img src="{% static 'site_media/fc/images/add.gif' %}">
         Subir una lista de vendedores
     </a>
 </div>

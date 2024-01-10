@@ -9,7 +9,7 @@
         <tr>
             <td>{{ f.id }}{{ f.texto }}{{ f.texto.errors }}</td>
             {% if f.instance.id %}
-                <td>{{ f.DELETE }}<label for="id_form-{{ forloop.counter0 }}-DELETE"><img src="/site_media/img/delete.png"></td>
+                <td>{{ f.DELETE }}<label for="id_form-{{ forloop.counter0 }}-DELETE"><img src="{% static 'site_media/img/delete.png' %}"></td>
             {% endif %}
         </tr>
     <script>

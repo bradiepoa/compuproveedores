@@ -1,5 +1,6 @@
 {% extends "main.html" %}
 {% load custom_tags %}
+{% load static %}
 {% block content %}
 
 <script>
@@ -195,7 +196,7 @@ function cerrar_garantia(){
 
 <div class="bitacora_status">
     <div class="right" >
-        <a  href="{% url 'agregar_status' form.instance.id %}"><img src="/site_media/img/add.png" />Agregar avance</a><br>
+        <a  href="{% url 'agregar_status' form.instance.id %}"><img src="{% static 'site_media/img/add.png' %}" />Agregar avance</a><br>
         {% if form.instance.renovar %}
             <a href="{% url 'renovar_bitacora_sertec' form.instance.id %}">Renovar póliza</a><br>
         {% endif %}
@@ -428,7 +429,7 @@ function cerrar_garantia(){
 
         {% if form.instance.id %}
             <a href="{% url 'imprimir_bitacora_sertec' form.instance.id %}" target="_blank">
-                <img src="/site_media/img/icons/pdf.png">
+                <img src="{% static 'site_media/img/icons/pdf.png' %}">
                 Solicitud
             </a>
 
@@ -436,11 +437,11 @@ function cerrar_garantia(){
             
         
         {% if id > '0' and form.instance.estado == 0 %}
-            <a href="{% url 'cancelar_bitacora_sertec' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cancelar</a>
+            <a href="{% url 'cancelar_bitacora_sertec' id %}"><img src="{% static 'site_media/img/icons/delete_32.png' %}"/>Cancelar</a>
         {% endif %}
         
         {% if id > '0' and form.instance.estado == 1 %}
-            <a href="javascript:cerrar_sertec();"><img src="/site_media/img/icons/delete_32.png"/>Cerrar</a>
+            <a href="javascript:cerrar_sertec();"><img src="{% static 'site_media/img/icons/delete_32.png' %}"/>Cerrar</a>
         {% endif %}
   </div>
     {% if form.instance.id %}
@@ -449,7 +450,7 @@ function cerrar_garantia(){
             {% if anterior %}
             <div class="left">
                 <a href="{% url 'bitacora_sertec' anterior.id %}">
-                    <img src="/site_media/img/icons/left_16.png">
+                    <img src="{% static 'site_media/img/icons/left_16.png' %}">
                     Anterior
                 </a>
             </div>
@@ -458,7 +459,7 @@ function cerrar_garantia(){
             <div class="right">
                 <a href="{% url 'bitacora_sertec' siguiente.id %}">
                     Siguiente
-                    <img src="/site_media/img/icons/right_16.png">
+                    <img src="{% static 'site_media/img/icons/right_16.png' %}">
                 </a>
             </div>
             {% endif %}

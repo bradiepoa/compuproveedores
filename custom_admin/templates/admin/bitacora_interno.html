@@ -1,4 +1,5 @@
 {% extends "main.html" %}
+{% load static %}
 {% block content %}
 
 <script>
@@ -49,7 +50,7 @@ function confirmar_proyecto(url, text){
 <div>Ultmia modificación: {{ form.instance.usuario_modificado.first_name }}, el {{ form.instance.fecha_modificado|date:"d/m/Y, H:i:s" }}</div>
 
 <div class="bitacora_status">
-    <a class=right href="{% url 'agregar_status' form.instance.id %}"><img src="/site_media/img/add.png" />Agregar avances</a>
+    <a class=right href="{% url 'agregar_status' form.instance.id %}"><img src="{% static 'site_media/img/add.png' %}" />Agregar avances</a>
     <div class="clear"></div>
     
     <table>
@@ -206,13 +207,13 @@ function confirmar_proyecto(url, text){
    
     {% if form.instance.id %}
         <a href="{% url 'imprimir_bitacora_interno' form.instance.id %}" target="_blank">
-            <img src="/site_media/img/icons/pdf.png">
+            <img src="{% static 'site_media/img/icons/pdf.png' %}">
             Solicitud Interna
         </a>
         &nbsp;&nbsp;
 
         <a href="{% url 'pdf_tablas' form.instance.id %}" target="_blank">
-            <img src="/site_media/img/icons/pdf.png">
+            <img src="{% static 'site_media/img/icons/pdf.png' %}">
             Cierre de Reporte
         </a>
         &nbsp;&nbsp;
@@ -232,11 +233,11 @@ function confirmar_proyecto(url, text){
         {% endif %}
         
         {% if id > '0' and form.instance.estado == 0 %}
-            <a href="{% url 'cancelar_bitacora_interno' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cancelar Solicitud</a>
+            <a href="{% url 'cancelar_bitacora_interno' id %}"><img src="{% static 'site_media/img/icons/delete_32.png' %}"/>Cancelar Solicitud</a>
         {% endif %}
         
         {% if id > '0' and form.instance.estado < 2 %}
-            <a href="{% url 'cerrar_bitacora_interno' id %}"><img src="/site_media/img/icons/delete_32.png"/>Cerrar Solicitud</a>
+            <a href="{% url 'cerrar_bitacora_interno' id %}"><img src="{% static 'site_media/img/icons/delete_32.png' %}"/>Cerrar Solicitud</a>
         {% endif %}
     </div>
     {% if form.instance.id %}
@@ -244,7 +245,7 @@ function confirmar_proyecto(url, text){
             {% if anterior %}
             <div class="left">
                 <a href="{% url 'bitacora_interno' anterior.id %}">
-                    <img src="/site_media/img/icons/left_16.png">
+                    <img src="{% static 'site_media/img/icons/left_16.png' %}">
                     Anterior
                 </a>
             </div>
@@ -253,7 +254,7 @@ function confirmar_proyecto(url, text){
             <div class="right">
                 <a href="{% url 'bitacora_interno' siguiente.id %}">
                     Siguiente
-                    <img src="/site_media/img/icons/right_16.png">
+                    <img src=" ">
                 </a>
             </div>
             {% endif %}
