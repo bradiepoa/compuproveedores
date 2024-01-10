@@ -1,4 +1,5 @@
 {% load custom_tags %}
+{% load static %}
 <!--<div class="folio_r1">
     <div class="center">Folio</div>
     <div class="center folio_r_cont">{{ bitacora.folio }}</div>
@@ -11,10 +12,10 @@
 
 <div class="clear espacio50"></div>
 --> 
-<div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+<div><img src="{% static 'site_media/compu/images/distribuidor_arriba.png' %}" /></div>
 
 <div id="logo" class="left">    
-    <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+    <img src="{% static 'site_media/compu/images/logo.png' %}" width="120" alt="Logo">
 </div>
 
 <div class="titulo_g">

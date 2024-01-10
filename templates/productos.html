@@ -9,7 +9,7 @@ function search(){
 </script>
 <div class="gray rounded">
 <div class="espacio20"></div>
-<img src="/site_media/fc/images/search.png">
+<img src="{% static 'site_media/fc/images/search.png' %}">
 <input type="text" value="{{ q }}" id="id_search" onkeypress="check_enter(event, search)">
 <input type='button' value="Buscar" onclick="search()">
 

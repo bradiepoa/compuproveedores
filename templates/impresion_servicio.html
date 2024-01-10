@@ -11,10 +11,10 @@
 
 <div class="clear espacio50"></div>
 --> 
-<div><img src="{{ root_url }}/site_media/compu/images/distribuidor_arriba.png" /></div>
+<div><img src="{% static 'site_media/compu/images/distribuidor_arriba.png' %}" /></div>
 
 <div id="logo" class="left">    
-    <img src="{{root_url}}/site_media/compu/images/logo.png" width="120" alt="Logo">
+    <img src="{% static 'site_media/compu/images/logo.png' %}" width="120" alt="Logo">
 </div>
 
 <div class="titulo_g">
@@ -186,7 +186,7 @@
     {% if bitacora.tipo_equipo == 3 %}
     <div id="impresora">
         <div class="left">
-            <img src="{{ root_url }}/site_media/compu/images/impresora.jpg" style="width:140px; height:120px;">
+            <img src="{% static 'site_media/compu/images/impresora.jpg' %}" style="width:140px; height:120px;">
         </div>
         <div class="left">
             <div>{{ bitacora.bandeja|cruz_roja }}{{ bitacora|label_tag2:"bandeja" }}</div>
@@ -206,7 +206,7 @@
     {% if bitacora.tipo_equipo == 1 %}
     <div id="lap_top">
         <div class="left">
-            <img src="{{ root_url }}/site_media/compu/images/lap_top.jpg" style="width:140px; height:120px;"  >
+            <img src="{% static 'site_media/compu/images/lap_top.jpg' %}" style="width:140px; height:120px;"  >
         </div>   
         <div class="left">
             <div>{{ bitacora.bateria|cruz_roja }}{{ bitacora|label_tag2:"bateria" }}</div>    
@@ -223,7 +223,7 @@
     {% if bitacora.tipo_equipo == 2 %}
     <div id="pc">
         <div class="left">
-            <img src="{{ root_url }}/site_media/compu/images/pc1.jpg" style="width:100px; height:120px;" >
+            <img src="{% static 'site_media/compu/images/pc1.jpg' %}" style="width:100px; height:120px;" >
         </div> 
         <div class="left">
             <div>{{ bitacora.cable_corriente|cruz_roja }}{{ bitacora|label_tag2:"cable_corriente" }}</div>
